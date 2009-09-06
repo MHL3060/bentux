@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import local.tux.app.model.common.LookUpBaseObject;
@@ -30,6 +32,9 @@ public class Image extends LookUpBaseObject {
 	@Column(name="thumbPath")
 	private String thumbPath;
 	
+	@ManyToOne
+	@JoinColumn(name="product_id")
+	private Product product;
 	
 	@Override
 	public Serializable getId() {
@@ -66,6 +71,15 @@ public class Image extends LookUpBaseObject {
 
 	public void setThumbPath(String thumbPath) {
 		this.thumbPath = thumbPath;
+	}
+
+	
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 
 	@Override

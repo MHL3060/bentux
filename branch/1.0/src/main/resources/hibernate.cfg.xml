@@ -5,5 +5,9 @@
     <session-factory>
         <mapping class="org.appfuse.model.User"/>
         <mapping class="org.appfuse.model.Role"/>
+        <mapping class="local.tux.app.model.Catalogy" />
+        <mapping class="local.tux.app.model.Image" />
+        <mapping class="local.tux.app.model.Manufactueer" />
+        <mapping class="local.tux.app.model.Product" />
     </session-factory>
 </hibernate-configuration>

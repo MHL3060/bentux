@@ -93,4 +93,12 @@
         <property name="prefix" value="/WEB-INF/pages/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
+    
+    <!--  your own pages -->
+    <bean id="catalogyFormController" class="local.tux.app.web.controller.CatalogyFormController">
+    	<property name="commandClass" value="local.tux.app.model.Catalogy" />
+    	<property name="commandName" value="catalogy" />
+    	<property name="lookUpManager" ref="catalogyManager" />
+    </bean>
+    
 </beans>

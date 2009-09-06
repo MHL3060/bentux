@@ -31,6 +31,7 @@
             classpath:/applicationContext-dao.xml
             classpath:/applicationContext-service.xml
             classpath*:/applicationContext.xml
+            classpath*:/applicationContext_tux.xml
             /WEB-INF/applicationContext*.xml
             /WEB-INF/xfire-servlet.xml
             /WEB-INF/security.xml

@@ -1,4 +1,4 @@
-package local.tux.app.web.controller;
+package local.tux.app.web.common.controller;
 
 import java.util.HashMap;
 import java.util.List;
@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import local.tux.app.model.common.LookUpBaseObject;
 import local.tux.app.service.LookUpNameGenericManager;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -29,6 +30,7 @@ public class LookUpTableController extends BaseFormController {
 	private final Log log = LogFactory.getLog(LookUpTableController.class);
 	private LookUpNameGenericManager lookUpManager;
 	
+	
 	public void setLookUpManager(LookUpNameGenericManager lookUpManager) {
 		this.lookUpManager = lookUpManager;
 	}
@@ -40,8 +42,21 @@ public class LookUpTableController extends BaseFormController {
 		return result;
 	}
 	
+	protected Object formBackingObject(HttpServletRequest request) throws Exception {
+		String id = request.getParameter("id");
+		
+		if (!StringUtils.isBlank(id)) {
+            return lookUpManager.get(new Long(id));
+        }else {
+        	
+        	return getCommandClass().newInstance();
+        }
+		
+
+	}
 	public ModelAndView onSubmit(HttpServletRequest request, HttpServletResponse response, Object command, BindException error) throws Exception {
 		try {
+			
 			lookUpManager.save((LookUpBaseObject)command);
 		}catch (Exception e){
 			saveError(request, getText("object.exists",request.getLocale()));

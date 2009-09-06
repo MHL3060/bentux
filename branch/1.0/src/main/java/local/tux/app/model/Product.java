@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -28,10 +29,10 @@ public class Product extends LookUpBaseObject {
 	@Column(name="name", nullable=false)
 	private String name;
 	@ManyToOne
-	@Column(name="manufacture")
+	@JoinColumn(name="manufacture")
 	private Manufactueer manufactueer;
 	@ManyToOne
-	@Column(name="catalog")
+	@JoinColumn(name="catalog")
 	private Catalogy catalogy;
 	@Column(name="price")
 	private Double price;
