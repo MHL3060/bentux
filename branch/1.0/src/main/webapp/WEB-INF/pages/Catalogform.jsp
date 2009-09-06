@@ -1,8 +1,8 @@
 <%@ include file="/common/taglibs.jsp" %>
 
 <h1><fmt:message key="catalog.heading" /></h1>
-<display:table name="list" id="list" pagesize="25" class="table">
 
+<display:table name="list" id="list" pagesize="25" class="table" requestURI="catalogform.html">
 	<display:column property="id" titleKey="lookup.id" />
 	<display:column property="name" titleKey="lookup.name" sortable="true"/>
 

@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import local.tux.app.model.common.LookUpBaseObject;
 import local.tux.app.model.common.TuxBaseObject;
@@ -36,6 +37,8 @@ public class Image extends LookUpBaseObject {
 	@JoinColumn(name="product_id")
 	private Product product;
 	
+	@Transient
+	private byte[] file;
 	@Override
 	public Serializable getId() {
 		return id;
@@ -80,6 +83,15 @@ public class Image extends LookUpBaseObject {
 
 	public void setProduct(Product product) {
 		this.product = product;
+	}
+	
+
+	public byte[] getFile() {
+		return file;
+	}
+
+	public void setFile(byte[] file) {
+		this.file = file;
 	}
 
 	@Override

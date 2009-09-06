@@ -8,6 +8,7 @@
         </span>
         <c:if test="${pageContext.request.remoteUser != null}">
         | <fmt:message key="user.status"/> ${pageContext.request.remoteUser}
+        | <a href="<c:url value="/userForm.html" />"> <fmt:message key="user.profile"/></a>
         </c:if>
     </span>
     <span class="right">

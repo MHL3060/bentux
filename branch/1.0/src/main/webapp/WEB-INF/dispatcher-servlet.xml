@@ -101,4 +101,9 @@
     	<property name="lookUpManager" ref="catalogManager" />
     </bean>
     
+    <bean id="imageFormController" class="local.tux.app.web.controller.ImageFormController">
+    	<property name="commandClass" value="local.tux.app.model.Image" />
+    	<property name="commandName" value="image" />
+    	<property name="lookUpManager" ref="imageManager" />
+    </bean>
 </beans>

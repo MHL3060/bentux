@@ -58,10 +58,12 @@ public class LookUpTableController extends BaseFormController {
 		try {
 			
 			lookUpManager.save((LookUpBaseObject)command);
+			return showNewForm(request, response);
 		}catch (Exception e){
 			saveError(request, getText("object.exists",request.getLocale()));
 			log.error(e);
 		}
+		
 		return showForm(request, response, error);
 	}
 }
