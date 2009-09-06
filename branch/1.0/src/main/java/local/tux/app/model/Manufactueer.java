@@ -23,8 +23,12 @@ public class Manufactueer extends LookUpBaseObject{
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
-	@Column(name="name", nullable=false)
+	@Column(name="name",unique=true, nullable=false)
 	private String name;
+	
+	@Column(name="location", nullable=true)
+	private String Location;
+	
 	@Override
 	public String getName() {
 		return name;
@@ -35,16 +39,24 @@ public class Manufactueer extends LookUpBaseObject{
 		this.name = name;
 		
 	}
-
+	
 	@Override
 	public Serializable getId() {
 		return id;
 	}
-
 	@Override
 	public void setId(Serializable id) {
 		this.id = (Long)id;
 		
+	}
+
+	
+	public String getLocation() {
+		return Location;
+	}
+
+	public void setLocation(String location) {
+		Location = location;
 	}
 
 	@Override

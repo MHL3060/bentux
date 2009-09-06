@@ -8,6 +8,4 @@ public abstract class TuxBaseObject extends BaseObject {
 
 	public abstract Serializable getId();
 	public abstract void setId(Serializable id);
-	
-
 }
