@@ -30,10 +30,10 @@ public class Product extends LookUpBaseObject {
 	private String name;
 	@ManyToOne
 	@JoinColumn(name="manufacture")
-	private Manufactueer manufactueer;
+	private Manufacturer manufactueer;
 	@ManyToOne
 	@JoinColumn(name="catalog")
-	private Catalogy catalogy;
+	private Catalog catalogy;
 	@Column(name="price")
 	private Double price;
 	@Column(name="availability")
@@ -77,22 +77,22 @@ public class Product extends LookUpBaseObject {
 	}
 
 
-	public Manufactueer getManufactueer() {
+	public Manufacturer getManufactueer() {
 		return manufactueer;
 	}
 
 
-	public void setManufactueer(Manufactueer manufactueer) {
+	public void setManufactueer(Manufacturer manufactueer) {
 		this.manufactueer = manufactueer;
 	}
 
 
-	public Catalogy getCatalogy() {
+	public Catalog getCatalogy() {
 		return catalogy;
 	}
 
 
-	public void setCatalogy(Catalogy catalogy) {
+	public void setCatalogy(Catalog catalogy) {
 		this.catalogy = catalogy;
 	}
 

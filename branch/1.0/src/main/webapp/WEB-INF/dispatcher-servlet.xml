@@ -95,10 +95,10 @@
     </bean>
     
     <!--  your own pages -->
-    <bean id="catalogyFormController" class="local.tux.app.web.controller.CatalogyFormController">
-    	<property name="commandClass" value="local.tux.app.model.Catalogy" />
-    	<property name="commandName" value="catalogy" />
-    	<property name="lookUpManager" ref="catalogyManager" />
+    <bean id="catalogFormController" class="local.tux.app.web.controller.CatalogFormController">
+    	<property name="commandClass" value="local.tux.app.model.Catalog" />
+    	<property name="commandName" value="catalog" />
+    	<property name="lookUpManager" ref="catalogManager" />
     </bean>
     
 </beans>

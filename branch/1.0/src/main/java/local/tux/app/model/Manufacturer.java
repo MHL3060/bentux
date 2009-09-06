@@ -13,7 +13,7 @@ import local.tux.app.model.common.LookUpBaseObject;
 
 @Entity
 @Table(name="manufactureer")
-public class Manufactueer extends LookUpBaseObject{
+public class Manufacturer extends LookUpBaseObject{
 
 	
 	/**
@@ -66,7 +66,7 @@ public class Manufactueer extends LookUpBaseObject{
 		
 		if (getClass() != obj.getClass())
 			return false;
-		Manufactueer other = (Manufactueer) obj;
+		Manufacturer other = (Manufacturer) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

@@ -1,6 +1,6 @@
 <%@ include file="/common/taglibs.jsp" %>
 
-<h1><fmt:message key="catalogy.heading" /></h1>
+<h1><fmt:message key="catalog.heading" /></h1>
 <display:table name="list" id="list" pagesize="25" class="table">
 
 	<display:column property="id" titleKey="lookup.id" />
@@ -18,7 +18,7 @@
 </c:set>
 
 
-<form:form commandName="catalogy" method="post" action="catalogyform.html" onsubmit="return onFormSubmit(this)" id="catalogyForm">
+<form:form commandName="catalog" method="post" action="catalogform.html" onsubmit="return onFormSubmit(this)" id="catalogForm">
 	<form:hidden path="id"/>
 	<ul>
 		<li>

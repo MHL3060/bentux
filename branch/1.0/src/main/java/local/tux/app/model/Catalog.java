@@ -13,7 +13,7 @@ import local.tux.app.model.common.LookUpBaseObject;
 
 @Entity
 @Table(name="catalog")
-public class Catalogy extends LookUpBaseObject {
+public class Catalog extends LookUpBaseObject {
 	
 	/**
 	 * 
@@ -52,7 +52,7 @@ public class Catalogy extends LookUpBaseObject {
 			return true;
 		if (getClass() != obj.getClass())
 			return false;
-		Catalogy other = (Catalogy) obj;
+		Catalog other = (Catalog) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

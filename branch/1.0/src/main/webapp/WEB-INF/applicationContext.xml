@@ -7,23 +7,25 @@
 	
     <!-- Add new DAOs here -->
 	<bean id="catalogyDao" class="local.tux.app.dao.hibernate.TuxNameGenericDaoHibernate">
-		<constructor-arg value="local.tux.app.model.Catalogy" />
+		<constructor-arg value="local.tux.app.model.Catalog" />
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-	<bean id="imageDao" class="local.tux.app.dao.hibernate.ImageDaoHibernate">
+	<bean id="imageDao" class="local.tux.app.dao.hibernate.TuxNameGenericDaoHibernate">
+		<constructor-arg value="local.tux.app.model.Image" />
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-	<bean id="manufactureDao" class="local.tux.app.dao.hibernate.ManufactureerDaoHibernate">
+	<bean id="manufacturerDao" class="local.tux.app.dao.hibernate.TuxNameGenericDaoHibernate">
+		<constructor-arg value="local.tux.app.model.Manufacturer" />
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
     <!-- Add new Managers here -->
-    <bean id="catalogyManager" class="local.tux.app.service.impl.LookUpNameGenericManagerImpl">
+    <bean id="catalogManager" class="local.tux.app.service.impl.LookUpNameGenericManagerImpl">
     	<constructor-arg ref="catalogyDao"/>
     </bean>
     <bean id="imageManager" class="local.tux.app.service.impl.LookUpNameGenericManagerImpl">
     	<constructor-arg ref="imageDao" />
     </bean>
     <bean id="manufactureManager" class="local.tux.app.service.impl.LookUpNameGenericManagerImpl">
-    	<constructor-arg ref="manufactureDao" />
+    	<constructor-arg ref="manufacturerDao" />
     </bean>
 </beans>
