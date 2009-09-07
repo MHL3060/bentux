@@ -40,8 +40,9 @@ public class Product extends LookUpBaseObject {
 	private Integer availability;
 	@Column(name="description")
 	private String description;
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="product" )
-	private Set<Image> images;
+	
+	//@OneToMany(cascade=CascadeType.ALL, mappedBy="product" )
+	//private Set<Image> images;
 	
 	@Column(name="rating")
 	private Long rating;
@@ -126,7 +127,7 @@ public class Product extends LookUpBaseObject {
 		this.description = description;
 	}
 
-
+/*
 	public Set<Image> getImages() {
 		return images;
 	}
@@ -136,7 +137,7 @@ public class Product extends LookUpBaseObject {
 		this.images = images;
 	}
 
-
+*/
 	public Long getRating() {
 		return rating;
 	}
@@ -216,7 +217,7 @@ public class Product extends LookUpBaseObject {
 		result = prime * result
 				+ ((description == null) ? 0 : description.hashCode());
 		result = prime * result + ((height == null) ? 0 : height.hashCode());
-		result = prime * result + ((images == null) ? 0 : images.hashCode());
+		//result = prime * result + ((images == null) ? 0 : images.hashCode());
 		result = prime * result
 				+ ((manufactueer == null) ? 0 : manufactueer.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
@@ -270,11 +271,11 @@ public class Product extends LookUpBaseObject {
 				return false;
 		} else if (!height.equals(other.height))
 			return false;
-		if (images == null) {
-			if (other.images != null)
-				return false;
-		} else if (!images.equals(other.images))
-			return false;
+		//if (images == null) {
+		//	if (other.images != null)
+		//		return false;
+		//}else if (!images.equals(other.images))
+		//	return false;
 		if (manufactueer == null) {
 			if (other.manufactueer != null)
 				return false;

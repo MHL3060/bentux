@@ -11,19 +11,20 @@
 </display:table>
 
 <form:form commandName="image" method="post" action="imageform.html" enctype="multipart/form-data"
-    onsubmit="return validateFileUpload(this)" id="uploadForm">
+    onsubmit="return validateFileUpload(this)" id="imageForm">
     <form:hidden path="id"/>
 <ul>
     <li class="info">
         <fmt:message key="upload.message"/>
     </li>
+    
     <li>
         <appfuse:label key="image.name" styleClass="desc"/>
         <form:errors path="name" cssClass="fieldError"/>
         <form:input path="name" id="name" cssClass="text medium" cssErrorClass="text state error"/>
     </li>
     <li>
-        <appfuse:label key="uploadForm.file" styleClass="desc"/>
+        <appfuse:label key="image.file" styleClass="desc"/>
         <form:errors path="file" cssClass="fieldError"/>
         <input type="file" name="file" id="file" class="file medium"/>
     </li>

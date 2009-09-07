@@ -1,8 +1,12 @@
 package local.tux;
 
+import java.awt.Dimension;
 import java.io.File;
 
 public interface Constants {
 
-	public final static String IMAGE_PATH = "images" + File.separatorChar + "apps";
+	public final int THUMBNAIL_WIDTH = 100;
+	public final int THUMBNAIL_HEIGHT = 100;
+	public final static String IMAGE_PATH = "/images" + File.separatorChar + "app";
+	public final static Dimension DIMENSION = new Dimension(THUMBNAIL_WIDTH, THUMBNAIL_HEIGHT);
 }

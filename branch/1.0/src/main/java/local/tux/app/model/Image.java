@@ -12,12 +12,14 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.appfuse.model.BaseObject;
+
 import local.tux.app.model.common.LookUpBaseObject;
 import local.tux.app.model.common.TuxBaseObject;
 
 @Entity
 @Table(name="image")
-public class Image extends LookUpBaseObject {
+public class Image extends BaseObject {
 
 	/**
 	 * 
@@ -28,34 +30,35 @@ public class Image extends LookUpBaseObject {
 	private Long id;
 	@Column(name="name")
 	private String name;
+	
 	@Column(name="path")
 	private String path;
 	@Column(name="thumbPath")
 	private String thumbPath;
 	
-	@ManyToOne
-	@JoinColumn(name="product_id")
-	private Product product;
+	//@ManyToOne
+	//@JoinColumn(name="product_id")
+	//private Product product;
 	
 	@Transient
 	private byte[] file;
-	@Override
-	public Serializable getId() {
+	
+	public Long getId() {
 		return id;
 	}
 
-	@Override
-	public void setId(Serializable id) {
+	
+	public void setId(Long id) {
 		this.id = (Long)id;
 
 	}
 
-	@Override
+	
 	public String getName() {
 		return name;
 	}
 
-	@Override
+	
 	public void setName(String name) {
 		this.name = name;
 		
@@ -76,7 +79,7 @@ public class Image extends LookUpBaseObject {
 		this.thumbPath = thumbPath;
 	}
 
-	
+	/*
 	public Product getProduct() {
 		return product;
 	}
@@ -84,7 +87,7 @@ public class Image extends LookUpBaseObject {
 	public void setProduct(Product product) {
 		this.product = product;
 	}
-	
+	*/
 
 	public byte[] getFile() {
 		return file;
@@ -128,6 +131,13 @@ public class Image extends LookUpBaseObject {
 		} else if (!thumbPath.equals(other.thumbPath))
 			return false;
 		return true;
+	}
+
+
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

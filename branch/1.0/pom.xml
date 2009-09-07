@@ -7,7 +7,7 @@
     <artifactId>app</artifactId>
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>AppFuse Spring MVC Application</name>
+    <name>Spring MVC Application</name>
     <url>http://www.mycompany.com</url>
 
     <prerequisites>
@@ -22,9 +22,6 @@
     </licenses>
 
     <scm>
-        <connection></connection>
-        <developerConnection></developerConnection>
-        <url></url>
     </scm>
 
     <issueManagement>
@@ -430,6 +427,11 @@
             <artifactId>subethasmtp-wiser</artifactId>
             <version>${wiser.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+        	<groupId>eu.cedarsoft.utils</groupId>
+        	<artifactId>image</artifactId>
+        	<version>1.3</version>
         </dependency>
     </dependencies>
 
