@@ -2,10 +2,10 @@
 <h1>
 <fmt:message key="image.heading" />
 </h1>
-<display:table id="list" name="list" style="table" requestURI="imageform.html">
+<display:table id="list" name="list" class="table" requestURI="imageform.html">
 	<display:column property="id" titleKey="lookup.id"/>
 	<display:column property="name" titleKey="lookup.name"/>
-	<display:column>
+	<display:column titleKey="image.thumbnail">
 		<img src="<c:url value="${list.thumbPath}" />" />
 	</display:column>
 </display:table>

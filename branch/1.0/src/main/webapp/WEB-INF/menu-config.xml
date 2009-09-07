@@ -9,6 +9,7 @@
             <Item name="ViewUsers" title="menu.admin.users" page="/admin/users.html"/>
             <Item name="ActiveUsers" title="mainMenu.activeUsers" page="/admin/activeUsers.html"/>
             <Item name="Catalog" title="mainMenu.catalog" page="/catalogform.html" />
+            <Item name="Image" title="mainMenu.image" page="/imageform.html" />
             
         </Menu>
         <Menu name="Logout" title="user.logout" page="/logout.jsp" roles="ROLE_ADMIN,ROLE_USER"/>

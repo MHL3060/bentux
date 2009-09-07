@@ -28,7 +28,7 @@ public class LookUpTableController extends BaseFormController {
 	
 	
 	private final Log log = LogFactory.getLog(LookUpTableController.class);
-	private LookUpNameGenericManager lookUpManager;
+	protected LookUpNameGenericManager lookUpManager;
 	
 	
 	public void setLookUpManager(LookUpNameGenericManager lookUpManager) {

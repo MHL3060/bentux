@@ -19,7 +19,7 @@ import local.tux.app.model.common.TuxBaseObject;
 
 @Entity
 @Table(name="image")
-public class Image extends BaseObject {
+public class Image extends LookUpBaseObject {
 
 	/**
 	 * 
@@ -36,9 +36,9 @@ public class Image extends BaseObject {
 	@Column(name="thumbPath")
 	private String thumbPath;
 	
-	//@ManyToOne
-	//@JoinColumn(name="product_id")
-	//private Product product;
+	@ManyToOne
+	@JoinColumn(name="product_id")
+	private Product product;
 	
 	@Transient
 	private byte[] file;

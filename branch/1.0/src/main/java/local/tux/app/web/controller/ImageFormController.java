@@ -34,7 +34,8 @@ import local.tux.app.web.common.controller.LookUpTableController;
 
 public class ImageFormController extends LookUpTableController {
 
-	private LookUpNameGenericManager lookUpNameGenericManager;
+	private LookUpNameGenericManager productManager;
+	//private LookUpNameGenericManager imageManager;
 
 	public ModelAndView processFormSubmission(HttpServletRequest request, HttpServletResponse response,
             Object command, BindException errors) throws Exception {
@@ -44,16 +45,16 @@ public class ImageFormController extends LookUpTableController {
 		
 		return super.processFormSubmission(request, response, command, errors);
 	}
-	public void setProductManager(LookUpNameGenericManager lookUpNameGenericManager){
-		this.lookUpNameGenericManager = lookUpNameGenericManager;
+	public void setProductManager(LookUpNameGenericManager productManager){
+		this.productManager = productManager;
 	}
 
 	public void initBinder(HttpServletRequest request, ServletRequestDataBinder binder){
-		/*
+		
 		TuxBaseObjectConverter projectEditor = new TuxBaseObjectConverter();
-		projectEditor.setGenreicManager(lookUpNameGenericManager);
+		projectEditor.setGenreicManager(productManager);
 		binder.registerCustomEditor(Product.class, projectEditor);
-		*/
+		
 		super.initBinder(request, binder);
 	}
 
@@ -76,20 +77,23 @@ public class ImageFormController extends LookUpTableController {
 			errors.getFieldError("file");
 		}
 		String type = tokens[tokens.length -1];
-		
-		FileOutputStream out = new FileOutputStream(docBase + File.separatorChar + Constants.IMAGE_PATH + File.separatorChar + fileName);
+		image.setPath(Constants.IMAGE_PATH +"/"+ fileName);
+		FileOutputStream out = new FileOutputStream(docBase + image.getPath());
 		ImageInputStream in = new MemoryCacheImageInputStream(file.getInputStream());
 		BufferedImage originalImage = saveFile(in, type, out);
         out.close();
 		
 		ImageConverter imageConverter = new ImageConverter();
 		BufferedImage thumbnail = imageConverter.resize(originalImage, Constants.DIMENSION);
-		String path =(String) request.getSession().getAttribute("");
-		out = new FileOutputStream(docBase + File.separatorChar + Constants.IMAGE_PATH + File.separatorChar + "thumbs" + File.separatorChar + fileName);
+		image.setThumbPath(Constants.IMAGE_PATH + "/thumbs/" + fileName);
+		
+		out = new FileOutputStream(docBase + image.getThumbPath());
 		ImageIO.write(thumbnail, type, out);
 		out.close();
 		
-		return showNewForm(request, response);
+		
+		return super.onSubmit(request, response, image, errors);
+		//return showNewForm(request, response);
 	}
 	
 	private BufferedImage saveFile(ImageInputStream in, String type, OutputStream out) throws IOException {
