@@ -41,11 +41,11 @@ public class Manufacturer extends LookUpBaseObject{
 	}
 	
 	@Override
-	public Serializable getId() {
+	public Long getId() {
 		return id;
 	}
 	@Override
-	public void setId(Serializable id) {
+	public void setId(Long id) {
 		this.id = (Long)id;
 		
 	}

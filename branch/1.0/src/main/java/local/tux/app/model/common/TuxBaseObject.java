@@ -6,6 +6,6 @@ import org.appfuse.model.BaseObject;
 
 public abstract class TuxBaseObject extends BaseObject {
 
-	public abstract Serializable getId();
-	public abstract void setId(Serializable id);
+	public abstract Long getId();
+	public abstract void setId(Long id);
 }

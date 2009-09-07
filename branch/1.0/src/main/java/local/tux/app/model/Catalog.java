@@ -41,8 +41,8 @@ public class Catalog extends LookUpBaseObject {
 	}
 
 	@Override
-	public void setId(Serializable id) {
-		this.id = (Long)id;
+	public void setId(Long id) {
+		this.id = id;
 
 	}
 
