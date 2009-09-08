@@ -13,26 +13,40 @@
 <form:form commandName="image" method="post" action="imageform.html" enctype="multipart/form-data"
     onsubmit="return validateFileUpload(this)" id="imageForm">
     <form:hidden path="id"/>
-<ul>
-    <li class="info">
-        <fmt:message key="upload.message"/>
-    </li>
-    
-    <li>
-        <appfuse:label key="image.name" styleClass="desc"/>
-        <form:errors path="name" cssClass="fieldError"/>
-        <form:input path="name" id="name" cssClass="text medium" cssErrorClass="text state error"/>
-    </li>
-    <li>
-        <appfuse:label key="image.file" styleClass="desc"/>
-        <form:errors path="file" cssClass="fieldError"/>
-        <input type="file" name="file" id="file" class="file medium"/>
-    </li>
-    <li class="buttonBar bottom">
-        <input type="submit" name="upload" class="button" onclick="bCancel=false"
-            value="<fmt:message key="button.upload"/>" />
-        <input type="submit" name="cancel" class="button" onclick="bCancel=true"
-            value="<fmt:message key="button.cancel"/>" />
-    </li>
-</ul>
+	<ul>
+	    
+	    <li>
+	    	<spring:bind path="product">
+	    		<appfuse:label key="image.product" styleClass="product"/>
+	    		<form:errors path="product" cssClass="fieldError" />
+	    		<select id="product" name="product">
+	    			<option value=""><fmt:message key="option.select" /></option>
+	    		<c:forEach var="p" items="${products}">
+	    			<option value="${p.id}" ${p.id == product.id ? 'selected' }>
+	    				${p.name }
+	    			</option>
+	    		</c:forEach>
+	    		</select>
+	    	</spring:bind>
+	    </li>
+	    <li>
+	        <appfuse:label key="image.name" styleClass="desc"/>
+	        <form:errors path="name" cssClass="fieldError"/>
+	        <form:input path="name" id="name" cssClass="text medium" cssErrorClass="text state error"/>
+	    </li>
+	    <li>
+	        <appfuse:label key="image.file" styleClass="desc"/>
+	        <form:errors path="file" cssClass="fieldError"/>
+	        <input type="file" name="file" id="file" class="file medium"/>
+	    </li>
+	    <li class="info">
+	        <fmt:message key="upload.message"/>
+	    </li>
+	    <li class="buttonBar bottom">
+	        <input type="submit" name="upload" class="button" onclick="bCancel=false"
+	            value="<fmt:message key="button.upload"/>" />
+	        <input type="submit" name="cancel" class="button" onclick="bCancel=true"
+	            value="<fmt:message key="button.cancel"/>" />
+	    </li>
+	</ul>
 </form:form>

@@ -94,7 +94,7 @@ public class ImageFormController extends LookUpTableController {
 		
 		
 		return super.onSubmit(request, response, image, errors);
-		//return showNewForm(request, response);
+		
 	}
 	
 	private BufferedImage saveFile(ImageInputStream in, String type, OutputStream out) throws IOException {
