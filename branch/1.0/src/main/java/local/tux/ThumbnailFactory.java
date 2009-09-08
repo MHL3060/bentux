@@ -5,6 +5,8 @@ import java.awt.RenderingHints;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 
+import org.hibernate.util.LinkedHashCollectionHelper;
+
 
 public class ThumbnailFactory {
 
@@ -36,7 +38,14 @@ public class ThumbnailFactory {
 		RenderingHints hint = new RenderingHints(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
 		return getThumbnail(image, maxThumbWidth, maxThumbHeight, hint);
 	}
-	
+	/**
+	 * 
+	 * @param image
+	 * @param maxThumbWidth
+	 * @param maxThumbHeight
+	 * @param hints
+	 * @return
+	 */
 	public static BufferedImage getThumbnail(BufferedImage image,
 			int maxThumbWidth, int maxThumbHeight, RenderingHints hints) {
 		BufferedImage thumbnail = null;

@@ -7,6 +7,7 @@ import local.tux.app.model.common.LookUpBaseObject;
 
 import org.appfuse.dao.hibernate.GenericDaoHibernate;
 
+
 public class TuxNameGenericDaoHibernate extends GenericDaoHibernate<LookUpBaseObject,Long> implements
 		TuxNameGenericDao{
 

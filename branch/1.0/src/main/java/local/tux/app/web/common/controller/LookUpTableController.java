@@ -2,12 +2,14 @@ package local.tux.app.web.common.controller;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import local.tux.app.model.common.LookUpBaseObject;
+import local.tux.app.model.common.TuxBaseObject;
 import local.tux.app.service.LookUpNameGenericManager;
 
 import org.apache.commons.lang.StringUtils;
@@ -26,7 +28,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class LookUpTableController extends BaseFormController {
 
 	
-	
+	protected final String DELETE_OBJECT = "delete";
 	private final Log log = LogFactory.getLog(LookUpTableController.class);
 	protected LookUpNameGenericManager lookUpManager;
 	
@@ -36,7 +38,9 @@ public class LookUpTableController extends BaseFormController {
 	}
 
 	@SuppressWarnings("unchecked")
-	public Map referenceData(HttpServletRequest request, Object command, Errors error) throws Exception {
+	public Map referenceData(HttpServletRequest request, Object command,
+			Errors error) throws Exception {
+		
 		Map<String, List<LookUpBaseObject>> result = new HashMap<String, List<LookUpBaseObject>>();
 		result.put("list", lookUpManager.getAll());
 		return result;
@@ -51,16 +55,31 @@ public class LookUpTableController extends BaseFormController {
         	
         	return getCommandClass().newInstance();
         }
-		
-
 	}
-	public ModelAndView onSubmit(HttpServletRequest request, HttpServletResponse response, Object command, BindException error) throws Exception {
+	/** 
+	 * common class for handling data from the web form.
+	 * 
+	 */
+	public ModelAndView onSubmit(HttpServletRequest request, HttpServletResponse response, 
+			Object command, BindException error) throws Exception {
+		
+		TuxBaseObject baseObject = (TuxBaseObject)command;
+		String className = command.getClass().getName();
+		boolean isNew = (baseObject.getId() == null);
+		Locale locale = request.getLocale();
 		try {
-			
-			lookUpManager.save((LookUpBaseObject)command);
+			if (request.getParameter(DELETE_OBJECT) != null){
+				lookUpManager.remove(baseObject.getId());
+				saveMessage(request, getText(className+".deleted", locale));
+				
+			}else {
+				lookUpManager.save((LookUpBaseObject)command);
+				String key = (isNew) ? className+ ".added" : className + ".updated";
+				saveMessage(request, getText(key, locale));
+			}
 			return showNewForm(request, response);
 		}catch (Exception e){
-			saveError(request, getText("object.exists",request.getLocale()));
+			saveError(request, getText("object.exists",locale));
 			log.error(e);
 		}
 		
