@@ -25,6 +25,7 @@ import org.springframework.web.servlet.ModelAndView;
 import eu.cedarsoft.utils.image.ImageConverter;
 
 import local.tux.Constants;
+import local.tux.ThumbnailFactory;
 import local.tux.TuxBaseObjectConverter;
 import local.tux.app.model.Image;
 import local.tux.app.model.Product;
@@ -83,8 +84,8 @@ public class ImageFormController extends LookUpTableController {
 		BufferedImage originalImage = saveFile(in, type, out);
         out.close();
 		
-		ImageConverter imageConverter = new ImageConverter();
-		BufferedImage thumbnail = imageConverter.resize(originalImage, Constants.DIMENSION);
+		BufferedImage thumbnail = ThumbnailFactory.getThumbnail(originalImage, Constants.THUMBNAIL_WIDTH, Constants.THUMBNAIL_HEIGHT);
+		//BufferedImage thumbnail = imageConverter.resize(originalImage, Constants.DIMENSION);
 		image.setThumbPath(Constants.IMAGE_PATH + "/thumbs/" + fileName);
 		
 		out = new FileOutputStream(docBase + image.getThumbPath());
