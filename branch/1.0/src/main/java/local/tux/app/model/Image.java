@@ -79,7 +79,7 @@ public class Image extends LookUpBaseObject {
 		this.thumbPath = thumbPath;
 	}
 
-	/*
+	
 	public Product getProduct() {
 		return product;
 	}
@@ -87,7 +87,7 @@ public class Image extends LookUpBaseObject {
 	public void setProduct(Product product) {
 		this.product = product;
 	}
-	*/
+	
 
 	public byte[] getFile() {
 		return file;
