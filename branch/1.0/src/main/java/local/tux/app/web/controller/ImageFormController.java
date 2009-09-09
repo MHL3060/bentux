@@ -22,8 +22,6 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 
-import eu.cedarsoft.utils.image.ImageConverter;
-
 import local.tux.Constants;
 import local.tux.ThumbnailFactory;
 import local.tux.TuxBaseObjectConverter;
@@ -61,36 +59,38 @@ public class ImageFormController extends LookUpTableController {
 
 	public ModelAndView onSubmit(HttpServletRequest request,HttpServletResponse response, 
 			Object command, BindException errors) throws Exception {
+		
 		String docBase = request.getSession().getServletContext().getRealPath("/");
 		Image image = (Image) command;
-	
-		// validate a file was entered
-		if (image.getFile().length == 0) {
-			Object[] args = new Object[] { getText("uploadForm.file", request.getLocale()) };
-			errors.rejectValue("file", "errors.required", args, "File");
-			return showForm(request, response, errors);
-		}
-		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
-		CommonsMultipartFile file = (CommonsMultipartFile) multipartRequest.getFile("file");
-		String fileName = file.getFileItem().getName();
-		String[] tokens = fileName.split("\\.");
-		if (tokens.length < 2){
-			errors.getFieldError("file");
-		}
-		String type = tokens[tokens.length -1];
-		image.setPath(Constants.IMAGE_PATH +"/"+ fileName);
-		FileOutputStream out = new FileOutputStream(docBase + image.getPath());
-		ImageInputStream in = new MemoryCacheImageInputStream(file.getInputStream());
-		BufferedImage originalImage = saveFile(in, type, out);
-        out.close();
+		boolean isNew = image.getId() == null;
 		
-		BufferedImage thumbnail = ThumbnailFactory.getThumbnail(originalImage, Constants.THUMBNAIL_WIDTH, Constants.THUMBNAIL_HEIGHT);
-		//BufferedImage thumbnail = imageConverter.resize(originalImage, Constants.DIMENSION);
-		image.setThumbPath(Constants.IMAGE_PATH + "/thumbs/" + fileName);
-		
-		out = new FileOutputStream(docBase + image.getThumbPath());
-		ImageIO.write(thumbnail, type, out);
-		out.close();
+			// validate a file was entered
+			if (image.getFile().length == 0) {
+				Object[] args = new Object[] { getText("uploadForm.file", request.getLocale()) };
+				errors.rejectValue("file", "errors.required", args, "File");
+				return showForm(request, response, errors);
+			}
+			MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
+			CommonsMultipartFile file = (CommonsMultipartFile) multipartRequest.getFile("file");
+			String fileName = file.getFileItem().getName();
+			String[] tokens = fileName.split("\\.");
+			if (tokens.length < 2){
+				errors.getFieldError("file");
+			}
+			fileName = fileName.replaceAll(" ", "");
+			String type = tokens[tokens.length -1];
+			image.setPath(Constants.IMAGE_PATH +"/"+ fileName);
+			FileOutputStream out = new FileOutputStream(docBase + image.getPath());
+			ImageInputStream in = new MemoryCacheImageInputStream(file.getInputStream());
+			BufferedImage originalImage = saveFile(in, type, out);
+	        out.close();
+			
+			BufferedImage thumbnail = ThumbnailFactory.getThumbnail(originalImage, Constants.THUMBNAIL_WIDTH, Constants.THUMBNAIL_HEIGHT);
+			image.setThumbPath(Constants.IMAGE_PATH + "/thumbs/" + fileName);
+			
+			out = new FileOutputStream(docBase + image.getThumbPath());
+			ImageIO.write(thumbnail, type, out);
+			out.close();
 		
 		
 		return super.onSubmit(request, response, image, errors);
