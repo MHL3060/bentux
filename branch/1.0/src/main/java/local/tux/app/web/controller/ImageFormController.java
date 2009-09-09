@@ -89,7 +89,7 @@ public class ImageFormController extends LookUpTableController {
 			FileOutputStream out = new FileOutputStream(docBase + image.getPath());
 			ImageInputStream in = new MemoryCacheImageInputStream(file.getInputStream());
 			BufferedImage originalImage = saveFile(in, type, out);
-	        out.close();
+	        	out.close();
 			
 			BufferedImage thumbnail = ThumbnailFactory.getThumbnail(originalImage, Constants.THUMBNAIL_WIDTH, Constants.THUMBNAIL_HEIGHT);
 			image.setThumbPath(Constants.IMAGE_PATH + "/thumbs/" + fileName);
@@ -97,9 +97,9 @@ public class ImageFormController extends LookUpTableController {
 			out = new FileOutputStream(docBase + image.getThumbPath());
 			ImageIO.write(thumbnail, type, out);
 			out.close();
-		
+				
+			return super.onSubmit(request, response, image, errors);
 		}
-		return super.onSubmit(request, response, image, errors);
 		
 	}
 	private boolean deleteFile(String docBase, Image image){
