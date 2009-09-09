@@ -16,13 +16,14 @@
 	<ul>
 	    
 	    <li>
-	    	<spring:bind path="product">
-	    		<appfuse:label key="image.product" styleClass="product"/>
+	    	<appfuse:label key="image.product" styleClass="product"/>
 	    		<form:errors path="product" cssClass="fieldError" />
+	    	<spring:bind path="product">
+	    		
 	    		<select id="product" name="product">
 	    			<option value=""><fmt:message key="option.select" /></option>
 	    		<c:forEach var="p" items="${products}">
-	    			<option value="${p.id}" ${p.id == product.id ? 'selected' }>
+	    			<option value="${p.id}" ${p.id == product.id ? 'selected' : '' }>
 	    				${p.name }
 	    			</option>
 	    		</c:forEach>

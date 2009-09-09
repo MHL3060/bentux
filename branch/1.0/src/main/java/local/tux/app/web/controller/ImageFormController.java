@@ -62,9 +62,15 @@ public class ImageFormController extends LookUpTableController {
 		
 		String docBase = request.getSession().getServletContext().getRealPath("/");
 		Image image = (Image) command;
-		boolean isNew = image.getId() == null;
 		
-			// validate a file was entered
+		boolean isNew = image.getId() == null;
+		if (request.getParameter(DELETE_OBJECT) != null){
+			if (deleteFile(docBase, image)){
+				saveMessage(request, getText("image.deleted", request.getLocale()));
+			}
+		}else if (!isNew) {
+			Image persistImage = (Image) lookUpManager.get(image.getId());
+		}
 			if (image.getFile().length == 0) {
 				Object[] args = new Object[] { getText("uploadForm.file", request.getLocale()) };
 				errors.rejectValue("file", "errors.required", args, "File");
@@ -92,11 +98,15 @@ public class ImageFormController extends LookUpTableController {
 			ImageIO.write(thumbnail, type, out);
 			out.close();
 		
-		
+		}
 		return super.onSubmit(request, response, image, errors);
 		
 	}
-	
+	private boolean deleteFile(String docBase, Image image){
+		File f = new File(docBase + File.separatorChar + image.getPath());
+		File thumbF = new File(docBase + File.separatorChar + image.getThumbPath());
+		return f.delete() && thumbF.delete();
+	}
 	private BufferedImage saveFile(ImageInputStream in, String type, OutputStream out) throws IOException {
 		
 		BufferedImage bufferedImage = ImageIO.read(in);
