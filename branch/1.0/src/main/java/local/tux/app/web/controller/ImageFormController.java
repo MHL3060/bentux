@@ -99,7 +99,6 @@ public class ImageFormController extends LookUpTableController {
 			out.close();
 				
 			return super.onSubmit(request, response, image, errors);
-		}
 		
 	}
 	private boolean deleteFile(String docBase, Image image){

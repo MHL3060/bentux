@@ -31,9 +31,7 @@ public class Product extends LookUpBaseObject {
 	@ManyToOne
 	@JoinColumn(name="manufacture")
 	private Manufacturer manufactueer;
-	@ManyToOne
-	@JoinColumn(name="catalog")
-	private Catalog catalogy;
+
 	@Column(name="price")
 	private Double price;
 	@Column(name="availability")
@@ -56,6 +54,15 @@ public class Product extends LookUpBaseObject {
 	@Column(name="day_life")
 	private Long dayLife;
 	
+	@Column(name="weight")
+	private Double weight;
+	
+	@Column(name="weight_unit")
+	private String weightUnit;
+	
+	@ManyToOne
+	@JoinColumn(name="catalog")
+	private Catalog catalog;
 	
 	public Long getId() {
 		return id;
@@ -87,14 +94,7 @@ public class Product extends LookUpBaseObject {
 	}
 
 
-	public Catalog getCatalogy() {
-		return catalogy;
-	}
-
-
-	public void setCatalogy(Catalog catalogy) {
-		this.catalogy = catalogy;
-	}
+	
 
 
 	public Double getPrice() {
@@ -132,7 +132,7 @@ public class Product extends LookUpBaseObject {
 	}
 
 
-	public void setImagesLocation(Set<Image> images) {
+	public void setImages(Set<Image> images) {
 		this.images = images;
 	}
 
@@ -160,10 +160,21 @@ public class Product extends LookUpBaseObject {
 	public Double getHeight() {
 		return height;
 	}
-
+	
 
 	public void setHeight(Double height) {
 		this.height = height;
+	}
+
+	
+
+	public Catalog getCatalog() {
+		return catalog;
+	}
+
+
+	public void setCatalog(Catalog catalog) {
+		this.catalog = catalog;
 	}
 
 
@@ -200,6 +211,27 @@ public class Product extends LookUpBaseObject {
 	public void setId(Long id) {
 		this.id = id;
 	}
+	
+	
+
+	public Double getWeight() {
+		return weight;
+	}
+
+
+	public void setWeight(Double weight) {
+		this.weight = weight;
+	}
+
+
+	public String getWeightUnit() {
+		return weightUnit;
+	}
+
+
+	public void setWeightUnit(String weightUnit) {
+		this.weightUnit = weightUnit;
+	}
 
 
 	@Override
@@ -210,7 +242,7 @@ public class Product extends LookUpBaseObject {
 				+ ((availability == null) ? 0 : availability.hashCode());
 		result = prime * result + ((barcode == null) ? 0 : barcode.hashCode());
 		result = prime * result
-				+ ((catalogy == null) ? 0 : catalogy.hashCode());
+				+ ((catalog == null) ? 0 : catalog.hashCode());
 		result = prime * result + ((dayLife == null) ? 0 : dayLife.hashCode());
 		result = prime * result + ((depth == null) ? 0 : depth.hashCode());
 		result = prime * result
@@ -245,10 +277,10 @@ public class Product extends LookUpBaseObject {
 				return false;
 		} else if (!barcode.equals(other.barcode))
 			return false;
-		if (catalogy == null) {
-			if (other.catalogy != null)
+		if (catalog == null) {
+			if (other.catalog != null)
 				return false;
-		} else if (!catalogy.equals(other.catalogy))
+		} else if (!catalog.equals(other.catalog))
 			return false;
 		if (dayLife == null) {
 			if (other.dayLife != null)

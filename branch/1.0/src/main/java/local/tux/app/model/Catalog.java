@@ -1,13 +1,19 @@
 package local.tux.app.model;
 
 import java.io.Serializable;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
 
 import local.tux.app.model.common.LookUpBaseObject;
 
@@ -25,10 +31,18 @@ public class Catalog extends LookUpBaseObject {
 	@Column(name="name", nullable=false )
 	private String name;
 	
+	@ManyToOne
+	@JoinColumn(name="image_id")
+	private Image image;
+
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="catalog")
+	public Set<Product> products;
+	
 	public String getName() {
 		return name;
 	}
 
+	
 	@Override
 	public void setName(String name) {
 		this.name = name;
@@ -44,6 +58,14 @@ public class Catalog extends LookUpBaseObject {
 	public void setId(Long id) {
 		this.id = id;
 
+	}
+
+	public Image getImage() {
+		return image;
+	}
+
+	public void setImage(Image image) {
+		this.image = image;
 	}
 
 	@Override

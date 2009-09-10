@@ -2,6 +2,7 @@ package local.tux.app.model;
 
 import java.io.Serializable;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,10 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import org.appfuse.model.BaseObject;
-
 import local.tux.app.model.common.LookUpBaseObject;
-import local.tux.app.model.common.TuxBaseObject;
 
 @Entity
 @Table(name="image")
@@ -39,6 +37,8 @@ public class Image extends LookUpBaseObject {
 	@ManyToOne
 	@JoinColumn(name="product_id")
 	private Product product;
+	
+	
 	
 	@Transient
 	private byte[] file;
