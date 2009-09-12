@@ -15,16 +15,28 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.compass.annotations.EnableAll;
+import org.compass.annotations.Searchable;
+import org.compass.annotations.SearchableAllMetaData;
+import org.compass.annotations.SearchableConstant;
+import org.compass.annotations.SearchableId;
+
 import local.tux.app.model.common.LookUpBaseObject;
 
 @Entity
 @Table(name="product")
+
+@Searchable(alias = "product")
+@SearchableAllMetaData(enable = EnableAll.TRUE)
+@SearchableConstant(name = "type", values = { "product" })
+
 public class Product extends LookUpBaseObject {
 
 
 	private static final long serialVersionUID = 2201584628480385470L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	@SearchableId
 	private Long id;
 	@Column(name="name", nullable=false)
 	private String name;

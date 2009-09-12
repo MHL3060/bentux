@@ -77,6 +77,8 @@
                 /admin/users.html=userController
                 /mainMenu.html=filenameController
                 /passwordHint.html=passwordHintController
+                /search.html=searchController
+                /reindex.html=indexController
             </value>
         </property>
         <property name="order" value="0"/>
@@ -106,4 +108,19 @@
     	<property name="commandName" value="image" />
     	<property name="lookUpManager" ref="imageManager" />
     </bean>
+    
+    <!--  compass pages -->
+    <bean id="indexController" class="org.compass.spring.web.mvc.CompassIndexController">
+        <property name="compassGps"><ref bean="compassGps"/></property>
+        <property name="indexView"><value>reindex</value></property>
+        <property name="indexResultsView"><value>reindex</value></property>
+    </bean>
+
+    <bean id="searchController" class="local.tux.app.web.controller.SearchController">
+        <property name="compass"><ref bean="compass"/></property>
+        <property name="searchView"><value>search</value></property>
+        <property name="searchResultsView"><value>search</value></property>
+        <property name="pageSize"><value>25</value></property>
+    </bean> 
+    
 </beans>

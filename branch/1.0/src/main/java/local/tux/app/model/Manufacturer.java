@@ -9,10 +9,21 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.compass.annotations.EnableAll;
+import org.compass.annotations.Searchable;
+import org.compass.annotations.SearchableAllMetaData;
+import org.compass.annotations.SearchableConstant;
+import org.compass.annotations.SearchableId;
+
 import local.tux.app.model.common.LookUpBaseObject;
 
 @Entity
 @Table(name="manufactureer")
+
+@Searchable(alias = "manufacturer")
+@SearchableAllMetaData(enable = EnableAll.TRUE)
+@SearchableConstant(name = "type", values = { "manufacturer" })
+
 public class Manufacturer extends LookUpBaseObject{
 
 	
@@ -22,6 +33,7 @@ public class Manufacturer extends LookUpBaseObject{
 	private static final long serialVersionUID = -3581460867980832957L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	@SearchableId
 	private Long id;
 	@Column(name="name",unique=true, nullable=false)
 	private String name;

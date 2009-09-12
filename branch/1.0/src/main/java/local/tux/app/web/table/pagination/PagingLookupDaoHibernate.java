@@ -1,4 +1,4 @@
-package local.tux.table.pagination;
+package local.tux.app.web.table.pagination;
 
 import java.beans.PropertyDescriptor;
 import java.io.Serializable;

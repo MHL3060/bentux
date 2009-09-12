@@ -3,7 +3,48 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd"
        default-lazy-init="true">
 
+	<!--  PagingLookupDao  -->
+	<bean id="pagingLookupDao" class="local.tux.app.web.table.pagination.PagingLookupDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="pagingLookupManager" class="local.tux.app.web.table.pagination.PagingLookupManagerImpl">
+		<property name="pagingDao"  ref="pagingLookupDao" />
+	</bean>
 	
+	<bean id="paginatedListFactory" class="local.tux.app.web.table.pagination.PaginateListFactory" />
+	
+	
+	<!--  compass -->
+	<bean id="compass" class="org.compass.spring.LocalCompassBean">
+		<property name="classMappings">
+			<list>
+				<value>local.tux.app.model.Catalog</value>
+				<value>local.tux.app.model.Image</value>
+				<value>local.tux.app.model.Manufacturer</value>
+				<value>local.tux.app.model.Product</value>
+			</list>
+		</property>
+		<property name="compassSettings">
+			<props>
+				
+                <prop key="compass.engine.connection">file://${user.home}/compass/</prop>
+                <prop key="compass.transaction.factory">org.compass.spring.transaction.SpringSyncTransactionFactory</prop>
+                <!-- snowball analyzer provides stemming (so 'monkey' gets 'monkeys', too) --> 
+                <prop key="compass.engine.analyzer.default.type">snowball</prop> 
+                <prop key="compass.engine.analyzer.default.name">English</prop> 
+                <prop key="compass.property.all.enabled">true</prop>	
+			</props>
+		</property>
+		 <property name="transactionManager" ref="transactionManager" />
+	</bean>
+	 <bean id="hibernateGpsDevice" class="org.compass.gps.device.hibernate.HibernateGpsDevice">
+      <property name="name"><value>hibernateDevice</value></property>
+      <property name="sessionFactory" ref="sessionFactory" />
+      <property name="nativeExtractor"><bean class="org.compass.spring.device.hibernate.SpringNativeHibernateExtractor" /></property>
+    </bean>
+     <bean id="compassGps" class="org.compass.gps.impl.SingleCompassGps" init-method="start" destroy-method="stop">
+       <property name="compass"><ref bean="compass" /></property>
+     </bean>
 	
     <!-- Add new DAOs here -->
 	<bean id="catalogyDao" class="local.tux.app.dao.hibernate.TuxNameGenericDaoHibernate">

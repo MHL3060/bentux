@@ -433,6 +433,31 @@
         	<artifactId>commons-dbutils</artifactId>
         	<version>1.2</version>
         </dependency>
+        <dependency>
+        	<groupId>org.compass-project</groupId>
+        	<artifactId>compass</artifactId>
+        	<version>${compass.version}</version>
+        </dependency>
+        <dependency>
+        	<groupId>org.apache.lucene</groupId>
+        	<artifactId>lucene-queries</artifactId>
+        	<version>${lucene.version}</version>
+        </dependency>
+        <dependency>
+        	<groupId>org.apache.lucene</groupId>
+        	<artifactId>lucene-snowball</artifactId>
+        	<version>${lucene.version}</version>
+        </dependency>
+        <dependency>
+        	<groupId>org.apache.lucene</groupId>
+        	<artifactId>lucene-highlighter</artifactId>
+        	<version>${lucene.version}</version>
+        </dependency>
+        <dependency>
+        	<groupId>org.apache.lucene</groupId>
+        	<artifactId>lucene-analyzers</artifactId>
+        	<version>${lucene.version}</version>
+        </dependency>
     </dependencies>
 
     <reporting>
@@ -725,5 +750,10 @@
 		<jdbc.url><![CDATA[jdbc:postgresql://localhost/app]]></jdbc.url>
 		<jdbc.username>postgres</jdbc.username>
 		<jdbc.password>postgres</jdbc.password>
+		
+		
+		<!--  compass settting -->
+		<compass.version>2.1.4</compass.version>
+		<lucene.version>2.4.1</lucene.version>
     </properties>
 </project>

@@ -13,10 +13,21 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.compass.annotations.EnableAll;
+import org.compass.annotations.Searchable;
+import org.compass.annotations.SearchableAllMetaData;
+import org.compass.annotations.SearchableConstant;
+import org.compass.annotations.SearchableId;
+
 import local.tux.app.model.common.LookUpBaseObject;
 
 @Entity
 @Table(name="image")
+
+@Searchable(alias = "image")
+@SearchableAllMetaData(enable = EnableAll.TRUE)
+@SearchableConstant(name = "type", values = { "image" })
+
 public class Image extends LookUpBaseObject {
 
 	/**
@@ -25,7 +36,9 @@ public class Image extends LookUpBaseObject {
 	private static final long serialVersionUID = -786409637999701144L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	@SearchableId
 	private Long id;
+	
 	@Column(name="name")
 	private String name;
 	

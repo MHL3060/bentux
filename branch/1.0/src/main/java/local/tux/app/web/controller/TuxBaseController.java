@@ -4,9 +4,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import local.tux.app.model.common.TuxBaseObject;
-import local.tux.table.pagination.ExtendedPaginatedList;
-import local.tux.table.pagination.PaginateListFactory;
-import local.tux.table.pagination.PagingLookupManager;
+import local.tux.app.web.table.pagination.ExtendedPaginatedList;
+import local.tux.app.web.table.pagination.PaginateListFactory;
+import local.tux.app.web.table.pagination.PagingLookupManager;
 
 import org.displaytag.properties.SortOrderEnum;
 import org.springframework.web.servlet.ModelAndView;
