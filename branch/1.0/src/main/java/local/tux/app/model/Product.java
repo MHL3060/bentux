@@ -61,6 +61,13 @@ public class Product extends LookUpBaseObject {
 	private Double height;
 	@Column(name="depth")
 	private Double depth;
+	
+	@Column(name="volume_unit")
+	private String volumeUnit;
+	
+	@Column(name="sku")
+	private String sky;
+	
 	@Column(name="barcode")
 	private String barcode;
 	@Column(name="day_life")
@@ -238,6 +245,25 @@ public class Product extends LookUpBaseObject {
 
 	public String getWeightUnit() {
 		return weightUnit;
+	}
+
+	public String getVolumeUnit() {
+		return volumeUnit;
+	}
+
+
+	public void setVolumeUnit(String volumeUnit) {
+		this.volumeUnit = volumeUnit;
+	}
+
+
+	public String getSky() {
+		return sky;
+	}
+
+
+	public void setSky(String sky) {
+		this.sky = sky;
 	}
 
 

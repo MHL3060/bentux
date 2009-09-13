@@ -5,7 +5,7 @@
 <display:table name="list" id="list" pagesize="25" class="table" requestURI="catalogform.html">
         <display:column property="id" titleKey="lookup.id" />
         <display:column property="name" titleKey="lookup.name" sortable="true"/>
-
+		<display:column property="description" titleKey="lookup.description" />
 </display:table>
 
 <c:set var="buttons">
@@ -22,9 +22,14 @@
         <form:hidden path="id"/>
         <ul>
                 <li>
-                        <appfuse:label key="catalogy.name" styleClass="desc" />
+                        <appfuse:label key="catalog.name" styleClass="desc" />
                         <form:errors path="name" cssClass="fieldError"/>
                         <form:input path="name" cssStyle="text medium"/>
+                </li>
+                <li>
+                	<appfuse:label key="catalog.description" styleClass="desc" />
+                	<form:errors path="description" cssClass="fieldError" />
+                	<form:input path="descriptipn" cssStyle="text medium" />
                 </li>
         </ul>
 

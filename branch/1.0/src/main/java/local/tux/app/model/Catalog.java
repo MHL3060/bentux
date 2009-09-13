@@ -1,6 +1,6 @@
 package local.tux.app.model;
 
-import java.io.Serializable;
+
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -46,12 +46,17 @@ public class Catalog extends LookUpBaseObject {
     @SearchableMetaData(name = "name")
 	private String name;
 	
+	@Column(name="description", length=500)
+	@SearchableProperty(name = "description")
+    @SearchableMetaData(name = "description")
+	private String description;
+	
 	@ManyToOne
 	@JoinColumn(name="image_id")
 	private Image image;
 
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="catalog")
-	public Set<Product> products;
+	private Set<Product> products;
 	
 	public String getName() {
 		return name;
@@ -102,6 +107,28 @@ public class Catalog extends LookUpBaseObject {
 			return false;
 		return true;
 	}
+
+	
+	public String getDescription() {
+		return description;
+	}
+
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
+	
+
+	public Set<Product> getProducts() {
+		return products;
+	}
+
+
+	public void setProducts(Set<Product> products) {
+		this.products = products;
+	}
+
 
 	@Override
 	public int hashCode() {
