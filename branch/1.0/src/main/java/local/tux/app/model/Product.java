@@ -66,7 +66,7 @@ public class Product extends LookUpBaseObject {
 	private String volumeUnit;
 	
 	@Column(name="sku")
-	private String sky;
+	private String sku;
 	
 	@Column(name="barcode")
 	private String barcode;
@@ -257,13 +257,13 @@ public class Product extends LookUpBaseObject {
 	}
 
 
-	public String getSky() {
-		return sky;
+	public String getSku() {
+		return sku;
 	}
 
 
-	public void setSky(String sky) {
-		this.sky = sky;
+	public void setSku(String sku) {
+		this.sku = sku;
 	}
 
 

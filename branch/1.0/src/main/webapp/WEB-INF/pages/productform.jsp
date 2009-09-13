@@ -4,7 +4,7 @@
 <c:set var="pleaseSelect">
 	<option value=""><fmt:message key="please.select" /></option>
 </c:set>
-<form:form path="product" action="/productform.html" method="post">
+<form:form commandName="product" action="/productform.html" method="post">
 	<form:hidden path="id"/>
 <ul>
 	<li>
@@ -16,6 +16,24 @@
 		<appfuse:label key="product.sku" styleClass="desc" />
 		<form:errors path="sku" cssClass="fieldErrors" />
 		<form:input path="sku" cssClass="text medium" />
+	</li>
+	<li>
+		<appfuse:label key="product.barcode" styleClass="desc" />
+		<form:errors path="barcode" cssStyle="fieldErrors" />
+		<form:input path="barcode" cssStyle="text medium" />
+	
+	</li>
+	<li>
+		<appfuse:label key="product.catalog" styleClass="desc" />
+		<form:errors path="catalog" cssStyle="fieldErrors" />
+		<spring:bind path="catalog" >
+			<select name="catalog" id="catalog" multiple="multiple">
+				<c:out value="${pleaseSelect }" escapeXml="false" />
+				<c:forEach var="catalog" items="${catalogs}">
+					<option value="${catalog.id }" ${catalog.id == product.catalog.id ? 'selected' : '' }> catalog.name</option>
+				</c:forEach>
+			</select>
+		</spring:bind>
 	</li>
 	<li>
 		<appfuse:label key="product.image" styleClass="desc" />
@@ -80,11 +98,22 @@
 		<form:errors path="volumeUnit" cssStyle="fieldErrors" />
 		<form:input path="volumeUnit" cssStyle="text medium" />
 	</li>
+	<li>
+		<appfuse:label key="product.price" styleClass="desc" />
+		<form:errors path="price" cssStyle="fieldErrors" />
+		<form:input path="price" cssStyle="text medium" />
+	</li>
 	
-	
+	<li>
+		<appfuse:label key="product.dayLife" styleClass="desc" />
+		<form:errors path="dayLife" cssStyle="fieldErrors" />
+		<form:input path="dayLife" cssStyle="text medium" />
+	</li>
 	
 </ul>
 
+	<input type="submit" name="submit" value="Submit" />
+	
 
 </form:form>
 
