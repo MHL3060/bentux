@@ -9,5 +9,6 @@
         <mapping class="local.tux.app.model.Image" />
         <mapping class="local.tux.app.model.Manufacturer" />
         <mapping class="local.tux.app.model.Product" />
+        <mapping class="local.tux.app.model.Ingredient"/>
     </session-factory>
 </hibernate-configuration>
