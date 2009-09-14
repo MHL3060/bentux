@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.compass.annotations.EnableAll;
 import org.compass.annotations.Searchable;
@@ -82,6 +83,15 @@ public class Product extends LookUpBaseObject {
 	@ManyToOne
 	@JoinColumn(name="catalog")
 	private Catalog catalog;
+	
+	@Column(name="is_special")
+	private Boolean special = Boolean.FALSE;
+	
+	@Column(name="discount_price")
+	private Double discountPrice;
+	
+	@Transient
+	private Double discountPercentage;
 	
 	public Long getId() {
 		return id;
@@ -269,6 +279,33 @@ public class Product extends LookUpBaseObject {
 
 	public void setWeightUnit(String weightUnit) {
 		this.weightUnit = weightUnit;
+	}
+
+	
+	
+
+	public Boolean getSpecial() {
+		return special;
+	}
+
+
+	public void setSpecial(Boolean special) {
+		this.special = special;
+	}
+
+
+	public Double getDiscountPrice() {
+		return discountPrice;
+	}
+
+
+	public void setDiscountPrice(Double discountPrice) {
+		this.discountPrice = discountPrice;
+	}
+
+
+	public Double getDiscountPercentage() {
+		return (price - discountPrice) / price;
 	}
 
 
