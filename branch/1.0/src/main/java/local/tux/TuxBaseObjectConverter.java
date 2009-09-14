@@ -3,6 +3,7 @@ package local.tux;
 import java.beans.PropertyEditorSupport;
 
 import local.tux.app.model.common.TuxBaseObject;
+import local.tux.app.service.LookUpNameGenericManager;
 
 import org.appfuse.service.GenericManager;
 
@@ -16,6 +17,11 @@ public class TuxBaseObjectConverter extends PropertyEditorSupport {
 	@SuppressWarnings("unchecked")
 	private GenericManager genericManager = null;
 	@SuppressWarnings("unchecked")
+	
+	public TuxBaseObjectConverter(GenericManager genericManager){
+		this.genericManager = genericManager;
+	}
+	
 	public GenericManager getGenericManager(){
 		if (genericManager == null ) {
 			throw new RuntimeException("Didn't set GenericManager");

@@ -1,8 +1,9 @@
-package local.tux.app.web.controller;
+package local.tux.app.web.common.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import local.tux.Constants;
 import local.tux.app.model.common.TuxBaseObject;
 import local.tux.app.web.table.pagination.ExtendedPaginatedList;
 import local.tux.app.web.table.pagination.PaginateListFactory;
@@ -17,7 +18,7 @@ import org.springframework.web.servlet.mvc.Controller;
  * @author Ben Li
  *
  */
-public class TuxBaseController implements Controller {
+public class TuxBaseObjectsController implements Controller {
 
 	protected String KEY_REFERENCE_LIST = "tuxBaseObjectList";
 	protected PaginateListFactory factory;
@@ -33,6 +34,10 @@ public class TuxBaseController implements Controller {
 	public void setPojo(Class<TuxBaseObject> clazz){
 		this.clazz = clazz;
 	}
+	public PaginateListFactory getPaginateListFactory() {
+        return factory;
+    }
+	
 	/**
 	 * the key for the default list is tuxBaseObjectList.
 	 * 
@@ -40,7 +45,7 @@ public class TuxBaseController implements Controller {
 	public  ModelAndView handleRequest(HttpServletRequest request,
 			HttpServletResponse response) throws Exception{
 		
-		String sortByColumn = request.getParameter("sort") == null ? "startDateTime" : request.getParameter("sort");
+		String sortByColumn = request.getParameter("sort") == null ? "id" : request.getParameter("sort");
 		SortOrderEnum orderEnum = SortOrderEnum.DESCENDING;
 		String direction = request.getParameter("dir");
 		if ( direction != null && direction.contains("asc")){
@@ -48,7 +53,7 @@ public class TuxBaseController implements Controller {
 		}
 		
 		ExtendedPaginatedList paginatedList = factory.getPaginatedListFromRequest(request);
-		paginatedList.setPageSize(1000);
+		paginatedList.setPageSize(Constants.PAGE_SIZE);
 		paginatedList.setSortCriterion(sortByColumn);
 		paginatedList.setSortDirection(orderEnum);
 		lookupManager.getAllRecordsPage(clazz, paginatedList);

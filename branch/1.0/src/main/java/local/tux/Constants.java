@@ -8,5 +8,5 @@ public interface Constants {
 	public final int THUMBNAIL_HEIGHT = 100;
 	public final static String IMAGE_PATH = "/images/app";
 	public final String DATE_PATTERN = "MM/dd/yyyy";
-	
+	public final int PAGE_SIZE = 25;
 }

@@ -11,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -80,9 +82,9 @@ public class Product extends LookUpBaseObject {
 	@Column(name="weight_unit")
 	private String weightUnit;
 	
-	@ManyToOne
-	@JoinColumn(name="catalog")
-	private Catalog catalog;
+	@ManyToMany
+	@JoinTable(name="catalog_product")
+	private Set<Catalog> catalog;
 	
 	@Column(name="is_special")
 	private Boolean special = Boolean.FALSE;
@@ -197,12 +199,12 @@ public class Product extends LookUpBaseObject {
 
 	
 
-	public Catalog getCatalog() {
+	public Set<Catalog> getCatalog() {
 		return catalog;
 	}
 
 
-	public void setCatalog(Catalog catalog) {
+	public void setCatalog(Set<Catalog> catalog) {
 		this.catalog = catalog;
 	}
 

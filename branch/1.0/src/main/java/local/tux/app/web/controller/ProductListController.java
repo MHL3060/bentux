@@ -1,17 +1,11 @@
 package local.tux.app.web.controller;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import local.tux.app.web.common.controller.TuxBaseObjectsController;
 
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.Controller;
 
-public class ProductListController implements Controller {
 
-	public ModelAndView handleRequest(HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
+public class ProductListController extends TuxBaseObjectsController {
+
+	
 
 }

@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -55,7 +56,7 @@ public class Catalog extends LookUpBaseObject {
 	@JoinColumn(name="image_id")
 	private Image image;
 
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="catalog")
+	@ManyToMany(mappedBy="catalog")
 	private Set<Product> products;
 	
 	public String getName() {
