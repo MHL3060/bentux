@@ -23,23 +23,26 @@
 		<form:input path="barcode" cssStyle="text medium" />
 	
 	</li>
+	
 	<li>
 		<appfuse:label key="product.catalog" styleClass="desc" />
-		<form:errors path="catalog" cssStyle="fieldErrors" />
-		<spring:bind path="catalog" >
-			<select name="catalog" id="catalog" multiple="multiple">
-				<c:out value="${pleaseSelect }" escapeXml="false" />
+		<form:errors path="catalogs" cssStyle="fieldErrors" />
+		<spring:bind path="catalogs" >
+			<select name="catalogs" id="catalogs" multiple="multiple" size="5">
 				<c:forEach var="catalog" items="${catalogs}">
-					<option value="${catalog.id }" ${catalog.id == product.catalog.id ? 'selected' : '' }> catalog.name</option>
+					<c:forEach var="productCatalog" items="${product.catalogs}">
+						<option value="${catalog.id }" ${catalog.id == productCatalog.id ? 'selected' : '' }> catalog.name</option>
+					</c:forEach>
 				</c:forEach>
 			</select>
 		</spring:bind>
 	</li>
+	<%--
 	<li>
-		<appfuse:label key="product.image" styleClass="desc" />
-		<form:errors path="image" cssStyle="fieldErrors" />
-		<spring:bind path="image">
-			<select name="image" id="image">
+		<appfuse:label key="product.images" styleClass="desc" />
+		<form:errors path="images" cssStyle="fieldErrors" />
+		<spring:bind path="images">
+			<select name="images" id="image">
 				<c:out value="${pleaseSelect}" escapeXml="false" />
 				<c:forEach var="image" items="${images}">
 					<option value="${image.id}" ${image.id == product.image.id ? 'selected' : '' }>${image.name }</option>
@@ -47,17 +50,20 @@
 			</select>
 		</spring:bind>
 	</li>
+	 --%>
 	<li>
+		<div>
 		<appfuse:label key="product.description" styleClass="desc" />
-		<form:errors path="descrition" cssStyle="fieldErrors" />
-		<form:textarea path="description" cssClass="text medium"  rows=5 cols="50"/>
+		<form:errors path="description" cssStyle="fieldErrors" />
+		<form:textarea path="description" cssClass="text medium"  rows="5" cols="80"/>
+		</div>
 	</li>
 	<li>
 		<appfuse:label key="product.manufacturer" styleClass="desc" />
-		<form:errors path="product.manufacturer" cssStyle="fieldErrors" />
+		<form:errors path="manufacturer" cssStyle="fieldErrors" />
 		<spring:bind path="manufacturer">
 			<select id="manufacturer" name="manufacturer" class="text medium">
-				<c:out value="${pleaseSelect" escapeXml="flase" />
+				<c:out value="${pleaseSelect}" escapeXml="flase" />
 				<c:forEach var="manufacturer" items="${manufacturers }">
 					<option value="${manfucturer.id }" ${manufacturer.id == product.manufacturer.id ? 'selected' : '' }> ${manufacturer.name }</option>
 				</c:forEach>

@@ -45,8 +45,8 @@ public class Product extends LookUpBaseObject {
 	@Column(name="name", nullable=false)
 	private String name;
 	@ManyToOne
-	@JoinColumn(name="manufacture")
-	private Manufacturer manufactueer;
+	@JoinColumn(name="manufacturer_id")
+	private Manufacturer manufacturer;
 
 	@Column(name="price")
 	private Double price;
@@ -85,7 +85,7 @@ public class Product extends LookUpBaseObject {
 	
 	@ManyToMany
 	@JoinTable(name="catalog_product")
-	private Set<Catalog> catalog;
+	private Set<Catalog> catalogs;
 	
 	@Column(name="is_special")
 	private Boolean special = Boolean.FALSE;
@@ -119,13 +119,14 @@ public class Product extends LookUpBaseObject {
 	}
 
 
-	public Manufacturer getManufactueer() {
-		return manufactueer;
+	public Manufacturer getManufacturer() {
+		
+		return manufacturer;
 	}
 
 
-	public void setManufactueer(Manufacturer manufactueer) {
-		this.manufactueer = manufactueer;
+	public void setManufacturer(Manufacturer manufacturer) {
+		this.manufacturer = manufacturer;
 	}
 
 
@@ -203,13 +204,13 @@ public class Product extends LookUpBaseObject {
 
 	
 
-	public Set<Catalog> getCatalog() {
-		return catalog;
+	public Set<Catalog> getCatalogs() {
+		return catalogs;
 	}
 
 
-	public void setCatalog(Set<Catalog> catalog) {
-		this.catalog = catalog;
+	public void setCatalogs(Set<Catalog> catalog) {
+		this.catalogs = catalog;
 	}
 
 
@@ -339,7 +340,7 @@ public class Product extends LookUpBaseObject {
 				+ ((availability == null) ? 0 : availability.hashCode());
 		result = prime * result + ((barcode == null) ? 0 : barcode.hashCode());
 		result = prime * result
-				+ ((catalog == null) ? 0 : catalog.hashCode());
+				+ ((catalogs == null) ? 0 : catalogs.hashCode());
 		result = prime * result + ((dayLife == null) ? 0 : dayLife.hashCode());
 		result = prime * result + ((depth == null) ? 0 : depth.hashCode());
 		result = prime * result
@@ -347,7 +348,7 @@ public class Product extends LookUpBaseObject {
 		result = prime * result + ((height == null) ? 0 : height.hashCode());
 		result = prime * result + ((images == null) ? 0 : images.hashCode());
 		result = prime * result
-				+ ((manufactueer == null) ? 0 : manufactueer.hashCode());
+				+ ((manufacturer == null) ? 0 : manufacturer.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((price == null) ? 0 : price.hashCode());
 		result = prime * result + ((rating == null) ? 0 : rating.hashCode());
@@ -374,10 +375,10 @@ public class Product extends LookUpBaseObject {
 				return false;
 		} else if (!barcode.equals(other.barcode))
 			return false;
-		if (catalog == null) {
-			if (other.catalog != null)
+		if (catalogs == null) {
+			if (other.catalogs != null)
 				return false;
-		} else if (!catalog.equals(other.catalog))
+		} else if (!catalogs.equals(other.catalogs))
 			return false;
 		if (dayLife == null) {
 			if (other.dayLife != null)
@@ -404,10 +405,10 @@ public class Product extends LookUpBaseObject {
 				return false;
 		} else if (!images.equals(other.images))
 			return false;
-		if (manufactueer == null) {
-			if (other.manufactueer != null)
+		if (manufacturer == null) {
+			if (other.manufacturer != null)
 				return false;
-		} else if (!manufactueer.equals(other.manufactueer))
+		} else if (!manufacturer.equals(other.manufacturer))
 			return false;
 		if (name == null) {
 			if (other.name != null)

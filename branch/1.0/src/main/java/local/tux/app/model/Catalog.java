@@ -56,7 +56,7 @@ public class Catalog extends LookUpBaseObject {
 	@JoinColumn(name="image_id")
 	private Image image;
 
-	@ManyToMany(mappedBy="catalog")
+	@ManyToMany(mappedBy="catalogs")
 	private Set<Product> products;
 	
 	public String getName() {
