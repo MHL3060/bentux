@@ -1,8 +1,7 @@
 package local.tux.app.model;
 
 
-import java.io.Serializable;
-import java.util.Set;
+
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -12,13 +11,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import local.tux.app.model.common.LookUpBaseObject;
 
 @Entity
-@Table(name="Ingredient")
+@Table(name="ingredient")
 public class Ingredient extends LookUpBaseObject {
 
 	//2201584628480385470L
@@ -26,27 +25,27 @@ public class Ingredient extends LookUpBaseObject {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
+	
 	@Column(name="name", nullable=false)
 	private String name;
 	
-	@JoinColumn(name="percentage")
-	private Integer percentage;
+	@Column(name="percentage")
+	private Double percentage;
 	
-	@JoinColumn(name="amountPerServing")
+	@Column(name="amountPerServing")
 	private Integer amountPerServing;
 	
-	@JoinColumn(name="description")
+	@Column(name="description")
 	private String description;
 
-
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="product_id")
+	private Product product;
+	
 	public Long getId() {
 		return id;
 	}
 
-	
-	public void setId(Serializable id) {
-		
-	}
 	
 
 	public String getName() {
@@ -54,17 +53,17 @@ public class Ingredient extends LookUpBaseObject {
 	}
 
 	
-	public void setName(String Name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 	
 	
-	public Integer getPercentage(){
+	public Double getPercentage(){
 		return percentage;
 	}
 	
 	
-	public void setPercentage(Integer percentage){
+	public void setPercentage(Double percentage){
 		this.percentage = percentage;
 	}
 
@@ -122,6 +121,19 @@ public class Ingredient extends LookUpBaseObject {
 			return false;	
 		return true;
 	}
+
+	
+	public Product getProduct() {
+		return product;
+	}
+
+
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
+
 
 	@Override
 	public int hashCode() {

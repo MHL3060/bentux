@@ -50,8 +50,8 @@ public class ImageFormController extends LookUpTableController {
 
 	public void initBinder(HttpServletRequest request, ServletRequestDataBinder binder){
 		
-		TuxBaseObjectConverter projectEditor = new TuxBaseObjectConverter();
-		projectEditor.setGenreicManager(productManager);
+		TuxBaseObjectConverter projectEditor = new TuxBaseObjectConverter(productManager);
+		
 		binder.registerCustomEditor(Product.class, projectEditor);
 		
 		super.initBinder(request, binder);

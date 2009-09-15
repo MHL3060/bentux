@@ -2,6 +2,6 @@ package local.tux.app.web.controller;
 
 import local.tux.app.web.common.controller.LookUpTableController;
 
-public class manufacturerFormController extends LookUpTableController {
+public class ManufacturerFormController extends LookUpTableController {
 	
 }

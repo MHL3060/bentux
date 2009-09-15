@@ -15,6 +15,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -91,6 +92,9 @@ public class Product extends LookUpBaseObject {
 	
 	@Column(name="discount_price")
 	private Double discountPrice;
+	
+	@OneToMany(mappedBy="product")
+	private Set<Ingredient> ingredient;
 	
 	@Transient
 	private Double discountPercentage;
@@ -308,6 +312,22 @@ public class Product extends LookUpBaseObject {
 
 	public Double getDiscountPercentage() {
 		return (price - discountPrice) / price;
+	}
+
+
+	
+	public Set<Ingredient> getIngredient() {
+		return ingredient;
+	}
+
+
+	public void setIngredient(Set<Ingredient> ingredient) {
+		this.ingredient = ingredient;
+	}
+
+
+	public void setDiscountPercentage(Double discountPercentage) {
+		this.discountPercentage = discountPercentage;
 	}
 
 
