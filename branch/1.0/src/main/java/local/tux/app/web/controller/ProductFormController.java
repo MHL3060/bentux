@@ -44,7 +44,6 @@ public class ProductFormController extends BaseFormController {
 		binder.registerCustomEditor(Manufacturer.class, new TuxBaseObjectConverter(manufacturerManager));
 	}
 
-	
 	protected Map<String, List<LookUpBaseObject>> referenceData(HttpServletRequest request){
 		Map<String, List<LookUpBaseObject>> models = new HashMap<String, List<LookUpBaseObject>>(); 
 		models.put("catalogs", catalogManager.getAll());

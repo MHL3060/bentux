@@ -8,6 +8,22 @@
 	<form:hidden path="id"/>
 <ul>
 	<li>
+		<appfuse:label key="product.catalog" styleClass="desc" />
+		<form:errors path="catalogs" cssStyle="fieldErrors" />
+		<spring:bind path="catalogs" >
+			<select name="catalogs" id="catalogs" multiple="multiple" size="5">
+				<c:forEach var="catalog" items="${catalogs}">
+					<option value="${catalog.id }"
+					<c:forEach var="productCatalog" items="${product.catalogs}">
+						 ${catalog.id == productCatalog.id ? 'selected' : '' }
+					</c:forEach>
+					> ${catalog.name}</option>
+					
+				</c:forEach>
+			</select>
+		</spring:bind>
+	</li>
+	<li>
 		<appfuse:label key="product.name" styleClass="desc" />
 		<form:errors path="name" cssClass="fieldErrors"/>
 		<form:input path="name" cssClass="text medium" />
@@ -22,20 +38,6 @@
 		<form:errors path="barcode" cssStyle="fieldErrors" />
 		<form:input path="barcode" cssStyle="text medium" />
 	
-	</li>
-	
-	<li>
-		<appfuse:label key="product.catalog" styleClass="desc" />
-		<form:errors path="catalogs" cssStyle="fieldErrors" />
-		<spring:bind path="catalogs" >
-			<select name="catalogs" id="catalogs" multiple="multiple" size="5">
-				<c:forEach var="catalog" items="${catalogs}">
-					<c:forEach var="productCatalog" items="${product.catalogs}">
-						<option value="${catalog.id }" ${catalog.id == productCatalog.id ? 'selected' : '' }> catalog.name</option>
-					</c:forEach>
-				</c:forEach>
-			</select>
-		</spring:bind>
 	</li>
 	<%--
 	<li>
@@ -52,11 +54,11 @@
 	</li>
 	 --%>
 	<li>
-		<div>
+		
 		<appfuse:label key="product.description" styleClass="desc" />
 		<form:errors path="description" cssStyle="fieldErrors" />
-		<form:textarea path="description" cssClass="text medium"  rows="5" cols="80"/>
-		</div>
+		<form:textarea path="description" rows="5" cols="80"/>
+		
 	</li>
 	<li>
 		<appfuse:label key="product.manufacturer" styleClass="desc" />

@@ -71,18 +71,19 @@ public class LookUpTableController extends BaseFormController {
 			if (request.getParameter(DELETE_OBJECT) != null){
 				lookUpManager.remove(baseObject.getId());
 				saveMessage(request, getText(className+".deleted", locale));
-				
+				command = null;
+				return new ModelAndView(getSuccessView());
 			}else {
 				lookUpManager.save((LookUpBaseObject)command);
 				String key = (isNew) ? className+ ".added" : className + ".updated";
 				saveMessage(request, getText(key, locale));
+				return showNewForm(request, response);
 			}
-			return showNewForm(request, response);
+			
 		}catch (Exception e){
 			saveError(request, getText("object.exists",locale));
 			log.error(e);
 		}
-		
 		return showForm(request, response, error);
 	}
 }

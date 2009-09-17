@@ -16,3 +16,14 @@
 
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <c:set var="datePattern"><fmt:message key="date.format"/></c:set>
+
+<c:set var="buttons" >
+    <li class="buttonBar bottom">
+        <input type="submit" class="button" name="save" value="<fmt:message key="button.save"/>"/>
+        <c:if test="${not empty id}">
+        <input type="submit" class="button" name="delete" onclick="return confirmDelete('')" 
+            value="<fmt:message key="button.delete"/>" />
+        </c:if>
+        <input type="submit" class="button" name="cancel" value="<fmt:message key="button.cancel"/>"/>
+    </li>
+</c:set>

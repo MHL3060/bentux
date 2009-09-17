@@ -3,18 +3,22 @@
 <h1><fmt:message key="catalog.heading" /></h1>
 
 <display:table name="list" id="list" pagesize="25" class="table" requestURI="catalogform.html">
-        <display:column property="id" titleKey="lookup.id" />
+        <display:column property="id" titleKey="lookup.id" url="/catalogform.html" paramId="id" paramProperty="id" />
         <display:column property="name" titleKey="lookup.name" sortable="true"/>
 		<display:column property="description" titleKey="lookup.description" />
 </display:table>
 
-<c:set var="buttons">
-    <input type="submit" style="margin-right: 5px"
+<c:set var="id" value="${catalog.id}" />
 
-        value="<fmt:message key="button.add"/>"/>
-
-    <input type="button" onclick="location.href='<c:url value="/products.html"/>'"
-        value="<fmt:message key="button.done"/>"/>
+<c:set var="buttons" >
+    <li class="buttonBar bottom">
+        <input type="submit" class="button" name="save" value="<fmt:message key="button.save"/>"/>
+        <c:if test="${not empty id}">
+        <input type="submit" class="button" name="delete" onclick="return confirmDelete('')" 
+            value="<fmt:message key="button.delete"/>" />
+        </c:if>
+        <input type="submit" class="button" name="cancel" value="<fmt:message key="button.cancel"/>"/>
+    </li>
 </c:set>
 
 
@@ -29,10 +33,10 @@
                 <li>
                 	<appfuse:label key="catalog.description" styleClass="desc" />
                 	<form:errors path="description" cssClass="fieldError" />
-                	<form:input path="descriptipn" cssStyle="text medium" />
+                	<form:textarea path="description" cols="80" rows="5"  />
                 </li>
         </ul>
-
+		
         <c:out value="${buttons}" escapeXml="false" />
 
 </form:form>
