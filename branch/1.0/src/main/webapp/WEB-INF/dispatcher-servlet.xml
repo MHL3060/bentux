@@ -117,6 +117,7 @@
     <bean id="manufacturerFormController" class="local.tux.app.web.controller.ManufacturerFormController">
     	<property name="commandClass" value="local.tux.app.model.Manufacturer" />
     	<property name="commandName" value="manufacturer" />
+    	<property name="successView" value="redirect:manufacturerform.html"/>
     	<property name="lookUpManager" ref="manufacturerManager" />
     </bean>
     

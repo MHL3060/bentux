@@ -1,5 +1,7 @@
 <%@ include file="/common/taglibs.jsp"%>
 
+<c:redirect url="/productlist.html"/>
+<%--
 <head>
     <title><fmt:message key="mainMenu.title"/></title>
     <meta name="heading" content="<fmt:message key='mainMenu.heading'/>"/>
@@ -18,3 +20,5 @@
         <a href="<c:url value='/fileupload.html'/>"><fmt:message key="menu.selectFile"/></a>
     </li>
 </ul>
+
+ --%>

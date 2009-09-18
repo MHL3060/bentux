@@ -60,6 +60,7 @@ public class LookUpTableController extends BaseFormController {
 	 * common class for handling data from the web form.
 	 * 
 	 */
+	@SuppressWarnings("unchecked")
 	public ModelAndView onSubmit(HttpServletRequest request, HttpServletResponse response, 
 			Object command, BindException error) throws Exception {
 		
@@ -71,7 +72,6 @@ public class LookUpTableController extends BaseFormController {
 			if (request.getParameter(DELETE_OBJECT) != null){
 				lookUpManager.remove(baseObject.getId());
 				saveMessage(request, getText(className+".deleted", locale));
-				command = null;
 				return new ModelAndView(getSuccessView());
 			}else {
 				lookUpManager.save((LookUpBaseObject)command);
