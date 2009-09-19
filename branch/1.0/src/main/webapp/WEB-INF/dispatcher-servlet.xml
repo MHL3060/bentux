@@ -98,6 +98,7 @@
     
     <!--  your own pages -->
     <bean id="catalogFormController" class="local.tux.app.web.controller.CatalogFormController">
+    	 <property name="validator" ref="beanValidator"/>
     	<property name="commandClass" value="local.tux.app.model.Catalog" />
     	<property name="commandName" value="catalog" />
     	<property name="successView" value="redirect:catalogform.html"/>
@@ -105,7 +106,7 @@
     </bean>
     
     <bean id="imageFormController" class="local.tux.app.web.controller.ImageFormController">
-    	
+    	 <property name="validator" ref="beanValidator"/>
     	<property name="commandClass" value="local.tux.app.model.Image" />
     	<property name="commandName" value="image" />
     	<property name="lookUpManager" ref="imageManager" />
@@ -117,7 +118,7 @@
     	<property name="lookUpManager" ref="ingredientManager" />
     </bean>
     <bean id="manufacturerFormController" class="local.tux.app.web.controller.ManufacturerFormController">
-    	
+    	 <property name="validator" ref="beanValidator"/>
     	<property name="commandClass" value="local.tux.app.model.Manufacturer" />
     	<property name="commandName" value="manufacturer" />
     	<property name="successView" value="redirect:manufacturerform.html"/>

@@ -9,11 +9,11 @@
       </constant>
       <constant>
         <constant-name>zip</constant-name>
-        <constant-value>^\d{5}\d*$</constant-value>
+        <constant-value>^\s\d*$</constant-value>
       </constant>
       <constant>
         <constant-name>currency</constant-name>
-        <constant-value>^\d{1,3}(,?\d{1,3})*\.?(\d{1,2})?$</constant-value>
+        <constant-value>^[A-Za-z0-9-]+$</constant-value>
       </constant> 
    </global>
    <formset>
@@ -147,6 +147,23 @@
 
                   <arg0 key="user.passwordHint"/>
               </field>
+      </form>
+      
+      <form name="image">
+      	<field property="name" depends="required">
+      		<arg0 key="image.name" />
+      	</field>
+      </form>
+      <form name="manufacturer">
+      	<field property="name" depends="required">
+      		<arg0 key="manufacturer.name"/>
+      	</field>
+      </form>
+      
+      <form name="catalog">
+      	<field property="name" depends="required">
+      		<arg key="catalog.name"/>
+      	</field>
       </form>
   </formset>
 </form-validation>
