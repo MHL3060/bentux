@@ -1,5 +1,13 @@
 <%@ include file="/common/taglibs.jsp" %>
 
+<c:set var="button">
+	<input type="button" style="margin-right: 5px"
+        onclick="location.href='<c:url value="/productform.html"/>'"
+        value="<fmt:message key="button.add"/>"/>
+</c:set>
+
+<c:if test="${hasPermission }"><c:out value="${button}" escapeXml="false" /></c:if>
+
 <display:table id="tuxBaseObjectList" name="tuxBaseObjectList" cellspacing="0" cellpadding="0" requestURI=""
 	pagesize="25" class="table uutResultList" export="true" >
 
@@ -15,3 +23,5 @@
 		<a href="${url }" >more info..</a>
 	</display:column>
 </display:table>
+
+<c:if test="${hasPermission }"><c:out value="${button}" escapeXml="false" /></c:if>

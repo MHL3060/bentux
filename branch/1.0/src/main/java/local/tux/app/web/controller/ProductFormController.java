@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import local.tux.Constants;
 import local.tux.TuxBaseObjectConverter;
 import local.tux.app.model.Catalog;
 import local.tux.app.model.Manufacturer;
@@ -38,16 +39,19 @@ public class ProductFormController extends BaseFormController {
 	}
 	
 	public void initBinder(HttpServletRequest request, ServletRequestDataBinder binder){
-		//super.initBinder(request, binder);
+		super.initBinder(request, binder);
+		
 		TuxBaseObjectConverter catalogConverter = new TuxBaseObjectConverter(catalogManager);
 		binder.registerCustomEditor(Catalog.class, catalogConverter);
 		binder.registerCustomEditor(Manufacturer.class, new TuxBaseObjectConverter(manufacturerManager));
 	}
 
-	protected Map<String, List<LookUpBaseObject>> referenceData(HttpServletRequest request){
-		Map<String, List<LookUpBaseObject>> models = new HashMap<String, List<LookUpBaseObject>>(); 
+	@SuppressWarnings("unchecked")
+	protected Map referenceData(HttpServletRequest request){
+		Map models = new HashMap(); 
 		models.put("catalogs", catalogManager.getAll());
 		models.put("manufacturers", manufacturerManager.getAll());
+		models.put("units", Constants.WEIGHT_UNIT);
 		return models;
 	}
 	

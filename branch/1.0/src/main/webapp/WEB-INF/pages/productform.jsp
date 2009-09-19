@@ -7,21 +7,31 @@
 <form:form commandName="product" action="/productform.html" method="post">
 	<form:hidden path="id"/>
 <ul>
+
 	<li>
-		<appfuse:label key="product.catalog" styleClass="desc" />
-		<form:errors path="catalogs" cssStyle="fieldErrors" />
-		<spring:bind path="catalogs" >
-			<select name="catalogs" id="catalogs" multiple="multiple" size="5">
-				<c:forEach var="catalog" items="${catalogs}">
-					<option value="${catalog.id }"
-					<c:forEach var="productCatalog" items="${product.catalogs}">
-						 ${catalog.id == productCatalog.id ? 'selected' : '' }
+		<a href="/catalogform.html" target="catalog" ><fmt:message key="catalog.add.item" /></a>
+		<p>
+		<a href="#"  onclick="location.href='<c:url value="/productform.html"/>'" /><fmt:message key="refresh.list" /></a>
+		</p>
+		
+		<c:if test="${not empty catalogs }">
+			
+			<appfuse:label key="product.catalog" styleClass="desc" />
+			<form:errors path="catalogs" cssStyle="fieldErrors" />
+			<spring:bind path="catalogs" >
+				<select name="catalogs" id="catalogs" multiple="multiple" size="5">
+					<c:forEach var="catalog" items="${catalogs}">
+						<option value="${catalog.id }"
+						<c:forEach var="productCatalog" items="${product.catalogs}">
+							 ${catalog.id == productCatalog.id ? 'selected' : '' }
+						</c:forEach>
+						> ${catalog.name}</option>
+						
 					</c:forEach>
-					> ${catalog.name}</option>
-					
-				</c:forEach>
-			</select>
-		</spring:bind>
+				</select>
+			</spring:bind>
+		</c:if>
+		
 	</li>
 	<li>
 		<appfuse:label key="product.name" styleClass="desc" />
@@ -81,7 +91,7 @@
 		<div>
 			<appfuse:label key="product.weightUnit" styleClass="desc" />
 			<form:errors path="weightUnit" cssStyle="fieldErrors" />
-			<form:select path="weightUnit" itemValue="unit" items="${units}"  cssStyle="text medium" />
+			<form:select path="weightUnit"  items="${units}"  cssStyle="text medium" />
 		</div>
 	</li>
 	<li>
