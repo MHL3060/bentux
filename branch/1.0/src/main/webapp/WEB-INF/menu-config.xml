@@ -9,7 +9,7 @@
             <Item name="ViewUsers" title="menu.admin.users" page="/admin/users.html"/>
             <Item name="ActiveUsers" title="mainMenu.activeUsers" page="/admin/activeUsers.html"/>
             <Item name="Catalog" title="mainMenu.catalog" page="/catalogform.html" />
-            <Item name="Manufacturer" title="mainMenu.manufacturer" page="/manufacturer.html" />
+            <Item name="Manufacturer" title="mainMenu.manufacturer" page="/manufacturerform.html" />
             <Item name="Image" title="mainMenu.image" page="/imageform.html" />
             <Item name="Reindex" title="mainMenu.reindex" page="/reindex.html" />
         </Menu>

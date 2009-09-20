@@ -71,6 +71,7 @@
 		
 	</li>
 	<li>
+		<a href="<c:url value="/manufacturerform.html" /> target="manufacture"><fmt:message key="add.manufacturer" /></a>
 		<appfuse:label key="product.manufacturer" styleClass="desc" />
 		<form:errors path="manufacturer" cssStyle="fieldErrors" />
 		<spring:bind path="manufacturer">

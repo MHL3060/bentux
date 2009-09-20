@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import local.tux.Constants;
 import local.tux.app.model.common.LookUpBaseObject;
 import local.tux.app.model.common.TuxBaseObject;
 import local.tux.app.service.LookUpNameGenericManager;
@@ -28,7 +29,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class LookUpTableController extends BaseFormController {
 
 	
-	protected final String DELETE_OBJECT = "delete";
+	
 	private final Log log = LogFactory.getLog(LookUpTableController.class);
 	protected LookUpNameGenericManager lookUpManager;
 	
@@ -69,7 +70,7 @@ public class LookUpTableController extends BaseFormController {
 		boolean isNew = (baseObject.getId() == null);
 		Locale locale = request.getLocale();
 		try {
-			if (request.getParameter(DELETE_OBJECT) != null){
+			if (request.getParameter(Constants.DELETE_OBJECT) != null){
 				lookUpManager.remove(baseObject.getId());
 				saveMessage(request, getText(className+".deleted", locale));
 				return new ModelAndView(getSuccessView());

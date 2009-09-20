@@ -3,6 +3,7 @@ package local.tux.app.web.controller;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +15,7 @@ import local.tux.app.model.Catalog;
 import local.tux.app.model.Manufacturer;
 import local.tux.app.model.Product;
 import local.tux.app.model.common.LookUpBaseObject;
+import local.tux.app.model.common.TuxBaseObject;
 import local.tux.app.service.LookUpNameGenericManager;
 
 import org.apache.commons.lang.StringUtils;
@@ -67,6 +69,28 @@ public class ProductFormController extends BaseFormController {
 	public ModelAndView onSubmit(HttpServletRequest request, HttpServletResponse response, 
 			Object command, BindException errors) throws Exception{
 
-		return null;
+	
+		Product product = (Product)command;
+		String className = command.getClass().getSimpleName();
+		boolean isNew = (product.getId() == null);
+		Locale locale = request.getLocale();
+		String successView = getSuccessView();
+		try {
+			if (request.getParameter(Constants.DELETE_OBJECT) != null){
+				productManager.remove(product.getId());
+				saveMessage(request, getText(className+".deleted", locale));
+			}else {
+				productManager.save(product);
+				String key = (isNew) ? className+ ".added" : className + ".updated";
+				saveMessage(request, getText(key, locale));
+			}
+			if (!isNew) {
+                successView = "redirect:personform.html?id=" + product.getId();
+            }
+		}catch (Exception e){
+			saveError(request, getText("object.exists",locale));
+			log.error(e);
+		}
+		return new ModelAndView(successView);
 	}
 }

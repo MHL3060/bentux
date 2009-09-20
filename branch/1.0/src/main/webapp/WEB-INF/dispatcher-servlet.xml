@@ -136,6 +136,7 @@
     	<property name="userManager" ref="userManager" />
     	<property name="commandClass" value="local.tux.app.model.Product" />
     	<property name="commandName" value="product" />
+    	<property name="successView" value="redirect:productlist.html" />
     	<property name="productManager" ref="productManager" />
     	<property name="catalogManager" ref="catalogManager" />
     	<property name="manufacturerManager" ref="manufacturerManager" />

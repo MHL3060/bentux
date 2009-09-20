@@ -1,6 +1,6 @@
 <%@ include file="/common/taglibs.jsp" %>
 
-<h1><fmt:message key="catalog.heading" /></h1>
+<h1><fmt:message key="manufacturer.heading" /></h1>
 
 <display:table name="list" id="list" pagesize="25" class="table" requestURI="manufacturerform.html">
         <display:column property="id" titleKey="lookup.id" url="/manufacturerform.html" paramId="id" paramProperty="id" />

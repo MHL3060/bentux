@@ -12,8 +12,9 @@
 	pagesize="25" class="table uutResultList" export="true" >
 
 	<display:column titleKey="product.image">
-		<img src="<c:url value="${tuxBaseObjectList.image.thumbNailPath }" />" />
+		<img src="<c:url value="${tuxBaseObjectList.name }" />" />
 	</display:column>
+
 	<display:column property="name" titleKey="product.name" sortable="true" />
 	<display:column property="description" titleKey="product.description" maxWords="50" />
 	<display:column titleKey="more.info" >

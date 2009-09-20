@@ -64,7 +64,7 @@ public class ImageFormController extends LookUpTableController {
 		Image image = (Image) command;
 		
 		boolean isNew = image.getId() == null;
-		if (request.getParameter(DELETE_OBJECT) != null){
+		if (request.getParameter(Constants.DELETE_OBJECT) != null){
 			if (deleteFile(docBase, image)){
 				saveMessage(request, getText("image.deleted", request.getLocale()));
 			}
