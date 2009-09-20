@@ -97,6 +97,8 @@ public class Product extends LookUpBaseObject {
 	private Set<Ingredient> ingredient;
 	
 	@Transient
+	private Image firstImage;
+	@Transient
 	private Double discountPercentage;
 	
 	public Long getId() {
@@ -330,6 +332,16 @@ public class Product extends LookUpBaseObject {
 	public void setDiscountPercentage(Double discountPercentage) {
 		this.discountPercentage = discountPercentage;
 	}
+
+	
+	
+	public Image getFirstImage() {
+		if (images  != null){
+			return images.iterator().next();
+		}
+		return null;
+	}
+
 
 
 	@Override

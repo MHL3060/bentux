@@ -76,6 +76,7 @@ public class TuxBaseObjectsController implements Controller {
 		paginatedList.setSortCriterion(sortByColumn);
 		paginatedList.setSortDirection(orderEnum);
 		lookupManager.getRecordsPage(getCriteria(), paginatedList);
+		//((local.tux.app.model.Product)paginatedList.getList().get(0)).getImages().;
 		mav.addObject(KEY_REFERENCE_LIST,paginatedList);
 		return mav;
 	}

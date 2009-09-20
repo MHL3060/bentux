@@ -1,9 +1,20 @@
 <%@ include file="/common/taglibs.jsp" %>
 
+<head>
+	<meta content="MainMenu" name="menu">
+	<script type="javascript/text">
+		
+	
+	</script>
+</head>
 <h1><fmt:message key="Add A Proudct" /></h1>
 <c:set var="pleaseSelect">
 	<option value=""><fmt:message key="please.select" /></option>
 </c:set>
+
+
+
+
 <form:form commandName="product" action="/productform.html" method="post">
 	<form:hidden path="id"/>
 <ul>
@@ -49,20 +60,6 @@
 		<form:input path="barcode" cssStyle="text medium" />
 	
 	</li>
-	<%--
-	<li>
-		<appfuse:label key="product.images" styleClass="desc" />
-		<form:errors path="images" cssStyle="fieldErrors" />
-		<spring:bind path="images">
-			<select name="images" id="image">
-				<c:out value="${pleaseSelect}" escapeXml="false" />
-				<c:forEach var="image" items="${images}">
-					<option value="${image.id}" ${image.id == product.image.id ? 'selected' : '' }>${image.name }</option>
-				</c:forEach>
-			</select>
-		</spring:bind>
-	</li>
-	 --%>
 	<li>
 		
 		<appfuse:label key="product.description" styleClass="desc" />
@@ -130,9 +127,12 @@
 	</li>
 	
 </ul>
-
+	
 	<input type="submit" name="submit" value="Submit" />
 	
 
 </form:form>
 
+<p>
+<fmt:message key="reminder.to.add.image" />
+</p>

@@ -4,6 +4,7 @@
 </h1>
 <display:table id="list" name="list" class="table" requestURI="imageform.html">
 	<display:column property="id" titleKey="lookup.id"/>
+	<display:column property="product.name" titleKey="product.name" />
 	<display:column property="name" titleKey="lookup.name"/>
 	<display:column titleKey="image.thumbnail">
 		<img src="<c:url value="${list.thumbPath}" />" />
@@ -16,7 +17,7 @@
 	<ul>
 	    
 	    <li>
-	    	<appfuse:label key="image.product" styleClass="product"/>
+	    	<appfuse:label key="image.product" styleClass="desc"/>
 	    		<form:errors path="product" cssClass="fieldError" />
 	    	<spring:bind path="product">
 	    		

@@ -85,7 +85,7 @@ public class ProductFormController extends BaseFormController {
 				saveMessage(request, getText(key, locale));
 			}
 			if (!isNew) {
-                successView = "redirect:personform.html?id=" + product.getId();
+                successView = "redirect:productform.html?id=" + product.getId();
             }
 		}catch (Exception e){
 			saveError(request, getText("object.exists",locale));

@@ -15,9 +15,8 @@
 			paramProperty="id" />
 	</c:if>
 	<display:column titleKey="product.image">
-		<img src="<c:url value="${tuxBaseObjectList.name }" />" />
+		<img src="<c:url value="${tuxBaseObjectList.firstImage.thumbPath}"  />" title="<fmt:message key="click.enlarge" />" />
 	</display:column>
-
 	<display:column property="name" titleKey="product.name" sortable="true" />
 	<display:column property="description" titleKey="product.description" maxWords="50" />
 	<display:column titleKey="more.info" >

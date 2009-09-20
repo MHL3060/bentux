@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.Map;
 
 
 import javax.imageio.ImageIO;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.validation.BindException;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
@@ -47,7 +49,14 @@ public class ImageFormController extends LookUpTableController {
 	public void setProductManager(LookUpNameGenericManager productManager){
 		this.productManager = productManager;
 	}
-
+	@SuppressWarnings("unchecked")
+	public Map referenceData(HttpServletRequest request, Object command,
+			Errors error) throws Exception {
+		Map map = super.referenceData(request, command, error);
+		map.put("products", productManager.getAll());
+		return map;
+		
+	}
 	public void initBinder(HttpServletRequest request, ServletRequestDataBinder binder){
 		
 		TuxBaseObjectConverter projectEditor = new TuxBaseObjectConverter(productManager);

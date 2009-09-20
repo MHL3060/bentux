@@ -109,6 +109,7 @@
     	 <property name="validator" ref="beanValidator"/>
     	<property name="commandClass" value="local.tux.app.model.Image" />
     	<property name="commandName" value="image" />
+    	<property name="productManager" ref="productManager" />
     	<property name="lookUpManager" ref="imageManager" />
     </bean>
     <bean id="ingredientFormController" class="local.tux.app.web.controller.IngredientFormController">
