@@ -132,7 +132,9 @@
     	<property name="pagingLookupManager" ref="pagingLookupManager" />
     	<property name="pojo" value="local.tux.app.model.Product" />
     </bean>
-     
+    <bean id="productDetailController" class="local.tux.app.web.controller.ProductDetailController">
+    	<property name="productManager" ref="productManager" />
+    </bean> 
     <bean id="productFormController" class="local.tux.app.web.controller.ProductFormController">
     	<property name="userManager" ref="userManager" />
     	<property name="commandClass" value="local.tux.app.model.Product" />

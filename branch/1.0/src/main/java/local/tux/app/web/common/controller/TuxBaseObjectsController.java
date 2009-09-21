@@ -32,8 +32,8 @@ public class TuxBaseObjectsController implements Controller {
 	protected  PagingLookupManager lookupManager;
 	protected Class<TuxBaseObject> clazz;
 	
-	private final String HAS_PERMISSION = "hasPermission";
-	private UserManager userManager;
+	protected final String HAS_PERMISSION = "hasPermission";
+	protected UserManager userManager;
 	
 	public void setUserManager(UserManager userManager){
 		this.userManager = userManager;
