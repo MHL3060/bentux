@@ -3,7 +3,7 @@
 <menu:useMenuDisplayer name="Velocity" config="cssHorizontalMenu.vm" permissions="rolesAdapter">
 <ul id="primary-nav" class="menuList">
     <li class="pad">&nbsp;</li>
-     <li><a href="<c:url value="/productlist.html"/>" class="${pageContext.request.requestURI == '/productlist.html' ? 'current' : '' }" ><fmt:message key="proudct.list" /></a></li>
+     <li><a href="<c:url value="/productlist.html"/>" class="${pageContext.request.requestURI == '/productlist.html' ? 'current' : '' }" ><fmt:message key="product.list" /></a></li>
      <li><a href="<c:url value="/contact_us.jsp"/>" class="${pageContext.request.requestURI == '/contact_us.jsp' ? 'current' : '' }" ><fmt:message key="contact.list" /></a></li>
      <li><a href="<c:url value="/links.jsp"/>" class="${pageContext.request.requestURI == '/links.jsp' ? 'current' : '' }" ><fmt:message key="link.list" /></a></li>
     <menu:displayMenu name="AdminMenu"/>
