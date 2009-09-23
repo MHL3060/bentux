@@ -3,7 +3,7 @@
     <div id="divider"><div></div></div>
     <span class="left"><fmt:message key="webapp.version"/> |
         <span id="validators">
-            <a href="#">Disclaimer</a> |
+            <a href="#">Disclaimer</a> 
             <a href="#"></a>
         </span>
         <c:choose>
