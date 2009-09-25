@@ -19,7 +19,7 @@
             margin: 0 0 5em 0;
             padding: 6px 0 2px 10px;
             text-align: left;
-            height: 79px; /* needed by IE 7 */
+            height: 120px; /* needed by IE 7 */
         }
             div#switchLocale {
                 position: absolute;
@@ -31,8 +31,9 @@
             margin: 10px 25px;
             padding: 10px 10px 10px 30px;
             text-align: left;
-			display:block;  
-			background: #ffffcc; 
+			display:block; 
+			
+			background: #fd8719; 
 			border-left:1px solid #fff; 
 			/*border-right:1px solid #999;*/
         }
@@ -82,20 +83,22 @@
     
     /* FOOTER */
         div#footer {
-            color: #444;
+            color: #c0f1be;
             padding: 0 39px;
             text-align: left;
-            font-size: 0.9em;
+            font-size: 1.2em;
+			font-weight: bold;
         }
 
             div#footer div#divider {
                     margin: 0 0 4px 0;
+					background: #246e21; 
                     border-top: 1px solid #ccc;
             }
 
             div#footer div#divider div {
-                    margin: 1px 0 0 0;
-                    border-top: 6px solid #ebf5fc;
+                    margin: 60px 0 0 0;
+                    border-top: 6px solid #246e21; /*#ebf5fc; */
             }
 
             div#footer .left {
@@ -105,5 +108,6 @@
             div#footer .right {
                     float: right;
             }
+			
     /* END FOOTER */
 /* END LAYOUT */

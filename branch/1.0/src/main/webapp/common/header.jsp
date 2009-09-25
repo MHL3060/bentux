@@ -6,13 +6,10 @@
 <script type="text/javascript"  src="<c:url value="/scripts/ruzee.js" />" ></script> 
 
 <div id="branding">
-    <h1><a href="<c:url value='/'/>"><fmt:message key="webapp.name"/></a></h1>
+
+    <h1><img src="<c:url value="/images/logo_small.png"/>" height="100" style="float: left;"/><a href="<c:url value='/'/>"><fmt:message key="webapp.name"/></a></h1>
     <p><fmt:message key="webapp.tagline"/></p>
 </div>
 <hr />
-<script language="javascript" type="text/javascript">
-    var myBorder = RUZEE.ShadedBorder.create({ corner:8, shadow:16 });
-    myBorder.render('branding');
-  </script>
 <%-- Put constants into request scope --%>
 <appfuse:constants scope="request"/>
