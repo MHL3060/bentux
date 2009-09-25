@@ -17,6 +17,10 @@
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <c:set var="datePattern"><fmt:message key="date.format"/></c:set>
 
+<c:set var="pleaseSelect">
+	<option value=""><fmt:message key="please.select" /></option>
+</c:set>
+
 <c:set var="buttons" >
     <li class="buttonBar bottom">
         <input type="submit" class="button" name="save" value="<fmt:message key="button.save"/>"/>

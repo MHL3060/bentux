@@ -59,6 +59,10 @@ public class Catalog extends LookUpBaseObject {
 	@ManyToMany(mappedBy="catalogs")
 	private Set<Product> products;
 	
+	@ManyToOne
+	@JoinColumn(name="parent")
+	private Catalog parent;
+	
 	public String getName() {
 		return name;
 	}
@@ -88,6 +92,20 @@ public class Catalog extends LookUpBaseObject {
 	public void setImage(Image image) {
 		this.image = image;
 	}
+
+	
+	public Catalog getParent() {
+		return parent;
+	}
+
+
+	public void setParent(Catalog parent) {
+		this.parent = parent;
+	}
+
+
+	
+
 
 	@Override
 	public boolean equals(Object obj) {

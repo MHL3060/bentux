@@ -47,8 +47,7 @@
      </bean>
 	
     <!-- Add new DAOs here -->
-	<bean id="catalogyDao" class="local.tux.app.dao.hibernate.TuxNameGenericDaoHibernate">
-		<constructor-arg value="local.tux.app.model.Catalog" />
+	<bean id="catalogDao" class="local.tux.app.dao.hibernate.CatalogDaoHibernate">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	<bean id="imageDao" class="local.tux.app.dao.hibernate.TuxNameGenericDaoHibernate">
@@ -68,8 +67,8 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
     <!-- Add new Managers here -->
-    <bean id="catalogManager" class="local.tux.app.service.impl.LookUpNameGenericManagerImpl">
-    	<constructor-arg ref="catalogyDao"/>
+    <bean id="catalogManager" class="local.tux.app.service.impl.CatalogManagerImpl">
+    	<constructor-arg ref="catalogDao"/>
     </bean>
     <bean id="imageManager" class="local.tux.app.service.impl.LookUpNameGenericManagerImpl">
     	<constructor-arg ref="imageDao" />

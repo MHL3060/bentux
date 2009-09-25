@@ -1,5 +1,10 @@
 package local.tux;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import local.tux.app.model.common.TuxBaseObject;
+
 
 public interface Constants {
 
@@ -12,5 +17,6 @@ public interface Constants {
 	public final String[] EDIT_PERMISSION = {org.appfuse.Constants.ADMIN_ROLE };  
 	public final String[] WEIGHT_UNIT = {"oz", "lb", "kg", "g", "ml", "l"};
 	public final String DELETE_OBJECT = "delete";
+	public final List<TuxBaseObject> EMPTY_LIST = new ArrayList<TuxBaseObject>();
 	
 }

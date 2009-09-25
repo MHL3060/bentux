@@ -1,8 +1,11 @@
 package local.tux.app.service.impl;
 
 import java.io.Serializable;
+import java.util.List;
+import java.util.Map;
 
 import local.tux.app.dao.TuxNameGenericDao;
+import local.tux.app.model.Catalog;
 import local.tux.app.service.LookUpNameGenericManager;
 
 import org.appfuse.dao.GenericDao;
@@ -23,6 +26,15 @@ public class LookUpNameGenericManagerImpl<T, PK extends Serializable> extends Ge
 		return (T) genericDao.getLookUpBaseObject(name);
 	}
 
-	
+	public List<T> findByNamedQuery(String queryName,
+			Map<String, Object> queryParams) {
+		
+		return  genericDao.findByNamedQuery(queryName, queryParams);
+		
+	}
+	public List<T> getAllDistinct() {
+		
+		return genericDao.getAllDistinct();
+	}
 
 }

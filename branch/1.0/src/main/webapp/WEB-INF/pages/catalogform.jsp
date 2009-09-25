@@ -4,7 +4,9 @@
 
 <display:table name="list" id="list" pagesize="25" class="table" requestURI="catalogform.html">
         <display:column property="id" titleKey="lookup.id" url="/catalogform.html" paramId="id" paramProperty="id" />
+        
         <display:column property="name" titleKey="lookup.name" sortable="true"/>
+		<display:column property="parent.name" titleKey="lookup.parent" sortable="true" />
 		<display:column property="description" titleKey="lookup.description" />
 </display:table>
 
@@ -25,6 +27,19 @@
 <form:form commandName="catalog" method="post" action="catalogform.html" onsubmit="return onFormSubmit(this)" id="catalogForm">
         <form:hidden path="id"/>
         <ul>
+                <li>
+                	<appfuse:label key="catalog.parent" styleClass="desc" />
+                	<form:errors path="parent" cssClass="fieldError" />
+                	<spring:bind path ="parent">
+                		<select name="parent" id="parent">
+                		${pleaseSelect }	
+               			<c:forEach var="c" items="${parents}" >
+               				<option value="${c.id }" ${c.id == catalog.parent.id ? 'selected' : '' }>${c.name}</option>
+               			</c:forEach>
+                		 
+                		</select>
+                	</spring:bind>
+                </li>
                 <li>
                         <appfuse:label key="catalog.name" styleClass="desc" />
                         <form:errors path="name" cssClass="fieldError"/>
