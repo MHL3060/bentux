@@ -73,19 +73,18 @@ function displayProductDetail(catalogValue) {
 			</c:forEach>
 		</select>
 	</li>
-	
 	<li>
-		<a href="ingredientform.html" target="ingredient" ><fmt:message key="ingredient.add.item" /></a>
-		<appfuse:label key="product.ingredient" styleClass="desc" />
-		<form:errors path="ingredient" cssStyle="fieldErrors" />
-		<spring:bind path="ingredient">
-			<select id="ingredient" name="ingredient" class="text medium">
-				<c:out value="${pleaseSelect}" escapeXml="flase" />
-				<c:forEach var="ingredient" items="${ingredient }">
-					<option value="${ingredient.id }" ${ingredient.id == product.ingredient.id ? 'selected' : '' }> ${ingredient.name }</option>
+		<appfuse:label key="product.brandName" styleClass="desc" />
+		<form:errors path="brandName"  cssClass="text medium"/>
+		<spring path="brandName">
+			<select id="brandName" name="brandName">
+				${pleaseSelect }
+				<c:forEach var="brand" items="${brandNames}">
+					<option value="${brand.id }" ${brand.id == product.brandName.id ? "selected" : "" }>${brand.name }</option>
+				
 				</c:forEach>
 			</select>
-		</spring:bind>
+		</spring>
 	</li>
 	<li>
 		<appfuse:label key="product.name" styleClass="desc" />
@@ -110,21 +109,14 @@ function displayProductDetail(catalogValue) {
 		<form:textarea path="description" rows="5" cols="80"/>
 		
 	</li>
-	
-	
-	
-	
 	<li>
 		<appfuse:label key="product.price" styleClass="desc" />
 		<form:errors path="price" cssStyle="fieldErrors" />
 		<form:input path="price" cssStyle="text medium" />
 	</li>
 	
-	<li>
-		<appfuse:label key="product.dayLife" styleClass="desc" />
-		<form:errors path="dayLife" cssStyle="fieldErrors" />
-		<form:input path="dayLife" cssStyle="text medium" />
-	</li>
+	
+	
 	
 </ul>
 	
