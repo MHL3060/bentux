@@ -46,8 +46,8 @@ public class Product extends LookUpBaseObject {
 	@Column(name="name", nullable=false)
 	private String name;
 	@ManyToOne
-	@JoinColumn(name="manufacturer_id")
-	private Manufacturer manufacturer;
+	@JoinColumn(name="brand_name_id")
+	private BrandName brandName;
 
 	@Column(name="price")
 	private Double price;
@@ -116,15 +116,17 @@ public class Product extends LookUpBaseObject {
 	}
 
 
-	public Manufacturer getManufacturer() {
-		
-		return manufacturer;
+	
+
+	public BrandName getBrandName() {
+		return brandName;
 	}
 
 
-	public void setManufacturer(Manufacturer manufacturer) {
-		this.manufacturer = manufacturer;
+	public void setBrandName(BrandName brandName) {
+		this.brandName = brandName;
 	}
+
 
 	public Double getPrice() {
 		return price;
@@ -338,7 +340,7 @@ public class Product extends LookUpBaseObject {
 		result = prime * result
 				+ ((ingredient == null) ? 0 : ingredient.hashCode());
 		result = prime * result
-				+ ((manufacturer == null) ? 0 : manufacturer.hashCode());
+				+ ((brandName == null) ? 0 : brandName.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((price == null) ? 0 : price.hashCode());
 		result = prime * result + ((rating == null) ? 0 : rating.hashCode());
@@ -420,10 +422,10 @@ public class Product extends LookUpBaseObject {
 				return false;
 		} else if (!ingredient.equals(other.ingredient))
 			return false;
-		if (manufacturer == null) {
-			if (other.manufacturer != null)
+		if (brandName == null) {
+			if (other.brandName != null)
 				return false;
-		} else if (!manufacturer.equals(other.manufacturer))
+		} else if (!brandName.equals(other.brandName))
 			return false;
 		if (name == null) {
 			if (other.name != null)

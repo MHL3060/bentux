@@ -32,7 +32,7 @@ public class Ingredient extends LookUpBaseObject {
 	@Column(name="percentage")
 	private Double percentage;
 	
-	@Column(name="amountPerServing")
+	@Column(name="amount_per_serving")
 	private Integer amountPerServing;
 	
 	@Column(name="description")

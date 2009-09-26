@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import local.tux.app.model.common.LookUpBaseObject;
@@ -28,11 +29,14 @@ public class BrandName extends LookUpBaseObject {
 	@JoinColumn(name="manufacturer_id", nullable=false)
 	private Manufacturer manufacturer;
 
+	@OneToMany(mappedBy="brandName")
+	private Set<Product> products;
+	
 	public Long getId() {
 		return id;
 	}
 
-	public void setId(Long id) { 
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -50,6 +54,15 @@ public class BrandName extends LookUpBaseObject {
 
 	public void setManufacturer(Manufacturer manufacturer) {
 		this.manufacturer = manufacturer;
+	}
+
+	
+	public Set<Product> getProducts() {
+		return products;
+	}
+
+	public void setProducts(Set<Product> products) {
+		this.products = products;
 	}
 
 	@Override
