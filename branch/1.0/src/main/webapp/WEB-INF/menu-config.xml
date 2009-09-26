@@ -10,6 +10,7 @@
             <Item name="ActiveUsers" title="mainMenu.activeUsers" page="/admin/activeUsers.html"/>
             <Item name="Catalog" title="mainMenu.catalog" page="/catalogform.html" />
             <Item name="Manufacturer" title="mainMenu.manufacturer" page="/manufacturerform.html" />
+            <Item name="Manufacturer" title="mainMenu.brandName" page="/brandNameform.html" />           
             <Item name="Ingredient" title="mainMenu.ingredient" page="/ingredientform.html" />
             <Item name="Image" title="mainMenu.image" page="/imageform.html" />
             <Item name="Reindex" title="mainMenu.reindex" page="/reindex.html" />
