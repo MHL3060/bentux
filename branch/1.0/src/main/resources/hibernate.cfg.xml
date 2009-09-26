@@ -8,7 +8,11 @@
         <mapping class="local.tux.app.model.Catalog" />
         <mapping class="local.tux.app.model.Image" />
         <mapping class="local.tux.app.model.Manufacturer" />
+        <mapping class="local.tux.app.model.BrandName" />
         <mapping class="local.tux.app.model.Product" />
         <mapping class="local.tux.app.model.Ingredient"/>
+        <mapping class="local.tux.app.model.FoodProduct" />
+        <mapping class="local.tux.app.model.EntertainmentProduct" />
+        <mapping class="local.tux.app.model.EntertainmentService" />
     </session-factory>
 </hibernate-configuration>

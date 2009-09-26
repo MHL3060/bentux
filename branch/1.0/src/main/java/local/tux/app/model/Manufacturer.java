@@ -1,12 +1,14 @@
 package local.tux.app.model;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.compass.annotations.EnableAll;
@@ -23,7 +25,6 @@ import local.tux.app.model.common.LookUpBaseObject;
 @Searchable(alias = "manufacturer")
 @SearchableAllMetaData(enable = EnableAll.TRUE)
 @SearchableConstant(name = "type", values = { "manufacturer" })
-
 public class Manufacturer extends LookUpBaseObject{
 
 	
@@ -41,11 +42,14 @@ public class Manufacturer extends LookUpBaseObject{
 	@Column(name="location", nullable=true)
 	private String Location;
 	
+	@OneToMany(mappedBy="manufacturer")
+	private Set<BrandName> brandName;
 	@Override
 	public String getName() {
 		return name;
 	}
 
+	
 	@Override
 	public void setName(String name) {
 		this.name = name;
@@ -70,6 +74,17 @@ public class Manufacturer extends LookUpBaseObject{
 	public void setLocation(String location) {
 		Location = location;
 	}
+
+	
+	public Set<BrandName> getBrandName() {
+		return brandName;
+	}
+
+
+	public void setBrandName(Set<BrandName> brandName) {
+		this.brandName = brandName;
+	}
+
 
 	@Override
 	public boolean equals(Object obj) {

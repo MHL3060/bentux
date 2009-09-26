@@ -51,7 +51,8 @@ public class Image extends LookUpBaseObject {
 	@JoinColumn(name="product_id")
 	private Product product;
 	
-	
+	@Column(name="front_image")
+	private Boolean imagefrontPage = Boolean.FALSE;
 	
 	@Transient
 	private byte[] file;
@@ -101,6 +102,17 @@ public class Image extends LookUpBaseObject {
 		this.product = product;
 	}
 	
+	
+
+	public Boolean getImagefrontPage() {
+		return imagefrontPage;
+	}
+
+
+	public void setImagefrontPage(Boolean imagefrontPage) {
+		this.imagefrontPage = imagefrontPage;
+	}
+
 
 	public byte[] getFile() {
 		return file;

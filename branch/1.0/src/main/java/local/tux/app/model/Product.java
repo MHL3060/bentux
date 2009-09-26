@@ -16,6 +16,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -59,15 +60,7 @@ public class Product extends LookUpBaseObject {
 	
 	@Column(name="rating")
 	private Long rating;
-	@Column(name="width")
-	private Double width;
-	@Column(name="height")
-	private Double height;
-	@Column(name="depth")
-	private Double depth;
 	
-	@Column(name="volume_unit")
-	private String volumeUnit;
 	
 	@Column(name="sku")
 	private String sku;
@@ -77,11 +70,14 @@ public class Product extends LookUpBaseObject {
 	@Column(name="day_life")
 	private Long dayLife;
 	
-	@Column(name="weight")
-	private Double weight;
+	@OneToOne(mappedBy="product")
+	private FoodProduct foodProduct;
 	
-	@Column(name="weight_unit")
-	private String weightUnit;
+	@OneToOne(mappedBy="product")
+	private EntertainmentService entertainMentService;
+	
+	@OneToOne(mappedBy="product")
+	private EntertainmentProduct entertainmentProduct;
 	
 	@ManyToMany
 	@JoinTable(name="catalog_product")
@@ -96,8 +92,7 @@ public class Product extends LookUpBaseObject {
 	@OneToMany(mappedBy="product")
 	private Set<Ingredient> ingredient;
 	
-	@Transient
-	private Image firstImage;
+	
 	@Transient
 	private Double discountPercentage;
 	
@@ -130,10 +125,6 @@ public class Product extends LookUpBaseObject {
 	public void setManufacturer(Manufacturer manufacturer) {
 		this.manufacturer = manufacturer;
 	}
-
-
-	
-
 
 	public Double getPrice() {
 		return price;
@@ -184,28 +175,6 @@ public class Product extends LookUpBaseObject {
 		this.rating = rating;
 	}
 
-
-	public Double getWidth() {
-		return width;
-	}
-
-
-	public void setWidth(Double width) {
-		this.width = width;
-	}
-
-
-	public Double getHeight() {
-		return height;
-	}
-	
-
-	public void setHeight(Double height) {
-		this.height = height;
-	}
-
-	
-
 	public Set<Catalog> getCatalogs() {
 		return catalogs;
 	}
@@ -216,14 +185,7 @@ public class Product extends LookUpBaseObject {
 	}
 
 
-	public Double getDepth() {
-		return depth;
-	}
-
-
-	public void setDepth(Double depth) {
-		this.depth = depth;
-	}
+	
 
 
 	public String getBarcode() {
@@ -252,29 +214,6 @@ public class Product extends LookUpBaseObject {
 	
 	
 
-	public Double getWeight() {
-		return weight;
-	}
-
-
-	public void setWeight(Double weight) {
-		this.weight = weight;
-	}
-
-
-	public String getWeightUnit() {
-		return weightUnit;
-	}
-
-	public String getVolumeUnit() {
-		return volumeUnit;
-	}
-
-
-	public void setVolumeUnit(String volumeUnit) {
-		this.volumeUnit = volumeUnit;
-	}
-
 
 	public String getSku() {
 		return sku;
@@ -285,13 +224,6 @@ public class Product extends LookUpBaseObject {
 		this.sku = sku;
 	}
 
-
-	public void setWeightUnit(String weightUnit) {
-		this.weightUnit = weightUnit;
-	}
-
-	
-	
 
 	public Boolean getSpecial() {
 		return special;
@@ -343,28 +275,75 @@ public class Product extends LookUpBaseObject {
 	}
 
 
+	public FoodProduct getFoodProduct() {
+		return foodProduct;
+	}
+
+
+	public void setFoodProduct(FoodProduct foodProduct) {
+		this.foodProduct = foodProduct;
+	}
+
+
+	public EntertainmentService getEntertainMentService() {
+		return entertainMentService;
+	}
+
+
+	public void setEntertainMentService(EntertainmentService entertainMentService) {
+		this.entertainMentService = entertainMentService;
+	}
+
+
+	public EntertainmentProduct getEntertainmentProduct() {
+		return entertainmentProduct;
+	}
+
+
+	public void setEntertainmentProduct(EntertainmentProduct entertainmentProduct) {
+		this.entertainmentProduct = entertainmentProduct;
+	}
+
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
-		int result = 435334;
+		int result = 21344333;
 		result = prime * result
 				+ ((availability == null) ? 0 : availability.hashCode());
 		result = prime * result + ((barcode == null) ? 0 : barcode.hashCode());
 		result = prime * result
 				+ ((catalogs == null) ? 0 : catalogs.hashCode());
 		result = prime * result + ((dayLife == null) ? 0 : dayLife.hashCode());
-		result = prime * result + ((depth == null) ? 0 : depth.hashCode());
 		result = prime * result
 				+ ((description == null) ? 0 : description.hashCode());
-		result = prime * result + ((height == null) ? 0 : height.hashCode());
+		result = prime
+				* result
+				+ ((discountPercentage == null) ? 0 : discountPercentage
+						.hashCode());
+		result = prime * result
+				+ ((discountPrice == null) ? 0 : discountPrice.hashCode());
+		result = prime
+				* result
+				+ ((entertainMentService == null) ? 0 : entertainMentService
+						.hashCode());
+		result = prime
+				* result
+				+ ((entertainmentProduct == null) ? 0 : entertainmentProduct
+						.hashCode());
+		result = prime * result
+				+ ((foodProduct == null) ? 0 : foodProduct.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((images == null) ? 0 : images.hashCode());
+		result = prime * result
+				+ ((ingredient == null) ? 0 : ingredient.hashCode());
 		result = prime * result
 				+ ((manufacturer == null) ? 0 : manufacturer.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((price == null) ? 0 : price.hashCode());
 		result = prime * result + ((rating == null) ? 0 : rating.hashCode());
-		result = prime * result + ((width == null) ? 0 : width.hashCode());
+		result = prime * result + ((sku == null) ? 0 : sku.hashCode());
+		result = prime * result + ((special == null) ? 0 : special.hashCode());
 		return result;
 	}
 
@@ -373,7 +352,6 @@ public class Product extends LookUpBaseObject {
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		
 		if (getClass() != obj.getClass())
 			return false;
 		Product other = (Product) obj;
@@ -397,25 +375,50 @@ public class Product extends LookUpBaseObject {
 				return false;
 		} else if (!dayLife.equals(other.dayLife))
 			return false;
-		if (depth == null) {
-			if (other.depth != null)
-				return false;
-		} else if (!depth.equals(other.depth))
-			return false;
 		if (description == null) {
 			if (other.description != null)
 				return false;
 		} else if (!description.equals(other.description))
 			return false;
-		if (height == null) {
-			if (other.height != null)
+		if (discountPercentage == null) {
+			if (other.discountPercentage != null)
 				return false;
-		} else if (!height.equals(other.height))
+		} else if (!discountPercentage.equals(other.discountPercentage))
+			return false;
+		if (discountPrice == null) {
+			if (other.discountPrice != null)
+				return false;
+		} else if (!discountPrice.equals(other.discountPrice))
+			return false;
+		if (entertainMentService == null) {
+			if (other.entertainMentService != null)
+				return false;
+		} else if (!entertainMentService.equals(other.entertainMentService))
+			return false;
+		if (entertainmentProduct == null) {
+			if (other.entertainmentProduct != null)
+				return false;
+		} else if (!entertainmentProduct.equals(other.entertainmentProduct))
+			return false;
+		if (foodProduct == null) {
+			if (other.foodProduct != null)
+				return false;
+		} else if (!foodProduct.equals(other.foodProduct))
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
 			return false;
 		if (images == null) {
 			if (other.images != null)
 				return false;
 		} else if (!images.equals(other.images))
+			return false;
+		if (ingredient == null) {
+			if (other.ingredient != null)
+				return false;
+		} else if (!ingredient.equals(other.ingredient))
 			return false;
 		if (manufacturer == null) {
 			if (other.manufacturer != null)
@@ -437,14 +440,20 @@ public class Product extends LookUpBaseObject {
 				return false;
 		} else if (!rating.equals(other.rating))
 			return false;
-		if (width == null) {
-			if (other.width != null)
+		if (sku == null) {
+			if (other.sku != null)
 				return false;
-		} else if (!width.equals(other.width))
+		} else if (!sku.equals(other.sku))
+			return false;
+		if (special == null) {
+			if (other.special != null)
+				return false;
+		} else if (!special.equals(other.special))
 			return false;
 		return true;
 	}
 
+	
 
 	
 }
