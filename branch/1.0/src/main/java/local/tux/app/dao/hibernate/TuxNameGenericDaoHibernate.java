@@ -5,8 +5,11 @@ import java.util.List;
 
 import local.tux.app.dao.TuxNameGenericDao;
 import local.tux.app.model.common.LookUpBaseObject;
+import local.tux.app.model.common.TuxBaseObject;
 
 import org.appfuse.dao.hibernate.GenericDaoHibernate;
+import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 
 
 public class TuxNameGenericDaoHibernate<T, PK extends Serializable> extends GenericDaoHibernate<T,PK> implements
@@ -16,6 +19,7 @@ public class TuxNameGenericDaoHibernate<T, PK extends Serializable> extends Gene
 	
 	public TuxNameGenericDaoHibernate(Class<T> clazz) {
 		super(clazz);
+		this.clazz = clazz;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -28,6 +32,14 @@ public class TuxNameGenericDaoHibernate<T, PK extends Serializable> extends Gene
 		}else {
 			return null;
 		}
+	}
+	@SuppressWarnings("unchecked")
+	public List<TuxBaseObject> getRelativeObjects(String key, Long id){
+		Session session = getSession();
+		
+		List list =  session.createCriteria(clazz).add(Restrictions.eq(key, id)).list();
+		session.disconnect();
+		return list;
 	}
 
 }

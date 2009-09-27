@@ -1,12 +1,10 @@
 package local.tux.app.service.impl;
 
-import java.util.List;
-import java.util.Map;
 
-import org.appfuse.dao.GenericDao;
+import java.util.List;
+
 
 import local.tux.app.dao.CatalogDao;
-import local.tux.app.dao.TuxNameGenericDao;
 import local.tux.app.model.Catalog;
 import local.tux.app.service.CatalogManager;
 
@@ -25,10 +23,11 @@ public class CatalogManagerImpl extends LookUpNameGenericManagerImpl<Catalog, Lo
 		return catalogDao.getParents();
 	}
 
-	
+	public List<Catalog> getChildren(Catalog parent) {
+		return getChildrenByParentId(parent.getId());
+	}
+	public List<Catalog> getChildrenByParentId(Long parentId){
+		return catalogDao.getChildren(parentId);
+	}
 
-	
-
-	
-	
 }

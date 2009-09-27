@@ -1,11 +1,13 @@
 package local.tux.app.service.impl;
 
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import local.tux.app.dao.TuxNameGenericDao;
 import local.tux.app.model.Catalog;
+import local.tux.app.model.common.TuxBaseObject;
 import local.tux.app.service.LookUpNameGenericManager;
 
 import org.appfuse.dao.GenericDao;
@@ -18,7 +20,7 @@ public class LookUpNameGenericManagerImpl<T, PK extends Serializable> extends Ge
 	@SuppressWarnings("unchecked")
 	public LookUpNameGenericManagerImpl(GenericDao<T, Long> genericDao) {
 		super((GenericDao<T, PK>) genericDao);
-		this.genericDao = (TuxNameGenericDao) this.genericDao;
+		this.genericDao = (TuxNameGenericDao) genericDao;
 		
 	}
 
@@ -35,6 +37,11 @@ public class LookUpNameGenericManagerImpl<T, PK extends Serializable> extends Ge
 	public List<T> getAllDistinct() {
 		
 		return genericDao.getAllDistinct();
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<TuxBaseObject> getRelativeObjects(String key, Long value) {
+		return genericDao.getRelativeObjects(key, value);
 	}
 
 }

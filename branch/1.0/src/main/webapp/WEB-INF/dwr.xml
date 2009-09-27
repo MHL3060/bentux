@@ -8,6 +8,21 @@
             <param name="beanName" value="userManager"/>
             <include method="getUsers"/>
         </create>
+        <create creator="spring" javascript="catalogManager">
+        	<param name="class" value="local.tux.app.service.CatalogManager" />
+        	<param name="beanName" value="catalogManager" />
+        	<include method="getRelativeObjects" />
+        	<include method="getParents" />
+        </create>
+        
+        <create creator="spring" javascript="manufacturerManager" >
+        	<param name="class" value="local.tux.app.service.LookUpNameGenericManager" />
+        	<param name="beanName" value="manufacturerManager" />
+        	<include method="getRelativeObjects" />
+        	<include method="getAll" />
+        </create>
+        <convert converter="bean" match="local.tux.app.model.Manufacturer" />
         <convert converter="bean" match="org.appfuse.model.User"/>
+        <convert converter="bean" match="local.tux.app.model.Catalog" />
     </allow>
 </dwr>
