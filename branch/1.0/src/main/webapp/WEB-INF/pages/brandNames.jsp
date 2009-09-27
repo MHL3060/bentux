@@ -15,7 +15,6 @@
 <display:table name="list" id="list" pagesize="25" class="table" requestURI="brandNameform.html">
         <display:column property="id" titleKey="lookup.id" />
         <display:column property="name" titleKey="lookup.name" sortable="true"/>
-		<display:column property="description" titleKey="brandName.description" sortable="false" />
 </display:table>
 
 <c:if test="hasPermission">

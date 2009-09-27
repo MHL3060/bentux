@@ -103,8 +103,7 @@
     	<property name="commandName" value="catalog" />
     	<property name="successView" value="redirect:catalogform.html"/>
     	<property name="lookUpManager" ref="catalogManager" />
-    </bean>
-    
+    </bean>    
     <bean id="imageFormController" class="local.tux.app.web.controller.ImageFormController">
     	 <property name="validator" ref="beanValidator"/>
     	<property name="commandClass" value="local.tux.app.model.Image" />
@@ -112,8 +111,12 @@
     	<property name="productManager" ref="productManager" />
     	<property name="lookUpManager" ref="imageManager" />
     </bean>
+    <bean id="brandNameFormController" class="local.tux.app.web.controller.BrandNameFormController">
+       	<property name="commandClass" value="local.tux.app.model.BrandName" />
+    	<property name="commandName" value="brandName" />
+    	<property name="lookUpManager" ref="brandNameManager" />
+    </bean>
     <bean id="ingredientFormController" class="local.tux.app.web.controller.IngredientFormController">
-    	
     	<property name="commandClass" value="local.tux.app.model.Ingredient" />
     	<property name="commandName" value="ingredient" />
     	<property name="lookUpManager" ref="ingredientManager" />
@@ -125,7 +128,6 @@
     	<property name="successView" value="redirect:manufacturerform.html"/>
     	<property name="lookUpManager" ref="manufacturerManager" />
     </bean>
-    
     <bean id="productListController" class="local.tux.app.web.controller.ProductListController">
     	<property name="userManager" ref="userManager" />
     	<property name="paginatedListFactory" ref="paginatedListFactory" />

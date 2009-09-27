@@ -13,6 +13,32 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import local.tux.app.model.common.TuxBaseObject;
+import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import local.tux.app.model.common.LookUpBaseObject;
+import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import local.tux.app.model.common.LookUpBaseObject;
 
 @Entity
 @Table(name="entertain_service")
@@ -26,9 +52,10 @@ public class EntertainmentService extends TuxBaseObject{
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
-	
+
 	@Column(name="show_from")
 	private Date showFrom;
+	
 	@Column(name="show_to")
 	private Date showTo;
 	
@@ -41,6 +68,12 @@ public class EntertainmentService extends TuxBaseObject{
 	@Column(name="show_duration")
 	private Double showDuration;
 
+	@Column(name="show_type")
+	private String showType;
+	
+	@Column(name="show_description")
+	private String showDescription;
+		
 	@OneToOne
 	@JoinColumn(name="product_id")
 	private Product product;
@@ -52,7 +85,7 @@ public class EntertainmentService extends TuxBaseObject{
 	public void setId(Long id) {
 		this.id = id;
 	}
-
+	
 	public Date getShowFrom() {
 		return showFrom;
 	}
@@ -93,6 +126,21 @@ public class EntertainmentService extends TuxBaseObject{
 		this.showDuration = showDuration;
 	}
 
+	public String getShowType(){
+		return showType;
+	}
+	
+	public void setShowType(String showType){
+		this.showType = showType;
+	}
+	
+	public String getShowDescription(){
+		return showDescription;
+	}
+	
+	public void setShowDescription(String showDescription){
+		this.showDescription = showDescription;
+	}
 	
 	public Product getProduct() {
 		return product;
@@ -115,6 +163,8 @@ public class EntertainmentService extends TuxBaseObject{
 		result = prime * result
 				+ ((showTime == null) ? 0 : showTime.hashCode());
 		result = prime * result + ((showTo == null) ? 0 : showTo.hashCode());
+		result = prime * result + ((showType == null) ? 0 : showType.hashCode());
+		result = prime * result + ((showDescription == null) ? 0 : showDescription.hashCode());
 		return result;
 	}
 
@@ -154,6 +204,16 @@ public class EntertainmentService extends TuxBaseObject{
 			if (other.showTo != null)
 				return false;
 		} else if (!showTo.equals(other.showTo))
+			return false;
+		if (showType == null) {
+			if (other.showType != null)
+				return false;
+		} else if (!showType.equals(other.showType))
+			return false;
+		if (showDescription == null) {
+			if (other.showDescription != null)
+				return false;
+		} else if(!showDescription.equals(other.showDescription))
 			return false;
 		return true;
 	}
