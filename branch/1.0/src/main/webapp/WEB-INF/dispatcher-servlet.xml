@@ -112,9 +112,11 @@
     	<property name="lookUpManager" ref="imageManager" />
     </bean>
     <bean id="brandNameFormController" class="local.tux.app.web.controller.BrandNameFormController">
+       	<property name="validator" ref="beanValidator"/>
        	<property name="commandClass" value="local.tux.app.model.BrandName" />
     	<property name="commandName" value="brandName" />
     	<property name="lookUpManager" ref="brandNameManager" />
+    	<property name="manufacturerManager" ref="manufacturerManager" />
     </bean>
     <bean id="ingredientFormController" class="local.tux.app.web.controller.IngredientFormController">
     	<property name="commandClass" value="local.tux.app.model.Ingredient" />

@@ -165,5 +165,13 @@
       		<arg key="catalog.name"/>
       	</field>
       </form>
+      <form name="brandName">
+      	<field property="manufacturer" depends="required">
+      		<arg0 key="brandName.manufacturer" />
+      	</field>
+        <field property="name" depends="required">
+      		<arg0 key="brandName.name"/>
+      	</field>
+      </form>
   </formset>
 </form-validation>
