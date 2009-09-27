@@ -13,32 +13,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import local.tux.app.model.common.TuxBaseObject;
-import java.util.Set;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
-import local.tux.app.model.common.LookUpBaseObject;
-import java.util.Set;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
-import local.tux.app.model.common.LookUpBaseObject;
 
 @Entity
 @Table(name="entertain_service")
@@ -65,9 +41,6 @@ public class EntertainmentService extends TuxBaseObject{
 	@Column(name="show_time")
 	private String showTime;
 	
-	
-	@Column(name="show_description")
-	private String showDescription;
 		
 	@OneToOne
 	@JoinColumn(name="product_id")
@@ -114,13 +87,6 @@ public class EntertainmentService extends TuxBaseObject{
 	}
 
 	
-	public String getShowDescription(){
-		return showDescription;
-	}
-	
-	public void setShowDescription(String showDescription){
-		this.showDescription = showDescription;
-	}
 	
 	public Product getProduct() {
 		return product;
@@ -142,8 +108,7 @@ public class EntertainmentService extends TuxBaseObject{
 		result = prime * result
 				+ ((showTime == null) ? 0 : showTime.hashCode());
 		result = prime * result + ((showTo == null) ? 0 : showTo.hashCode());
-		
-		result = prime * result + ((showDescription == null) ? 0 : showDescription.hashCode());
+	
 		return result;
 	}
 
@@ -179,11 +144,7 @@ public class EntertainmentService extends TuxBaseObject{
 				return false;
 		} else if (!showTo.equals(other.showTo))
 			return false;
-		if (showDescription == null) {
-			if (other.showDescription != null)
-				return false;
-		} else if(!showDescription.equals(other.showDescription))
-			return false;
+		
 		return true;
 	}
 
