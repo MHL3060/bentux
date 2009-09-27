@@ -14,6 +14,12 @@
         	<include method="getRelativeObjects" />
         	<include method="getParents" />
         </create>
+        <create creator="spring" javascript="brandNameManager">
+        	<param name="class" value="local.tux.app.service.LookUpNameGenericManager" />
+        	<param name="beanName" value="brandNameManager" />
+        	<include method="getRelativeObjects" />
+        	<include method="getAll" />
+        </create>
         
         <create creator="spring" javascript="manufacturerManager" >
         	<param name="class" value="local.tux.app.service.LookUpNameGenericManager" />
@@ -21,6 +27,7 @@
         	<include method="getRelativeObjects" />
         	<include method="getAll" />
         </create>
+        <convert converter="bean" match="local.tux.app.model.BrandName" />
         <convert converter="bean" match="local.tux.app.model.Manufacturer" />
         <convert converter="bean" match="org.appfuse.model.User"/>
         <convert converter="bean" match="local.tux.app.model.Catalog" />

@@ -1,21 +1,47 @@
 <%@ include file="/common/taglibs.jsp" %>
 
+<script type='text/javascript' src='<c:url value="/dwr/interface/catalogManager.js" />'></script>
+<script type='text/javascript' src='<c:url value="/dwr/interface/brandNameManager.js" />'></script>
+<script type='text/javascript' src='/dwr/engine.js'></script>
+<script type='text/javascript' src='/dwr/util.js'></script>
+
 <script type="text/javascript">
 /**
  * todo : 
  * 
  */
- function fillChildren(fromNode, manager, toNode) {
-
-
+ <%-- 
+ 	paremeters: fromNode: the id for that html tag.
+ 				manager: the manager this POJO.
+ 				fieldKey: the parent's id (eg. in brandName class, the parent is the manufacturer so the parent key is manufacutrer.id
+ 				toNode: where is the generated options attached to.
+ --%>
+ function fillChildren(fromNode, manager,fieldKey, toNode) {
+	
+	var parentId = fromNode.value;
+	if (parentId != null ) {
+		manager.getRelativeObjects(fieldKey, parentId, function(children) {addOptions(children, toNode)});
+	}
 
 }
+
+
+ function addOptions(array, toDom){
+ 	dwr.util.removeAllOptions(toDom);
+	for (i = 0; i < array.length; i++ ) {
+		option = document.createElement("option");
+		option.value = array[i].id;
+		option.text = array[i].name;
+		toDom.options[i] = option;
+	}
+}
+
 /*
  * based on the parent catalog, display a proper field for this catalog.
  *
  */
 function displayProductDetail(catalogValue) {
-
+	
 
 	
 }
@@ -45,7 +71,8 @@ function displayProductDetail(catalogValue) {
 		<a href="#"  onclick="location.href='<c:url value="/productform.html"/>'" /><fmt:message key="refresh.list" /></a>
 		</p>
 		<appfuse:label key="product.catalog" styleClass="desc" />
-		<select name="mainCatalogy" id="mainCatalogy" onchange="fillChildren(this, catalogManager, catalogs)">
+		<select name="mainCatalogy" id="mainCatalogy" onchange="fillChildren(this, catalogManager,'parent.id', catalogs)">
+			${pleaseSelect }
 			<c:forEach var="catalog" items="${catalogs}">
 				<option value="${catalog.id }" ${catalog.id == productCatalog.id ? 'selected' : '' } > ${catalog.name}</option>
 			</c:forEach>
@@ -66,7 +93,7 @@ function displayProductDetail(catalogValue) {
 		<a href="<c:url value="/manufacturerform.html" /> target="manufacturer"><fmt:message key="add.manufacturer" /></a>
 		<%-- <a href="manufacturerform.html" target="manufacturer" ><fmt:message key="manufacturer.add.item" /></a>--%>
 		<appfuse:label key="product.manufacturer" styleClass="desc" />
-		<select id="manufacturer" name="manufacturer" class="text medium" onchange="fillChildren(this,manufacturerManager, ingredient)">
+		<select id="manufacturer" name="manufacturer" class="text medium" onchange="fillChildren(this,brandNameManager,'manuacturer.id', ingredient)">
 			<c:out value="${pleaseSelect}" escapeXml="flase" />
 			<c:forEach var="manufacturer" items="${manufacturers }">
 				<option value="${manfucturer.id }" ${manufacturer.id == product.brandName.manufacturer.id ? 'selected' : '' }> ${manufacturer.name }</option>

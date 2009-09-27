@@ -16,6 +16,7 @@ import local.tux.app.model.Manufacturer;
 import local.tux.app.model.Product;
 import local.tux.app.model.common.LookUpBaseObject;
 import local.tux.app.model.common.TuxBaseObject;
+import local.tux.app.service.CatalogManager;
 import local.tux.app.service.LookUpNameGenericManager;
 
 import org.apache.commons.lang.StringUtils;
@@ -26,11 +27,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 public class ProductFormController extends BaseFormController {
 
-	private LookUpNameGenericManager catalogManager;
+	private CatalogManager catalogManager;
 	private LookUpNameGenericManager manufacturerManager;
 	private LookUpNameGenericManager productManager;
 
-	public void setCatalogManager(LookUpNameGenericManager catalogManager){
+	public void setCatalogManager(CatalogManager catalogManager){
 		this.catalogManager = catalogManager;
 	}
 	public void setManufacturerManager(LookUpNameGenericManager manufacturerManager){
@@ -51,7 +52,7 @@ public class ProductFormController extends BaseFormController {
 	@SuppressWarnings("unchecked")
 	protected Map referenceData(HttpServletRequest request){
 		Map models = new HashMap(); 
-		models.put("catalogs", catalogManager.getAll());
+		models.put("catalogs", catalogManager.getParents());
 		models.put("manufacturers", manufacturerManager.getAll());
 		models.put("units", Constants.WEIGHT_UNIT);
 		return models;

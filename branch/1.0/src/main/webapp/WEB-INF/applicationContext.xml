@@ -85,4 +85,13 @@
     
     	<constructor-arg ref="productDao" />
     </bean>
+    
+    <bean id="brandNameManager" class="local.tux.app.service.impl.LookUpNameGenericManagerImpl">
+    	<constructor-arg>
+    		<bean class="local.tux.app.dao.hibernate.TuxNameGenericDaoHibernate">
+    			<constructor-arg value="local.tux.app.model.BrandName" />
+				<property name="sessionFactory" ref="sessionFactory" />
+    		</bean>
+    	</constructor-arg>
+    </bean>
 </beans>
