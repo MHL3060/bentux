@@ -28,11 +28,20 @@
 
  function addOptions(array, toDom){
  	dwr.util.removeAllOptions(toDom);
+	var multiple = toDom.multiple;
+	var nextOptionPosition = 0;
+ 	if (multiple == false ) {
+ 		option = document.createElement("option");
+ 		option.value = "";
+ 		option.text = "<fmt:message key="please.select" />";
+ 		toDom.options[0] = option;
+ 		nextOptionPosition = 1;
+ 	}
 	for (i = 0; i < array.length; i++ ) {
 		option = document.createElement("option");
 		option.value = array[i].id;
 		option.text = array[i].name;
-		toDom.options[i] = option;
+		toDom.options[i + nextOptionPosition ] = option;
 	}
 }
 
@@ -93,10 +102,10 @@ function displayProductDetail(catalogValue) {
 		<a href="<c:url value="/manufacturerform.html" /> target="manufacturer"><fmt:message key="add.manufacturer" /></a>
 		<%-- <a href="manufacturerform.html" target="manufacturer" ><fmt:message key="manufacturer.add.item" /></a>--%>
 		<appfuse:label key="product.manufacturer" styleClass="desc" />
-		<select id="manufacturer" name="manufacturer" class="text medium" onchange="fillChildren(this,brandNameManager,'manuacturer.id', ingredient)">
+		<select id="manufacturer" name="manufacturer" class="text medium" onchange="fillChildren(this,brandNameManager,'manufacturer.id', brandName)">
 			<c:out value="${pleaseSelect}" escapeXml="flase" />
 			<c:forEach var="manufacturer" items="${manufacturers }">
-				<option value="${manfucturer.id }" ${manufacturer.id == product.brandName.manufacturer.id ? 'selected' : '' }> ${manufacturer.name }</option>
+				<option value="${manufacturer.id }" ${manufacturer.id == product.brandName.manufacturer.id ? 'selected' : '' }> ${manufacturer.name }</option>
 			</c:forEach>
 		</select>
 	</li>
