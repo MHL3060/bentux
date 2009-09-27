@@ -41,6 +41,8 @@ public class EntertainmentService extends TuxBaseObject{
 	@Column(name="show_time")
 	private String showTime;
 	
+	@Column(name="show_duration")
+	private Double showDuration;
 		
 	@OneToOne
 	@JoinColumn(name="product_id")
@@ -94,6 +96,15 @@ public class EntertainmentService extends TuxBaseObject{
 
 	public void setProduct(Product product) {
 		this.product = product;
+	}
+
+	
+	public Double getShowDuration() {
+		return showDuration;
+	}
+
+	public void setShowDuration(Double showDuration) {
+		this.showDuration = showDuration;
 	}
 
 	@Override
