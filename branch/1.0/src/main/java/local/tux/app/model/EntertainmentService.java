@@ -65,11 +65,6 @@ public class EntertainmentService extends TuxBaseObject{
 	@Column(name="show_time")
 	private String showTime;
 	
-	@Column(name="show_duration")
-	private Double showDuration;
-
-	@Column(name="show_type")
-	private String showType;
 	
 	@Column(name="show_description")
 	private String showDescription;
@@ -118,21 +113,6 @@ public class EntertainmentService extends TuxBaseObject{
 		this.showTime = showTime;
 	}
 
-	public Double getShowDuration() {
-		return showDuration;
-	}
-
-	public void setShowDuration(Double showDuration) {
-		this.showDuration = showDuration;
-	}
-
-	public String getShowType(){
-		return showType;
-	}
-	
-	public void setShowType(String showType){
-		this.showType = showType;
-	}
 	
 	public String getShowDescription(){
 		return showDescription;
@@ -156,14 +136,13 @@ public class EntertainmentService extends TuxBaseObject{
 		int result = 3243;
 		result = prime * result + ((address == null) ? 0 : address.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result
-				+ ((showDuration == null) ? 0 : showDuration.hashCode());
+
 		result = prime * result
 				+ ((showFrom == null) ? 0 : showFrom.hashCode());
 		result = prime * result
 				+ ((showTime == null) ? 0 : showTime.hashCode());
 		result = prime * result + ((showTo == null) ? 0 : showTo.hashCode());
-		result = prime * result + ((showType == null) ? 0 : showType.hashCode());
+		
 		result = prime * result + ((showDescription == null) ? 0 : showDescription.hashCode());
 		return result;
 	}
@@ -185,11 +164,6 @@ public class EntertainmentService extends TuxBaseObject{
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (showDuration == null) {
-			if (other.showDuration != null)
-				return false;
-		} else if (!showDuration.equals(other.showDuration))
-			return false;
 		if (showFrom == null) {
 			if (other.showFrom != null)
 				return false;
@@ -204,11 +178,6 @@ public class EntertainmentService extends TuxBaseObject{
 			if (other.showTo != null)
 				return false;
 		} else if (!showTo.equals(other.showTo))
-			return false;
-		if (showType == null) {
-			if (other.showType != null)
-				return false;
-		} else if (!showType.equals(other.showType))
 			return false;
 		if (showDescription == null) {
 			if (other.showDescription != null)
