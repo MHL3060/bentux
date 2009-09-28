@@ -19,6 +19,14 @@
 	</display:column>
 	<display:column property="name" titleKey="product.name" sortable="true" />
 	<display:column property="description" titleKey="product.description" maxWords="50" />
+	<c:if test="${hasPermission }">
+		<display:column titleKey="product.add.image">
+			<c:url var="imageUrl" value="/imageform.html">
+				<c:param name="pid" value="${tuxBaseObjectList.id }" />
+			</c:url>
+			<a href="<c:url value="${imageUrl}" />" />Add an Image</a>
+		</display:column>
+	</c:if>
 	<display:column titleKey="more.info" >
 		<c:url var="url" value="/productdetail.html">
 			<c:param name="id"  value="${tuxBaseObjectList.id}" />

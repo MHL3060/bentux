@@ -27,6 +27,16 @@
         	<include method="getRelativeObjects" />
         	<include method="getAll" />
         </create>
+        <create creator="spring" javascript="productManager" >
+        	<param name="class" value="local.tux.app.service.LookUpNameGenericManager" />
+        	<param name="beanName" value="productManager" />
+        	<include method="getLookUpBaseObject" />
+        </create>
+        <convert converter="bean" match="local.tux.app.model.Product" />
+        <convert converter="bean" match="local.tux.app.model.FoodProduct" />
+        <convert converter="bean" match="local.tux.app.model.Image" />
+        <convert converter="bean" match="local.tux.app.model.EntertainmentProduct" />
+        <convert converter="bean" match="local.tux.app.model.EntertainmentService" />
         <convert converter="bean" match="local.tux.app.model.BrandName" />
         <convert converter="bean" match="local.tux.app.model.Manufacturer" />
         <convert converter="bean" match="org.appfuse.model.User"/>

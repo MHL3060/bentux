@@ -16,6 +16,7 @@ import javax.imageio.stream.MemoryCacheImageInputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.validation.BindException;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.ServletRequestDataBinder;
@@ -57,6 +58,15 @@ public class ImageFormController extends LookUpTableController {
 		return map;
 		
 	}
+	@SuppressWarnings("unchecked")
+	protected Object formBackingObject(HttpServletRequest request) throws Exception {
+		Object object = super.formBackingObject(request);
+		String pid = request.getParameter("pid");
+		if (StringUtils.isBlank(pid)== false){
+			((Image)object).setProduct((Product) productManager.get(new Long(pid)));
+		}
+		return object;
+	} 
 	public void initBinder(HttpServletRequest request, ServletRequestDataBinder binder){
 		
 		TuxBaseObjectConverter projectEditor = new TuxBaseObjectConverter(productManager);

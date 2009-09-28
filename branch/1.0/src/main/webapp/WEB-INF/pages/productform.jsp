@@ -72,7 +72,6 @@
 	}else {
 		alert("unknow Catalog, Please ask Developer to add this product field for you ");
 	}
-	
  }
 /*
  * based on the parent catalog, display a proper field for this catalog.
@@ -106,8 +105,15 @@ function displayProductDetail(catalogValue) {
 	</script>
 </head>
 <h1><fmt:message key="Add A Proudct" /></h1>
-<c:set var="pleaseSelect">
-	<option value=""><fmt:message key="please.select" /></option>
+<c:set var="buttons" >
+    <li class="buttonBar bottom">
+        <input type="submit" class="button" name="save" value="<fmt:message key="button.save"/>"/>
+        <c:if test="${not empty id}">
+        <input type="submit" class="button" name="delete" onclick="return confirmDelete('')" 
+            value="<fmt:message key="button.delete"/>" />
+        </c:if>
+        <input type="submit" class="button" name="cancel" value="<fmt:message key="button.cancel"/>"/>
+    </li>
 </c:set>
 
 
@@ -203,7 +209,7 @@ function displayProductDetail(catalogValue) {
 	
 </ul>
 	
-	<input type="submit" name="submit" value="Submit" />
+<c:out value="${buttons}" escapeXml="false" />	
 	
 
 </form:form>
