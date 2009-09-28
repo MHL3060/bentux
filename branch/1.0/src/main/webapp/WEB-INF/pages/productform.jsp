@@ -148,7 +148,7 @@ function displayProductDetail(catalogValue) {
 		
 	</li>
 	<li>
-		<a href="<c:url value="/manufacturerform.html" /> target="manufacturer"><fmt:message key="add.manufacturer" /></a>
+		<a href="/manufacturerform.html" target="manufacturer"><fmt:message key="add.manufacturer" /></a>
 		<%-- <a href="manufacturerform.html" target="manufacturer" ><fmt:message key="manufacturer.add.item" /></a>--%>
 		<appfuse:label key="product.manufacturer" styleClass="desc" />
 		<select id="manufacturer" name="manufacturer" class="text medium" onchange="fillChildren(this,brandNameManager,'manufacturer.id', brandName)">
