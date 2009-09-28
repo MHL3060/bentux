@@ -149,6 +149,9 @@ function displayProductDetail(catalogValue) {
 	</li>
 	<li>
 		<a href="/manufacturerform.html" target="manufacturer"><fmt:message key="add.manufacturer" /></a>
+		<p>
+			<a href="#"  onclick="location.href='<c:url value="/productform.html"/>'" /><fmt:message key="refresh.list" /></a>
+		</p>
 		<%-- <a href="manufacturerform.html" target="manufacturer" ><fmt:message key="manufacturer.add.item" /></a>--%>
 		<appfuse:label key="product.manufacturer" styleClass="desc" />
 		<select id="manufacturer" name="manufacturer" class="text medium" onchange="fillChildren(this,brandNameManager,'manufacturer.id', brandName)">
@@ -159,6 +162,10 @@ function displayProductDetail(catalogValue) {
 		</select>
 	</li>
 	<li>
+		<a href="/brandnameform.html" target="brandName"><fmt:message key="add.brandName" /></a>
+		<p>
+			<a href="#"  onclick="location.href='<c:url value="/productform.html"/>'" /><fmt:message key="refresh.list" /></a>
+		</p>
 		<appfuse:label key="product.brandName" styleClass="desc" />
 		<form:errors path="brandName"  cssClass="text medium"/>
 		<spring path="brandName">
