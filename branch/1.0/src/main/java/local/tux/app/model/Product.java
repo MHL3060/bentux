@@ -71,13 +71,13 @@ public class Product extends LookUpBaseObject {
 	private Long dayLife;
 	
 	@OneToOne(mappedBy="product")
-	private FoodProduct foodProduct;
+	private FoodProduct foodProduct = new FoodProduct();
 	
 	@OneToOne(mappedBy="product")
-	private EntertainmentService entertainMentService;
+	private EntertainmentService entertainmentService = new EntertainmentService();
 	
 	@OneToOne(mappedBy="product")
-	private EntertainmentProduct entertainmentProduct;
+	private EntertainmentProduct entertainmentProduct = new EntertainmentProduct();
 	
 	@ManyToMany
 	@JoinTable(name="catalog_product")
@@ -88,9 +88,6 @@ public class Product extends LookUpBaseObject {
 	
 	@Column(name="discount_price")
 	private Double discountPrice;
-	
-	@OneToMany(mappedBy="product")
-	private Set<Ingredient> ingredient;
 	
 	
 	@Transient
@@ -114,10 +111,6 @@ public class Product extends LookUpBaseObject {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-
-	
-
 	public BrandName getBrandName() {
 		return brandName;
 	}
@@ -251,18 +244,6 @@ public class Product extends LookUpBaseObject {
 		return (price - discountPrice) / price;
 	}
 
-
-	
-	public Set<Ingredient> getIngredient() {
-		return ingredient;
-	}
-
-
-	public void setIngredient(Set<Ingredient> ingredient) {
-		this.ingredient = ingredient;
-	}
-
-
 	public void setDiscountPercentage(Double discountPercentage) {
 		this.discountPercentage = discountPercentage;
 	}
@@ -287,13 +268,15 @@ public class Product extends LookUpBaseObject {
 	}
 
 
-	public EntertainmentService getEntertainMentService() {
-		return entertainMentService;
+	
+
+	public EntertainmentService getEntertainmentService() {
+		return entertainmentService;
 	}
 
 
-	public void setEntertainMentService(EntertainmentService entertainMentService) {
-		this.entertainMentService = entertainMentService;
+	public void setEntertainmentService(EntertainmentService entertainmentService) {
+		this.entertainmentService = entertainmentService;
 	}
 
 
@@ -325,10 +308,7 @@ public class Product extends LookUpBaseObject {
 						.hashCode());
 		result = prime * result
 				+ ((discountPrice == null) ? 0 : discountPrice.hashCode());
-		result = prime
-				* result
-				+ ((entertainMentService == null) ? 0 : entertainMentService
-						.hashCode());
+		
 		result = prime
 				* result
 				+ ((entertainmentProduct == null) ? 0 : entertainmentProduct
@@ -337,8 +317,6 @@ public class Product extends LookUpBaseObject {
 				+ ((foodProduct == null) ? 0 : foodProduct.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((images == null) ? 0 : images.hashCode());
-		result = prime * result
-				+ ((ingredient == null) ? 0 : ingredient.hashCode());
 		result = prime * result
 				+ ((brandName == null) ? 0 : brandName.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
@@ -392,11 +370,7 @@ public class Product extends LookUpBaseObject {
 				return false;
 		} else if (!discountPrice.equals(other.discountPrice))
 			return false;
-		if (entertainMentService == null) {
-			if (other.entertainMentService != null)
-				return false;
-		} else if (!entertainMentService.equals(other.entertainMentService))
-			return false;
+		
 		if (entertainmentProduct == null) {
 			if (other.entertainmentProduct != null)
 				return false;
@@ -417,11 +391,7 @@ public class Product extends LookUpBaseObject {
 				return false;
 		} else if (!images.equals(other.images))
 			return false;
-		if (ingredient == null) {
-			if (other.ingredient != null)
-				return false;
-		} else if (!ingredient.equals(other.ingredient))
-			return false;
+		
 		if (brandName == null) {
 			if (other.brandName != null)
 				return false;

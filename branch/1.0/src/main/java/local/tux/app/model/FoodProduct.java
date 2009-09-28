@@ -49,7 +49,13 @@ public class FoodProduct extends TuxBaseObject {
 	public Long getId() {
 		return id;
 	}
-
+	
+	@Column(name="day_life")
+	private Long dayLife;
+	
+	@OneToOne(mappedBy="foodProduct")
+	private Ingredient ingredient;
+	
 	@Override
 	public void setId(Long id) {
 		this.id = id;
@@ -108,6 +114,17 @@ public class FoodProduct extends TuxBaseObject {
 	
 	
 
+	public Long getDayLife() {
+		return dayLife;
+	}
+
+	
+	public void setDayLife(Long dayLife) {
+		this.dayLife = dayLife;
+	}
+
+	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -132,6 +149,17 @@ public class FoodProduct extends TuxBaseObject {
 	public void setProduct(Product product) {
 		this.product = product;
 	}
+
+	
+	public Ingredient getIngredient() {
+		return ingredient;
+	}
+
+
+	public void setIngredient(Ingredient ingredient) {
+		this.ingredient = ingredient;
+	}
+
 
 	@Override
 	public boolean equals(Object obj) {

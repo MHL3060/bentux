@@ -19,4 +19,8 @@ public interface Constants {
 	public final String DELETE_OBJECT = "delete";
 	public final List<TuxBaseObject> EMPTY_LIST = new ArrayList<TuxBaseObject>();
 	
+	public final int CATALOG_FOOD_PRODUCT = -1;
+	public final int CATALOG_ENTERTAIN_PRODUCT = -2;
+	public final int CATALOG_ENTERTAIN_SERIVCE = -3;
+	
 }

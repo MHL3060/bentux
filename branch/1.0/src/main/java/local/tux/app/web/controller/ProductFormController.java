@@ -55,6 +55,9 @@ public class ProductFormController extends BaseFormController {
 		models.put("catalogs", catalogManager.getParents());
 		models.put("manufacturers", manufacturerManager.getAll());
 		models.put("units", Constants.WEIGHT_UNIT);
+		models.put("foodProduct", Constants.CATALOG_FOOD_PRODUCT);
+		models.put("entertainProduct", Constants.CATALOG_ENTERTAIN_PRODUCT);
+		models.put("entertainService", Constants.CATALOG_ENTERTAIN_SERIVCE);
 		return models;
 	}
 	

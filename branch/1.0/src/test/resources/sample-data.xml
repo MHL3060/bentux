@@ -90,4 +90,33 @@
             <value description="role_id">-1</value>
         </row>
     </table>
+    
+    <table name="catalog">
+    <column>id</column>
+    <column>description</column>
+    <column>name</column>
+    <column>parent</column>
+    <column>image_id</column>
+    <row>
+      <value>-1</value>
+      <value><![CDATA[All the food product should within this big category.]]></value>
+      <value><![CDATA[Food Product]]></value>
+      <null/>
+      <null/>
+    </row>
+    <row>
+      <value>-2</value>
+      <value><![CDATA[All the entertainment Product should go this category.]]></value>
+      <value><![CDATA[Entertainment Product]]></value>
+      <null/>
+      <null/>
+    </row>
+    <row>
+      <value>-3</value>
+      <value><![CDATA[Entertainment Service]]></value>
+      <value><![CDATA[Entertainment Service]]></value>
+      <null/>
+      <null/>
+    </row>
+  </table>
 </dataset>

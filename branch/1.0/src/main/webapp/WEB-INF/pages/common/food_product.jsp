@@ -39,6 +39,7 @@
 		<form:errors path="foodProduct.dayLife" cssStyle="fieldErrors" />
 		<form:input path="foodProduct.dayLife" cssStyle="text medium" />
 	</li>
+	<%--
 	<li>
 		<a href="ingredientform.html" target="ingredient" ><fmt:message key="ingredient.add.item" /></a>
 		<appfuse:label key="product.foodProduct.ingredient" styleClass="desc" />
@@ -52,4 +53,5 @@
 			</select>
 		</spring:bind>
 	</li>
+	 --%>
 </div>

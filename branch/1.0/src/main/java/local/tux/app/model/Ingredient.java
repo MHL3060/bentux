@@ -38,15 +38,20 @@ public class Ingredient extends LookUpBaseObject {
 	@Column(name="description")
 	private String description;
 
-	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="product_id")
-	private Product product;
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="food_product_id")
+	private FoodProduct foodProduct;
+	
+	
+	
+	public void setId(Long id) {
+		this.id = id;
+		
+	}
 	
 	public Long getId() {
 		return id;
 	}
-
-	
 
 	public String getName() {
 		return name;
@@ -87,6 +92,17 @@ public class Ingredient extends LookUpBaseObject {
 	}
 
 
+	public FoodProduct getFoodProduct() {
+		return foodProduct;
+	}
+
+
+
+	public void setFoodProduct(FoodProduct product) {
+		this.foodProduct = product;
+	}
+
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -122,19 +138,6 @@ public class Ingredient extends LookUpBaseObject {
 		return true;
 	}
 
-	
-	public Product getProduct() {
-		return product;
-	}
-
-
-
-	public void setProduct(Product product) {
-		this.product = product;
-	}
-
-
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -150,11 +153,7 @@ public class Ingredient extends LookUpBaseObject {
 	}
 
 
-	@Override
-	public void setId(Long id) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 	
 }

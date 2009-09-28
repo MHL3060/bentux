@@ -45,6 +45,35 @@
 	}
 }
 
+ function showProduct(node) {
+	var foodProduct = ${foodProduct};
+	var entertainProduct = ${entertainProduct};
+	var entertainService = ${entertainService};
+
+	var displayNode;
+	foodNode = document.getElementById("food_product");
+	entertainProductNode = document.getElementById("entertain_product");
+	entertainServiceNode = document.getElementById("entertain_service");
+	
+	if (node.value == foodProduct ) {
+		foodNode.style.display = 'block';
+		entertainProductNode.style.display = 'none';
+		entertainServiceNode.style.display = 'none';
+	}else if (node.value == entertainProduct ) {
+		foodNode.style.display = 'none';
+		entertainProductNode.style.display = 'block';
+		entertainServiceNode.style.display = 'none';	
+	}else if (node.value == entertainService ) {
+		foodNode.style.display = 'none';
+		entertainProductNode.style.display = 'none';
+		entertainServiceNode.style.display = 'block';
+	}else if (node.value == null || node.value == '' ) {
+		//do nothing
+	}else {
+		alert("unknow Catalog, Please ask Developer to add this product field for you ");
+	}
+	
+ }
 /*
  * based on the parent catalog, display a proper field for this catalog.
  *
@@ -55,6 +84,20 @@ function displayProductDetail(catalogValue) {
 	
 }
 </script>
+
+<style>
+	#food_product {
+		display: none;
+	}
+	#entertain_product {
+		display:none;
+	}
+	#entertain_service {
+		display:none;
+	}
+
+
+</style>
 <head>
 	<meta content="MainMenu" name="menu">
 	<script type="javascript/text">
@@ -80,7 +123,7 @@ function displayProductDetail(catalogValue) {
 		<a href="#"  onclick="location.href='<c:url value="/productform.html"/>'" /><fmt:message key="refresh.list" /></a>
 		</p>
 		<appfuse:label key="product.catalog" styleClass="desc" />
-		<select name="mainCatalogy" id="mainCatalogy" onchange="fillChildren(this, catalogManager,'parent.id', catalogs)">
+		<select name="mainCatalogy" id="mainCatalogy" onchange="fillChildren(this, catalogManager,'parent.id', catalogs); showProduct(this)">
 			${pleaseSelect }
 			<c:forEach var="catalog" items="${catalogs}">
 				<option value="${catalog.id }" ${catalog.id == productCatalog.id ? 'selected' : '' } > ${catalog.name}</option>
@@ -151,6 +194,10 @@ function displayProductDetail(catalogValue) {
 		<form:input path="price" cssStyle="text medium" />
 	</li>
 	
+	
+	 <%@ include file="common/food_product.jsp" %>
+	 <%@ include file="common/entertain_service.jsp" %>
+	 <%@ include file="common/entertain_product.jsp"  %>
 	
 	
 	
