@@ -2,10 +2,12 @@
 <script type='text/javascript' src='<c:url value="/dwr/interface/productManager.js" />'></script>
 <script type='text/javascript' src='<c:url value="/dwr/engine.js" />'></script>
 <script type='text/javascript' src='<c:url value="/dwr/util.js" />'></script>
+<%-- the order is very important. I have spend a few hours scatching my head to wonder why it doesn't work --%>
 <script type="text/javascript" src="<c:url value="/scripts/prototype.js" />" ></script>
 <script type="text/javascript" src="<c:url value="/scripts/effects.js" />" ></script>
 <script type="text/javascript" src="<c:url value="/scripts/controls.js" />" ></script>
 <script type="text/javascript" src="<c:url value="/scripts/autocomplete.js" />" ></script>
+<link rel="stylesheet" type="text/css" href="<c:url value='/styles/autocomplete.css'/>" />
 <script type="text/javascript">
 	
 	function updateList(autocompleter, token) {
@@ -21,39 +23,6 @@
 	}
 	
 </script>
-<style>
-div.auto_complete {
-    width: 350px;
-    background: #fff;
-}
-
-div.auto_complete ul {
-    border: 1px solid #31430f;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    list-style-type: none;
-}
-
-div.auto_complete ul li {
-    margin: 0;
-    padding: 3px;
-    text-align: left;
-}
-
-div.auto_complete ul li.selected {
-    background-color: #dcedad;
-}
-
-div.auto_complete ul strong.highlight {
-    color: #800;
-    margin:0;
-    padding:0;
-}
-</style>
-
-
-
 
 <h1>
 <fmt:message key="image.heading" />
@@ -83,7 +52,7 @@ div.auto_complete ul strong.highlight {
 	    <li>
 	    	<appfuse:label key="image.product" styleClass="desc"/>
 	    	<form:errors path="product" cssClass="fieldError" />
-	    	<input type="text" id="productName" name="productName" onblur="handleAdd()" />
+	    	<input type="text" id="productName" name="productName" value="${image.product.name }" onblur="handleAdd()" />
 	    	<div id="productList" class="auto_complete"></div>
            	<script type="text/javascript">
                	new Autocompleter.DWR('productName', 'productList', updateList,{ valueSelector: nameValueSelector, partialChars: 3 });
