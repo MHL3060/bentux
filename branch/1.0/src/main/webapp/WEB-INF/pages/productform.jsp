@@ -224,11 +224,11 @@ function displayProductDetail(catalogValue) {
 	
 	
 	
-</ul>
-	
-<c:out value="${buttons}" escapeXml="false" />	
-	
 
+<li class="buttonBar bottom">	
+<c:out value="${buttons}" escapeXml="false" />	
+</li>
+</ul>
 </form:form>
 
 <p>
