@@ -1,6 +1,7 @@
 <%@ include file="/common/taglibs.jsp" %>
 
 <script type='text/javascript' src='<c:url value="/dwr/interface/catalogManager.js" />'></script>
+<script type='text/javascript' src='<c:url value="/dwr/interface/manufacturerManager.js" />'></script>
 <script type='text/javascript' src='<c:url value="/dwr/interface/brandNameManager.js" />'></script>
 <script type='text/javascript' src='/dwr/engine.js'></script>
 <script type='text/javascript' src='/dwr/util.js'></script>
@@ -25,7 +26,10 @@
 
 }
 
-
+function refreshOptionList(manager, toNode) {
+	manager.getAll(function(children){addOptions(children, toNode)});  
+	
+}
  function addOptions(array, toDom){
  	dwr.util.removeAllOptions(toDom);
 	var multiple = toDom.multiple;
@@ -124,9 +128,9 @@ function displayProductDetail(catalogValue) {
 <ul>
 
 	<li>
-		<a href="/catalogform.html" target="catalog" ><fmt:message key="catalog.add.item" /></a>
+		<a href="<c:url value="catalogform.html" />"  target="catalog" ><fmt:message key="catalog.add.item" /></a>
 		<p>
-		<a href="#"  onclick="location.href='<c:url value="/productform.html"/>'" /><fmt:message key="refresh.list" /></a>
+		<a href="#"  onclick="refreshList(catalogManager, mainCatalogy); refreshList(catalogManager,catalogs);" /><fmt:message key="refresh.list" /></a>
 		</p>
 		<appfuse:label key="product.catalog" styleClass="desc" />
 		<select name="mainCatalogy" id="mainCatalogy" onchange="fillChildren(this, catalogManager,'parent.id', catalogs); showProduct(this)">
@@ -148,9 +152,9 @@ function displayProductDetail(catalogValue) {
 		
 	</li>
 	<li>
-		<a href="/manufacturerform.html" target="manufacturer"><fmt:message key="add.manufacturer" /></a>
+		<a href="<c:url value="manufacturerform.html" />" target="manufacturer"><fmt:message key="add.manufacturer" /></a>
 		<p>
-			<a href="#"  onclick="location.href='<c:url value="/productform.html"/>'" /><fmt:message key="refresh.list" /></a>
+			<a href="#"  onclick="refreshList(manufacturerManager, manufacturer);" /><fmt:message key="refresh.list" /></a>
 		</p>
 		<%-- <a href="manufacturerform.html" target="manufacturer" ><fmt:message key="manufacturer.add.item" /></a>--%>
 		<appfuse:label key="product.manufacturer" styleClass="desc" />
@@ -162,9 +166,9 @@ function displayProductDetail(catalogValue) {
 		</select>
 	</li>
 	<li>
-		<a href="/brandnameform.html" target="brandName"><fmt:message key="add.brandName" /></a>
+		<a href="<c:url value="brandnameform.html" />" target="brandName"><fmt:message key="add.brandName" /></a>
 		<p>
-			<a href="#"  onclick="location.href='<c:url value="/productform.html"/>'" /><fmt:message key="refresh.list" /></a>
+			<a href="#"  onclick="refreshList(brandNameManager, brandName)" /><fmt:message key="refresh.list" /></a>
 		</p>
 		<appfuse:label key="product.brandName" styleClass="desc" />
 		<form:errors path="brandName"  cssClass="text medium"/>
