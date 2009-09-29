@@ -173,5 +173,14 @@
       		<arg0 key="brandName.name"/>
       	</field>
       </form>
+      
+      <form name="ingredient">
+      	<field property="foodProduct" depends="required">
+      		<arg0 key="ingredient.foodProduct" />
+      	</field>
+      	<field property="name" depends="required">
+      		<arg0 key="ingredient.name"/>
+      	</field>
+      </form> 
   </formset>
 </form-validation>

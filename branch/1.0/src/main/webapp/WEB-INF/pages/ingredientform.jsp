@@ -26,7 +26,19 @@
 
 <form:form commandName="ingredient" method="post" action="ingredientform.html" onsubmit="return onFormSubmit(this)" id="ingredientForm">
         <form:hidden path="id"/>
-        <ul>
+        <ul>            
+        	<li>
+               		<appfuse:label key="ingredient.foodProduct" styleClass="desc" />
+               		<form:errors path="foodProduct" cssClass="fieldError"/>
+               		<spring:bind path="foodProduct">
+               			<select name="foodProduct" id="foodProduct">
+               				${pleaseSelect }
+               				<c:forEach var="foodProduct" items="${foodProducts}">
+               					<option value="${foodProduct.id }" ${foodProduct.id == ingredient.foodProduct.id ? "selected" : "" }>${foodProduct.name }</option>
+               				</c:forEach>
+               			</select>
+               		</spring:bind>
+               </li>
                 <li>
                         <appfuse:label key="ingredient.name" styleClass="desc" />
                         <form:errors path="name" cssClass="fieldError"/>
@@ -37,7 +49,7 @@
                 	<form:errors path="description" cssClass="fieldError" />
                 	<form:textarea path="description" cols="80" rows="5"  />
                 </li>
-                                      <li>
+                <li>
                 	<appfuse:label key="ingredient.amountPerServing" styleClass="desc" />
                 	<form:errors path="amountPerServing" cssClass="fieldError" />
                 	<form:textarea path="amountPerServing" cssStyle="text medium"  />

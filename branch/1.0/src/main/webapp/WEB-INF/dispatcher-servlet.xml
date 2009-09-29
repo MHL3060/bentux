@@ -119,6 +119,7 @@
     	<property name="manufacturerManager" ref="manufacturerManager" />
     </bean>
     <bean id="ingredientFormController" class="local.tux.app.web.controller.IngredientFormController">
+      	<property name="validator" ref="beanValidator"/>
     	<property name="commandClass" value="local.tux.app.model.Ingredient" />
     	<property name="commandName" value="ingredient" />
     	<property name="lookUpManager" ref="ingredientManager" />
