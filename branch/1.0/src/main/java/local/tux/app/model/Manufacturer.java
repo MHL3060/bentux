@@ -1,6 +1,6 @@
 package local.tux.app.model;
 
-import java.io.Serializable;
+
 import java.util.Set;
 
 import javax.persistence.Column;

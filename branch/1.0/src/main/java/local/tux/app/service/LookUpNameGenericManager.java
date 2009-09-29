@@ -13,4 +13,6 @@ public interface LookUpNameGenericManager<T, PK extends Serializable> extends Ge
 	public T getLookUpBaseObject(String name);
 	
 	public List<TuxBaseObject> getRelativeObjects( String key, Long value);
+	
+	public List<T> search(String propertyName, String value);
 }

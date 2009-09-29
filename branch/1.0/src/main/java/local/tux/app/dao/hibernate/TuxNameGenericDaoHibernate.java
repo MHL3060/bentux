@@ -7,6 +7,7 @@ import local.tux.app.dao.TuxNameGenericDao;
 import local.tux.app.model.common.LookUpBaseObject;
 import local.tux.app.model.common.TuxBaseObject;
 
+import org.apache.commons.lang.StringUtils;
 import org.appfuse.dao.hibernate.GenericDaoHibernate;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
@@ -38,6 +39,19 @@ public class TuxNameGenericDaoHibernate<T, PK extends Serializable> extends Gene
 		Session session = getSession();
 		
 		List list =  session.createCriteria(clazz).add(Restrictions.eq(key, id)).list();
+		session.disconnect();
+		return list;
+	}
+
+	public List<T> search(String propertyName, String value) {
+		Session session = getSession();
+		String cleanValue = StringUtils.trimToEmpty(value);
+		if (cleanValue.startsWith("%") || cleanValue.endsWith("%")){
+			
+		}else {
+			cleanValue = "%"+ cleanValue + "%";
+		}
+		List list =  session.createCriteria(clazz).add(Restrictions.ilike(propertyName, cleanValue)).list();
 		session.disconnect();
 		return list;
 	}

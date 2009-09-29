@@ -1,8 +1,10 @@
 <!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
     "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 
-<hibernate-configuration>
+<hibernate-configuration >
     <session-factory>
+    	<property name="hibernate.show_sql">true</property>
+ 		<property name="hibernate.format_sql">true</property>
         <mapping class="org.appfuse.model.User"/>
         <mapping class="org.appfuse.model.Role"/>
         <mapping class="local.tux.app.model.Catalog" />

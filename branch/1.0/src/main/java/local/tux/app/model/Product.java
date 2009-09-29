@@ -241,7 +241,7 @@ public class Product extends LookUpBaseObject {
 
 
 	public Double getDiscountPercentage() {
-		return (price - discountPrice) / price;
+		return discountPercentage;
 	}
 
 	public void setDiscountPercentage(Double discountPercentage) {
@@ -251,9 +251,7 @@ public class Product extends LookUpBaseObject {
 	
 	
 	public Image getFirstImage() {
-		if (images  != null){
-			return images.iterator().next();
-		}
+		
 		return null;
 	}
 

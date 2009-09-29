@@ -19,6 +19,7 @@
 	</display:column>
 	<display:column property="name" titleKey="product.name" sortable="true" />
 	<display:column property="description" titleKey="product.description" maxWords="50" />
+	<display:column property="availability" titleKey="product.availability" />
 	<c:if test="${hasPermission }">
 		<display:column titleKey="product.add.image">
 			<c:url var="imageUrl" value="/imageform.html">
