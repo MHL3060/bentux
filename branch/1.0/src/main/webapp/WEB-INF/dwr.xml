@@ -13,6 +13,7 @@
         	<param name="beanName" value="catalogManager" />
         	<include method="getRelativeObjects" />
         	<include method="getParents" />
+        	<include method="getAll" />
         </create>
         <create creator="spring" javascript="brandNameManager">
         	<param name="class" value="local.tux.app.service.LookUpNameGenericManager" />

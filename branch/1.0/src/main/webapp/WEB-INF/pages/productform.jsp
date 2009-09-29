@@ -26,7 +26,8 @@
 
 }
 
-function refreshOptionList(manager, toNode) {
+function refresOptionhList(manager, toNodeName) {
+	toNode = document.getElementById(toNodeName);
 	manager.getAll(function(children){addOptions(children, toNode)});  
 	
 }
@@ -72,8 +73,13 @@ function refreshOptionList(manager, toNode) {
 		entertainProductNode.style.display = 'none';
 		entertainServiceNode.style.display = 'block';
 	}else if (node.value == null || node.value == '' ) {
-		//do nothing
+		foodNode.style.display = 'none';
+		entertainProductNode.style.display = 'none';
+		entertainServiceNode.style.display = 'none';
 	}else {
+		foodNode.style.display = 'none';
+		entertainProductNode.style.display = 'none';
+		entertainServiceNode.style.display = 'none';
 		alert("unknow Catalog, Please ask Developer to add this product field for you ");
 	}
  }
@@ -130,7 +136,7 @@ function displayProductDetail(catalogValue) {
 	<li>
 		<a href="<c:url value="catalogform.html" />"  target="catalog" ><fmt:message key="catalog.add.item" /></a>
 		<p>
-		<a href="#"  onclick="refreshList(catalogManager, mainCatalogy); refreshList(catalogManager,catalogs);" /><fmt:message key="refresh.list" /></a>
+		<a  name="anchor" id="anchor" onclick="fillChildren(mainCatalogy, catalogManager,'parent.id', catalogs)" /><fmt:message key="refresh.list" /></a>
 		</p>
 		<appfuse:label key="product.catalog" styleClass="desc" />
 		<select name="mainCatalogy" id="mainCatalogy" onchange="fillChildren(this, catalogManager,'parent.id', catalogs); showProduct(this)">
@@ -154,7 +160,7 @@ function displayProductDetail(catalogValue) {
 	<li>
 		<a href="<c:url value="manufacturerform.html" />" target="manufacturer"><fmt:message key="add.manufacturer" /></a>
 		<p>
-			<a href="#"  onclick="refreshList(manufacturerManager, manufacturer);" /><fmt:message key="refresh.list" /></a>
+			<a href="#"  onclick="refresOptionhList(manufacturerManager, 'manufacturer');" /><fmt:message key="refresh.list" /></a>
 		</p>
 		<%-- <a href="manufacturerform.html" target="manufacturer" ><fmt:message key="manufacturer.add.item" /></a>--%>
 		<appfuse:label key="product.manufacturer" styleClass="desc" />
@@ -168,7 +174,7 @@ function displayProductDetail(catalogValue) {
 	<li>
 		<a href="<c:url value="brandnameform.html" />" target="brandName"><fmt:message key="add.brandName" /></a>
 		<p>
-			<a href="#"  onclick="refreshList(brandNameManager, brandName)" /><fmt:message key="refresh.list" /></a>
+			<a href="#"  onclick="refresOptionhList(brandNameManager, 'brandName')" /><fmt:message key="refresh.list" /></a>
 		</p>
 		<appfuse:label key="product.brandName" styleClass="desc" />
 		<form:errors path="brandName"  cssClass="text medium"/>
