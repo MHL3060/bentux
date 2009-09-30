@@ -70,13 +70,13 @@ public class Product extends LookUpBaseObject {
 	@Column(name="day_life")
 	private Long dayLife;
 	
-	@OneToOne(mappedBy="product")
+	@OneToOne(mappedBy="product", optional=true, cascade=CascadeType.ALL)
 	private FoodProduct foodProduct = new FoodProduct();
 	
-	@OneToOne(mappedBy="product")
+	@OneToOne(mappedBy="product", optional=true, cascade=CascadeType.ALL)
 	private EntertainmentService entertainmentService = new EntertainmentService();
 	
-	@OneToOne(mappedBy="product")
+	@OneToOne(mappedBy="product", optional=true, cascade=CascadeType.ALL)
 	private EntertainmentProduct entertainmentProduct = new EntertainmentProduct();
 	
 	@ManyToMany

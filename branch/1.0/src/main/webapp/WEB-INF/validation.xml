@@ -181,6 +181,23 @@
       	<field property="name" depends="required">
       		<arg0 key="ingredient.name"/>
       	</field>
+      </form>
+      <form name="product">
+      	<field property="catalog" depends="required">
+      		<arg0 key="product.catalog" />
+      	</field>
+      	<field property="manufacturer" depends="required" >
+      		<arg0 key="product.manufacturer" />
+      	</field>
+      	<field property="price" depends="required">
+      		<arg0 key="product.price" />
+      	</field>
+      	<field property="brandName" depends="required">
+      		<arg0 key="product.brandName" />
+      	</field>
+      	<field property="name" depends="required">
+      		<arg0 key="product.name" />
+      	</field>
       </form> 
   </formset>
 </form-validation>

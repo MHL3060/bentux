@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import local.tux.Constants;
 import local.tux.TuxBaseObjectConverter;
+import local.tux.app.model.BrandName;
 import local.tux.app.model.Catalog;
 import local.tux.app.model.Manufacturer;
 import local.tux.app.model.Product;
@@ -31,6 +32,12 @@ public class ProductFormController extends BaseFormController {
 	private LookUpNameGenericManager manufacturerManager;
 	private LookUpNameGenericManager productManager;
 
+	private LookUpNameGenericManager<BrandName, Long> brandNameManager;
+	
+	public void setBrandNameManager(LookUpNameGenericManager<BrandName, Long> brandNameManager){
+		this.brandNameManager = brandNameManager;
+	}
+	
 	public void setCatalogManager(CatalogManager catalogManager){
 		this.catalogManager = catalogManager;
 	}
@@ -44,6 +51,8 @@ public class ProductFormController extends BaseFormController {
 	public void initBinder(HttpServletRequest request, ServletRequestDataBinder binder){
 		super.initBinder(request, binder);
 		
+		TuxBaseObjectConverter brandNameConverter = new TuxBaseObjectConverter(brandNameManager);
+		binder.registerCustomEditor(BrandName.class, brandNameConverter);
 		TuxBaseObjectConverter catalogConverter = new TuxBaseObjectConverter(catalogManager);
 		binder.registerCustomEditor(Catalog.class, catalogConverter);
 		binder.registerCustomEditor(Manufacturer.class, new TuxBaseObjectConverter(manufacturerManager));
@@ -70,11 +79,13 @@ public class ProductFormController extends BaseFormController {
 	}
 
 	
+	@SuppressWarnings("unchecked")
 	public ModelAndView onSubmit(HttpServletRequest request, HttpServletResponse response, 
 			Object command, BindException errors) throws Exception{
 
 	
 		Product product = (Product)command;
+		removeUslessProduct(product);
 		String className = command.getClass().getSimpleName();
 		boolean isNew = (product.getId() == null);
 		Locale locale = request.getLocale();
@@ -92,9 +103,24 @@ public class ProductFormController extends BaseFormController {
                 successView = "redirect:productform.html?id=" + product.getId();
             }
 		}catch (Exception e){
+			
 			saveError(request, getText("object.exists",locale));
 			log.error(e);
 		}
 		return new ModelAndView(successView);
+	}
+
+	private void removeUslessProduct(Product product) {
+		Catalog catalog = product.getCatalogs().iterator().next().getParent();
+		if (catalog.getId() == Constants.CATALOG_ENTERTAIN_PRODUCT){
+			product.setFoodProduct(null);
+			product.setEntertainmentService(null);
+		}else if (catalog.getId() == Constants.CATALOG_ENTERTAIN_SERIVCE){
+			product.setFoodProduct(null);
+			product.setEntertainmentProduct(null);
+		}else if (catalog.getId() == Constants.CATALOG_FOOD_PRODUCT){
+			product.setEntertainmentProduct(null);
+			product.setEntertainmentService(null);
+		}
 	}
 }

@@ -148,6 +148,7 @@
     	<property name="productManager" ref="productManager" />
     	<property name="catalogManager" ref="catalogManager" />
     	<property name="manufacturerManager" ref="manufacturerManager" />
+    	<property name="brandNameManager" ref="brandNameManager" />
     </bean>
     
     <!--  compass pages -->
