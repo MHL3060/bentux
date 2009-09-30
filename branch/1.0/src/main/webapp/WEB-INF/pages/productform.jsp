@@ -216,7 +216,14 @@ function displayProductDetail(catalogValue) {
 		<form:errors path="price" cssStyle="fieldErrors" />
 		<form:input path="price" cssStyle="text medium" />
 	</li>
-	
+	<li><p>
+		<fmt:message key="for.discount.price.only" />
+	</p></li>
+	<li>
+		<appfuse:label key="product.discountPrice" styleClass="desc" />
+		<form:errors path="discountPrice" cssStyle="fieldErrors" />
+		<form:input path="discountPrice" cssStyle="text medium" />
+	</li>
 	
 	 <%@ include file="common/food_product.jsp" %>
 	 <%@ include file="common/entertain_service.jsp" %>
