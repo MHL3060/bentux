@@ -1,15 +1,33 @@
 <%@ include file="/common/taglibs.jsp" %>
 <div id="food_product">
 <li>
-	<div class="left">
-		<appfuse:label key="product.foodProduct.weight" styleClass="desc" />
-		<form:errors path="foodProduct.weight" cssStyle="fieldErrors" />
-		<form:input path="foodProduct.weight" cssStyle="text medium" />
-	</div>
 	<div>
-		<appfuse:label key="product.foodProduct.weightUnit" styleClass="desc" />
-		<form:errors path="foodProduct.weightUnit" cssStyle="fieldErrors" />
-		<form:select path="foodProduct.weightUnit"  items="${units}"  cssStyle="text medium" />
+		<a href="<c:url value="ingredientform.html" />" target="ingredient"><fmt:message key="add.ingredient" /></a>
+		<p>
+			<a href="#"  onclick="refresOptionhList(ingredientManager, 'ingredient');" /><fmt:message key="refresh.list" /></a>
+		</p>
+			<appfuse:label key="product.foodProduct.ingredient" styleClass="desc" />
+               		<form:errors path="foodProduct.ingredient" cssClass="fieldError"/>
+               		<spring path="foodProduct.ingredient">
+               			<select name="foodProduct.ingredient" id="foodProduct.ingredient">
+               				${pleaseSelect }
+               				<c:forEach var="ingredient" items="${ingredients}">
+               					<option value="${ingredient.id }" ${ingredient.id == foodProduct.ingredient.id ? "selected" : "" }>${foodProduct.ingredient.name }</option>
+               				</c:forEach>
+               			</select>
+			
+    </div>
+    
+    <li>
+		<div class="left">	
+			<appfuse:label key="product.foodProduct.weight" styleClass="desc" />
+			<form:errors path="foodProduct.weight" cssStyle="fieldErrors" />
+			<form:input path="foodProduct.weight" cssStyle="text medium" />
+		</div>
+		<div>
+			<appfuse:label key="product.foodProduct.weightUnit" styleClass="desc" />
+			<form:errors path="foodProduct.weightUnit" cssStyle="fieldErrors" />
+			<form:select path="foodProduct.weightUnit"  items="${units}"  cssStyle="text medium" />
 		</div>
 	</li>
 	<li>

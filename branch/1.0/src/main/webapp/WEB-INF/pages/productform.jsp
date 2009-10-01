@@ -67,7 +67,7 @@ function refresOptionhList(manager, toNodeName) {
 	}else if (node.value == entertainProduct ) {
 		foodNode.style.display = 'none';
 		entertainProductNode.style.display = 'block';
-		entertainServiceNode.style.display = 'none';	
+		entertainServiceNode.style.display = 'none';
 	}else if (node.value == entertainService ) {
 		foodNode.style.display = 'none';
 		entertainProductNode.style.display = 'none';
