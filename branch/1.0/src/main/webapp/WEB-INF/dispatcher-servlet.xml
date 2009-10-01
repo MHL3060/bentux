@@ -165,4 +165,9 @@
         <property name="pageSize"><value>25</value></property>
     </bean> 
     
+    <bean id="specialController" class="local.tux.app.web.controller.SpecialController">
+    	<property name="paginatedListFactory" ref="paginatedListFactory" />
+    	<property name="pagingLookupManager" ref="pagingLookupManager" />
+    	<property name="pojo" value="local.tux.app.model.Product" />
+    </bean>
 </beans>
