@@ -141,6 +141,7 @@
     	<property name="productManager" ref="productManager" />
     </bean> 
     <bean id="productFormController" class="local.tux.app.web.controller.ProductFormController">
+    	<property name="validator" ref="beanValidator"/>
     	<property name="userManager" ref="userManager" />
     	<property name="commandClass" value="local.tux.app.model.Product" />
     	<property name="commandName" value="product" />
@@ -167,6 +168,7 @@
     
     <bean id="specialController" class="local.tux.app.web.controller.SpecialController">
     	<property name="paginatedListFactory" ref="paginatedListFactory" />
+    	<property name="userManager" ref="userManager" />
     	<property name="pagingLookupManager" ref="pagingLookupManager" />
     	<property name="pojo" value="local.tux.app.model.Product" />
     </bean>
