@@ -47,7 +47,6 @@ public class ProductFormController extends BaseFormController {
 	public void setProductManager(LookUpNameGenericManager productManager){
 		this.productManager = productManager;
 	}
-	
 	public void initBinder(HttpServletRequest request, ServletRequestDataBinder binder){
 		super.initBinder(request, binder);
 		
@@ -61,9 +60,11 @@ public class ProductFormController extends BaseFormController {
 	@SuppressWarnings("unchecked")
 	protected Map referenceData(HttpServletRequest request){
 		Map models = new HashMap(); 
-		models.put("catalogs", catalogManager.getParents());
+		models.put("catalogParents", catalogManager.getParents());
+		models.put("catalogs", catalogManager.getAllChildren());
 		models.put("manufacturers", manufacturerManager.getAll());
 		models.put("units", Constants.WEIGHT_UNIT);
+		models.put("brandNames", brandNameManager.getAll());
 		models.put("foodProduct", Constants.CATALOG_FOOD_PRODUCT);
 		models.put("entertainProduct", Constants.CATALOG_ENTERTAIN_PRODUCT);
 		models.put("entertainService", Constants.CATALOG_ENTERTAIN_SERIVCE);

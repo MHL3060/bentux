@@ -141,7 +141,7 @@ function displayProductDetail(catalogValue) {
 		<appfuse:label key="product.catalog" styleClass="desc" />
 		<select name="mainCatalogy" id="mainCatalogy" onchange="fillChildren(this, catalogManager,'parent.id', catalogs); showProduct(this)">
 			${pleaseSelect }
-			<c:forEach var="catalog" items="${catalogs}">
+			<c:forEach var="catalog" items="${catalogParents}">
 				<option value="${catalog.id }" ${catalog.id == productCatalog.id ? 'selected' : '' } > ${catalog.name}</option>
 			</c:forEach>
 		</select>
@@ -152,6 +152,13 @@ function displayProductDetail(catalogValue) {
 			<form:errors path="catalogs" cssStyle="fieldErrors" />
 			<spring:bind path="catalogs" >
 				<select name="catalogs" id="catalogs" multiple="multiple" size="5"  >
+					<c:forEach var="catalog" items="${catalogs }">
+						<option value="${catalog.id }"
+							<c:forEach var="entered" items="${product.catalogs}">
+								${catalog.id == entered.id ? "selected" : ""}
+							</c:forEach>
+						>${catalog.name}</option>
+					</c:forEach>
 				</select>
 			</spring:bind>
 		</c:if>

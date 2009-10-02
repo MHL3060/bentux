@@ -12,4 +12,5 @@ public interface CatalogManager extends LookUpNameGenericManager<Catalog, Long> 
 	public List<Catalog> getParents();
 	public List<Catalog> getChildren(Catalog parent);
 	public List<Catalog> getChildrenByParentId(Long parentId);
+	public Object getAllChildren();
 }
