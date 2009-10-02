@@ -180,8 +180,8 @@
       	</field>
       </form>
       <form name="product">
-      	<field property="catalog" depends="required">
-      		<arg0 key="product.catalog" />
+      	<field property="catalogs" depends="required">
+      		<arg0 key="product.catalogs" />
       	</field>
       	<field property="manufacturer" depends="required" >
       		<arg0 key="product.manufacturer" />
