@@ -148,7 +148,7 @@ function displayProductDetail(catalogValue) {
 	</li>
 	<li>
 		<c:if test="${not empty catalogs }">	
-			<appfuse:label key="product.catalog" styleClass="desc" />
+			<appfuse:label key="product.catalogs" styleClass="desc" />
 			<form:errors path="catalogs" cssStyle="fieldErrors" />
 			<spring:bind path="catalogs" >
 				<select name="catalogs" id="catalogs" multiple="multiple" size="5"  >
