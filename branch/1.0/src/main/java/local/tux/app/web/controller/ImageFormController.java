@@ -50,14 +50,7 @@ public class ImageFormController extends LookUpTableController {
 	public void setProductManager(LookUpNameGenericManager productManager){
 		this.productManager = productManager;
 	}
-	@SuppressWarnings("unchecked")
-	public Map referenceData(HttpServletRequest request, Object command,
-			Errors error) throws Exception {
-		Map map = super.referenceData(request, command, error);
-		map.put("products", productManager.getAll());
-		return map;
-		
-	}
+	
 	@SuppressWarnings("unchecked")
 	protected Object formBackingObject(HttpServletRequest request) throws Exception {
 		Object object = super.formBackingObject(request);

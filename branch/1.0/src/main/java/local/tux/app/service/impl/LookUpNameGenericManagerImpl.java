@@ -44,7 +44,7 @@ public class LookUpNameGenericManagerImpl<T, PK extends Serializable> extends Ge
 		return genericDao.getRelativeObjects(key, value);
 	}
 	public List<T> search(String propertyName, String value){
-		return genericDao.search(propertyName ,value);
+		return genericDao.search(propertyName ,value).subList(0, 20);
 	}
 
 }
