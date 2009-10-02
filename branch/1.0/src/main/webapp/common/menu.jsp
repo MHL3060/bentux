@@ -10,6 +10,12 @@
      	</a>
      </li>
      <li>
+     	<a href="<c:url value="/maincatalog.jsp"/>" class="${pageContext.request.requestURI == '/maincatalog.jsp' ? 'current' : '' }" >
+     		<fmt:message key="main.catalog" />
+     	</a>
+     
+     </li>
+     <li>
      	<a href="<c:url value="/productlist.html"/>" class="${pageContext.request.requestURI == '/productlist.html' ? 'current' : '' }" >
      		<fmt:message key="product.list" />
      	</a>
