@@ -1,4 +1,33 @@
 <%@ include file="/common/taglibs.jsp" %>
+<script type='text/javascript' src='<c:url value="/dwr/interface/imageManager.js" />'></script>
+<script type='text/javascript' src='<c:url value="/dwr/engine.js" />'></script>
+<script type='text/javascript' src='<c:url value="/dwr/util.js" />'></script>
+<script type="text/javascript" src="<c:url value="/scripts/prototype.js" />" ></script>
+<script type="text/javascript" src="<c:url value="/scripts/effects.js" />" ></script>
+<script type="text/javascript" src="<c:url value="/scripts/controls.js" />" ></script>
+<script type="text/javascript" src="<c:url value="/scripts/autocomplete.js" />" ></script>
+<link rel="stylesheet" type="text/css" href="<c:url value='/styles/autocomplete.css'/>" />
+<script type="text/javascript">
+	
+	function updateList(autocompleter, token) {
+         // AddressServiceFacade.findCompletePostalCodes(token, function(data) { autocompleter.setChoices(data) });
+        <%--       
+        			name: the property of the POJO
+        			token: 
+        			function(data): the DWR callback
+        --%>
+        imageManager.search('name',token, function(data) {autocompleter.setChoices(data) });
+    }
+    function nameValueSelector(tag){
+     	return tag.name;
+    }
+	function handleAdd() {
+		var searchString = DWRUtil.getValue('imageName');
+		imageManager.getLookUpBaseObject(searchString, function(LookUpBaseObject){dwr.util.setValue('image',LookUpBaseObject.id)});
+	}
+	
+</script>
+
 
 <h1><fmt:message key="catalog.heading" /></h1>
 
@@ -23,9 +52,9 @@
     </li>
 </c:set>
 
-
 <form:form commandName="catalog" method="post" action="catalogform.html" onsubmit="return onFormSubmit(this)" id="catalogForm">
         <form:hidden path="id"/>
+        <form:hidden path="image" />
         <ul>
                 <li>
                 	<appfuse:label key="catalog.parent" styleClass="desc" />
@@ -39,6 +68,16 @@
                 		 
                 		</select>
                 	</spring:bind>
+                </li>
+                <li>
+                	<appfuse:label key="catalog.image" styleClass="desc" />
+                	<form:errors path="image" cssClass="fieldError" />
+                	<input type="text" id="imageName" name="imageName" value="${image.product.name }" onblur="handleAdd()" />
+			    	<div id="imageList" class="auto_complete"></div>
+		           	<script type="text/javascript">
+		               	new Autocompleter.DWR('imageName', 'imageList', updateList,{ valueSelector: nameValueSelector, partialChars: 3 });
+		           	</script>
+                
                 </li>
                 <li>
                         <appfuse:label key="catalog.name" styleClass="desc" />

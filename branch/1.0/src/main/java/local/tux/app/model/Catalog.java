@@ -62,11 +62,13 @@ public class Catalog extends LookUpBaseObject {
 	@ManyToOne
 	@JoinColumn(name="parent")
 	private Catalog parent;
-	
+
+	@Column(name="display_order")
+	private Long displayOrder;
 	public String getName() {
 		return name;
 	}
-
+	
 	
 	@Override
 	public void setName(String name) {
@@ -104,7 +106,14 @@ public class Catalog extends LookUpBaseObject {
 	}
 
 
-	
+	public Long getDisplayOrder() {
+		return displayOrder;
+	}
+
+
+	public void setDisplayOrder(Long displayOrder) {
+		this.displayOrder = displayOrder;
+	}
 
 
 	@Override

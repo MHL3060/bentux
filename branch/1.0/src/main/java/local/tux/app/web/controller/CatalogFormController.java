@@ -11,8 +11,10 @@ import org.springframework.web.bind.ServletRequestDataBinder;
 
 import local.tux.TuxBaseObjectConverter;
 import local.tux.app.model.Catalog;
+import local.tux.app.model.Image;
 import local.tux.app.model.Manufacturer;
 import local.tux.app.service.CatalogManager;
+import local.tux.app.service.LookUpNameGenericManager;
 import local.tux.app.web.common.controller.LookUpTableController;
 /**
  * don't delete this class.
@@ -22,10 +24,17 @@ import local.tux.app.web.common.controller.LookUpTableController;
  */
 public class CatalogFormController extends LookUpTableController {
 	
+	private LookUpNameGenericManager<Image, Long> imageManager;
+
+	public void setImageManager(LookUpNameGenericManager<Image, Long> imageManager){
+		this.imageManager = imageManager;
+	}
 	public void initBinder(HttpServletRequest request, ServletRequestDataBinder binder){
 		super.initBinder(request, binder);
 		TuxBaseObjectConverter catalogConverter = new TuxBaseObjectConverter(lookUpManager);
 		binder.registerCustomEditor(Catalog.class, catalogConverter);
+		TuxBaseObjectConverter imageConverter = new TuxBaseObjectConverter(imageManager);
+		binder.registerCustomEditor(Image.class, imageConverter);
 	}
 
 	@SuppressWarnings("unchecked")

@@ -1,29 +1,60 @@
 <%@ include file="/common/taglibs.jsp" %>
 
-<h1><fmt:message key="catalog.heading" /></h1>
+<script type="text/javascript" src="<c:url value="/scripts/corners.js" />"></script>
 
 
-<c:set var="button">
-	<input type="button" style="margin-right: 5px"
-        onclick="location.href='<c:url value="/catalogform.html"/>'"
-        value="<fmt:message key="button.add"/>"/>
-</c:set>
 
-<c:if test="hasPermission">
-	<c:out value="${button }" escapeXml="false" />
-</c:if>
-<display:table name="list" id="list" pagesize="25" class="table" requestURI="catalogform.html">
-        <display:column property="id" titleKey="lookup.id" />
-        <display:column property="name" titleKey="lookup.name" sortable="true"/>
-		<display:column property="description" titleKey="catalog.description" sortable="false" />
-		<display:column titleKey="catalog.view.product">
-			<c:url var="url" value="/productlist.html">
-				<c:param name="catalogId" value="${list.id}" />
-			</c:url>
-			<a href="${url }"><fmt:message key="catalog.view.product" /></a>
-		</display:column>
-</display:table>
 
-<c:if test="hasPermission">
-	<c:out value="${button }" escapeXml="false" />
-</c:if>
+
+<script type="text/javascript">
+
+Event.observe(window, 'load', function() {
+$$('div.catalog').each(function(el) {
+        
+    new Effect.Corner(el);
+	});
+});
+$('product').observe('click', function(event) {
+	  event.stop();
+	  
+	  new Effect.Parallel([
+	    new Effect.Move('whole', { sync: true, x: 400, y: 0, mode: 'relative' }), 
+	    new Effect.Opacity('whole', { sync: true, from: 1, to: 0 })
+	  ], { 
+	    duration: 1.5
+	  });
+	});
+
+
+</script>
+<style>
+div.section { clear: left; }
+div.catalog { 
+    float: left; 
+	width: 15em; 
+	padding: 40px; 
+	margin: 1em;
+	height: 100px;
+    background: #ccc; 
+    color:#000; 
+    text-align: center; 
+    font: verdana, arial, sans-serif;
+}
+div.center{
+	float: left;
+	padding-left: 12em;
+
+}
+div.fun  { margin: 2px; }
+</style>
+<h1><fmt:message key="catalog.title" /></h1> 
+<div id="whole" class="center">
+	<c:forEach var="catalog" items="${tuxBaseObjectList.list}">
+	<div class="catalog">
+		<img alt="image holder" src="<c:url value="${catalog.image.thumbPath }" />" />
+		<a class="product" href="<c:url value="/productlist.html?cid=${catalog.id}" />" > ${catalog.name}</a>
+	</div>
+	</c:forEach>
+</div>
+
+

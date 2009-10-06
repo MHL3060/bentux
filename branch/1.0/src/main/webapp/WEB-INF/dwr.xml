@@ -35,6 +35,15 @@
         	<include method="getAll" />
         	<include method="search" />
         </create>
+        
+        <create creator="spring" javascript="imageManager" >
+        	<param name="class" value="local.tux.app.service.LookUpNameGenericManager" />
+        	<param name="beanName" value="imageManager" />
+        	<include method="getLookUpBaseObject" />
+        	<include method="getAll" />
+        	<include method="search" />
+        </create>
+        
         <convert converter="bean" match="local.tux.app.model.Product" />
         <convert converter="bean" match="local.tux.app.model.FoodProduct" />
         <convert converter="bean" match="local.tux.app.model.Image" />

@@ -95,7 +95,12 @@
         <property name="prefix" value="/WEB-INF/pages/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
-    
+    <bean id="catalogController" class="local.tux.app.web.controller.CatalogController">
+    	<property name="paginatedListFactory" ref="paginatedListFactory" />
+    	<property name="userManager" ref="userManager" />
+    	<property name="pagingLookupManager" ref="pagingLookupManager" />
+    	<property name="pojo" value="local.tux.app.model.Catalog" />
+    </bean>
     <!--  your own pages -->
     <bean id="catalogFormController" class="local.tux.app.web.controller.CatalogFormController">
     	 <property name="validator" ref="beanValidator"/>
@@ -103,6 +108,8 @@
     	<property name="commandName" value="catalog" />
     	<property name="successView" value="redirect:catalogform.html"/>
     	<property name="lookUpManager" ref="catalogManager" />
+    	<property name="imageManager" ref="imageManager" />
+    	
     </bean>    
     <bean id="imageFormController" class="local.tux.app.web.controller.ImageFormController">
     	 <property name="validator" ref="beanValidator"/>

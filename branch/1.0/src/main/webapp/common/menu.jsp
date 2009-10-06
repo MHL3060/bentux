@@ -10,7 +10,7 @@
      	</a>
      </li>
      <li>
-     	<a href="<c:url value="/maincatalog.jsp"/>" class="${pageContext.request.requestURI == '/maincatalog.jsp' ? 'current' : '' }" >
+     	<a href="<c:url value="/catalogs.html"/>" class="${pageContext.request.requestURI == '/catalogs.html' ? 'current' : '' }" >
      		<fmt:message key="main.catalog" />
      	</a>
      

@@ -15,6 +15,7 @@
             <Item name="Image" title="mainMenu.image" page="/imageform.html" />
             <Item name="Reindex" title="mainMenu.reindex" page="/reindex.html" />
         </Menu>
+        <Menu name="CatalogMenu" title="catalog.menu" page="/catalogs.html" roles="ROLE_ADMIN,ROLE_USER,ROLE_ANONYMOUS" />
         <Menu name="Logout" title="user.logout" page="/logout.jsp" roles="ROLE_ADMIN,ROLE_USER"/>
         <Menu name="AboutUs" title="menu.about.us" page="/about_us.jsp" roles="ROLE_ADMIN,ROLE_USER,ROLE_ANONYMOUS" />
     </Menus>

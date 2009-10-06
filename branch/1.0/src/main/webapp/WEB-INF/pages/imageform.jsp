@@ -1,8 +1,8 @@
 <%@ include file="/common/taglibs.jsp" %>
 <script type='text/javascript' src='<c:url value="/dwr/interface/productManager.js" />'></script>
+<%-- the order is very important. I have spend a few hours scatching my head to wonder why it doesn't work --%>
 <script type='text/javascript' src='<c:url value="/dwr/engine.js" />'></script>
 <script type='text/javascript' src='<c:url value="/dwr/util.js" />'></script>
-<%-- the order is very important. I have spend a few hours scatching my head to wonder why it doesn't work --%>
 <script type="text/javascript" src="<c:url value="/scripts/prototype.js" />" ></script>
 <script type="text/javascript" src="<c:url value="/scripts/effects.js" />" ></script>
 <script type="text/javascript" src="<c:url value="/scripts/controls.js" />" ></script>
@@ -11,7 +11,6 @@
 <script type="text/javascript">
 	
 	function updateList(autocompleter, token) {
-         // AddressServiceFacade.findCompletePostalCodes(token, function(data) { autocompleter.setChoices(data) });
         productManager.search('name',token, function(data) {autocompleter.setChoices(data) });
     }
     function nameValueSelector(tag){
@@ -23,7 +22,7 @@
 	}
 	
 </script>
-
+<%-- end ajax add --%>
 <h1>
 <fmt:message key="image.heading" />
 </h1>

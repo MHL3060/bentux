@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import local.tux.Constants;
 import local.tux.app.dao.TuxNameGenericDao;
 import local.tux.app.model.Catalog;
 import local.tux.app.model.common.TuxBaseObject;
@@ -44,7 +45,11 @@ public class LookUpNameGenericManagerImpl<T, PK extends Serializable> extends Ge
 		return genericDao.getRelativeObjects(key, value);
 	}
 	public List<T> search(String propertyName, String value){
-		return genericDao.search(propertyName ,value).subList(0, 20);
+		try {
+			return genericDao.search(propertyName ,value).subList(0, 20);
+		}catch (Exception e){
+			return (List<T>) Constants.EMPTY_LIST;
+		}
 	}
 
 }
