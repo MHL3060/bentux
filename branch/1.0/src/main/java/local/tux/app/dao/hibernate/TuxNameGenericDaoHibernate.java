@@ -3,6 +3,7 @@ package local.tux.app.dao.hibernate;
 import java.io.Serializable;
 import java.util.List;
 
+import local.tux.Constants;
 import local.tux.app.dao.TuxNameGenericDao;
 import local.tux.app.model.common.LookUpBaseObject;
 import local.tux.app.model.common.TuxBaseObject;
@@ -10,6 +11,8 @@ import local.tux.app.model.common.TuxBaseObject;
 import org.apache.commons.lang.StringUtils;
 import org.appfuse.dao.hibernate.GenericDaoHibernate;
 import org.hibernate.Session;
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
 
@@ -43,7 +46,7 @@ public class TuxNameGenericDaoHibernate<T, PK extends Serializable> extends Gene
 		return list;
 	}
 
-	public List<T> search(String propertyName, String value) {
+	public List<T> search(String propertyName, String value, int fetchSize) {
 		Session session = getSession();
 		String cleanValue = StringUtils.trimToEmpty(value);
 		if (cleanValue.startsWith("%") || cleanValue.endsWith("%")){
@@ -51,9 +54,20 @@ public class TuxNameGenericDaoHibernate<T, PK extends Serializable> extends Gene
 		}else {
 			cleanValue = "%"+ cleanValue + "%";
 		}
-		List list =  session.createCriteria(clazz).add(Restrictions.ilike(propertyName, cleanValue)).list();
+		List list =  session.createCriteria(clazz).add(Restrictions.ilike(propertyName, cleanValue))
+												.setFetchSize(fetchSize).list();
 		session.disconnect();
 		return list;
+	}
+	public int getAllRecordsCount() {
+		int count = 0;
+		DetachedCriteria criteria = DetachedCriteria.forClass(clazz);
+		criteria.setProjection(Projections.rowCount());
+		List results = getHibernateTemplate().findByCriteria(criteria);
+		if (results.size() > 0){
+			count = ((Integer) results.get(0)).intValue();
+		}
+		return count;
 	}
 
 }

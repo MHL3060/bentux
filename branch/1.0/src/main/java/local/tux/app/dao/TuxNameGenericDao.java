@@ -19,6 +19,7 @@ public interface TuxNameGenericDao<T, PK extends Serializable> extends GenericDa
 	 */
 	public T getLookUpBaseObject( String name); 
 	public List<TuxBaseObject>  getRelativeObjects(String key, Long object);
-	public List<T> search(String propertyName, String value);
+	public List<T> search(String propertyName, String value, int fetchSize);
+	public int getAllRecordsCount();
 	
 }

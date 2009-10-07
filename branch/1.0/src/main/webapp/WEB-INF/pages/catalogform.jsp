@@ -37,6 +37,12 @@
         <display:column property="name" titleKey="lookup.name" sortable="true"/>
 		<display:column property="parent.name" titleKey="lookup.parent" sortable="true" />
 		<display:column property="description" titleKey="lookup.description" />
+		<display:column sortProperty="displayOrder" titleKey="lookup.displayOrder" >
+			<c:url var="url" value="catalogform.html" >
+				<c:param name="id" value="${list.id" />
+				<c:param name="displayOrder" value="true" />
+			</c:url>
+		</display:column>
 </display:table>
 
 <c:set var="id" value="${catalog.id}" />
@@ -88,6 +94,11 @@
                 	<appfuse:label key="catalog.description" styleClass="desc" />
                 	<form:errors path="description" cssClass="fieldError" />
                 	<form:textarea path="description" cols="80" rows="5"  />
+                </li>
+                <li>
+                	<appfuse:label key="catalog.displayOrder" styleClass="desc" />
+                	<form:errors path="displayOrder" cssClass="fieldError" />
+                	<form:input path="displayOrder"  />
                 </li>
         </ul>
 		

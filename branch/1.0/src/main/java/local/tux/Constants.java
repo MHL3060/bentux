@@ -22,5 +22,6 @@ public interface Constants {
 	public final int CATALOG_FOOD_PRODUCT = -1;
 	public final int CATALOG_ENTERTAIN_PRODUCT = -2;
 	public final int CATALOG_ENTERTAIN_SERIVCE = -3;
+	public final int AJAX_SIZE = 25;
 	
 }

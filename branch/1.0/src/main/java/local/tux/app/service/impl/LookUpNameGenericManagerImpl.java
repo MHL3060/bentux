@@ -45,11 +45,13 @@ public class LookUpNameGenericManagerImpl<T, PK extends Serializable> extends Ge
 		return genericDao.getRelativeObjects(key, value);
 	}
 	public List<T> search(String propertyName, String value){
-		try {
-			return genericDao.search(propertyName ,value).subList(0, 20);
-		}catch (Exception e){
-			return (List<T>) Constants.EMPTY_LIST;
-		}
+		
+		return genericDao.search(propertyName ,value, Constants.AJAX_SIZE);
+		
+	}
+
+	public int getAllRecordsCount() {
+		return genericDao.getAllRecordsCount();
 	}
 
 }
