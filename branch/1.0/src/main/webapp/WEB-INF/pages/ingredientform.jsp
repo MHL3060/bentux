@@ -1,5 +1,28 @@
 <%@ include file="/common/taglibs.jsp" %>
-
+<script type='text/javascript' src='<c:url value="/dwr/interface/productManager.js" />'></script>
+<%-- the order is very important. I have spend a few hours scatching my head to wonder why it doesn't work --%>
+<script type='text/javascript' src='<c:url value="/dwr/engine.js" />'></script>
+<script type='text/javascript' src='<c:url value="/dwr/util.js" />'></script>
+<script type="text/javascript" src="<c:url value="/scripts/prototype.js" />" ></script>
+<script type="text/javascript" src="<c:url value="/scripts/effects.js" />" ></script>
+<script type="text/javascript" src="<c:url value="/scripts/controls.js" />" ></script>
+<script type="text/javascript" src="<c:url value="/scripts/autocomplete.js" />" ></script>
+<link rel="stylesheet" type="text/css" href="<c:url value='/styles/autocomplete.css'/>" />
+<script type="text/javascript">
+	
+	function updateList(autocompleter, token) {
+        productManager.search('name',token, function(data) {autocompleter.setChoices(data) });
+    }
+    function nameValueSelector(tag){
+     	return tag.name;
+    }
+	function handleAdd() {
+		var searchString = DWRUtil.getValue('productName');
+		productManager.getLookUpBaseObject(searchString, function(product){dwr.util.setValue('product',product.id)});
+	}
+	
+	
+</script>
 <h1><fmt:message key="ingredient.heading" /></h1>
 
 <display:table name="list" id="list" pagesize="25" class="table" requestURI="ingredientform.html">
@@ -8,6 +31,7 @@
 		<display:column property="description" titleKey="lookup.description" />
 		<display:column property="amountPerServing" titleKey="lookup.amountPerServing"/>
         <display:column property="percentage" titleKey="lookup.percentage"/>
+        <display:column property="foodProduct.product.name" titleKey="foodProduct.product.name" sortable="true" />
 </display:table>
 
 <c:set var="id" value="${ingredient.id}" />
@@ -27,19 +51,20 @@
 <form:form commandName="ingredient" method="post" action="ingredientform.html" onsubmit="return onFormSubmit(this)" id="ingredientForm">
         <form:hidden path="id"/>
         <ul>            
-        	<li>
-               		<appfuse:label key="ingredient.foodProduct" styleClass="desc" />
-               		<form:errors path="foodProduct" cssClass="fieldError"/>
-               		<spring:bind path="foodProduct">
-               			<select name="foodProduct" id="foodProduct">
-               				${pleaseSelect }
-               				<c:forEach var="foodProduct" items="${foodProducts}">
-               					<option value="${foodProduct.id }" ${foodProduct.id == ingredient.foodProduct.id ? "selected" : "" }>${foodProduct.name }</option>
-               				</c:forEach>
-               			</select>
-               		</spring:bind>
-               </li>
-                <li>
+      
+	 			 <li>
+	 			 <appfuse:label key="ingredient.foodProduct.product" styleClass="desc"/>
+		    	 <form:errors path="foodProduct" cssClass="fieldError" />
+		    	 <input type="text" id="foodProduct" name="foodProduct" value="${ingredient.foodProduct.product.name }" onblur="handleAdd()" />
+		    	 <div id="foodProductList" class="auto_complete"></div>
+	           	 <script type="text/javascript">
+	               	new Autocompleter.DWR('foodProduct', 'foodProductList', updateList,{ valueSelector: nameValueSelector, partialChars: 3 });
+	           	 </script>
+	           	 
+	           	 
+	           	 </li>
+	           	 	
+		         <li>
                         <appfuse:label key="ingredient.name" styleClass="desc" />
                         <form:errors path="name" cssClass="fieldError"/>
                         <form:input path="name" cssStyle="text medium"/>

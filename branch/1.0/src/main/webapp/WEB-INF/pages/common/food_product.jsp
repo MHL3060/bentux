@@ -1,23 +1,6 @@
 <%@ include file="/common/taglibs.jsp" %>
 <div id="food_product">
 <li>
-	<div>
-		<a href="<c:url value="ingredientform.html" />" target="ingredient"><fmt:message key="add.ingredient" /></a>
-		<p>
-			<a href="#"  onclick="refresOptionhList(ingredientManager, 'ingredient');" /><fmt:message key="refresh.list" /></a>
-		</p>
-			<appfuse:label key="product.foodProduct.ingredient" styleClass="desc" />
-               		<form:errors path="foodProduct.ingredient" cssClass="fieldError"/>
-               		<spring path="foodProduct.ingredient">
-               			<select name="foodProduct.ingredient" id="foodProduct.ingredient">
-               				${pleaseSelect }
-               				<c:forEach var="ingredient" items="${ingredients}">
-               					<option value="${ingredient.id }" ${ingredient.id == foodProduct.ingredient.id ? "selected" : "" }>${foodProduct.ingredient.name }</option>
-               				</c:forEach>
-               			</select>
-			
-    </div>
-    
     <li>
 		<div class="left">	
 			<appfuse:label key="product.foodProduct.weight" styleClass="desc" />

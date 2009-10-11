@@ -130,6 +130,7 @@
     	<property name="commandClass" value="local.tux.app.model.Ingredient" />
     	<property name="commandName" value="ingredient" />
     	<property name="lookUpManager" ref="ingredientManager" />
+    	<property name="foodProductManager" ref="foodProductManager" />
     </bean>
     <bean id="manufacturerFormController" class="local.tux.app.web.controller.ManufacturerFormController">
     	 <property name="validator" ref="beanValidator"/>
@@ -157,8 +158,8 @@
     	<property name="catalogManager" ref="catalogManager" />
     	<property name="manufacturerManager" ref="manufacturerManager" />
     	<property name="brandNameManager" ref="brandNameManager" />
+    	<property name="ingredientManager" ref="ingredientManager" />
     </bean>
-    
     <!--  compass pages -->
     <bean id="indexController" class="org.compass.spring.web.mvc.CompassIndexController">
         <property name="compassGps"><ref bean="compassGps"/></property>
