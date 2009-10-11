@@ -39,7 +39,7 @@
 		<display:column property="description" titleKey="lookup.description" />
 		<display:column sortProperty="displayOrder" titleKey="lookup.displayOrder" >
 			<c:url var="url" value="catalogform.html" >
-				<c:param name="id" value="${list.id" />
+				<c:param name="id" value="${list.id}" />
 				<c:param name="displayOrder" value="true" />
 			</c:url>
 		</display:column>
