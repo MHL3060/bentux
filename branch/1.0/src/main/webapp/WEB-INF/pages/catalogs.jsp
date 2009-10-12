@@ -45,14 +45,14 @@ div.center{
 	padding-left: 12em;
 
 }
-div.fun  { margin: 2px; }
+
 </style>
 <h1><fmt:message key="catalog.title" /></h1> 
 <div id="whole" class="center">
 	<c:forEach var="catalog" items="${tuxBaseObjectList.list}">
 	<div class="catalog">
 		<img alt="image holder" src="<c:url value="${catalog.image.thumbPath }" />" />
-		<a class="product" href="<c:url value="/productlist.html?cid=${catalog.id}" />" > ${catalog.name}</a>
+		<a class="product" href="<c:url value="/subcatalogs.html?pid=${catalog.id}" />" > ${catalog.name}</a>
 	</div>
 	</c:forEach>
 </div>
