@@ -169,7 +169,6 @@ function displayProductDetail(catalogValue) {
 		<p>
 			<a href="#"  onclick="refresOptionhList(manufacturerManager, 'manufacturer');" /><fmt:message key="refresh.list" /></a>
 		</p>
-		<%-- <a href="manufacturerform.html" target="manufacturer" ><fmt:message key="manufacturer.add.item" /></a>--%>
 		<appfuse:label key="product.manufacturer" styleClass="desc" />
 		<select id="manufacturer" name="manufacturer" class="text medium" onchange="fillChildren(this,brandNameManager,'manufacturer.id', brandName)">
 			<c:out value="${pleaseSelect}" escapeXml="flase" />

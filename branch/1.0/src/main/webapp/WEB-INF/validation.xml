@@ -183,9 +183,6 @@
       	<field property="catalogs" depends="required">
       		<arg0 key="product.catalogs" />
       	</field>
-      	<field property="manufacturer" depends="required" >
-      		<arg0 key="product.manufacturer" />
-      	</field>
       	<field property="price" depends="required">
       		<arg0 key="product.price" />
       	</field>
