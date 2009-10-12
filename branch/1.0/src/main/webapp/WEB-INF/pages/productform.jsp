@@ -147,21 +147,21 @@ function displayProductDetail(catalogValue) {
 		</select>
 	</li>
 	<li>
-		<c:if test="${not empty catalogs }">	
-			<appfuse:label key="product.catalogs" styleClass="desc" />
-			<form:errors path="catalogs" cssStyle="fieldErrors" />
-			<spring:bind path="catalogs" >
-				<select name="catalogs" id="catalogs" multiple="multiple" size="5"  >
-					<c:forEach var="catalog" items="${catalogs }">
-						<option value="${catalog.id }"
-							<c:forEach var="entered" items="${product.catalogs}">
-								${catalog.id == entered.id ? "selected" : ""}
-							</c:forEach>
-						>${catalog.name}</option>
-					</c:forEach>
-				</select>
-			</spring:bind>
-		</c:if>
+			
+		<appfuse:label key="product.catalogs" styleClass="desc" />
+		<form:errors path="catalogs" cssStyle="fieldErrors" />
+		<spring:bind path="catalogs" >
+			<select name="catalogs" id="catalogs" multiple="multiple" size="5"  >
+				<c:forEach var="catalog" items="${catalogs }">
+					<option value="${catalog.id }"
+						<c:forEach var="entered" items="${product.catalogs}">
+							${catalog.id == entered.id ? "selected" : ""}
+						</c:forEach>
+					>${catalog.name}</option>
+				</c:forEach>
+			</select>
+		</spring:bind>
+		
 		
 	</li>
 	<li>

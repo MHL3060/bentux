@@ -33,6 +33,7 @@ public class ProductFormController extends BaseFormController {
 	private LookUpNameGenericManager productManager;
 
 	private LookUpNameGenericManager<BrandName, Long> brandNameManager;
+	private LookUpNameGenericManager ingredientManager;
 	
 	public void setBrandNameManager(LookUpNameGenericManager<BrandName, Long> brandNameManager){
 		this.brandNameManager = brandNameManager;
@@ -46,6 +47,10 @@ public class ProductFormController extends BaseFormController {
 	}
 	public void setProductManager(LookUpNameGenericManager productManager){
 		this.productManager = productManager;
+	}
+	@SuppressWarnings("unchecked")
+	public void setIngredientManager(LookUpNameGenericManager ingredientManager){
+		this.ingredientManager = ingredientManager;
 	}
 	public void initBinder(HttpServletRequest request, ServletRequestDataBinder binder){
 		super.initBinder(request, binder);
@@ -68,6 +73,7 @@ public class ProductFormController extends BaseFormController {
 		models.put("foodProduct", Constants.CATALOG_FOOD_PRODUCT);
 		models.put("entertainProduct", Constants.CATALOG_ENTERTAIN_PRODUCT);
 		models.put("entertainService", Constants.CATALOG_ENTERTAIN_SERIVCE);
+		models.put("ingredients", ingredientManager.getAll());
 		return models;
 	}
 	
