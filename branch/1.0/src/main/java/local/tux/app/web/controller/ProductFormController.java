@@ -13,6 +13,9 @@ import local.tux.Constants;
 import local.tux.TuxBaseObjectConverter;
 import local.tux.app.model.BrandName;
 import local.tux.app.model.Catalog;
+import local.tux.app.model.EntertainmentProduct;
+import local.tux.app.model.EntertainmentService;
+import local.tux.app.model.FoodProduct;
 import local.tux.app.model.Manufacturer;
 import local.tux.app.model.Product;
 import local.tux.app.model.common.LookUpBaseObject;
@@ -80,7 +83,17 @@ public class ProductFormController extends BaseFormController {
 	protected Object formBackingObject(HttpServletRequest request) throws Exception{
 		String id = request.getParameter("id");
 		if (!StringUtils.isBlank(id)){
-			return productManager.get(new Long(id));
+			Product product =  (Product) productManager.get(new Long(id));
+			if (product.getFoodProduct() == null){
+				product.setFoodProduct(new FoodProduct());
+			}
+			if (product.getEntertainmentProduct() == null){
+				product.setEntertainmentProduct(new EntertainmentProduct());
+			}
+			if (product.getEntertainmentService() == null){
+				product.setEntertainmentService(new EntertainmentService());
+			}
+			return product;
 		}
 		return new Product();
 	}
