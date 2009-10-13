@@ -26,6 +26,7 @@ import local.tux.app.service.LookUpNameGenericManager;
 import org.apache.commons.lang.StringUtils;
 import org.appfuse.webapp.controller.BaseFormController;
 import org.springframework.validation.BindException;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -66,7 +67,7 @@ public class ProductFormController extends BaseFormController {
 	}
 
 	@SuppressWarnings("unchecked")
-	protected Map referenceData(HttpServletRequest request){
+	protected Map referenceData(HttpServletRequest request, Object command, Errors errors){
 		Map models = new HashMap(); 
 		models.put("catalogParents", catalogManager.getParents());
 		models.put("catalogs", catalogManager.getAllChildren());
@@ -77,7 +78,12 @@ public class ProductFormController extends BaseFormController {
 		models.put("entertainProduct", Constants.CATALOG_ENTERTAIN_PRODUCT);
 		models.put("entertainService", Constants.CATALOG_ENTERTAIN_SERIVCE);
 		models.put("ingredients", ingredientManager.getAll());
-		
+		if (command != null ){
+			Product p = (Product) command;
+			if (p.getCatalogs() != null && p.getCatalogs().size() > 0){
+				models.put("parentCatalog", p.getCatalogs().iterator().next().getParent());
+			}
+		}
 		return models;
 	}
 	

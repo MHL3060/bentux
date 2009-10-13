@@ -92,6 +92,10 @@ function displayProductDetail(catalogValue) {
 
 	
 }
+Event.observe(window, 'load', function() {
+	var node = document.getElementById("mainCategory");
+	showProduct(node);
+});
 </script>
 
 <style>
@@ -139,15 +143,15 @@ function displayProductDetail(catalogValue) {
 		<a  name="anchor" id="anchor" onclick="fillChildren(mainCatalogy, catalogManager,'parent.id', catalogs)" /><fmt:message key="refresh.list" /></a>
 		</p>
 		<appfuse:label key="product.catalog" styleClass="desc" />
-		<select name="mainCatalogy" id="mainCatalogy" onchange="fillChildren(this, catalogManager,'parent.id', catalogs); showProduct(this)">
+		<select name="mainCategory" id="mainCategory" onchange="fillChildren(this, catalogManager,'parent.id', catalogs); showProduct(this)">
 			${pleaseSelect }
 			<c:forEach var="catalog" items="${catalogParents}">
-				<option value="${catalog.id }" ${catalog.id == productCatalog.id ? 'selected' : '' } > ${catalog.name}</option>
+				<option value="${catalog.id }" ${catalog.id == parentCatalog.id ? 'selected' : '' } > ${catalog.name}</option>
 			</c:forEach>
 		</select>
 	</li>
 	<li>
-			
+	
 		<appfuse:label key="product.catalogs" styleClass="desc" />
 		<form:errors path="catalogs" cssStyle="fieldErrors" />
 		<spring:bind path="catalogs" >
