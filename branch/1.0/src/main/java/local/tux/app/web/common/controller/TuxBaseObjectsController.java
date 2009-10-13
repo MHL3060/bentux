@@ -75,7 +75,7 @@ public class TuxBaseObjectsController implements Controller {
 		paginatedList.setPageSize(Constants.PAGE_SIZE);
 		paginatedList.setSortCriterion(sortByColumn);
 		paginatedList.setSortDirection(orderEnum);
-		lookupManager.getRecordsPage(getCriteria(), paginatedList);
+		lookupManager.getRecordsPage(getCriteria(request), paginatedList);
 		//((local.tux.app.model.Product)paginatedList.getList().get(0)).getImages().;
 		mav.addObject(KEY_REFERENCE_LIST,paginatedList);
 		return mav;
@@ -84,7 +84,7 @@ public class TuxBaseObjectsController implements Controller {
 	 * you should override this function.
 	 * @return
 	 */
-	public DetachedCriteria getCriteria(){
+	public DetachedCriteria getCriteria(HttpServletRequest request){
 		DetachedCriteria criteria = DetachedCriteria.forClass(clazz);
 		return criteria;
 		

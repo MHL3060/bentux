@@ -77,6 +77,7 @@ public class ProductFormController extends BaseFormController {
 		models.put("entertainProduct", Constants.CATALOG_ENTERTAIN_PRODUCT);
 		models.put("entertainService", Constants.CATALOG_ENTERTAIN_SERIVCE);
 		models.put("ingredients", ingredientManager.getAll());
+		
 		return models;
 	}
 	

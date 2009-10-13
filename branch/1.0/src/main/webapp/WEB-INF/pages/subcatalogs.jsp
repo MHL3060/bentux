@@ -8,7 +8,7 @@
 		<display:column property="description" titleKey="catalog.description" sortable="false" />
 		<display:column titleKey="catalog.view.product">
 			<c:url var="url" value="/productlist.html">
-				<c:param name="catalogId" value="${list.id}" />
+				<c:param name="catalogId" value="${tuxBaseObjectList.id}" />
 			</c:url>
 			<a href="${url }"><fmt:message key="catalog.view.product" /></a>
 		</display:column>
