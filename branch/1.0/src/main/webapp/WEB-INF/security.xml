@@ -13,7 +13,8 @@
         <intercept-url pattern="mainMenu.html" filters="none" />
         <!--  these pages do not need security  -->
         <intercept-url pattern="/special.html*" access="ROLE_ADMIN,ROLE_USER,ROLE_ANONYMOUS" />
-        <intercept-url pattern="/catalogs.html*" access="ROLE_ANONYMOUS,ROLE_ADMIN,ROLE_USER"/>
+        <intercept-url pattern="/*catalogs.html*" access="ROLE_ANONYMOUS,ROLE_ADMIN,ROLE_USER"/>
+        
         <intercept-url pattern="/productlist.html*" access="ROLE_ANONYMOUS,ROLE_ADMIN,ROLE_USER"/>
         <intercept-url pattern="/productdetail.html*" access="ROLE_ANONYMOUS,ROLE_ADMIN,ROLE_USER"/>
         <intercept-url pattern="/passwordHint.html*" access="ROLE_ANONYMOUS,ROLE_ADMIN,ROLE_USER"/>

@@ -11,6 +11,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.web.servlet.ModelAndView;
 
 import local.tux.Constants;
+import local.tux.app.model.Catalog;
 import local.tux.app.web.common.controller.TuxBaseObjectsController;
 import local.tux.app.web.table.pagination.ExtendedPaginatedList;
 
@@ -38,11 +39,12 @@ public class SubCatalogController extends TuxBaseObjectsController {
 		paginatedList.setSortCriterion(sortByColumn);
 		paginatedList.setSortDirection(orderEnum);
 		DetachedCriteria criteria = getCriteria();
-		if (StringUtils.isBlank(request.getParameter("pid"))!= false){
-			criteria.createAlias("catalog", "parent");
-			criteria.add(Restrictions.eq("parent.id", new Long(request.getParameter("pid"))));
+		if (StringUtils.isBlank(request.getParameter("pid"))== false){
+			Catalog parent = new Catalog();
+			parent.setId(new Long(request.getParameter("pid")));
+			criteria.add(Restrictions.eq("parent", parent));
 		}
-		lookupManager.getRecordsPage(getCriteria(), paginatedList);
+		lookupManager.getRecordsPage(criteria, paginatedList);
 		mav.addObject(KEY_REFERENCE_LIST,paginatedList);
 		return mav;
 		
