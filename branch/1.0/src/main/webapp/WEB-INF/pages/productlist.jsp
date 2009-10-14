@@ -11,7 +11,7 @@
 <display:table id="tuxBaseObjectList" name="tuxBaseObjectList" cellspacing="0" cellpadding="0" requestURI=""
 	pagesize="25" class="table uutResultList" export="true" >
 	<c:if test="${hasPermission }">
-		<display:column titleKey="id" property="id" url="/productform.html" paramName="id" 
+		<display:column titleKey="id" property="id" url="/productform.html" paramId="id" 
 			paramProperty="id" />
 	</c:if>
 	<display:column titleKey="product.image">
