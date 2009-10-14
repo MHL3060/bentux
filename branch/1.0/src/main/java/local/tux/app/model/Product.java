@@ -98,11 +98,6 @@ public class Product extends LookUpBaseObject {
 	}
 
 	
-	public void setId(Serializable id) {
-		
-	}
-	
-	
 	public String getName() {
 		return name;
 	}
@@ -178,9 +173,6 @@ public class Product extends LookUpBaseObject {
 	public void setCatalogs(Set<Catalog> catalog) {
 		this.catalogs = catalog;
 	}
-
-
-	
 
 
 	public String getBarcode() {
