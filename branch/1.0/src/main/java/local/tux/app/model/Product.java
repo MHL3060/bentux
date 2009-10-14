@@ -252,6 +252,9 @@ public class Product extends LookUpBaseObject {
 	
 	public Image getFirstImage() {
 		
+		if (images.size() > 0){
+			return images.iterator().next();
+		}
 		return null;
 	}
 
