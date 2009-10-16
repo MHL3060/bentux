@@ -3,6 +3,14 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd"
        default-lazy-init="true">
 
+	<!--  helper classes are here -->
+	<bean id="pagingLookupDao" class="local.tux.app.dao.hibernate.PagingLookupDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="pagingLookupManager" class="local.tux.app.service.impl.PagingLookupManagerImpl">
+		<property name="pagingDao"  ref="pagingLookupDao" />
+	</bean>
+	<bean id="paginatedListFactory" class="local.tux.app.web.table.pagination.PaginateListFactory" />
     <!-- Add new DAOs here -->
 
     <!-- Add new Managers here -->
