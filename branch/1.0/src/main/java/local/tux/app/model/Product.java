@@ -30,7 +30,7 @@ import local.tux.app.model.common.LookUpBaseObject;
 
 @Entity
 @Table(name="product")
-
+	
 @Searchable(alias = "product")
 @SearchableAllMetaData(enable = EnableAll.TRUE)
 @SearchableConstant(name = "type", values = { "product" })
@@ -70,7 +70,7 @@ public class Product extends LookUpBaseObject {
 	@Column(name="day_life")
 	private Long dayLife;
 	
-	@OneToOne(mappedBy="product", optional=true, cascade=CascadeType.ALL)
+	@OneToOne(mappedBy="product", targetEntity=FoodProduct.class, optional=true, cascade=CascadeType.ALL)
 	private FoodProduct foodProduct = new FoodProduct();
 	
 	@OneToOne(mappedBy="product", optional=true, cascade=CascadeType.ALL)

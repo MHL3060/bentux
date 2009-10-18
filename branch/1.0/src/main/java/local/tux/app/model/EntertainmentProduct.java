@@ -9,11 +9,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import local.tux.app.model.common.SubProduct;
 import local.tux.app.model.common.TuxBaseObject;
 
 @Entity
 @Table(name="entertain_product")
-public class EntertainmentProduct extends TuxBaseObject {
+public class EntertainmentProduct extends TuxBaseObject implements SubProduct{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -86,6 +87,13 @@ public class EntertainmentProduct extends TuxBaseObject {
 	public String toString() {
 		return "EntertainmentProduct [id=" + id + ", imdbLink=" + imdbLink
 				+ "]";
+	}
+
+	public boolean isEmpty() {
+		if (imdbLink == null){
+			return true;
+		}
+		return false;
 	}
 
 	

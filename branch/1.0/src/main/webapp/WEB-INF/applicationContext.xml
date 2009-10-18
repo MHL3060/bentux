@@ -94,6 +94,12 @@
     	<constructor-arg ref="brandNameDao" />
     </bean>
     <bean id="foodProductManager" class="local.tux.app.service.impl.LookUpNameGenericManagerImpl">
-    <constructor-arg ref="foodProductDao" />
+   		<constructor-arg ref="foodProductDao" />
+   </bean>
+    <bean id="entertainmentProductManager" class="local.tux.app.service.impl.LookUpNameGenericManagerImpl">
+    	<constructor-arg ref="foodProductDao" />
+   </bean>
+   <bean id="entertainmentServiceManager" class="local.tux.app.service.impl.LookUpNameGenericManagerImpl">
+    	<constructor-arg ref="foodProductDao" />
    </bean>
 </beans>

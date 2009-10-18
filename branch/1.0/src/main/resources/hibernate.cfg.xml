@@ -2,7 +2,7 @@
     "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 
 <hibernate-configuration >
-    <session-factory>
+    <session-factory name="java:/jbpmSessionFactory">
     	<property name="hibernate.show_sql">true</property>
  		<property name="hibernate.format_sql">true</property>
         <mapping class="org.appfuse.model.User"/>

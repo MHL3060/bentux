@@ -8,12 +8,14 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
+import local.tux.app.model.common.SubProduct;
 import local.tux.app.model.common.TuxBaseObject;
 
 @Entity
 @Table(name="food_product")
-public class FoodProduct extends TuxBaseObject {
+public class FoodProduct extends TuxBaseObject implements SubProduct {
 
 	/**
 	 * 
@@ -210,6 +212,16 @@ public class FoodProduct extends TuxBaseObject {
 	@Override
 	public String toString() {
 		return "[ id : " + id + " ]";
+	}
+
+	@Transient
+	public boolean isEmpty() {
+		if (width == null && dayLife == null && 
+				depth == null &&  weightUnit == null && 
+				volumeUnit == null && height == null && weight == null){
+			return true;
+		}
+		return false;
 	}
 	
 	

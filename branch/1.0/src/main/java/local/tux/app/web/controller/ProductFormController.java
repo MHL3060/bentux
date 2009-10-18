@@ -38,6 +38,9 @@ public class ProductFormController extends BaseFormController {
 
 	private LookUpNameGenericManager<BrandName, Long> brandNameManager;
 	private LookUpNameGenericManager ingredientManager;
+	private LookUpNameGenericManager<FoodProduct, Long> foodProductManager;
+	private LookUpNameGenericManager<EntertainmentProduct, Long> entertainmentproductManager;
+	private LookUpNameGenericManager<EntertainmentService, Long> entertainmentServiceManager;
 	
 	public void setBrandNameManager(LookUpNameGenericManager<BrandName, Long> brandNameManager){
 		this.brandNameManager = brandNameManager;
@@ -51,6 +54,15 @@ public class ProductFormController extends BaseFormController {
 	}
 	public void setProductManager(LookUpNameGenericManager productManager){
 		this.productManager = productManager;
+	}
+	public void setFoodProductManager(LookUpNameGenericManager<FoodProduct, Long> foodProductManager){
+		this.foodProductManager = foodProductManager;
+	}
+	public void setEntertainmentProductManager(LookUpNameGenericManager<EntertainmentProduct, Long> entertainmentproductManager){
+		this.entertainmentproductManager = entertainmentproductManager;
+	}
+	public void setEntertainmentServiceManager(LookUpNameGenericManager<EntertainmentService, Long> entertainmentServiceManager){
+		this.entertainmentServiceManager = entertainmentServiceManager;
 	}
 	@SuppressWarnings("unchecked")
 	public void setIngredientManager(LookUpNameGenericManager ingredientManager){
@@ -122,7 +134,8 @@ public class ProductFormController extends BaseFormController {
 				productManager.remove(product.getId());
 				saveMessage(request, getText(className+".deleted", locale));
 			}else {
-				productManager.save(product);
+				//productManager.save(product);
+				saveProduct(product);
 				String key = (isNew) ? className+ ".added" : className + ".updated";
 				saveMessage(request, getText(key, locale));
 			}
@@ -132,9 +145,29 @@ public class ProductFormController extends BaseFormController {
 		}catch (Exception e){
 			
 			saveError(request, getText("object.exists",locale));
-			log.error(e);
+			e.printStackTrace();
+			log.error(e.toString());
 		}
 		return new ModelAndView(successView);
+	}
+
+	private void saveProduct(Product product) {
+		
+		product = (Product) productManager.save(product);
+		
+		
+		if (product.getFoodProduct() != null && product.getFoodProduct().isEmpty() == false){
+			product.getFoodProduct().setProduct(product);
+			foodProductManager.save(product.getFoodProduct());
+		}else if (product.getEntertainmentProduct() != null && product.getEntertainmentProduct().isEmpty() == false){
+			product.getEntertainmentProduct().setProduct(product);
+			entertainmentproductManager.save(product.getEntertainmentProduct());
+		}else if (product.getEntertainmentService() != null && product.getEntertainmentService().isEmpty() == false){
+			product.getEntertainmentService().setProduct(product);
+			entertainmentServiceManager.save(product.getEntertainmentService());
+		}
+		
+		
 	}
 
 	private void removeUslessProduct(Product product) {

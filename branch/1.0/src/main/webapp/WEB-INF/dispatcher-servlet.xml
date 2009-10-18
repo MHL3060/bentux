@@ -159,6 +159,9 @@
     	<property name="manufacturerManager" ref="manufacturerManager" />
     	<property name="brandNameManager" ref="brandNameManager" />
     	<property name="ingredientManager" ref="ingredientManager" />
+    	<property name="entertainmentProductManager" ref="entertainmentProductManager" />
+    	<property name="entertainmentServiceManager" ref="entertainmentServiceManager" />
+    	<property name="foodProductManager" ref="foodProductManager" />
     </bean>
     <!--  compass pages -->
     <bean id="indexController" class="org.compass.spring.web.mvc.CompassIndexController">

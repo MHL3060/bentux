@@ -11,14 +11,16 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
+import local.tux.app.model.common.SubProduct;
 import local.tux.app.model.common.TuxBaseObject;
 
 
 
 @Entity
 @Table(name="entertain_service")
-public class EntertainmentService extends TuxBaseObject{
+public class EntertainmentService extends TuxBaseObject implements SubProduct{
 
 	/**
 	 * 
@@ -162,6 +164,14 @@ public class EntertainmentService extends TuxBaseObject{
 	@Override
 	public String toString() {
 		return "id = " + id;
+	}
+	@Transient
+	public boolean isEmpty() {
+		if (address == null && showDuration == null &&
+				showTime == null && showTo == null && showFrom == null){
+			return true;
+		}
+		return false;
 	}
 	
 	
