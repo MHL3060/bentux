@@ -143,7 +143,8 @@ Event.observe(window, 'load', function() {
 		<a  name="anchor" id="anchor" onclick="fillChildren(mainCatalogy, catalogManager,'parent.id', catalogs)" /><fmt:message key="refresh.list" /></a>
 		</p>
 		<appfuse:label key="product.catalog" styleClass="desc" />
-		<select name="mainCategory" id="mainCategory" onchange="fillChildren(this, catalogManager,'parent.id', catalogs); showProduct(this)">
+		<select name="mainCategory" id="mainCategory" onchange="fillChildren(this, catalogManager,'parent.id', catalogs); showProduct(this)"
+			${product.id  == null ? "" : 'disabled="disabled"'}>
 			${pleaseSelect }
 			<c:forEach var="catalog" items="${catalogParents}">
 				<option value="${catalog.id }" ${catalog.id == parentCatalog.id ? 'selected' : '' } > ${catalog.name}</option>
