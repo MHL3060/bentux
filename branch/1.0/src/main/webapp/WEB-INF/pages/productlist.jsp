@@ -17,6 +17,7 @@
 	<display:column titleKey="product.image">
 		<img src="<c:url value="${tuxBaseObjectList.firstImage.thumbPath}"  />" title="<fmt:message key="click.enlarge" />" />
 	</display:column>
+	<display:column property="brandName.name" titleKey="product.brandName.name" sortable="true" />
 	<display:column property="name" titleKey="product.name" sortable="true" />
 	<display:column property="description" titleKey="product.description" maxWords="50" />
 	<display:column property="availability" titleKey="product.availability" />
