@@ -32,7 +32,20 @@
 <h1><fmt:message key="catalog.heading" /></h1>
 
 <display:table name="list" id="list" pagesize="25" class="table" requestURI="catalogform.html">
-        <display:column property="id" titleKey="lookup.id" url="/catalogform.html" paramId="id" paramProperty="id" />
+        
+        <display:column  titleKey="lookup.id" >
+        	<c:choose>
+	        	<c:when test="${list.id < 0 }">
+	        		${list.id }
+	        	</c:when>
+	        	<c:otherwise>
+	        		<c:url var="url" value="catalogform.html">
+	        			<c:param name="id" value="${list.id}" />
+	        		</c:url>
+	        		<a href="<c:url value="${url }" />" />${list.id }</a>
+	        	</c:otherwise>
+	        </c:choose>
+        </display:column>
         
         <display:column property="name" titleKey="lookup.name" sortable="true"/>
 		<display:column property="parent.name" titleKey="lookup.parent" sortable="true" />
