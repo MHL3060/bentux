@@ -7,7 +7,7 @@ here is the procedure how to add data into the db when build
 1). in your app. enter whatever the data you want to enter.
 2). in terminal, under your project directory, run mvn dbunit:export. A file is generated and placed in target/dbunit
 
-3). copy the data and placed it inside the default-data.xml
+3). copy the data and placed it inside the sample-data.xml
 
 4). run build again. the data should in the db's table
 
