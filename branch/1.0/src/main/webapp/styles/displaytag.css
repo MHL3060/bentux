@@ -108,3 +108,11 @@ div#main .tableHeaderImage { /* Tapestry */
 .detail th {
     text-align: right;
 }
+
+/** */
+.table th {
+  color: #246e21;
+}
+.table td {
+  color: #444444;
+  }
