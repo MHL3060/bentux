@@ -5,6 +5,11 @@
     <li class="pad">&nbsp;</li>
      <%-- these are not the errors. stupid Eclipse doesn't know how to handle EL. --%>
      <li>
+     	<a href="<c:url value="/home.jsp"/>" class="${pageContext.request.requestURI == '/home.jsp' ? 'current' : '' }" >
+     		<fmt:message key="home.list" />
+     	</a>
+     </li>
+     <li>
      	<a href="<c:url value="/special.html"/>" class="${pageContext.request.requestURI == '/special.html' ? 'current' : '' }" >
      		<fmt:message key="special.product" />
      	</a>
