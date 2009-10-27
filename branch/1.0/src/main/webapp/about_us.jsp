@@ -6,8 +6,5 @@
 
 
 		<p>
-			<center>
-				<img src="<c:url value="/images/TrinityGroup.JPG"/>" width="700" height="700" alt="trinity group" ></img>
-			</center>
-			
+				<img src="<c:url value="/images/TrinityGroup.JPG"/>" width="700" height="700" alt="trinity group" ></img>			
 		</p>
