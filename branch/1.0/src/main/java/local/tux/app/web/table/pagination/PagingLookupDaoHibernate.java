@@ -18,6 +18,7 @@ import java.util.Map;
 import javax.sql.DataSource;
 
 import local.tux.Constants;
+import local.tux.HibernateUtil;
 
 
 import org.apache.commons.collections.map.ListOrderedMap;
@@ -73,33 +74,6 @@ public class PagingLookupDaoHibernate extends UniversalDaoHibernate implements
 		return results;
 	}
 
-	public int getAllRecordsCount(String query) {
-		HibernateTemplate hibernateTemplate = getHibernateTemplate();
-		SQLQuery sqlQuery = hibernateTemplate.getSessionFactory().openSession()
-				.createSQLQuery("select count(*) from (" + query + ")");
-		return ((BigDecimal) sqlQuery.list().get(0)).intValue();
-	}
-	public void setDataSource(DataSource ds){
-		this.ds  = ds;
-	}
-	public List<Map<String, String>> getAllRecordsPage(String query, int firstResult,
-			int maxResults, SortOrderEnum sortDirection, String sortCriterion)
-			throws SQLException {
-		//String sql = query.toLowerCase();
-		//query = addRownum(query);
-		String sql = "select * from (select rownum r, javaOracleQuery.* from (" + query + ") javaOracleQuery) where r between ? and ?";
-		
-		Connection connection = ds.getConnection();
-		PreparedStatement prepare = connection.prepareStatement(sql);
-		prepare.setInt(1, firstResult);
-		prepare.setInt(2, maxResults + firstResult);
-		ResultSet rs = prepare.executeQuery();
-		List<Map<String, String>> list = resultSetToMap(rs, connection);
-		rs.close();
-		prepare.close();
-		connection.close();
-		return list;
-	}
 	@SuppressWarnings("unchecked")
 	public List getAllRecordsPage(Class clazz, String query, int firstResult,
 			int maxResults, SortOrderEnum sortDirection, String sortCriterion)
@@ -119,44 +93,6 @@ public class PagingLookupDaoHibernate extends UniversalDaoHibernate implements
 		prepare.close();
 		connection.close();
 		return list;
-	}
-	@SuppressWarnings("unused")
-	private String addRownum(String sql){
-		if (sql.contains("and") ) {
-			sql = sql.replace("and", "and rownum <= ? and ");	
-		}else if (sql.contains("AND")){
-			sql = sql.replace("AND", "AND ROWNUM <= ? AND ");
-		}else if (sql.toLowerCase().contains("where")){
-			sql += " and rownum <=? ";
-		}else if (! sql.toLowerCase().contains("where")){
-			sql += " where rownum <=? ";
-		}
-		return sql;
-	}
-	@SuppressWarnings("unchecked")
-	private List<Map<String, String>> resultSetToMap(ResultSet rs, Connection connection)
-			throws SQLException {
-		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
-		ResultSetMetaData meta = rs.getMetaData();
-		// Load ResultSet into map by column name
-		int numberOfColumns = meta.getColumnCount();
-		while (rs.next()) {
-			Map map = new ListOrderedMap();
-			for (int i = 1; i <= numberOfColumns; ++i) {
-				String name = meta.getColumnName(i);
-				Object value = rs.getObject(i);
-				String str = objectToString(value, connection);
-				map.put(name, str);
-			}
-			list.add(map);
-		}
-		return list;
-	}
-
-	
-
-	private String objectToString(Object value, Connection connection) {
-		return value.toString();
 	}
 
 	@SuppressWarnings("unchecked")
@@ -178,24 +114,30 @@ public class PagingLookupDaoHibernate extends UniversalDaoHibernate implements
 	}
 
 	public int getRecordsPageCount(final DetachedCriteria criteria) {
-		
-		Session session = getSession();
-		CriteriaImpl ci = (CriteriaImpl) criteria.getExecutableCriteria(session);
-		/*
-		Criteria c = ci.getProjectionCriteria();
-		session.createCriteria(Integer.class);
-		
-		criteria.setProjection(Projections.rowCount());
-		List results = getHibernateTemplate().findByCriteria(criteria);
-		int count = ((Integer) results.get(0)).intValue();
-		//return 1000;
-		*/
 		int count = 0;
-		ScrollableResults sResult = ci.scroll();
-		if (sResult.last()){
-			count =  sResult.getRowNumber() + 1;
+		Session session = getSession();
+		ScrollableResults sResult = null;
+		Criteria ci ;
+		//try the optimal way first.
+		try {
+			DetachedCriteria clone = HibernateUtil.copy(criteria);
+			clone.setProjection(Projections.rowCount());
+			ci = clone.getExecutableCriteria(session);
+			sResult = ci.scroll();
+			if (sResult.next()){
+				count = sResult.getInteger(0);
+			}
+		//the optimal way doesn't work. use the inefficient way
+		}catch (Exception e){
+			ci = (CriteriaImpl) criteria.getExecutableCriteria(session);
+			sResult = ci.scroll();
+			if (sResult.last()){
+				count =  sResult.getRowNumber() + 1;
+			}
 		}
-		sResult.close();
+		if (sResult != null){
+			sResult.close();
+		}
 		session.disconnect();
 		return count;
 	}

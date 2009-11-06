@@ -17,14 +17,4 @@ public interface PagingLookupDao extends UniversalDao {
  			SortOrderEnum sortDirection, String sortCriterion);
      public int getRecordsPageCount(DetachedCriteria criteria);
      
-     public int getAllRecordsCount(String query);
-    
-     
-     public List<Map<String,String>> getAllRecordsPage(String query, int firstResult,
- 			int maxResults, SortOrderEnum sortDirection, String sortCriterion)
- 			throws SQLException;
-    
-     public List getAllRecordsPage(Class clazz, String query, int firstResult,
-  			int maxResults, SortOrderEnum sortDirection, String sortCriterion)
-  			throws SQLException;
 }
