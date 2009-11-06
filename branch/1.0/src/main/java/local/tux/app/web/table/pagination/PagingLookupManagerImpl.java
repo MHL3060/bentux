@@ -54,27 +54,6 @@ public class PagingLookupManagerImpl extends UniversalManagerImpl implements
 		this.pagingDao = pagingDao;
 	}
 
-	@SuppressWarnings("unchecked")
-	public ExtendedPaginatedList getAllRecordsPage(Class type, String query,
-			ExtendedPaginatedList paginatedList) throws SQLException{
-		
-		List results = pagingDao.getAllRecordsPage(type, query, 
-				paginatedList.getFirstRecordIndex(), paginatedList.getPageSize(), null, null);
-		paginatedList.setList(results);
-		paginatedList.setTotalNumberOfRows(pagingDao.getAllRecordsCount(query));
-		return paginatedList;
-	}
-	
-	public ExtendedPaginatedList getAllRecordsPage(String query,
-			ExtendedPaginatedList paginatedList) throws SQLException {
-		
-		List<Map<String, String>> results = pagingDao.getAllRecordsPage(query, paginatedList.getFirstRecordIndex(),
-				paginatedList.getPageSize(),null, null);
-		paginatedList.setList(results);
-		paginatedList.setTotalNumberOfRows(pagingDao.getAllRecordsCount(query));
-		return paginatedList;
-	}
-
 }
 
 
