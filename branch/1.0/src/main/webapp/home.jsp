@@ -13,8 +13,8 @@
 		<div id="left-main">
 			
 			<div class="main-banner">
-				<img src="<c:url value="/images/sample-banner.gif"/>" width="620" height="85" alt="trinity group" ></img>			
-			</div>
+				<img src="<c:url value="/images/sample-banner.gif"/>" width="620" height="90" alt="trinity group" ></img>			
+			</div> 			
 						
 			<div class="post">
 				<h1 class="title">Our Site has been launched</h1>				
@@ -22,6 +22,7 @@
 				<div style="clear: both;">&nbsp;</div>
 				<div class="entry">
 					Taste of India, by Trinity Infotech. We provide over a thousand plus items in our store, please come to visit us sometimes.
+					<img src="<c:url value="/images/sample_entry_picture.jpeg"/>" width="450" height="290"/>
 					<div class="links"><a href="#">Read More</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">Comments</a></div>
 				</div>		
 			</div>	
@@ -68,7 +69,7 @@
 				</ul>
 			</li>
 			<li>
-				<p><img src="<c:url value="/images/sample-banner2.jpg"/>" width="220" height="160" alt="trinity group" ></img></p>	
+				<p><img src="<c:url value="/images/sample-banner2.jpg"/>" width="170" height="100" alt="trinity group" ></img></p>	
 				
 			</li>	
 		</ul>
