@@ -1,6 +1,6 @@
 <%@ include file="/common/taglibs.jsp"%>
 
-<c:redirect url="/productlist.html"/>
+<c:redirect url="/home.html"/>
 <%--
 <head>
     <title><fmt:message key="mainMenu.title"/></title>

@@ -31,7 +31,7 @@ public class TuxBaseObjectsController implements Controller {
 	protected PaginateListFactory factory;
 	protected  PagingLookupManager lookupManager;
 	protected Class<TuxBaseObject> clazz;
-	
+	protected int pageSize = Constants.PAGE_SIZE;
 	protected final String HAS_PERMISSION = "hasPermission";
 	protected UserManager userManager;
 	
@@ -50,7 +50,9 @@ public class TuxBaseObjectsController implements Controller {
 	public PaginateListFactory getPaginateListFactory() {
         return factory;
     }
-	
+	public void setSize(int size){
+		this.pageSize = size;
+	}
 	/**
 	 * the key for the default list is tuxBaseObjectList.
 	 * 
@@ -72,7 +74,7 @@ public class TuxBaseObjectsController implements Controller {
 			mav.addObject(HAS_PERMISSION, hasPermissionToAdd(user));
 		}
 		ExtendedPaginatedList paginatedList = factory.getPaginatedListFromRequest(request);
-		paginatedList.setPageSize(Constants.PAGE_SIZE);
+		paginatedList.setPageSize(pageSize);
 		paginatedList.setSortCriterion(sortByColumn);
 		paginatedList.setSortDirection(orderEnum);
 		lookupManager.getRecordsPage(getCriteria(request), paginatedList);
@@ -91,16 +93,18 @@ public class TuxBaseObjectsController implements Controller {
 	}
 	protected Boolean hasPermissionToAdd(User user){
 		boolean result = Boolean.FALSE;
-		Set<Role> roles = user.getRoles();
-		for (Role role : roles){
-			for (String name : Constants.EDIT_PERMISSION){
-				if (name.equals(role.getName())){
-					result = Boolean.TRUE;
+		if (user != null){
+			Set<Role> roles = user.getRoles();
+			for (Role role : roles){
+				for (String name : Constants.EDIT_PERMISSION){
+					if (name.equals(role.getName())){
+						result = Boolean.TRUE;
+						break;
+					}
+				}
+				if (result){
 					break;
 				}
-			}
-			if (result){
-				break;
 			}
 		}
 		return result;

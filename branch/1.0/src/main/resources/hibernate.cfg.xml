@@ -16,7 +16,7 @@
         <mapping class="local.tux.app.model.FoodProduct" />
         <mapping class="local.tux.app.model.EntertainmentProduct" />
         <mapping class="local.tux.app.model.EntertainmentService" />
-        <mapping class="local.tux.app.model.Blog" />
+        <mapping class="local.tux.app.model.News" />
         <mapping class="local.tux.app.model.Comment" />
     </session-factory>
 </hibernate-configuration>

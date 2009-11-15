@@ -186,8 +186,25 @@
     
     <bean id="subCatalogController" class="local.tux.app.web.controller.SubCatalogController">
     	<property name="paginatedListFactory" ref="paginatedListFactory" />
-    	<property name="userManager" ref="userManager" />
+    	
     	<property name="pagingLookupManager" ref="pagingLookupManager" />
     	<property name="pojo" value="local.tux.app.model.Catalog" />
+    </bean>
+    <bean id="newsFormController" class="local.tux.app.web.controller.NewsFormController">
+    	<property name="newsManager" ref="newsManager" />
+    	<property name="successView" value="redirect:news.html"/>
+    	<property name="userManager" ref="userManager" />
+    </bean>
+    <bean id="newsController" class="local.tux.app.web.controller.NewsController">
+    	<property name="paginatedListFactory" ref="paginatedListFactory" />
+    	<property name="pagingLookupManager" ref="pagingLookupManager" />
+    	<property name="pojo" value="local.tux.app.model.News" />
+    	<property name="userManager" ref="userManager" />
+    </bean>
+    <bean id="homeController" class="local.tux.app.web.controller.HomeController">
+    	<property name="paginatedListFactory" ref="paginatedListFactory" />
+    	<property name="pagingLookupManager" ref="pagingLookupManager" />
+    	<property name="pojo" value="local.tux.app.model.News" />
+    	<property name="userManager" ref="userManager" />
     </bean>
 </beans>

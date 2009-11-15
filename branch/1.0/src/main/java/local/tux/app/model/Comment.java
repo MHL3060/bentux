@@ -29,8 +29,11 @@ public class Comment extends TuxBaseObject {
 	@ManyToOne
 	@JoinColumn(name="user_id")
 	private User user;
+	
+	@Column(name="title", nullable=false)
+	private String title;
 	@Column(name="content",length=1000)
-	private String content;
+	private String contentBody;
 	@Column(name="added_on")
 	private Date addedOn= new Date();
 	@ManyToOne
@@ -39,7 +42,7 @@ public class Comment extends TuxBaseObject {
 	
 	@ManyToOne
 	@JoinColumn(name="blog_id")
-	private Blog blog;
+	private News blog;
 	public Long getId() {
 		return id;
 	}
@@ -52,11 +55,19 @@ public class Comment extends TuxBaseObject {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	public String getContent() {
-		return content;
+	
+	
+	public String getTitle() {
+		return title;
 	}
-	public void setContent(String content) {
-		this.content = content;
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getContentBody() {
+		return contentBody;
+	}
+	public void setContentBody(String contentBody) {
+		this.contentBody = contentBody;
 	}
 	public Date getAddedOn() {
 		return addedOn;
@@ -73,10 +84,10 @@ public class Comment extends TuxBaseObject {
 		this.product = product;
 	}
 	
-	public Blog getBlog() {
+	public News getBlog() {
 		return blog;
 	}
-	public void setBlog(Blog blog) {
+	public void setBlog(News blog) {
 		this.blog = blog;
 	}
 	@Override
@@ -84,7 +95,7 @@ public class Comment extends TuxBaseObject {
 		final int prime = 31;
 		int result = 29;
 		result = prime * result + ((addedOn == null) ? 0 : addedOn.hashCode());
-		result = prime * result + ((content == null) ? 0 : content.hashCode());
+		result = prime * result + ((contentBody == null) ? 0 : contentBody.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
@@ -101,10 +112,10 @@ public class Comment extends TuxBaseObject {
 				return false;
 		} else if (!addedOn.equals(other.addedOn))
 			return false;
-		if (content == null) {
-			if (other.content != null)
+		if (contentBody == null) {
+			if (other.contentBody != null)
 				return false;
-		} else if (!content.equals(other.content))
+		} else if (!contentBody.equals(other.contentBody))
 			return false;
 		if (id == null) {
 			if (other.id != null)
@@ -120,7 +131,7 @@ public class Comment extends TuxBaseObject {
 	}
 	@Override
 	public String toString() {
-		return "Comment [addedOn=" + addedOn + ", content=" + content + ", id="
+		return "Comment [addedOn=" + addedOn + ", content=" + contentBody + ", id="
 				+ id + ", user=" + user + "]";
 	}
 	

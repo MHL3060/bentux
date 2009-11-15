@@ -5,7 +5,7 @@
 </c:if>
 <script type="text/javascript"  src="<c:url value="/scripts/ruzee.js" />" ></script>
 <script type="text/javascript" src="<c:url value="/scripts/image_rotator.js" />" ></script>
-
+<script type="text/javascript" src="<c:url value="/ckeditor/ckeditor_basic.js" />" ></script>
 
 <div id="branding">
 

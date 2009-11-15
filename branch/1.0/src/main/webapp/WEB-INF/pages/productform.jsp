@@ -97,7 +97,7 @@ Event.observe(window, 'load', function() {
 	showProduct(node);
 });
 </script>
-<script src="ckeditor/ckeditor_basic.js" type="text/javascript"></script>
+
 <script type="text/javascript">
   window.onload = function() {
 	  CKEDITOR.replace( 'description' );
