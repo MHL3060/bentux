@@ -33,7 +33,12 @@
 					</div>
 				</div>		
 			</div>
-			</c:forEach>	
+			</c:forEach>
+			<c:if test="${empty tuxBaseObjectList }">
+				<c:if test="${hasPermission }">
+					<div class="links"> No News Found.<a href="<c:url value="/newsform.html" />" >Add One</a></div>
+				</c:if>
+			</c:if>	
 		<div style="clear: both;">&nbsp;</div>
 		</div>
 	
@@ -41,9 +46,9 @@
 		<ul>
 			<li>
 				<div id="search" >
-					<form method="get" action="#">
+					<form method="get" action="/search.html">
 						<div>
-							<input type="text" name="s" id="search-text" value="" />
+							<input type="text" name="query" id="search-text" value="" />
 							<input type="submit" id="search-submit" value="GO" />
 						</div>
 					</form>				

@@ -12,7 +12,7 @@
   Search took <c:out value="${searchResults.searchTime}" />ms
 
 
-	<c:forEach var="searchResultBean" items="${searchResults}">
+	<c:forEach var="searchResultBean" items="${list}">
 		<div name="title">
 			<c:url var="url" value="${searchResultBean.objectName}">
 			

@@ -19,12 +19,8 @@
     <display:column property="title" escapeXml="true" sortable="true" titleKey="news.title"/>
     <display:column property="addedOn" escapeXml="true" sortable="true" titleKey="news.added.on"/>
 	<display:column property="user.username" escapeXml="true" sortable="true" titleKey="news.user" />
-    <display:setProperty name="paging.banner.item_name" value="person"/>
-    <display:setProperty name="paging.banner.items_name" value="people"/>
-
-    <display:setProperty name="export.excel.filename" value="Person List.xls"/>
-    <display:setProperty name="export.csv.filename" value="Person List.csv"/>
-    <display:setProperty name="export.pdf.filename" value="Person List.pdf"/>
+    <display:setProperty name="paging.banner.item_name" value="news"/>
+    <display:setProperty name="paging.banner.items_name" value="news"/>
 </display:table>
 
 <c:out value="${buttons}" escapeXml="false"/>

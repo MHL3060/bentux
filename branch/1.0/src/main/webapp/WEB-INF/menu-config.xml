@@ -8,6 +8,7 @@
         <Menu name="AdminMenu" title="menu.admin" description="Admin Menu" roles="ROLE_ADMIN" width="120" page="/users.html">
             <Item name="ViewUsers" title="menu.admin.users" page="/admin/users.html"/>
             <Item name="ActiveUsers" title="mainMenu.activeUsers" page="/admin/activeUsers.html"/>
+            <Item name="News" title="mainMenu.news" page="/newsform.html" />
             <Item name="Catalog" title="mainMenu.catalog" page="/catalogform.html" />
             <Item name="Manufacturer" title="mainMenu.manufacturer" page="/manufacturerform.html" />
             <Item name="BrandName" title="mainMenu.brandName" page="/brandnameform.html" />           

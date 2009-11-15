@@ -119,7 +119,8 @@ public class SearchController extends AbstractCompassCommandController {
         HashMap data = new HashMap();
         List<SearchResultBean> srbs = convert(searchResults);
         data.put(getCommandName(), searchCommand);
-        data.put(getSearchResultsName(), srbs);
+        data.put(getSearchResultsName(), searchResults);
+        data.put("list", srbs);
         ModelAndView returnModelAndView = new ModelAndView(getSearchResultsView(), data);
         logger.debug("handle(HttpServletRequest, HttpServletResponse, Object, BindException) - end");
         return returnModelAndView;
@@ -140,7 +141,17 @@ public class SearchController extends AbstractCompassCommandController {
 				name = BeanUtils.getProperty(o, "title");
 			}
 			srb.setName(name);
-			srb.setResource(hit.getHighlightedText().getHighlightedText());
+			if (hit.getHighlightedText() != null){
+				srb.setResource(hit.getHighlightedText().getHighlightedText());
+			}else {
+				try {
+					srb.setResource(BeanUtils.getProperty(o, "description"));
+				}catch (Exception e){
+					srb.setResource(BeanUtils.getProperty(o, "contentBody"));
+				}
+			}
+			
+			
 			list.add(srb);
 			
 		}
