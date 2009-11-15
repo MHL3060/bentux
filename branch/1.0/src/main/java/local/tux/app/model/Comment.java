@@ -12,11 +12,19 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.appfuse.model.User;
+import org.compass.annotations.EnableAll;
+import org.compass.annotations.Searchable;
+import org.compass.annotations.SearchableAllMetaData;
+import org.compass.annotations.SearchableConstant;
+import org.compass.annotations.SearchableId;
 
 import local.tux.app.model.common.TuxBaseObject;
 
 @Entity
 @Table(name="comment")
+@Searchable(alias="comment")
+@SearchableAllMetaData(enable = EnableAll.TRUE)
+@SearchableConstant(name = "type", values = { "comment" })
 public class Comment extends TuxBaseObject {
 
 	/**
@@ -25,6 +33,7 @@ public class Comment extends TuxBaseObject {
 	private static final long serialVersionUID = 5000301973216703960L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	@SearchableId
 	private Long id;
 	@ManyToOne
 	@JoinColumn(name="user_id")

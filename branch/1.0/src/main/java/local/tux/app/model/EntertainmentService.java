@@ -13,6 +13,12 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.compass.annotations.EnableAll;
+import org.compass.annotations.Searchable;
+import org.compass.annotations.SearchableAllMetaData;
+import org.compass.annotations.SearchableConstant;
+import org.compass.annotations.SearchableId;
+
 import local.tux.app.model.common.SubProduct;
 import local.tux.app.model.common.TuxBaseObject;
 
@@ -20,6 +26,9 @@ import local.tux.app.model.common.TuxBaseObject;
 
 @Entity
 @Table(name="entertain_service")
+@Searchable(alias = "entertainmentService")
+@SearchableAllMetaData(enable = EnableAll.TRUE)
+@SearchableConstant(name = "type", values = { "service", "entertainment"  })
 public class EntertainmentService extends TuxBaseObject implements SubProduct{
 
 	/**
@@ -29,6 +38,7 @@ public class EntertainmentService extends TuxBaseObject implements SubProduct{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	@SearchableId
 	private Long id;
 
 	@Column(name="show_from")

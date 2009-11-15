@@ -9,15 +9,25 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.compass.annotations.EnableAll;
+import org.compass.annotations.Searchable;
+import org.compass.annotations.SearchableAllMetaData;
+import org.compass.annotations.SearchableConstant;
+import org.compass.annotations.SearchableId;
+
 import local.tux.app.model.common.SubProduct;
 import local.tux.app.model.common.TuxBaseObject;
 
 @Entity
 @Table(name="entertain_product")
+@Searchable(alias = "entertainmentProduct")
+@SearchableAllMetaData(enable = EnableAll.TRUE)
+@SearchableConstant(name = "type", values = { "dvd", "vhs"  })
 public class EntertainmentProduct extends TuxBaseObject implements SubProduct{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	@SearchableId
 	private Long id;
 	
 	@Column(name="imdb_link")

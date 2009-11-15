@@ -10,11 +10,20 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.compass.annotations.EnableAll;
+import org.compass.annotations.Searchable;
+import org.compass.annotations.SearchableAllMetaData;
+import org.compass.annotations.SearchableConstant;
+import org.compass.annotations.SearchableId;
+
 import local.tux.app.model.common.SubProduct;
 import local.tux.app.model.common.TuxBaseObject;
 
 @Entity
 @Table(name="food_product")
+@Searchable(alias = "foodProduct")
+@SearchableAllMetaData(enable = EnableAll.TRUE)
+@SearchableConstant(name = "type", values = { "food"  })
 public class FoodProduct extends TuxBaseObject implements SubProduct {
 
 	/**
@@ -24,6 +33,7 @@ public class FoodProduct extends TuxBaseObject implements SubProduct {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	@SearchableId
 	private Long id;
 	
 	@Column(name="weight")

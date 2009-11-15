@@ -56,10 +56,14 @@
     <logger name="local">
         <level value="DEBUG"/>
     </logger>
-
-    <root>
-        <level value="WARN"/>
+	
+	<root>
+        <level value="DEBUG"/>
         <appender-ref ref="CONSOLE"/>
     </root>
+    <!-- root>
+        <level value="WARN"/>
+        <appender-ref ref="CONSOLE"/>
+    </root-->
 
 </log4j:configuration>

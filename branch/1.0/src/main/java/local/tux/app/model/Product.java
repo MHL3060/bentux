@@ -16,25 +16,23 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.compass.annotations.EnableAll;
 import org.compass.annotations.Searchable;
 import org.compass.annotations.SearchableAllMetaData;
+import org.compass.annotations.SearchableComponent;
 import org.compass.annotations.SearchableConstant;
 import org.compass.annotations.SearchableId;
-
+import org.compass.annotations.SearchableReference;
 import local.tux.app.model.common.LookUpBaseObject;
 
 @Entity
 @Table(name="product")
-	
 @Searchable(alias = "product")
 @SearchableAllMetaData(enable = EnableAll.TRUE)
-@SearchableConstant(name = "type", values = { "product" })
-
+@SearchableConstant(name = "type", values = { "sku", "name"  })
 public class Product extends LookUpBaseObject {
 
 
@@ -45,8 +43,10 @@ public class Product extends LookUpBaseObject {
 	private Long id;
 	@Column(name="name", nullable=false)
 	private String name;
+	
 	@ManyToOne
 	@JoinColumn(name="brand_name_id")
+	@SearchableComponent
 	private BrandName brandName;
 
 	@Column(name="price")
@@ -70,13 +70,19 @@ public class Product extends LookUpBaseObject {
 	@Column(name="day_life")
 	private Long dayLife;
 	
+	
 	@OneToOne(mappedBy="product", targetEntity=FoodProduct.class, optional=true, cascade=CascadeType.ALL)
+	@SearchableComponent
 	private FoodProduct foodProduct = new FoodProduct();
 	
-	@OneToOne(mappedBy="product", optional=true, cascade=CascadeType.ALL)
-	private EntertainmentService entertainmentService = new EntertainmentService();
 	
 	@OneToOne(mappedBy="product", optional=true, cascade=CascadeType.ALL)
+	@SearchableComponent
+	private EntertainmentService entertainmentService = new EntertainmentService();
+	
+	
+	@OneToOne(mappedBy="product", optional=true, cascade=CascadeType.ALL)
+	@SearchableComponent
 	private EntertainmentProduct entertainmentProduct = new EntertainmentProduct();
 	
 	@ManyToMany

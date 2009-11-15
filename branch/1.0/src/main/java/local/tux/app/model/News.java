@@ -1,6 +1,7 @@
 package local.tux.app.model;
 
 import java.util.Date;
+
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -14,9 +15,19 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.appfuse.model.User;
+import org.compass.annotations.EnableAll;
+import org.compass.annotations.Searchable;
+import org.compass.annotations.SearchableAllMetaData;
+import org.compass.annotations.SearchableConstant;
+import org.compass.annotations.SearchableId;
+import org.compass.annotations.SearchableMetaData;
+import org.compass.annotations.SearchableProperty;
 
 import local.tux.app.model.common.TuxBaseObject;
 
+@Searchable(alias = "news")
+@SearchableAllMetaData(enable = EnableAll.TRUE)
+@SearchableConstant(name = "type", values = { "news", "user"  })
 @Entity
 @Table(name="news")
 public class News extends TuxBaseObject {
@@ -27,12 +38,18 @@ public class News extends TuxBaseObject {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	@SearchableId
 	private Long id;
 	@Column(name="added_on")
 	private Date addedOn;
 	@Column(name="title", nullable=false)
+	@SearchableProperty(name="title")
+	@SearchableMetaData(name="title")
 	private String title;
-	@Column(name="content", length=1000)
+	
+	@Column(name="content", length=5000)
+		@SearchableProperty(name="content")
+	@SearchableMetaData(name="content")
 	private String contentBody;
 	@OneToMany(mappedBy="blog")
 	private Set<Comment> comments;

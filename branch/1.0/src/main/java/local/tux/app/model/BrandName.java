@@ -12,23 +12,49 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.compass.annotations.EnableAll;
+import org.compass.annotations.Searchable;
+import org.compass.annotations.SearchableAllMetaData;
+import org.compass.annotations.SearchableComponent;
+import org.compass.annotations.SearchableConstant;
+import org.compass.annotations.SearchableDynamicProperty;
+import org.compass.annotations.SearchableId;
+import org.compass.annotations.SearchableMetaData;
+import org.compass.annotations.SearchableProperty;
+import org.compass.annotations.SearchableReference;
+
 import local.tux.app.model.common.LookUpBaseObject;
+
 
 @Entity
 @Table(name="brand_name")
+@Searchable(alias = "brandName")
+@SearchableAllMetaData(enable = EnableAll.TRUE)
+@SearchableConstant(name = "type", values = { "factory", "manufacturer"  })
 public class BrandName extends LookUpBaseObject {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	@SearchableId
 	private Long id;
 	
 	@Column(name="name", length=50, nullable=false)
+	@SearchableProperty(name = "name")
+    @SearchableMetaData(name = "name")
 	private String name;
 	
+	@SearchableReference
 	@ManyToOne
 	@JoinColumn(name="manufacturer_id", nullable=false)
 	private Manufacturer manufacturer;
 
+	
 	@OneToMany(mappedBy="brandName")
 	private Set<Product> products;
 	
