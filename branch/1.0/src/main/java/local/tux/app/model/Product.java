@@ -25,6 +25,7 @@ import org.compass.annotations.SearchableAllMetaData;
 import org.compass.annotations.SearchableComponent;
 import org.compass.annotations.SearchableConstant;
 import org.compass.annotations.SearchableId;
+import org.compass.annotations.SearchableProperty;
 import org.compass.annotations.SearchableReference;
 import local.tux.app.model.common.LookUpBaseObject;
 
@@ -54,6 +55,7 @@ public class Product extends LookUpBaseObject {
 	@Column(name="availability")
 	private Integer availability;
 	@Column(name="description")
+	@SearchableProperty
 	private String description;
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="product" )
 	private Set<Image> images;

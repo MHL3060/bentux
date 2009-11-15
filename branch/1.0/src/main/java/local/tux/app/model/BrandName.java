@@ -17,7 +17,6 @@ import org.compass.annotations.Searchable;
 import org.compass.annotations.SearchableAllMetaData;
 import org.compass.annotations.SearchableComponent;
 import org.compass.annotations.SearchableConstant;
-import org.compass.annotations.SearchableDynamicProperty;
 import org.compass.annotations.SearchableId;
 import org.compass.annotations.SearchableMetaData;
 import org.compass.annotations.SearchableProperty;

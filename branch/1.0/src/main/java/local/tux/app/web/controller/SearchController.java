@@ -1,12 +1,20 @@
 package local.tux.app.web.controller;
 
+import org.apache.commons.beanutils.BeanUtils;
 import org.apache.log4j.Logger;
 
+import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import local.tux.app.model.web.SearchResultBean;
+
+import org.compass.core.CompassHit;
+import org.compass.core.CompassHits;
 import org.compass.core.support.search.CompassSearchCommand;
 import org.compass.core.support.search.CompassSearchHelper;
 import org.compass.core.support.search.CompassSearchResults;
@@ -109,15 +117,37 @@ public class SearchController extends AbstractCompassCommandController {
         }
         CompassSearchResults searchResults = searchHelper.search(searchCommand);
         HashMap data = new HashMap();
-
+        List<SearchResultBean> srbs = convert(searchResults);
         data.put(getCommandName(), searchCommand);
-        data.put(getSearchResultsName(), searchResults);
+        data.put(getSearchResultsName(), srbs);
         ModelAndView returnModelAndView = new ModelAndView(getSearchResultsView(), data);
         logger.debug("handle(HttpServletRequest, HttpServletResponse, Object, BindException) - end");
         return returnModelAndView;
     }
 
-    /**
+    private List<SearchResultBean> convert(CompassSearchResults searchResults) throws NumberFormatException, IllegalAccessException, InvocationTargetException, NoSuchMethodException {
+		List<SearchResultBean> list = new ArrayList<SearchResultBean>();
+    	CompassHit[] hits = searchResults.getHits();
+		for (CompassHit hit : hits){
+			Object o = hit.data();
+			SearchResultBean srb = new SearchResultBean();
+			srb.setId(new Long(BeanUtils.getProperty(o, "id")));
+			srb.setObjectName(o.getClass().getSimpleName().toLowerCase());
+			String name;
+			try {
+				name = BeanUtils.getProperty(o, "name");
+			}catch (Exception e){
+				name = BeanUtils.getProperty(o, "title");
+			}
+			srb.setName(name);
+			srb.setResource(hit.getHighlightedText().getHighlightedText());
+			list.add(srb);
+			
+		}
+		return list;
+	}
+
+	/**
      * Returns the view that holds the screen which the user will initiate the
      * search operation.
      */

@@ -34,7 +34,7 @@
 		<property name="compassSettings">
 			<props>
 				
-                <prop key="compass.engine.connection">file://${user.home}/compass/</prop>
+                <prop key="compass.engine.connection">file:///compass/</prop>
                 <prop key="compass.transaction.factory">org.compass.spring.transaction.SpringSyncTransactionFactory</prop>
                 <!-- snowball analyzer provides stemming (so 'monkey' gets 'monkeys', too) --> 
                 <prop key="compass.engine.analyzer.default.type">snowball</prop> 
@@ -51,6 +51,13 @@
     </bean>
      <bean id="compassGps" class="org.compass.gps.impl.SingleCompassGps" init-method="start" destroy-method="stop">
        <property name="compass"><ref bean="compass" /></property>
+       <property name="gpsDevices">
+         <list>
+             <bean class="org.compass.spring.device.SpringSyncTransactionGpsDeviceWrapper">
+                 <property name="gpsDevice" ref="hibernateGpsDevice" />
+             </bean>
+         </list>
+       </property>
      </bean>
 	
     <!-- Add new DAOs here -->

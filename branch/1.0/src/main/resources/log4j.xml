@@ -57,13 +57,10 @@
         <level value="DEBUG"/>
     </logger>
 	
-	<root>
-        <level value="DEBUG"/>
-        <appender-ref ref="CONSOLE"/>
-    </root>
-    <!-- root>
+	
+    <root>
         <level value="WARN"/>
         <appender-ref ref="CONSOLE"/>
-    </root-->
+    </root>
 
 </log4j:configuration>
