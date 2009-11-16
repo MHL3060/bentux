@@ -36,7 +36,17 @@
      	</a>
      </li>
     <menu:displayMenu name="AdminMenu"/>
-    <li><a href="<c:url value="/about_us.jsp"/>" class=" ${pageContext.request.requestURI == '/about_us.jsp' ? 'current' : '' }" ><fmt:message key="about.us" /></a></li>
+    <li>
+    	<a href="<c:url value="/about_us.jsp"/>" class=" ${pageContext.request.requestURI == '/about_us.jsp' ? 'current' : '' }" >
+    	<fmt:message key="about.us" />
+    </a>
+    </li>
+         <li>
+     	<a href="<c:url value="/search.html"/>" class="${pageContext.request.requestURI == '/search.html' ? 'current' : '' }" >
+     	    	<fmt:message key="search" />
+     	
+     	</a>
+     </li>
     <menu:displayMenu name="Logout"/>
 </ul>
 </menu:useMenuDisplayer>
