@@ -10,7 +10,7 @@
 <div id="branding">
 
     <h1><img src="<c:url value="/images/logo_small.png"/>" height="100" style="float: left;"/><a href="<c:url value='/'/>"><fmt:message key="webapp.name"/></a>
-   	<img src="<c:url value="/images/store_photo/DSCN0211.JPG"/>" width="410" height="100" style="float: right;" name="banner">
+   	<img src="<c:url value="/images/store_photo/DSCN0211.JPG"/>" width="410" height="90" style="float: right;" name="banner">
     </h1>
 	<p><fmt:message key="webapp.tagline"/></p>		
 	    

@@ -3,7 +3,7 @@
 	http://www.freecsstemplates.org
 	Released for free under a Creative Commons Attribution 2.5 License
 	*/
-	@import url(nav-horizontal.css);
+	@import url(nav-horizontal.css);	
 	
 	body {
     	margin: 0;
@@ -62,7 +62,7 @@
 	
 	div#search {
 		float: right;
-		width: 240px;
+		width: 160px;
 		height: 60px;
 		padding: 20px 0px 0px 0px;
 		background: #E2E2E2;
@@ -82,7 +82,7 @@
 	}
 	
 	div#search-text {
-		width: 170px;
+		width: 125px;
 		padding: 6px 5px 2px 5px;
 		border: 1px solid #DEDEDE;
 		background: #FFFFFF;
@@ -99,31 +99,77 @@
 		color: #000000;
 	}
 	
-	div#mainPage {
-		width: 925px;
-		margin: 0 15px 0 auto;
-		padding: 0;
-		border-bottom: 1px solid #E2E2E2;
-	}
-	
 	
 	/* Content */
 	
 	div#main-title {
 		width: 925px;
 		float: left;	
-		border-bottom: 1px solid #E2E2E2;
 		font-size: large;
 		font-style: BOLD;
 		letter-spacing: 0.1em;
 		color: #787878;
+		border-bottom: 1px solid #E2E2E2;
 	}
 	
-	div#left-main {
-	    float: left;
-		width: 650px;
-		padding: 5px;		
-	    
+	div#main-banner {
+		float: left;
+		padding-top: 20px;
+		padding-bottom: 20px;		
+	}
+	
+	/* Basic tags */
+	a {background-color:inherit; color:#286ea0; font-weight:700; text-decoration:none;}
+	a:hover {background-color:inherit; color:#286ea0; text-decoration:underline;}
+	a img {border:0;}
+	p {margin:0 0 1.4em;}
+	
+	/*div#left-sidebar {clear:left; float:left; margin:0 0 5px; padding-right:5px ; width:140px;}
+	div#left-sidebar p,div#left-sidebar ul {margin:0 0 16px; padding:0;}
+	div#left-sidebar p {font-size:0.9em; line-height:1.4em;}
+	div#left-sidebar li {line-height:1.2em; list-style:none; margin:0 0 6px; padding:0;}
+	div#left-sidebar ul ul {margin:6px 0 0 10px; padding:0;}
+	div#left-sidebar ul ul li {margin:0 0 4px;}
+	div#left-sidebar ul ul li a {font-weight:400;}
+	div#left-sidebar h2,div#left-sidebar h3 {color:#505050; font-size:1.2em; margin:0 0 8px; padding:0;}
+
+	div#left-sidebar ul.avmenu {display:block; list-style:none; margin:0 0 18px 0; padding:0; width:140px;}
+	div#left-sidebar ul.avmenu li {display:inline; line-height:1.4em; padding:0; width:140px;}
+	div#left-sidebar ul.avmenu li a {background-color:#f4f4f4; border-left:4px solid #ccc; color:#505050; float:left; font-weight:700; margin-bottom:5px; padding:5px 1px 5px 5px; text-decoration:none; width:130px;}
+	div#left-sidebar ul.avmenu li a:hover,div#left-sidebar ul.avmenu li a.current {background-color:#eaeaea; border-left:4px solid #286ea0; color:#505050;}
+	div#left-sidebar ul.avmenu ul {font-size:0.9em; margin:0 0 0 15px; padding:0 0 5px; width:125px;}
+	div#left-sidebar ul.avmenu ul a {font-weight:400; padding:3px 1px 3px 5px; width:115px;}
+	div#left-sidebar ul.avmenu ul ul {width:113px;}
+	div#left-sidebar ul.avmenu ul ul a {width:100px;}*/
+	
+	/*Left and right sidebar */
+	#leftside {clear:left; float:left; margin:0 0 5px; padding:5px; width:140px;}
+	#rightside {float:right; line-height:1.4em; margin:0 0 5px; padding:0; width:140px;}
+	#leftside p,#leftside ul, #rightside p,#rightside ul {margin:0 0 16px; padding:0;}
+	#leftside p, #rightside p {font-size:0.9em; line-height:1.4em;}
+	#leftside li, #rightside li {line-height:1.2em; list-style:none; margin:0 0 6px; padding:0;}
+	#leftside ul ul, #rightside ul ul {margin:6px 0 0 10px; padding:0;}
+	#leftside ul ul li, #rightside ul ul li {margin:0 0 4px;}
+	#leftside ul ul li a, #rightside ul ul li a {font-weight:400;}
+	#leftside h2,#leftside h3, #rightside h2,#rightside h3 {color:#505050; font-size:1.4em; margin:0 0 8px; padding:0;}
+	
+	/* Main menu */
+	#leftside ul.avmenu, #rightside ul.avmenu {display:block; list-style:none; margin:0 0 18px 0; padding:0; width:140px;}
+	#leftside ul.avmenu li, #rightside ul.avmenu li {display:inline; line-height:1.4em; padding:0; width:140px;}
+	#leftside ul.avmenu li a, #rightside ul.avmenu li a {background-color:#f4f4f4; border-left:4px solid #ccc; color:#505050; float:left; font-weight:700; margin-bottom:5px; padding:5px 1px 5px 5px; text-decoration:none; width:130px;}
+	#leftside ul.avmenu li a:hover,#leftside ul.avmenu li a.current, #rightside ul.avmenu li a:hover,#rightside ul.avmenu li a.current {background-color:#eaeaea; border-left:4px solid #286ea0; color:#505050;}
+	#leftside ul.avmenu ul, #rightside ul.avmenu ul {font-size:0.9em; margin:0 0 0 15px; padding:0 0 5px; width:125px;}
+	#leftside ul.avmenu ul a, #rightside ul.avmenu ul a {font-weight:400; padding:3px 1px 3px 5px; width:115px;}
+	#leftside ul.avmenu ul ul, #rightside ul.avmenu ul ul {width:113px;}
+	#leftside ul.avmenu ul ul a, #rightside ul.avmenu ul ul a {width:100px;}
+	
+	div#center-main {
+		width: 590px;
+		float: left;
+		padding: 5px 10px 5px;
+		border-left:1px solid #e0e0e0; 
+		border-right:1px solid #e0e0e0; 
+		line-height:1.5em; 
  	}
 	
 	.post {
@@ -186,49 +232,39 @@
 		font-weight: bold;
 	}
 	
-	.main-banner {
-		float: left;
-		padding-top: 30px;
-		padding-bottom: 30px;
-		
-	}
+	/* right-sidebar */
 	
-	/* Sidebar */
-	
-	div#sidebar {
+	div#right-sidebar {
 		float: right;
-		width: 240px;
-		padding: 0px;
+		width: 160px;
+		padding-left: 25px;
 		color: #787878;
 		background: #FFFFFF;
-		
 	}
 	
-	div#sidebar ul {
+	div#right-sidebar ul {
 		margin: 0;
 		padding: 0;
 		list-style: none;
 	}
 	
-	div#sidebar li {
+	div#right-sidebar li {
 		margin: 0;
 		padding: 0;
-		border-left: 1px solid #E2E2E2;	
 	}
 	
-	div#sidebar li ul {
+	div#right-sidebar li ul {
 		margin: 0px 0px;
 		padding-bottom: 30px;
 	}
 	
-	div#sidebar li li {
+	div#right-sidebar li li {
 		line-height: 35px;
-		border-bottom: 1px dashed #D1D1D1;
-		margin: 0px 30px;
+		margin: 0px 20px;
 		border-left: none;
 	}
 	
-	div#sidebar li li span {
+	div#right-sidebar li li span {
 		display: block;
 		margin-top: -20px;
 		padding: 0;
@@ -236,26 +272,29 @@
 		font-style: italic;
 	}
 	
-	div#sidebar h2 {
-		height: 38px;
-		padding-left: 30px;
-		letter-spacing: -.5px;
-		font-size: 1.8em;
+	div#right-sidebar h2 {
+		color:#505050; font-size:1.6em; margin:0 0 8px; padding:0
 	}
 	
-	div#sidebar p {
+	div#right-sidebar p {
 		margin: 0 0px;
-		padding: 0px 30px 20px 30px;
+		/*padding: 0px 30px 20px 30px;*/
+		padding: 0px 20px 10px 20px;
 		text-align: justify;
+		/*font-size:0.9em; line-height:1.4em*/
 	}
 	
-	div#sidebar a {
+	div#right-sidebar a {
 		border: none;
 	}
 	
-	div#sidebar a:hover {
+	div#right-sidebar a:hover {
 		text-decoration: underline;
 		color: #8A8A8A;
 	}
 	
 
+	.hide {display:none;}
+	.announce {background-color:#f4f4f4; border-left:4px solid #ccc; clear:left; color:#505050; font-size:0.9em; line-height:1.5em; margin:10px 0 15px; padding:7px 5px 2px 5px; width:126px;}
+	.announce-right {background-color:#f4f4f4; clear:left; color:#ccc; font-size:0.9em; line-height:1.5em; margin:10px 0 15px; padding:7px 5px 2px 5px; width:126px;}
+	.announce p {margin:10px 0 0; padding:0;}
