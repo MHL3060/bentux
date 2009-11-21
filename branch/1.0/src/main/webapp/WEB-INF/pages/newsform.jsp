@@ -18,6 +18,8 @@
             	<appfuse:label key="news.content" styleClass="desc" />
             	<form:errors path="contentBody" cssClass="fieldError" />
             	<form:textarea path="contentBody"/>
+            	
+            	
             </li>
         </ul>
 		
