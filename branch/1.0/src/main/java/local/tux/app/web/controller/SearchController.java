@@ -7,10 +7,15 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import local.tux.app.model.BrandName;
+import local.tux.app.model.Manufacturer;
+import local.tux.app.model.Product;
+import local.tux.app.model.common.TuxBaseObject;
 import local.tux.app.model.web.SearchResultBean;
 
 import org.compass.core.CompassHit;
@@ -126,7 +131,7 @@ public class SearchController extends AbstractCompassCommandController {
         return returnModelAndView;
     }
 
-    private List<SearchResultBean> convert(CompassSearchResults searchResults) throws NumberFormatException, IllegalAccessException, InvocationTargetException, NoSuchMethodException {
+    private List<SearchResultBean> convert(CompassSearchResults searchResults) throws Exception {
 		List<SearchResultBean> list = new ArrayList<SearchResultBean>();
     	CompassHit[] hits = searchResults.getHits();
 		for (CompassHit hit : hits){
@@ -141,22 +146,32 @@ public class SearchController extends AbstractCompassCommandController {
 				name = BeanUtils.getProperty(o, "title");
 			}
 			srb.setName(name);
+			String content = "";
 			if (hit.getHighlightedText() != null){
-				srb.setResource(hit.getHighlightedText().getHighlightedText());
+				content = hit.getHighlightedText().getHighlightedText();
 			}else {
 				try {
-					srb.setResource(BeanUtils.getProperty(o, "description"));
+					content = BeanUtils.getProperty(o, "description");
+					
 				}catch (Exception e){
-					srb.setResource(BeanUtils.getProperty(o, "contentBody"));
+					try {
+						content = BeanUtils.getProperty(o, "contentBody");
+					}catch (Exception ex){
+						
+					}
 				}
 			}
-			
+			if (content.length() > 1000){
+				content = content.substring(0, 1000);
+			}
+			srb.setResource(content);
 			
 			list.add(srb);
 			
 		}
 		return list;
 	}
+	
 
 	/**
      * Returns the view that holds the screen which the user will initiate the
