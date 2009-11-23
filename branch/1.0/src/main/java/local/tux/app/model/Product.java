@@ -42,7 +42,10 @@ public class Product extends LookUpBaseObject {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@SearchableId
 	private Long id;
+	
 	@Column(name="name", nullable=false)
+	
+	@SearchableProperty
 	private String name;
 	
 	@ManyToOne
@@ -55,6 +58,7 @@ public class Product extends LookUpBaseObject {
 	@Column(name="availability")
 	private Integer availability;
 	@Column(name="description")
+	
 	@SearchableProperty
 	private String description;
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="product" )
