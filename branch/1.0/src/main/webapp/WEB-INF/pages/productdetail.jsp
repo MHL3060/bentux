@@ -6,10 +6,11 @@
 			<tr>
 				<td><font class="desc"><fmt:message key="product.name" /></font></td>
 				<td><font class="value">${product.name }</font></td>
+				<td><font class="value">${product.description }</font></td>
+				<td><font class="value">${product.availability }</font></td>
+				
 			</tr>
-			<tr>
-				<td>more fields will be listed below</td>
-			</tr>
+		
 			
 				
 			

@@ -1,6 +1,6 @@
 <%@ include file="/common/taglibs.jsp"%>
 <P>
-<H2>Compass Search:</H2>
+<H2>Product Search:</H2>
 
 <FORM method="GET"><spring:bind path="command.query">
 	<INPUT type="text" size="20" name="query"
@@ -9,19 +9,21 @@
 
 <c:if test="${! empty searchResults}">
 
-  Search took <c:out value="${searchResults.searchTime}" />ms
-
-
 	<c:forEach var="searchResultBean" items="${list}">
-		<div name="title">
-			<c:url var="url" value="${searchResultBean.objectName}">
-			
-			</c:url>
-			${searchResultBean }</div>
-		<div name="contentBody">${searchResultBean.resource }</div>
+		<div name="Result">
+			<div name="title">
+				<a class="productDetail" href="<c:url value="/productdetail.html?id=${searchResultBean.id}" />" > ${searchResultBean.name}</a>	
+			</div>
+			<div name="content">
+				${searchResultBean.resource }
+			</div>
+			<div name="url">
+				<c:url var="url" value="${searchResultBean.objectName}">
+				</c:url>
+			</div>	
+		</div>
 	</c:forEach>
-
-	
-		</c:if>
-
+</c:if>
+Search took <c:out value="${searchResults.searchTime}" />ms
+  
 		<P><BR>
