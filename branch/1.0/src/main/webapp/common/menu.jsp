@@ -43,7 +43,7 @@
     </li>
          <li>
      	<a href="<c:url value="/search.html"/>" class="${pageContext.request.requestURI == '/search.html' ? 'current' : '' }" >
-     	    	<fmt:message key="search" />
+     	    	<fmt:message key="search.page" />
      	
      	</a>
      </li>

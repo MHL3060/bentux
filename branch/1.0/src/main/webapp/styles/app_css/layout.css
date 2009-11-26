@@ -86,7 +86,7 @@
             color: #c0f1be;
             padding: 0 39px;
             text-align: left;
-            font-size: 1.2em;
+            font-size: 1.0em;
 			font-weight: bold;
         }
 
@@ -104,6 +104,12 @@
             div#footer .left {
                     float: left;
             }
+            
+            div#footer .center {
+            		margin-top:30%;
+            		padding-left:25%; 
+            		padding-right:25%;    		
+            }	
 
             div#footer .right {
                     float: right;
