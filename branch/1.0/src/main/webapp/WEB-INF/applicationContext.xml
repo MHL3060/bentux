@@ -35,7 +35,7 @@
 		<property name="compassSettings">
 			<props>
 				
-                <prop key="compass.engine.connection">file:///compass/</prop>
+                <prop key="compass.engine.connection">file://${user.home}/compass/</prop>
                 <prop key="compass.transaction.factory">org.compass.spring.transaction.SpringSyncTransactionFactory</prop>
                 <!-- snowball analyzer provides stemming (so 'monkey' gets 'monkeys', too) --> 
                 <prop key="compass.engine.analyzer.default.type">snowball</prop> 
