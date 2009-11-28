@@ -31,7 +31,7 @@ $('product').observe('click', function(event) {
 div.section { clear: left; }
 div.catalog { 
     float: left; 
-	width: 15em; 
+	width: 12em; 
 	padding: 40px; 
 	margin: 1em;
 	height: 100px;
@@ -42,7 +42,7 @@ div.catalog {
 }
 div.center{
 	float: left;
-	padding-left: 12em;
+	padding-left: 2em;
 
 }
 

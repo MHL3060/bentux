@@ -8,9 +8,9 @@
 					<ul class="avmenu">
 						<li><a href="subcatalogs.html">Categories</a></li>
 						<ul>
-							<li><a href="subcatalogs.html?pid=-1">Foods</a></li>
-							<li><a href="subcatalogs.html?pid=-4">Cultural</a></li>
-							<li><a href="subcatalogs.html?pid=-2">Entertainment</a></li>
+							<li><a href="<c:url value="/subcatalogs.html?pid=-1"/>" >Foods</a></li>
+							<li><a href="<c:url value="/subcatalogs.html?pid=-4"/>">Cultural</a></li>
+							<li><a href="<c:url value="/subcatalogs.html?pid=-2"/>">Entertainment</a></li>
 						</ul>
 						</li>
 			
