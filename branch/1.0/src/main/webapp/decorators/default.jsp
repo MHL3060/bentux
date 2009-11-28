@@ -15,6 +15,7 @@
         <script type="text/javascript" src="<c:url value='/scripts/global.js'/>"></script>
         <decorator:head/>
     </head>
+    
 <body<decorator:getProperty property="body.id" writeEntireProperty="true"/><decorator:getProperty property="body.class" writeEntireProperty="true"/>>
 
     <div id="page">
@@ -23,12 +24,19 @@
         </div>
 
         <div id="content" class="clearfix">
+        	<% String myURI = request.getRequestURI();%>
+			<% myURI = myURI.substring(1,5);%>
+		
+			<% if (!myURI.equals("home")) { %> 	
+				<div id="sidebar">
+					<jsp:include page="/common/sidebar.jsp"/>	
+				</div>  
+			<% } %>
             <div id="main">
                 <%@ include file="/common/messages.jsp" %>
                 <h1><decorator:getProperty property="meta.heading"/></h1>
                 <decorator:body/>
             </div>
-
             <c:set var="currentMenu" scope="request"><decorator:getProperty property="meta.menu"/></c:set>
             <c:if test="${currentMenu == 'AdminMenu'}">
             <div id="sub">
@@ -44,12 +52,13 @@
                     <jsp:include page="/common/menu.jsp"/>
                 </div>
                 <hr/>
-            </div><!-- end nav -->
-        </div>
-
+    		</div>
+         </div><!-- end nav -->
+			
+		
         <div id="footer" class="clearfix">
             <jsp:include page="/common/footer.jsp"/>
         </div>
-    </div>
+   	</div>
 </body>
 </html>
