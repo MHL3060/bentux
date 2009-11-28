@@ -1,6 +1,7 @@
 package local.tux.app.service;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import local.tux.app.model.common.LookUpBaseObject;
@@ -16,4 +17,6 @@ public interface LookUpNameGenericManager<T, PK extends Serializable> extends Ge
 	
 	public List<T> search(String propertyName, String value);
 	public int getAllRecordsCount();
+	
+	public List<T> getItemsInInterval(String attribute, Object from, Object to);
 }

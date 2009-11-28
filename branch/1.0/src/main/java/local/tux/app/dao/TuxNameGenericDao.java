@@ -2,6 +2,7 @@ package local.tux.app.dao;
 
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import local.tux.app.model.common.LookUpBaseObject;
@@ -21,5 +22,6 @@ public interface TuxNameGenericDao<T, PK extends Serializable> extends GenericDa
 	public List<TuxBaseObject>  getRelativeObjects(String key, Long object);
 	public List<T> search(String propertyName, String value, int fetchSize);
 	public int getAllRecordsCount();
+	public List<T> getItemsInInterval(String attribute, Object from, Object to);
 	
 }

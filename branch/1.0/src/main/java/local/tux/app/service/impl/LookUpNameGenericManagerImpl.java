@@ -1,6 +1,7 @@
 package local.tux.app.service.impl;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -52,6 +53,10 @@ public class LookUpNameGenericManagerImpl<T, PK extends Serializable> extends Ge
 
 	public int getAllRecordsCount() {
 		return genericDao.getAllRecordsCount();
+	}
+
+	public List<T> getItemsInInterval(String attribute, Object from, Object to) {
+		return genericDao.getItemsInInterval(attribute, from, to);
 	}
 
 }

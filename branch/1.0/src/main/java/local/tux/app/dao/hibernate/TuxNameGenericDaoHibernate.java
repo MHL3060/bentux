@@ -1,6 +1,7 @@
 package local.tux.app.dao.hibernate;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import local.tux.Constants;
@@ -68,6 +69,13 @@ public class TuxNameGenericDaoHibernate<T, PK extends Serializable> extends Gene
 			count = ((Integer) results.get(0)).intValue();
 		}
 		return count;
+	}
+
+	public List<T> getItemsInInterval(String attribute, Object from, Object to) {
+		DetachedCriteria criteria = DetachedCriteria.forClass(clazz);
+		criteria.add(Restrictions.ge(attribute, from))
+				.add(Restrictions.le(attribute, to));
+		return getHibernateTemplate().findByCriteria(criteria);
 	}
 
 }
