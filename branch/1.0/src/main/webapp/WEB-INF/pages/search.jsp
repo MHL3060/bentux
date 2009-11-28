@@ -10,17 +10,18 @@
 <c:if test="${! empty searchResults}">
 
 	<c:forEach var="searchResultBean" items="${list}">
-		<div name="Result">
-			<div name="title">
+		<div class="result">
+			<div class="title">
 				<a class="productDetail" href="<c:url value="/productdetail.html?id=${searchResultBean.id}" />" > ${searchResultBean.name}</a>	
 			</div>
-			<div name="content">
+			<div class="content">
 				${searchResultBean.resource }
 			</div>
-			<div name="url">
+			<div class="url">
 				<c:url var="url" value="${searchResultBean.objectName}">
 				</c:url>
-			</div>	
+			</div>
+				
 		</div>
 	</c:forEach>
 </c:if>

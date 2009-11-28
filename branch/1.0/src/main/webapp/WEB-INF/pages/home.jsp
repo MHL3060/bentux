@@ -2,23 +2,13 @@
 
 <head>
 <meta name="menu" content="Home" />
-<link rel="stylesheet" type="text/css" media="all"
-	href="<c:url value='/styles/${appConfig["csstheme"]}/layout-home.css'/>" />
+
 </head>
 
 <div id="wrapper">
 	<div id="main-title">Welcome to Taste of India</div>
 		<div id="main-banner-left"><img src="<c:url value="/images/sample_banner.gif"/>" width="680" height="90" alt="trinity group"></img></div>
-			<div id="main-banner-right">
-				<div id="signup-container">
-					<h3>Get updates via email</h3>
-				  	<div class="signup">
-				
-				    <form action="/signup" method="post">
-				  	<p><input name="commit" type="submit" value="Subscribe!" /></p>
-					</form></div>
-				</div>
-			</div>
+			
 			<div style="clear: both;">&nbsp;</div>
 					
 			<div id="leftside">
