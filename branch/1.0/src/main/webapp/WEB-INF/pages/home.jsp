@@ -160,19 +160,14 @@
 				<li>
 					<h2>Latest Posts</h2>
 					<ul>
-					<li><a href="#">Adding A Complete CSS Resource To Your Arsenal</a></li>
-					<li><a href="#">10 Useful Free Ajax Tools to Add To Your Toolbox</a></li>
-					<li><a href="#">CSS Button Animation without Images</a></li>
-					<li><a href="#">Create Interactive Web Pages with The Ajax Control Kit</a></li>
-					<li><a href="#">How To Use CSS Margins On Pages</a></li>
-					<li><a href="#">Top CSS Navigation Menu For Commercial Sites</a></li>
-					<li><a href="#">Best Ways To Write Clean CSS Code</a></li>
-					<li><a href="#">How to Deploy Web Projects Fast with Deploy</a></li>
-					<li><a href="#">CSS Tools to Make Design Easier</a></li>
-					<li><a href="#">Smooth Your Design and Round Those Corners</a></li>
-					<li><a href="#">Dynamic Font Sizes</a></li>
-					<li><a href="#">Designing For Those With Disabilities</a></li>
-					<li><a href="#">How to over design with CSS.</a></li>
+						<c:forEach items="${latestNews }" var="news"> 
+							<li>
+								<c:url var="url" value="/news.html">
+									<c:param name="id" value="${news.id}" />
+								</c:url>
+								<a href="${url }">${news.title}</a>
+							</li>
+						</c:forEach>
 					</ul>
 				</li>
 				

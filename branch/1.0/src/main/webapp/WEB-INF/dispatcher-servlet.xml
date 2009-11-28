@@ -200,11 +200,13 @@
     	<property name="pagingLookupManager" ref="pagingLookupManager" />
     	<property name="pojo" value="local.tux.app.model.News" />
     	<property name="userManager" ref="userManager" />
+    	<property name="newsManager" ref="newsManager" />
     </bean>
     <bean id="homeController" class="local.tux.app.web.controller.HomeController">
     	<property name="paginatedListFactory" ref="paginatedListFactory" />
     	<property name="pagingLookupManager" ref="pagingLookupManager" />
     	<property name="pojo" value="local.tux.app.model.News" />
     	<property name="userManager" ref="userManager" />
+    	<property name="newsManager" ref="newsManager" />
     </bean>
 </beans>

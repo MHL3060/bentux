@@ -13,6 +13,7 @@ import org.apache.commons.lang.StringUtils;
 import org.appfuse.dao.hibernate.GenericDaoHibernate;
 import org.hibernate.Session;
 import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
@@ -74,7 +75,8 @@ public class TuxNameGenericDaoHibernate<T, PK extends Serializable> extends Gene
 	public List<T> getItemsInInterval(String attribute, Object from, Object to) {
 		DetachedCriteria criteria = DetachedCriteria.forClass(clazz);
 		criteria.add(Restrictions.ge(attribute, from))
-				.add(Restrictions.le(attribute, to));
+				.add(Restrictions.le(attribute, to))
+				.addOrder(Order.desc(attribute));
 		return getHibernateTemplate().findByCriteria(criteria);
 	}
 

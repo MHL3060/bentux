@@ -24,4 +24,7 @@ public interface Constants {
 	public final int CATALOG_ENTERTAIN_SERIVCE = -3;
 	public final int AJAX_SIZE = 25;
 	
+	public final int NEWS_BACK_TO = -30;
+	public final int NEWS_DISPLAY_ITEM = 5;
+	
 }
