@@ -12,7 +12,7 @@
 	<c:forEach var="searchResultBean" items="${list}">
 		<div class="result">
 			<div class="title">
-				<a class="productDetail" href="<c:url value="/productdetail.html?id=${searchResultBean.id}" />" > ${searchResultBean.name}</a>	
+				<a href="<c:url value="/productdetail.html?id=${searchResultBean.id}" />" > ${searchResultBean.name}</a>	
 			</div>
 			<div class="content">
 				${searchResultBean.resource }

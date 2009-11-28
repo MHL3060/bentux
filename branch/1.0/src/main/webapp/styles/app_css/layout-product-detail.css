@@ -1,0 +1,110 @@
+	/*
+	Design by Matthew Lai
+	*/
+	@import url(nav-horizontal.css);	
+
+	body {
+    	margin: 0;
+    	padding:0px;
+		background: #FFFFFF;
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 13px;
+		color: #333333;
+	}
+		
+		
+	h1, h2, h3 {
+		margin: 0;
+		padding: 0;
+		font-family: Georgia, "Times New Roman", Times, serif;
+		font-weight: normal;
+		color: #333333;
+		
+	}
+	
+	h1 {
+		font-size: 2.2em;
+	}
+	
+	h2 {
+		font-size: 1.8em;
+	}
+	
+	h3 {
+		font-size: 1.6em;
+	}
+	
+	p, ul, ol {
+		margin-top: 0;
+		line-height: 180%;
+	}
+	
+	ul, ol {
+	}
+	
+	a {
+		text-decoration: none;
+		/*color: #4486C7;*/
+		color: #333333;
+	
+	}
+	
+	div#title {
+		Width: 700px;
+		float: left;	
+		font-size: large;
+		font-style: BOLD;
+		letter-spacing: 0.1em;
+		color: #787878;
+		border-bottom: 1px solid #E2E2E2;
+	}
+	
+	div#picture {
+		float: right;
+		padding-top: 5px;
+		padding-right: 5px;
+	}
+	
+	.post . {
+		height: 38px;
+		border-bottom: 1px;
+		margin-bottom: 20px;
+		padding: 12px 0 0 0px;
+		letter-spacing: -.5px;
+	}
+	
+	.post .title a {
+		border-top: 10px;
+		color: #32639A;
+		border: none;
+	}
+	
+	.post meta {
+		margin-bottom: 5px;
+		padding: 5px 0px 5px 0px;
+		text-align: left;
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 13px;
+		font-weight: bold;
+	}
+	
+	.post .meta .feature {
+		float: left;
+	}
+	
+	.post .meta .posted {
+		float: right;
+	}
+	
+	.post .meta .a {
+	}
+	
+	.post .entry {
+		padding: 0px 0px 20px 0px;
+		padding-bottom: 20px;
+		text-align: justify;
+		font-size: 12px;
+		line-height: 1.5em; 
+		color: #787878;
+		
+	}

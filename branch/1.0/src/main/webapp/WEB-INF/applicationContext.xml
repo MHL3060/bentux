@@ -29,7 +29,6 @@
 				<value>local.tux.app.model.EntertainmentService</value>
 				<value>local.tux.app.model.Ingredient</value>
 				<value>local.tux.app.model.Comment</value>
-				<value>local.tux.app.model.ProductDetail</value>
 			</list>
 		</property>
 		<property name="compassSettings">
@@ -98,10 +97,6 @@
 		<constructor-arg value="local.tux.app.model.Comment" />
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-	<bean id="productDetailDao" class="local.tux.app.dao.hibernate.TuxNameGenericDaoHibernate">
-		<constructor-arg value="local.tux.app.model.ProductDetail" />
-		<property name="sessionFactory" ref="sessionFactory" />
-	</bean>
     <!-- Add new Managers here --> 
     <bean id="catalogManager" class="local.tux.app.service.impl.CatalogManagerImpl">
     	<constructor-arg ref="catalogDao"/>
@@ -135,8 +130,5 @@
    </bean>
    <bean id="CommentManager" class="local.tux.app.service.impl.LookUpNameGenericManagerImpl">
     	<constructor-arg ref="commentDao" />
-   </bean>
-   <bean id="ProductDetailManager" class="local.tux.app.service.impl.LookUpNameGenericManagerImpl">
-    	<constructor-arg ref="productDetailDao" />
    </bean>
 </beans>
