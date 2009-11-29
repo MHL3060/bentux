@@ -192,6 +192,14 @@
     <column>image_id</column>
     <column>parent</column>
     <row>
+      <value>-4</value>
+      <value><![CDATA[Cultural Product]]></value>
+      <null/>
+      <value><![CDATA[Cultural Product]]></value>
+      <null/>
+      <null/>
+    </row>
+    <row>
       <value>-3</value>
       <value><![CDATA[Entertainment Service]]></value>
       <null/>
@@ -319,7 +327,7 @@
       <value/>
       <null/>
       <value><![CDATA[<p>
-	1 L skim milk, 2.5 fat per gram, 5 protein</p>
+        1 L skim milk, 2.5 fat per gram, 5 protein</p>
 ]]></value>
       <null/>
       <value><![CDATA[pauls 1L milk]]></value>
@@ -335,7 +343,7 @@
       <value/>
       <null/>
       <value><![CDATA[<p>
-	The most tempting taste grapefruits juice</p>
+        The most tempting taste grapefruits juice</p>
 ]]></value>
       <null/>
       <value>Grapefruits</value>
@@ -365,7 +373,7 @@
       <value/>
       <null/>
       <value><![CDATA[<p>
-	CHILLI GARLIC SAUCE 305g </p>
+        CHILLI GARLIC SAUCE 305g </p>
 ]]></value>
       <null/>
       <value><![CDATA[CHILLI GARLIC SAUCE 305g ]]></value>
@@ -381,7 +389,7 @@
       <value/>
       <null/>
       <value><![CDATA[<p>
-	TOMATO KETCHUP sauce can be used for different type of recipe</p>
+        TOMATO KETCHUP sauce can be used for different type of recipe</p>
 ]]></value>
       <null/>
       <value><![CDATA[TOMATO KETCHUP 325g]]></value>
@@ -467,7 +475,7 @@
       <value/>
       <null/>
       <value><![CDATA[<p>
-	By tom cruise, nicole kidman</p>
+        By tom cruise, nicole kidman</p>
 ]]></value>
       <value>80.0</value>
       <value><![CDATA[The day after tomoroow]]></value>
@@ -483,7 +491,7 @@
       <value/>
       <null/>
       <value><![CDATA[<p>
-	MIB 4, by tom cruise</p>
+        MIB 4, by tom cruise</p>
 ]]></value>
       <null/>
       <value><![CDATA[Mission Impossibe 4]]></value>
@@ -513,7 +521,7 @@
       <value/>
       <null/>
       <value><![CDATA[<p>
-	BUSINESS TODAY, the most popular financial magazine in India, now available at Trinity store.</p>
+        BUSINESS TODAY, the most popular financial magazine in India, now available at Trinity store.</p>
 ]]></value>
       <null/>
       <value><![CDATA[BUSINESS TODAY]]></value>
@@ -529,7 +537,7 @@
       <value/>
       <null/>
       <value><![CDATA[<p>
-	June 09 Issue, COSMOPOLITAN the american most read magazine for all trendy women.</p>
+        June 09 Issue, COSMOPOLITAN the american most read magazine for all trendy women.</p>
 ]]></value>
       <null/>
       <value>Cosmopolitan</value>
@@ -545,7 +553,7 @@
       <value/>
       <null/>
       <value><![CDATA[<p>
-	JUL 09, Disney for the kids, i am sure your kids would love to read this magazines.</p>
+        JUL 09, Disney for the kids, i am sure your kids would love to read this magazines.</p>
 ]]></value>
       <null/>
       <value><![CDATA[DISNEY ADVENTURES ]]></value>
@@ -561,7 +569,7 @@
       <value/>
       <null/>
       <value><![CDATA[<p>
-	Veggie </p>
+        Veggie </p>
 ]]></value>
       <null/>
       <value><![CDATA[VEG-ARABI ]]></value>
@@ -577,7 +585,7 @@
       <value/>
       <null/>
       <value><![CDATA[<p>
-	Garlic (Allium sativum) was is popular worldwide. It will grow in virtually all parts of the world and can be found throughout Europe growing wild in fields and woodlands.</p>
+        Garlic (Allium sativum) was is popular worldwide. It will grow in virtually all parts of the world and can be found throughout Europe growing wild in fields and woodlands.</p>
 ]]></value>
       <null/>
       <value><![CDATA[VEG-CURRY LEAVES]]></value>
@@ -871,8 +879,8 @@
       <value>1</value>
       <value><![CDATA[2009-11-16 02:58:34.38]]></value>
       <value><![CDATA[<p>
-	&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; Essentially, a wrapper is nothing more than a generic &quot;div&quot; tag element that usually contains all the other page elements. This wrapper div provides a way to constrain the width of the page content, and can also be colored, bordered, and perhaps even display a background image. In short, a wrapper can be a very useful thing to have.<br />
-	&nbsp;</p>
+                                Essentially, a wrapper is nothing more than a generic &quot;div&quot; tag element that usually contains all the other page elements. This wrapper div provides a way to constrain the width of the page content, and can also be colored, bordered, and perhaps even display a background image. In short, a wrapper can be a very useful thing to have.<br />
+         </p>
 ]]></value>
       <value><![CDATA[Whats a wrapper]]></value>
       <value>-2</value>
@@ -881,13 +889,13 @@
       <value>2</value>
       <value><![CDATA[2009-11-16 03:00:48.467]]></value>
       <value><![CDATA[<p>
-	&nbsp;</p>
+         </p>
 <p style="margin: 0.0px 0.0px 0.0px 0.0px; font: 11.0px Monaco">
-	&nbsp;</p>
+         </p>
 <p style="margin: 0.0px 0.0px 0.0px 0.0px; font: 11.0px Monaco">
-	&nbsp;</p>
+         </p>
 <p style="margin: 0.0px 0.0px 0.0px 0.0px; font: 11.0px Monaco">
-	Taste of India, by <span style="text-decoration: underline">Trinity</span> <span style="text-decoration: underline">Infotech</span>. We provide over a thousand plus items in our store, please come to visit us sometimes.</p>]]></value>
+        Taste of India, by <span style="text-decoration: underline">Trinity</span> <span style="text-decoration: underline">Infotech</span>. We provide over a thousand plus items in our store, please come to visit us sometimes.</p>]]></value>
       <value><![CDATA[Our site ]]></value>
       <value>-2</value>
     </row>
@@ -895,15 +903,15 @@
       <value>67</value>
       <value><![CDATA[2009-11-16 05:18:11.085]]></value>
       <value><![CDATA[<p class="cnnEditorialNote">
-	<em><b>Editor&#39;s note</b>: CNN Contributor Bob Greene is a best selling author whose new <a href="http://us.macmillan.com/lateedition" target="new">book</a> is &quot;Late Edition: A Love Story.&quot; </em></p>
+        <em><b>Editor&#39;s note</b>: CNN Contributor Bob Greene is a best selling author whose new <a href="http://us.macmillan.com/lateedition" target="new">book</a> is &quot;Late Edition: A Love Story.&quot; </em></p>
 <p>
-	<b>(CNN)</b> -- At an auction at a gallery in New York recently, a piece of artwork sold for a higher price than had been anticipated by the auctioneers: $4,080.</p>
+        <b>(CNN)</b> -- At an auction at a gallery in New York recently, a piece of artwork sold for a higher price than had been anticipated by the auctioneers: $4,080.</p>
 <p>
-	It wasn&#39;t a very big piece of art -- just 8-by-10 inches. Technically, it wasn&#39;t even art. It was a glossy black-and-white photograph. It had a slight imperfection: there were staple holes in the upper left-hand corner.</p>
+        It wasn&#39;t a very big piece of art -- just 8-by-10 inches. Technically, it wasn&#39;t even art. It was a glossy black-and-white photograph. It had a slight imperfection: there were staple holes in the upper left-hand corner.</p>
 <p>
-	Someone had written all over the front of the photograph. The person who had scrawled on it was, in fact, the subject of the photograph. He had written:</p>
+        Someone had written all over the front of the photograph. The person who had scrawled on it was, in fact, the subject of the photograph. He had written:</p>
 <p>
-	&quot;To Patricia Keating, with very best wishes, John Kennedy&quot;</p>
+        &quot;To Patricia Keating, with very best wishes, John Kennedy&quot;</p>
 ]]></value>
       <value><![CDATA[JFK and Elvis on the wall]]></value>
       <value>-2</value>
@@ -912,19 +920,19 @@
       <value>68</value>
       <value><![CDATA[2009-11-16 05:19:14.315]]></value>
       <value><![CDATA[<p>
-	<b><b>CNN)</b></b> -- U.S. President Barack Obama is expected on Monday to meet with the Shanghai mayor and hold a town hall-style meeting with &quot;future Chinese leaders&quot; before heading to Beijing to meet his host, Chinese President Hu Jintao.</p>
+        <b><b>CNN)</b></b> -- U.S. President Barack Obama is expected on Monday to meet with the Shanghai mayor and hold a town hall-style meeting with &quot;future Chinese leaders&quot; before heading to Beijing to meet his host, Chinese President Hu Jintao.</p>
 <p>
-	Trade issues are likely to be a major discussion topic between the two leaders; the United States imports billions of dollars in Chinese products each year.</p>
+        Trade issues are likely to be a major discussion topic between the two leaders; the United States imports billions of dollars in Chinese products each year.</p>
 <p>
-	At local markets, Chinese government officials banned a popular Obama shirt over fears that it would offend their guest.</p>
+        At local markets, Chinese government officials banned a popular Obama shirt over fears that it would offend their guest.</p>
 <p>
-	It depicts Obama wearing a Chinese Communist outfit made famous by Mao Zedong, the late Communist leader. The back has &quot;Oba-Mao&quot; printed on it.</p>
+        It depicts Obama wearing a Chinese Communist outfit made famous by Mao Zedong, the late Communist leader. The back has &quot;Oba-Mao&quot; printed on it.</p>
 <p>
-	Obama&#39;s visit comes as <a class="cnnInlineTopic" href="http://www.cnn.com/SPECIALS/2009/china/">China</a> relishes its spot as a key global player. It is involved in major international disputes such as the showdowns with Iran and North Korea and has used its position on the U.N. Security Council and its economic leverage to influence events around the globe.</p>
+        Obama&#39;s visit comes as <a class="cnnInlineTopic" href="http://www.cnn.com/SPECIALS/2009/china/">China</a> relishes its spot as a key global player. It is involved in major international disputes such as the showdowns with Iran and North Korea and has used its position on the U.N. Security Council and its economic leverage to influence events around the globe.</p>
 <p>
-	China also is now the dominant regional player in northeast Asia, recently hosting a summit in Beijing with the Japanese and South Korean leaders.</p>
+        China also is now the dominant regional player in northeast Asia, recently hosting a summit in Beijing with the Japanese and South Korean leaders.</p>
 <p>
-	The nation&#39;s economic expansion has led to a demand for raw materials around the world and the rapid expansion of China&#39;s presence in countries such as Guinea, Myanmar, Sudan and Venezuela. Human rights groups say China is propping up repressive regimes to secure its access to critically important raw materials.</p>
+        The nation&#39;s economic expansion has led to a demand for raw materials around the world and the rapid expansion of China&#39;s presence in countries such as Guinea, Myanmar, Sudan and Venezuela. Human rights groups say China is propping up repressive regimes to secure its access to critically important raw materials.</p>
 ]]></value>
       <value><![CDATA[Obama visiting China]]></value>
       <value>-2</value>
