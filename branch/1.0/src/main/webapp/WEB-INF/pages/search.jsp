@@ -24,7 +24,9 @@
 				
 		</div>
 	</c:forEach>
-</c:if>
+
+<P><BR>
 Search took <c:out value="${searchResults.searchTime}" />ms
+
+</c:if>
   
-		<P><BR>

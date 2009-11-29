@@ -2,7 +2,9 @@
 
 <head>
 <meta name="menu" content="Home" />
-
+<link rel="stylesheet" type="text/css" media="all"
+	href="<c:url value='/styles/${appConfig["csstheme"]}/layout-home.css'/>" />
+</head>
 </head>
 
 <div id="wrapper">
@@ -89,7 +91,7 @@
 		</c:forEach> <c:if test="${empty tuxBaseObjectList }">
 			<c:if test="${hasPermission }">
 				<div class="links">No News Found.<a
-					href="<c:url value="/newsform.html" />">Add One</a></div>
+					href="<c:url value="/newsform.html" />">&nbsp;Add One</a></div>
 			</c:if>
 		</c:if>
 		

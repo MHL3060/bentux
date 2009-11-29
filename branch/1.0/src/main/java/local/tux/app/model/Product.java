@@ -91,6 +91,10 @@ public class Product extends LookUpBaseObject {
 	@SearchableComponent
 	private EntertainmentProduct entertainmentProduct = new EntertainmentProduct();
 	
+	@OneToOne(mappedBy="product", optional=true, cascade=CascadeType.ALL)
+	@SearchableComponent
+	private CulturalProduct culturalProduct = new CulturalProduct();
+	
 	@ManyToMany
 	@JoinTable(name="catalog_product")
 	private Set<Catalog> catalogs;
@@ -295,6 +299,14 @@ public class Product extends LookUpBaseObject {
 	}
 
 
+	public CulturalProduct getCulturalProduct() {
+		return culturalProduct;
+	}
+
+
+	public void setCulturalProduct(CulturalProduct culturalProduct) {
+		this.culturalProduct = culturalProduct;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;

@@ -39,18 +39,8 @@
 		line-height: 180%;
 	}
 	
-	ul, ol {
-	}
-	
-	a {
-		text-decoration: none;
-		/*color: #4486C7;*/
-		color: #333333;
-	
-	}
-	
 	div#title {
-		Width: 700px;
+		Width: 730px;
 		float: left;	
 		font-size: large;
 		font-style: BOLD;
@@ -59,52 +49,48 @@
 		border-bottom: 1px solid #E2E2E2;
 	}
 	
-	div#picture {
-		float: right;
-		padding-top: 5px;
-		padding-right: 5px;
-	}
-	
 	.post . {
 		height: 38px;
 		border-bottom: 1px;
 		margin-bottom: 20px;
 		padding: 12px 0 0 0px;
-		letter-spacing: -.5px;
 	}
-	
-	.post .title a {
-		border-top: 10px;
-		color: #32639A;
-		border: none;
-	}
-	
-	.post meta {
-		margin-bottom: 5px;
-		padding: 5px 0px 5px 0px;
-		text-align: left;
-		font-family: Arial, Helvetica, sans-serif;
-		font-size: 13px;
-		font-weight: bold;
-	}
-	
-	.post .meta .feature {
-		float: left;
-	}
-	
-	.post .meta .posted {
+		
+	.post .picture {
 		float: right;
+		padding-top: 5px;
+		padding-right: 5px;
 	}
 	
-	.post .meta .a {
-	}
-	
-	.post .entry {
-		padding: 0px 0px 20px 0px;
-		padding-bottom: 20px;
+	.post .description {
+		float: left;
+		padding: 5px 0px 20px 0px;
+		padding-bottom: 10px;
 		text-align: justify;
 		font-size: 12px;
 		line-height: 1.5em; 
-		color: #787878;
-		
+		color: #333333;
+	}
+	
+	.detail ul {
+	list-style:none;
+	color:#333333;
+	font-size:12px;
+	overflow:hidden;
+	margin:0;
+	padding:0;
+	}
+	
+	.detail ul li ul li {
+	border-top:1px solid #dbdbdb;
+	line-height:19px;
+	}
+
+	.detail ul li ul {
+		border-bottom:1px solid #dbdbdb;
+		margin-bottom:10px;
+	}
+	.detail ul li ul ul {
+		border-bottom:none;
+		margin-bottom:0;
 	}

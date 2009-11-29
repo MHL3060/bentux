@@ -101,7 +101,7 @@ public class ImageFormController extends LookUpTableController {
 			FileOutputStream out = new FileOutputStream(docBase + image.getPath());
 			ImageInputStream in = new MemoryCacheImageInputStream(file.getInputStream());
 			BufferedImage originalImage = saveFile(in, type, out);
-	        	out.close();
+	        out.close();
 			
 			BufferedImage thumbnail = ThumbnailFactory.getThumbnail(originalImage, Constants.THUMBNAIL_WIDTH, Constants.THUMBNAIL_HEIGHT);
 			image.setThumbPath(Constants.IMAGE_PATH + "/thumbs/" + fileName);

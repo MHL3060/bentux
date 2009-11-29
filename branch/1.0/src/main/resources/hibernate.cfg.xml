@@ -18,5 +18,6 @@
         <mapping class="local.tux.app.model.EntertainmentService" />
         <mapping class="local.tux.app.model.News" />
         <mapping class="local.tux.app.model.Comment" />
+        <mapping class="local.tux.app.model.CulturalProduct" />
     </session-factory>
 </hibernate-configuration>
