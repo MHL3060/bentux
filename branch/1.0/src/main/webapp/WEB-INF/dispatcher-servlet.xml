@@ -186,7 +186,7 @@
     
     <bean id="subCatalogController" class="local.tux.app.web.controller.SubCatalogController">
     	<property name="paginatedListFactory" ref="paginatedListFactory" />
-    	
+    	<property name="userManager" ref="userManager" />
     	<property name="pagingLookupManager" ref="pagingLookupManager" />
     	<property name="pojo" value="local.tux.app.model.Catalog" />
     </bean>
