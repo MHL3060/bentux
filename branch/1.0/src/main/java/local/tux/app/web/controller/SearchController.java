@@ -2,6 +2,7 @@ package local.tux.app.web.controller;
 
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.log4j.Logger;
+import org.apache.xmlbeans.impl.regex.RegularExpression;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
@@ -12,8 +13,10 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import local.tux.Constants;
 import local.tux.app.model.BrandName;
 import local.tux.app.model.Manufacturer;
+import local.tux.app.model.News;
 import local.tux.app.model.Product;
 import local.tux.app.model.common.TuxBaseObject;
 import local.tux.app.model.web.SearchResultBean;
@@ -136,37 +139,41 @@ public class SearchController extends AbstractCompassCommandController {
     	CompassHit[] hits = searchResults.getHits();
 		for (CompassHit hit : hits){
 			Object o = hit.data();
-			SearchResultBean srb = new SearchResultBean();
-			srb.setId(new Long(BeanUtils.getProperty(o, "id")));
-			srb.setObjectName(o.getClass().getSimpleName().toLowerCase());
-			String name;
-			try {
-				name = BeanUtils.getProperty(o, "name");
-			}catch (Exception e){
-				name = BeanUtils.getProperty(o, "title");
-			}
-			srb.setName(name);
-			String content = "";
-			if (hit.getHighlightedText() != null){
-				content = hit.getHighlightedText().getHighlightedText();
-			}else {
+			if ((o instanceof News ) || (o instanceof Product)){
+				SearchResultBean srb = new SearchResultBean();
+				srb.setId(new Long(BeanUtils.getProperty(o, "id")));
+				srb.setObjectName(o.getClass().getSimpleName().toLowerCase());
+				String name;
 				try {
-					content = BeanUtils.getProperty(o, "description");
-					
+					name = BeanUtils.getProperty(o, "name");
 				}catch (Exception e){
+					name = BeanUtils.getProperty(o, "title");
+				}
+				srb.setName(name);
+				String content = "";
+				if (hit.getHighlightedText() != null){
+					content = hit.getHighlightedText().getHighlightedText();
+				}else {
 					try {
-						content = BeanUtils.getProperty(o, "contentBody");
-					}catch (Exception ex){
+						content = BeanUtils.getProperty(o, "description");
 						
+	
+					}catch (Exception e){
+						try {
+							content = BeanUtils.getProperty(o, "contentBody");
+						}catch (Exception ex){
+							
+						}
 					}
 				}
+				content = content.replaceAll("\\<.*?>","");
+				if (content.length() > 1000){
+					content = content.substring(0, Constants.SEARCH_SHOW_CHARACTER_LENGTH);
+				}
+				srb.setResource(content);
+				
+				list.add(srb);
 			}
-			if (content.length() > 1000){
-				content = content.substring(0, 1000);
-			}
-			srb.setResource(content);
-			
-			list.add(srb);
 			
 		}
 		return list;
