@@ -16,7 +16,7 @@
      </li>
      <li>
      	<a href="<c:url value="/catalogs.html"/>" class="${pageContext.request.requestURI == '/catalogs.html' ? 'current' : '' }" >
-     		<fmt:message key="main.catalog" />
+     		<fmt:message key="main.catalog.list" />
      	</a>
      
      </li>

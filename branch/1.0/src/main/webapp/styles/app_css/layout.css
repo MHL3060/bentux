@@ -92,11 +92,10 @@
             font-size: 1.0em;
 			font-weight: bold;
         }
-
             div#footer div#divider {
                     margin: 0 0 4px 0;
 					background: #246e21; 
-                    border-top: 1px solid #ccc;
+                    border-top: 10px solid #246e21;
             }
 
             div#footer div#divider div {
@@ -110,6 +109,7 @@
             
             div#footer .center {
             		margin-top:30%;
+            		margin-bottom: 5px;
             		padding-left:25%; 
             		padding-right:25%;    		
             }	
@@ -117,6 +117,6 @@
             div#footer .right {
                     float: right;
             }
-			
+	
     /* END FOOTER */
 /* END LAYOUT */

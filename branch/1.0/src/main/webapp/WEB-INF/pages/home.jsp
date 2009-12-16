@@ -10,9 +10,8 @@
 <div id="wrapper">
 	<div id="main-title">Welcome to Taste of India</div>
 		<div id="main-banner-left"><img src="<c:url value="/images/sample_banner.gif"/>" width="680" height="90" alt="trinity group"></img></div>
-			
-			<div style="clear: both;">&nbsp;</div>
-					
+		<div id="main-banner-right">
+					<img src="<c:url value="/images/sample_banner2.jpg"/>" width="160" height="100" alt="trinity group"></img></div>					
 			<div id="leftside">
 				<ul>			
 					<li>
@@ -117,8 +116,13 @@
 				<li>
 					<ul>
 						<a href="http://www.facebook.com/group.php?gid=111666002279&ref=mf"><img src="<c:url value="/images/facebook_2.jpg"/>" width="140" height="50" alt="trinity group on facebook"></img></a>
+						<a href="http://www.orkut.com/"><img src="<c:url value="/images/orkut2.png"/>" width="140" height="50" alt="Orkut"></img></a>
+					
+					
 					</ul>
 				</li>
+			
+				
 				
 				<li>
 					<h2>Sponsored Links</h2>

@@ -34,9 +34,9 @@
 		font-size: 1.6em;
 	}
 	
-	p, ul, ol {
-		margin-top: 0;
-		line-height: 180%;
+	p {
+		margin: 5px 0px 15px 0;
+		border: 5px 0px 15px 0;
 	}
 	
 	div#title {
@@ -49,6 +49,12 @@
 		border-bottom: 1px solid #E2E2E2;
 	}
 	
+
+	div#photo {
+		border: 10px 5px 5px 10px;
+		margin: 10px 5px 5px 10px;
+		float: right;
+	}
 	.post . {
 		height: 38px;
 		border-bottom: 1px;
@@ -81,6 +87,11 @@
 	padding:0;
 	}
 	
+	.detail picture {
+		margin-bottom: 20px;
+		border-bottom: 20px;
+		float: left;
+	}
 	.detail ul li ul li {
 	border-top:1px solid #dbdbdb;
 	line-height:19px;

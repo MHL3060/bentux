@@ -24,6 +24,6 @@
        	</c:choose>
        
 
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&copy;<fmt:message key="copyright.year"/> <a href="<fmt:message key="company.url"/>"><fmt:message key="company.name"/></a>
+        &nbsp;&nbsp;&nbsp;&nbsp;&copy;<fmt:message key="copyright.year"/> <a href="<fmt:message key="company.url"/>"><fmt:message key="company.name"/></a>
     </span>
 	<div></div></div>
