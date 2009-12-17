@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MenuConfig>
+    <Displayers>
+        <Displayer name="Velocity" type="net.sf.navigator.displayer.VelocityMenuDisplayer"/>
+    </Displayers>
+    <Menus>
+        <Menu name="MainMenu" title="mainMenu.title" page="/mainMenu.html" roles="ROLE_ADMIN,ROLE_USER"/>
+        <Menu name="AdminMenu" title="menu.admin" description="Admin Menu" roles="ROLE_ADMIN" width="120" page="/users.html">
+            <Item name="ViewUsers" title="menu.admin.users" page="/admin/users.html"/>
+            <Item name="ActiveUsers" title="mainMenu.activeUsers" page="/admin/activeUsers.html"/>
+            <Item name="News" title="mainMenu.news" page="/newsform.html" />
+            <Item name="Catalog" title="mainMenu.catalog" page="/catalogform.html"/>
+            <Item name="Manufacturer" title="mainMenu.manufacturer" page="/manufacturerform.html" />
+            <Item name="BrandName" title="mainMenu.brandName" page="/brandnameform.html" />           
+            <Item name="Ingredient" title="mainMenu.ingredient" page="/ingredientform.html" />
+            <Item name="Image" title="mainMenu.image" page="/imageform.html" />
+            <Item name="Reindex" title="mainMenu.reindex" page="/reindex.html" />
+        </Menu>
+ 		<Menu name="HomeMenu" title="home.menu" page="/home.jsp" roles="ROLE_ADMIN,ROLE_USER,ROLE_ANONYMOUS" />
+        <Menu name="CatalogMenu" title="catalog.menu" page="/catalogs.html" roles="ROLE_ADMIN,ROLE_USER,ROLE_ANONYMOUS" />
+        <Menu name="Logout" title="user.logout" page="/logout.jsp" roles="ROLE_ADMIN,ROLE_USER"/>
+        <Menu name="Search" title="search.page" page="/search.html" roles="ROLE_ADMIN,ROLE_USER,ROLE_ANONYMOUS"/> 
+        <Menu name="AboutUs" title="menu.about.us" page="/about_us.jsp" roles="ROLE_ADMIN,ROLE_USER,ROLE_ANONYMOUS" />
+    </Menus>
+</MenuConfig>

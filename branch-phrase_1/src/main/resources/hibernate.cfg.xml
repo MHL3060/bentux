@@ -1,0 +1,23 @@
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration >
+    <session-factory name="java:/jbpmSessionFactory">
+    	<property name="hibernate.show_sql">true</property>
+ 		<property name="hibernate.format_sql">true</property>
+        <mapping class="org.appfuse.model.User"/>
+        <mapping class="org.appfuse.model.Role"/>
+        <mapping class="local.tux.app.model.Catalog" />
+        <mapping class="local.tux.app.model.Image" />
+        <mapping class="local.tux.app.model.Manufacturer" />
+        <mapping class="local.tux.app.model.BrandName" />
+        <mapping class="local.tux.app.model.Product" />
+        <mapping class="local.tux.app.model.Ingredient"/>
+        <mapping class="local.tux.app.model.FoodProduct" />
+        <mapping class="local.tux.app.model.EntertainmentProduct" />
+        <mapping class="local.tux.app.model.EntertainmentService" />
+        <mapping class="local.tux.app.model.News" />
+        <mapping class="local.tux.app.model.Comment" />
+        <mapping class="local.tux.app.model.CulturalProduct" />
+    </session-factory>
+</hibernate-configuration>

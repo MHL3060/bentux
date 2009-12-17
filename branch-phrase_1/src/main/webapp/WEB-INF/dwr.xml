@@ -1,0 +1,57 @@
+<!DOCTYPE dwr PUBLIC
+    "-//GetAhead Limited//DTD Direct Web Remoting 2.0//EN"
+    "http://getahead.ltd.uk/dwr/dwr20.dtd">
+<dwr>
+    <allow>
+        <create creator="spring" javascript="UserManager">
+            <param name="class" value="org.appfuse.service.UserManager"/>
+            <param name="beanName" value="userManager"/>
+            <include method="getUsers"/>
+        </create>
+        <create creator="spring" javascript="catalogManager">
+        	<param name="class" value="local.tux.app.service.CatalogManager" />
+        	<param name="beanName" value="catalogManager" />
+        	<include method="getRelativeObjects" />
+        	<include method="getParents" />
+        	<include method="getAll" />
+        </create>
+        <create creator="spring" javascript="brandNameManager">
+        	<param name="class" value="local.tux.app.service.LookUpNameGenericManager" />
+        	<param name="beanName" value="brandNameManager" />
+        	<include method="getRelativeObjects" />
+        	<include method="getAll" />
+        </create>
+        
+        <create creator="spring" javascript="manufacturerManager" >
+        	<param name="class" value="local.tux.app.service.LookUpNameGenericManager" />
+        	<param name="beanName" value="manufacturerManager" />
+        	<include method="getRelativeObjects" />
+        	<include method="getAll" />
+        </create>
+        <create creator="spring" javascript="productManager" >
+        	<param name="class" value="local.tux.app.service.LookUpNameGenericManager" />
+        	<param name="beanName" value="productManager" />
+        	<include method="getLookUpBaseObject" />
+        	<include method="getAll" />
+        	<include method="search" />
+        </create>
+        
+        <create creator="spring" javascript="imageManager" >
+        	<param name="class" value="local.tux.app.service.LookUpNameGenericManager" />
+        	<param name="beanName" value="imageManager" />
+        	<include method="getLookUpBaseObject" />
+        	<include method="getAll" />
+        	<include method="search" />
+        </create>
+        
+        <convert converter="bean" match="local.tux.app.model.Product" />
+        <convert converter="bean" match="local.tux.app.model.FoodProduct" />
+        <convert converter="bean" match="local.tux.app.model.Image" />
+        <convert converter="bean" match="local.tux.app.model.EntertainmentProduct" />
+        <convert converter="bean" match="local.tux.app.model.EntertainmentService" />
+        <convert converter="bean" match="local.tux.app.model.BrandName" />
+        <convert converter="bean" match="local.tux.app.model.Manufacturer" />
+        <convert converter="bean" match="org.appfuse.model.User"/>
+        <convert converter="bean" match="local.tux.app.model.Catalog" />
+    </allow>
+</dwr>
