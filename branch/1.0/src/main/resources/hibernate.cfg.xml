@@ -19,5 +19,8 @@
         <mapping class="local.tux.app.model.News" />
         <mapping class="local.tux.app.model.Comment" />
         <mapping class="local.tux.app.model.CulturalProduct" />
+        <mapping class="local.tux.app.model.ShoppingCart" />
+        <mapping class="local.tux.app.model.ShoppingItem" />
+        <mapping class="local.tux.app.model.Coupon" />
     </session-factory>
 </hibernate-configuration>
