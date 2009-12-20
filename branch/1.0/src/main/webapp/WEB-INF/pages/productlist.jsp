@@ -26,15 +26,25 @@
 			<c:url var="imageUrl" value="/imageform.html">
 				<c:param name="pid" value="${tuxBaseObjectList.id }" />
 			</c:url>
-			<a href="<c:url value="${imageUrl}" />" />Add an Image</a>
+			<a href="<c:url value="${imageUrl}" />" /><fmt:message key="add.image" /></a>
 		</display:column>
 	</c:if>
 	<display:column titleKey="more.info" >
 		<c:url var="url" value="/productdetail.html">
 			<c:param name="id"  value="${tuxBaseObjectList.id}" />
 		</c:url>
-		<a href="${url }" >more info..</a>
+		<a href="${url }" ><fmt:message key="more.info" /></a>
 	</display:column>
+	<c:if test="${hasPermission && tuxBaseObject.availability > 0 }">
+		<display:column titleKey="add.cart">
+			<c:url var="url" value="/additem.html">
+				<c:param name="pid" value="${tuxBaseObjectList.id }" />
+			</c:url>
+			<a href="${url }"><fmt:message key="add.to.cart" /></a>
+		</display:column>
+	
+	</c:if>
+	
 </display:table>
 
 <c:if test="${hasPermission }"><c:out value="${button}" escapeXml="false" /></c:if>

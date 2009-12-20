@@ -9,7 +9,7 @@
 	<c:when test="${not empty product }">	
 	
 		<div id="title">Product Details</div>
-		
+			
 		<div class="post">
 		<h1>${product.name}</h1>
 			<div class="picture">
@@ -18,6 +18,16 @@
 			</div>	
 		</div>
 		
+		<div>
+			<c:if test="${hasPermission }">
+				<c:url var="url" value="/additem.html">
+				<c:param name="pid" value="${product.id }" />
+			</c:url>
+			<a href="${url }"><fmt:message key="add.to.cart" /></a>
+			
+			</c:if>
+			
+		</div>
 		
 		<div class="detail">
 			<ul>			
