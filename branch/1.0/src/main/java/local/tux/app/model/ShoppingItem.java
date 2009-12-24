@@ -35,6 +35,9 @@ public class ShoppingItem extends TuxBaseObject {
 	@JoinColumn(name="coupon_id")
 	private Coupon couponCode;
 	
+	@ManyToOne
+	@JoinColumn(name="shopping_cart_id")
+	private ShoppingCart shoppingCart;
 	@Override
 	public Long getId() {
 		return id;
@@ -71,16 +74,29 @@ public class ShoppingItem extends TuxBaseObject {
 		this.couponCode = couponCode;
 	}
 
+	
+	public ShoppingCart getShoppingCart() {
+		return shoppingCart;
+	}
+
+	public void setShoppingCart(ShoppingCart shoppingCart) {
+		this.shoppingCart = shoppingCart;
+	}
+
+	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
-		int result = 7;
+		int result = 41;
 		result = prime * result
 				+ ((couponCode == null) ? 0 : couponCode.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((product == null) ? 0 : product.hashCode());
 		result = prime * result
 				+ ((quantity == null) ? 0 : quantity.hashCode());
+		result = prime * result
+				+ ((shoppingCart == null) ? 0 : shoppingCart.hashCode());
 		return result;
 	}
 
@@ -88,7 +104,7 @@ public class ShoppingItem extends TuxBaseObject {
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-	
+		
 		if (getClass() != obj.getClass())
 			return false;
 		ShoppingItem other = (ShoppingItem) obj;
@@ -111,6 +127,11 @@ public class ShoppingItem extends TuxBaseObject {
 			if (other.quantity != null)
 				return false;
 		} else if (!quantity.equals(other.quantity))
+			return false;
+		if (shoppingCart == null) {
+			if (other.shoppingCart != null)
+				return false;
+		} else if (!shoppingCart.equals(other.shoppingCart))
 			return false;
 		return true;
 	}

@@ -1,9 +1,12 @@
 package local.tux.app.model;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,6 +16,7 @@ import javax.persistence.OneToMany;
 
 import org.appfuse.model.User;
 
+import local.tux.Constants.Status;
 import local.tux.app.model.common.TuxBaseObject;
 
 public class ShoppingCart extends TuxBaseObject {
@@ -34,10 +38,9 @@ public class ShoppingCart extends TuxBaseObject {
 	private Date startDate = new Date();
 	
 	@OneToMany(mappedBy="shoppingCart")
-	private Set<ShoppingItem> items;
+	private Set<ShoppingItem> items = new HashSet<ShoppingItem>();
 	
-	@ManyToOne
-	@JoinColumn(name="status")
+	@Enumerated(EnumType.ORDINAL)
 	private Status status;
 
 	@Override
