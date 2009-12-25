@@ -33,20 +33,26 @@ public class ShoppingItemManagerImpl extends
 		return shoppingItemDao.getShoppingItem(user, p, status);
 	}
 	
-	public boolean removeItemQuantity(Long itemId, Integer quantity){
+	public boolean removeItemQuantity(Long userId, Long itemId, Integer quantity){
 		
 		ShoppingItem item = get(itemId);
-		Product p = item.getProduct();
-		if (item.getQuantity() > quantity) {
-			item.setQuantity(item.getQuantity() - quantity);
-			p.setAvailability(p.getAvailability() + quantity);
-			save(item);
-			return true;
-		}else if (item.getQuantity() - quantity == 0){
-			remove(itemId);
-			p.setAvailability(p.getAvailability() + quantity);
-			productManager.save(p);
-			return true;
+		//are you the legitimate user?
+		if (item.getShoppingCart().getUser().getId().equals(userId)){
+			Product p = item.getProduct();
+			
+			if (item.getQuantity() > quantity) {
+				item.setQuantity(item.getQuantity() - quantity);
+				p.setAvailability(p.getAvailability() + quantity);
+				save(item);
+				return true;
+			}else if (item.getQuantity() - quantity == 0){
+				remove(itemId);
+				p.setAvailability(p.getAvailability() + quantity);
+				productManager.save(p);
+				return true;
+			}else {
+				return false;
+			}
 		}else {
 			return false;
 		}

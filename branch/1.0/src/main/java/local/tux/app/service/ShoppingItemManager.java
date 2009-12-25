@@ -12,5 +12,5 @@ import org.appfuse.service.GenericManager;
 public interface ShoppingItemManager extends GenericManager<ShoppingItem, Long> {
 
 	public List<ShoppingItem> getShoppingItem(User user, Product p, Status status);
-	public boolean removeItemQuantity(Long itemId, Integer quantity);
+	public boolean removeItemQuantity(Long userid, Long itemId, Integer quantity);
 }

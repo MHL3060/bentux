@@ -29,6 +29,6 @@ public interface Constants {
 	public final int NEWS_DISPLAY_ITEM = 5;
 	public final int SEARCH_SHOW_CHARACTER_LENGTH = 1000;
 	
-	public enum  Status {OPEN, SUBMITTED, PROCESSED, CLOSED };
+	public enum  Status {OPEN, SUBMITTED, PROCESSING, SHIPPED};
 	
 }
