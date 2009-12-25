@@ -1,5 +1,4 @@
 <%@ include file="/common/taglibs.jsp" %>
-
 <c:set var="button">
 	<input type="button" style="margin-right: 5px"
         onclick="location.href='<c:url value="/productform.html"/>'"
@@ -7,7 +6,8 @@
 </c:set>
  <script type='text/javascript' src='<c:url value="/dwr/interface/shoppingCartManager.js" />'></script>
  <script type='text/javascript' src="<c:url value='/dwr/engine.js' />"></script>
- 
+ <script type="text/javascript" src="<c:url value='/scripts/lightwindow.js'/>"></script>
+ <script type="text/javascript" src="<c:url value='/scripts/effects.js'/>"></script>
  <script type="text/javascript">
 
  	function addItem(product, quantity){
@@ -22,8 +22,9 @@
 				}																
 			); 
  	}
- </script>
- 
+	
+</script>
+
 <c:if test="${hasPermission }"><c:out value="${button}" escapeXml="false" /></c:if>
 
 <display:table id="tuxBaseObjectList" name="tuxBaseObjectList" cellspacing="0" cellpadding="0" requestURI=""
@@ -53,16 +54,27 @@
 		</c:url>
 		<a href="${url }" ><fmt:message key="more.info" /></a>
 	</display:column>
-	<c:if test="${hasPermission && tuxBaseObject.availability > 0 }">
-		<display:column titleKey="add.cart">
+	<display:column titleKey="add.cart">
+		<c:if test="${user != null && tuxBaseObjectList.availability > 0 }">
+		
 			<c:url var="url" value="/additem.html">
 				<c:param name="pid" value="${tuxBaseObjectList.id }" />
 			</c:url>
-			<a href="${url }"><fmt:message key="add.to.cart" /></a>
-		</display:column>
-	
-	</c:if>
+			<a href="#inline-sample" class="lightwindow"><fmt:message key="add.to.cart" /></a>
+		</c:if>
+	</display:column>
 	
 </display:table>
-
+<a href="#inline-sample" class="lightwindow"></a>
+<div id="inline-sample"> 
+	
+					
+	<div > 
+	<p>Oh yeah, this content was pulled from within the page!</p> 
+	<p>In order to get the LightWindow to fit the content, you have to define the height and width of a div in the inline div or send values for lightwindow_width and lightwindow_height in the url string.   Personally I prefer the inner div method, this way you can gracefully degrade the link as I did into an anchor if javascript isn't available.</p> 
+	
+	</div> 
+	
+	
+</div>
 <c:if test="${hasPermission }"><c:out value="${button}" escapeXml="false" /></c:if>

@@ -28,6 +28,7 @@ import org.springframework.web.servlet.mvc.Controller;
 public class TuxBaseObjectsController implements Controller {
 
 	protected String KEY_REFERENCE_LIST = "tuxBaseObjectList";
+	protected String USER = "user";
 	protected PaginateListFactory factory;
 	protected  PagingLookupManager lookupManager;
 	protected Class<TuxBaseObject> clazz;
@@ -72,6 +73,7 @@ public class TuxBaseObjectsController implements Controller {
 		}else {
 			User user = userManager.getUserByUsername(request.getRemoteUser());
 			mav.addObject(HAS_PERMISSION, hasPermissionToAdd(user));
+			mav.addObject(USER, user);
 		}
 		ExtendedPaginatedList paginatedList = factory.getPaginatedListFromRequest(request);
 		paginatedList.setPageSize(pageSize);
@@ -109,6 +111,4 @@ public class TuxBaseObjectsController implements Controller {
 		}
 		return result;
 	}
-
-	
 }
