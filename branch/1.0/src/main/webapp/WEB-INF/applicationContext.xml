@@ -98,6 +98,15 @@
 		<constructor-arg value="local.tux.app.model.Comment" />
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+	
+	<bean id="shoppingItemDao" class="local.tux.app.dao.hibernate.ShoppingItemDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="shoppingCartDao" class="local.tux.app.dao.hibernate.ShoppingCartDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	
+	</bean>
+	
     <!-- Add new Managers here --> 
     <bean id="catalogManager" class="local.tux.app.service.impl.CatalogManagerImpl">
     	<constructor-arg ref="catalogDao"/>
@@ -135,4 +144,15 @@
    <bean id="culturalProductManager" class="local.tux.app.service.impl.LookUpNameGenericManagerImpl">
    		<constructor-arg ref="foodProductDao" />
    </bean>
+   
+   <bean id="shoppingCartManager" class="local.tux.app.service.impl.ShoppingCartManagerImpl">
+   		<constructor-arg ref="shoppingCartDao" />
+   		<property name="userManager" ref="userManager" />
+   		<property name="productManager" ref="productManager" />
+   </bean>
+   <bean id="shoppingItemManager" class="local.tux.app.service.impl.ShoppingItemManagerImpl">
+   		<constructor-arg ref="shoppingItemDao" />
+   		<property name="productManager" ref="productManager" />
+   </bean>
+   
 </beans>

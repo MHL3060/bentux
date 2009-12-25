@@ -44,6 +44,21 @@
         	<include method="search" />
         </create>
         
+        <create creator="spring" javascript="shoppingCartManager" >
+        	<param name="class" value="local.tux.app.service.ShoppingCartManager" />
+        	<param name="beanName" value="shoppingCartManager" />
+        	<include method="getOpenItemCount" />
+        	<include method="addItem" />
+        </create>
+        
+        <create creator="spring" javascript="shoppingItemManager" >
+        	<param name="class" value="local.tux.app.service.ShoppingItemManager" />
+        	<param name="beanName" value="shoppingItemManager" />
+        	<include method="getShoppingItem" />
+        	<include method="removeItemQuantity" />
+        </create>
+        
+        <convert converter="enum" match="local.tux.Constants.Status"/>
         <convert converter="bean" match="local.tux.app.model.Product" />
         <convert converter="bean" match="local.tux.app.model.FoodProduct" />
         <convert converter="bean" match="local.tux.app.model.Image" />

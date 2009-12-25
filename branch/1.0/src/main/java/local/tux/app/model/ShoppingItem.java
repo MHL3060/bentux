@@ -30,7 +30,7 @@ public class ShoppingItem extends TuxBaseObject {
 	@JoinColumn(name="product_id")
 	private Product product;
 	@Column(name="quantity")
-	private Long quantity;
+	private Integer quantity;
 	@ManyToOne
 	@JoinColumn(name="coupon_id")
 	private Coupon couponCode;
@@ -48,8 +48,6 @@ public class ShoppingItem extends TuxBaseObject {
 		this.id = id;
 
 	}
-	
-
 	public Product getProduct() {
 		return product;
 	}
@@ -58,11 +56,11 @@ public class ShoppingItem extends TuxBaseObject {
 		this.product = product;
 	}
 
-	public Long getQuantity() {
+	public Integer getQuantity() {
 		return quantity;
 	}
 
-	public void setQuantity(Long quantity) {
+	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
 	}
 
@@ -95,8 +93,6 @@ public class ShoppingItem extends TuxBaseObject {
 		result = prime * result + ((product == null) ? 0 : product.hashCode());
 		result = prime * result
 				+ ((quantity == null) ? 0 : quantity.hashCode());
-		result = prime * result
-				+ ((shoppingCart == null) ? 0 : shoppingCart.hashCode());
 		return result;
 	}
 
@@ -131,7 +127,7 @@ public class ShoppingItem extends TuxBaseObject {
 		if (shoppingCart == null) {
 			if (other.shoppingCart != null)
 				return false;
-		} else if (!shoppingCart.equals(other.shoppingCart))
+		} else if (!shoppingCart.getId().equals(other.shoppingCart.getId()))
 			return false;
 		return true;
 	}

@@ -18,5 +18,13 @@ public interface LookUpNameGenericManager<T, PK extends Serializable> extends Ge
 	public List<T> search(String propertyName, String value);
 	public int getAllRecordsCount();
 	
+	/**
+	 * get a list of the item that satified the following
+	 * 
+	 * @param attribute -the POJO Attribute. 
+	 * @param from range from
+	 * @param to range to
+	 * @return
+	 */
 	public List<T> getItemsInInterval(String attribute, Object from, Object to);
 }

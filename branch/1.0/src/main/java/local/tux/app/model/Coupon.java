@@ -15,6 +15,10 @@ import local.tux.app.model.common.LookUpBaseObject;
 @Table(name="coupon")
 public class Coupon extends LookUpBaseObject {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2899745542057939560L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;

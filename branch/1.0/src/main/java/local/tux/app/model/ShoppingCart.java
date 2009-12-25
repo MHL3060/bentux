@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -41,8 +42,8 @@ public class ShoppingCart extends TuxBaseObject {
 	@Column(name="start_date")
 	private Date startDate = new Date();
 	
-	@OneToMany(mappedBy="shoppingCart")
-	private Set<ShoppingItem> items = new HashSet<ShoppingItem>();
+	@OneToMany(mappedBy="shoppingCart", targetEntity=ShoppingItem.class, cascade=CascadeType.ALL)
+	private Set<ShoppingItem> shoppingItems;
 	
 	@Enumerated(EnumType.ORDINAL)
 	private Status status;
@@ -74,12 +75,12 @@ public class ShoppingCart extends TuxBaseObject {
 		this.startDate = startDate;
 	}
 
-	public Set<ShoppingItem> getItems() {
-		return items;
+	public Set<ShoppingItem> getShppingItems() {
+		return shoppingItems;
 	}
 
-	public void setItems(Set<ShoppingItem> items) {
-		this.items = items;
+	public void setShoppingItems(Set<ShoppingItem> shoppingItems) {
+		this.shoppingItems = shoppingItems;
 	}
 
 	public Status getStatus() {
@@ -95,7 +96,7 @@ public class ShoppingCart extends TuxBaseObject {
 		final int prime = 31;
 		int result = 37;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((items == null) ? 0 : items.hashCode());
+		result = prime * result + ((shoppingItems == null) ? 0 : shoppingItems.hashCode());
 		result = prime * result
 				+ ((startDate == null) ? 0 : startDate.hashCode());
 		result = prime * result + ((status == null) ? 0 : status.hashCode());
@@ -115,10 +116,10 @@ public class ShoppingCart extends TuxBaseObject {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (items == null) {
-			if (other.items != null)
+		if (shoppingItems == null) {
+			if (other.shoppingItems != null)
 				return false;
-		} else if (!items.equals(other.items))
+		} else if (!shoppingItems.equals(other.shoppingItems))
 			return false;
 		if (startDate == null) {
 			if (other.startDate != null)
@@ -140,7 +141,7 @@ public class ShoppingCart extends TuxBaseObject {
 
 	@Override
 	public String toString() {
-		return "ShoppingCart [id=" + id + ", items=" + items + ", startDate="
+		return "ShoppingCart [id=" + id + ", items=" + shoppingItems + ", startDate="
 				+ startDate + ", status=" + status + ", user=" + user + "]";
 	}
 
