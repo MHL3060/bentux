@@ -5,7 +5,25 @@
         onclick="location.href='<c:url value="/productform.html"/>'"
         value="<fmt:message key="button.add"/>"/>
 </c:set>
+ <script type='text/javascript' src='<c:url value="/dwr/interface/shoppingCartManager.js" />'></script>
+ <script type='text/javascript' src="<c:url value='/dwr/engine.js' />"></script>
+ 
+ <script type="text/javascript">
 
+ 	function addItem(product, quantity){
+		shoppingCartManager.addItem(${user.id},product, quantity, 
+				function(result) {
+					if (result == true ) {
+						
+					}else {
+
+					}
+					
+				}																
+			); 
+ 	}
+ </script>
+ 
 <c:if test="${hasPermission }"><c:out value="${button}" escapeXml="false" /></c:if>
 
 <display:table id="tuxBaseObjectList" name="tuxBaseObjectList" cellspacing="0" cellpadding="0" requestURI=""

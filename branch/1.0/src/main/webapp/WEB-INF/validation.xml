@@ -9,7 +9,7 @@
       </constant>
       <constant>
         <constant-name>zip</constant-name>
-        <constant-value>^\s\d*$</constant-value>
+        <constant-value>^[a-zA-Z0-9]+$</constant-value>
       </constant>
       <constant>
         <constant-name>currency</constant-name>
