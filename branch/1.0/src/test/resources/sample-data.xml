@@ -295,7 +295,7 @@
     <column>brand_name_id</column>
     <row>
       <value>15</value>
-      <null/>
+      <value>33</value>
       <value/>
       <null/>
       <value/>
@@ -309,7 +309,7 @@
     </row>
     <row>
       <value>17</value>
-      <null/>
+     <value>3</value>
       <value/>
       <null/>
       <value/>
@@ -323,7 +323,7 @@
     </row>
     <row>
       <value>19</value>
-      <null/>
+      <value>100</value>
       <value/>
       <null/>
       <value><![CDATA[<p>
@@ -339,7 +339,7 @@
     </row>
     <row>
       <value>21</value>
-      <null/>
+      <value>10</value>
       <value/>
       <null/>
       <value><![CDATA[<p>
@@ -355,7 +355,7 @@
     </row>
     <row>
       <value>25</value>
-      <null/>
+      <value>50</value>
       <value/>
       <null/>
       <value/>
@@ -369,7 +369,7 @@
     </row>
     <row>
       <value>35</value>
-      <null/>
+      <value>1000</value>
       <value/>
       <null/>
       <value><![CDATA[<p>
