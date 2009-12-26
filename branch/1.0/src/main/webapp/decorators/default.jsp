@@ -6,7 +6,7 @@
     <head>
         <%@ include file="/common/meta.jsp" %>
         <title><decorator:title/> | <fmt:message key="webapp.name"/></title>
-
+		<link rel="stylesheet" type="text/css" media="screen" href="<c:url value='/styles/${appConfig["csstheme"]}/popup.css'/>" />
 		<link rel="stylesheet" type="text/css" media="screen" href="<c:url value='/styles/${appConfig["csstheme"]}/lightwindow.css'/>" />
         <link rel="stylesheet" type="text/css" media="all" href="<c:url value='/styles/${appConfig["csstheme"]}/theme.css'/>" />
         <link rel="stylesheet" type="text/css" media="print" href="<c:url value='/styles/${appConfig["csstheme"]}/print.css'/>" />

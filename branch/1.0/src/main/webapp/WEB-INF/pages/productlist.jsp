@@ -5,9 +5,14 @@
         value="<fmt:message key="button.add"/>"/>
 </c:set>
  <script type='text/javascript' src='<c:url value="/dwr/interface/shoppingCartManager.js" />'></script>
+ <script type='text/javascript' src='<c:url value="/dwr/interface/productManager.js" />'></script>
  <script type='text/javascript' src="<c:url value='/dwr/engine.js' />"></script>
+ <%--  
  <script type="text/javascript" src="<c:url value='/scripts/lightwindow.js'/>"></script>
+ --%>
  <script type="text/javascript" src="<c:url value='/scripts/effects.js'/>"></script>
+ 
+ 
  <script type="text/javascript">
 
  	function addItem(product, quantity){
@@ -22,11 +27,24 @@
 				}																
 			); 
  	}
-	
+	function popup(pid, toNodeId) {
+		toNode = document.getElementById(toNodeId);
+		productManager.getById(pid, function(product) {
+			var ul = toNode.createNode('ul');
+			var li = ul.createElement('li');
+			li.innerText = product.name;
+			li = ul.createElement('li');
+			li.innerText = product.availibility;
+			
+		});
+		myLightWindow.createWindow(toNodeId);
+	}
 </script>
 
 <c:if test="${hasPermission }"><c:out value="${button}" escapeXml="false" /></c:if>
-
+<c:if test="${user != null }">
+	<%@ include file="/common/shoppingcart.jsp" %>
+</c:if>
 <display:table id="tuxBaseObjectList" name="tuxBaseObjectList" cellspacing="0" cellpadding="0" requestURI=""
 	pagesize="25" class="table uutResultList" export="true" >
 	<c:if test="${hasPermission }">
@@ -60,21 +78,61 @@
 			<c:url var="url" value="/additem.html">
 				<c:param name="pid" value="${tuxBaseObjectList.id }" />
 			</c:url>
-			<a href="#inline-sample" class="lightwindow"><fmt:message key="add.to.cart" /></a>
+			<a href="javascript:showDiv();"><fmt:message key="add.to.cart" /></a>
 		</c:if>
 	</display:column>
 	
 </display:table>
-<a href="#inline-sample" class="lightwindow"></a>
-<div id="inline-sample"> 
-	
-					
-	<div > 
-	<p>Oh yeah, this content was pulled from within the page!</p> 
-	<p>In order to get the LightWindow to fit the content, you have to define the height and width of a div in the inline div or send values for lightwindow_width and lightwindow_height in the url string.   Personally I prefer the inner div method, this way you can gracefully degrade the link as I did into an anchor if javascript isn't available.</p> 
-	
-	</div> 
-	
-	
-</div>
 <c:if test="${hasPermission }"><c:out value="${button}" escapeXml="false" /></c:if>
+
+<div id="hideshow" style="visibility:hidden;"> 
+	<div id="fade"></div> 
+	<div class="popup_block"> 
+		<div class="popup"> 
+			<a href="javascript:hideDiv()"><img src="<c:url value="/images/icon_close.png" />" class="cntrl" title="Close" /></a> 
+			<h3>Example of Styling CSS Popups</h3> 
+			<p>Eu refero pertineo vulpes, molior, vel. Mos paulatim lobortis sed pneum antehabeo, tristique damnum dolor venio mauris, decet sudo, ibidem lucidus. 
+	</p> 
+			<p>Eu refero pertineo vulpes, molior, vel. Mos paulatim lobortis sed pneum antehabeo, tristique damnum dolor venio mauris, decet sudo, ibidem lucidus. 
+	</p> 
+			<h3>Example of Styling CSS Popups</h3> 
+			<p>Eu refero pertineo vulpes, molior, vel. Mos paulatim lobortis sed pneum antehabeo, tristique damnum dolor venio mauris, decet sudo, ibidem lucidus. 
+	</p> 
+			<p>Eu refero pertineo vulpes, molior, vel. Mos paulatim lobortis sed pneum antehabeo, tristique damnum dolor venio mauris, decet sudo, ibidem lucidus. 
+	</p> 
+		</div> 
+	</div> 
+</div> 
+
+<script language=javascript type='text/javascript'> 
+function hideDiv() { 
+if (document.getElementById) { // DOM3 = IE5, NS6 
+document.getElementById('hideshow').style.visibility = 'hidden'; 
+} 
+else { 
+if (document.layers) { // Netscape 4 
+document.hideshow.visibility = 'hidden'; 
+} 
+else { // IE 4 
+document.all.hideshow.style.visibility = 'hidden'; 
+} 
+} 
+}
+ 
+function showDiv() { 
+if (document.getElementById) { // DOM3 = IE5, NS6 
+document.getElementById('hideshow').style.visibility = 'visible'; 
+} 
+else { 
+if (document.layers) { // Netscape 4 
+document.hideshow.visibility = 'visible'; 
+} 
+else { // IE 4 
+document.all.hideshow.style.visibility = 'visible'; 
+} 
+} 
+} 
+</script> 
+
+
+

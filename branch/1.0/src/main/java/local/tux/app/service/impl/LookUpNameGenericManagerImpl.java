@@ -58,5 +58,11 @@ public class LookUpNameGenericManagerImpl<T, PK extends Serializable> extends Ge
 	public List<T> getItemsInInterval(String attribute, Object from, Object to) {
 		return genericDao.getItemsInInterval(attribute, from, to);
 	}
+	/**
+	 * for dwr converter
+	 */
+	public T getById(Long id) {
+		return get((PK) id);
+	}
 
 }
