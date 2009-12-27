@@ -39,6 +39,33 @@
 		});
 		myLightWindow.createWindow(toNodeId);
 	}
+	function hide(nodeId) { 
+		if (document.getElementById) { // DOM3 = IE5, NS6 
+			
+			document.getElementById(nodeId).style.visibility = 'hidden'; 
+		}
+	}
+	 
+	function show(nodeId, pid) { 
+		if (document.getElementById) { // DOM3 = IE5, NS6
+			productManager.getById(pid, function(product) {
+				price = product.price;
+				if (product.special) {
+					price = product.discountPrice;
+				}
+                cell = document.getElementById("available");
+                cellText = document.createTextNode(product.availability);
+                cell.innerHTML = product.availability;
+
+                cell = document.getElementById("price");
+                cellText = document.createTextNode(price);
+                cell.innerHTML = price;
+                //cell.appendChild(cellText);
+		        
+			}); 
+			document.getElementById(nodeId).style.visibility = 'visible'; 
+		}
+	} 
 </script>
 
 <c:if test="${hasPermission }"><c:out value="${button}" escapeXml="false" /></c:if>
@@ -78,60 +105,42 @@
 			<c:url var="url" value="/additem.html">
 				<c:param name="pid" value="${tuxBaseObjectList.id }" />
 			</c:url>
-			<a href="javascript:showDiv();"><fmt:message key="add.to.cart" /></a>
+			<a href="javascript:show('cart', ${tuxBaseObjectList.id});"><fmt:message key="add.to.cart" /></a>
 		</c:if>
 	</display:column>
 	
 </display:table>
 <c:if test="${hasPermission }"><c:out value="${button}" escapeXml="false" /></c:if>
 
-<div id="hideshow" style="visibility:hidden;"> 
+<div id="cart" style="visibility:hidden;"> 
 	<div id="fade"></div> 
 	<div class="popup_block"> 
 		<div class="popup"> 
-			<a href="javascript:hideDiv()"><img src="<c:url value="/images/icon_close.png" />" class="cntrl" title="Close" /></a> 
-			<h3>Example of Styling CSS Popups</h3> 
-			<p>Eu refero pertineo vulpes, molior, vel. Mos paulatim lobortis sed pneum antehabeo, tristique damnum dolor venio mauris, decet sudo, ibidem lucidus. 
-	</p> 
-			<p>Eu refero pertineo vulpes, molior, vel. Mos paulatim lobortis sed pneum antehabeo, tristique damnum dolor venio mauris, decet sudo, ibidem lucidus. 
-	</p> 
-			<h3>Example of Styling CSS Popups</h3> 
-			<p>Eu refero pertineo vulpes, molior, vel. Mos paulatim lobortis sed pneum antehabeo, tristique damnum dolor venio mauris, decet sudo, ibidem lucidus. 
-	</p> 
-			<p>Eu refero pertineo vulpes, molior, vel. Mos paulatim lobortis sed pneum antehabeo, tristique damnum dolor venio mauris, decet sudo, ibidem lucidus. 
-	</p> 
+			<a href="javascript:hide('cart')"><img src="<c:url value="/images/icon_close.png" />" class="cntrl" title="Close" /></a> 
+			<h3 id="product_title"></h3>
+			<table id="product_data">
+				<tr>
+					<td class="strong">Available :</td>
+					<td id="available"></td>
+				</tr>
+				<tr>
+					<td class="strong">Price :</td>
+					<td id="price"></td>
+				</tr>
+				<tr>
+					<td colspan="2"> Add <input type="text" size="3" maxlength="3" />  to my cart  </td>
+				</tr>
+				<tr>
+					<td colspan="2"><input type="button" name="add" value="Add" onclick="addItem()"/></td>
+				</tr>
+			</table>
+			 
 		</div> 
 	</div> 
 </div> 
 
 <script language=javascript type='text/javascript'> 
-function hideDiv() { 
-if (document.getElementById) { // DOM3 = IE5, NS6 
-document.getElementById('hideshow').style.visibility = 'hidden'; 
-} 
-else { 
-if (document.layers) { // Netscape 4 
-document.hideshow.visibility = 'hidden'; 
-} 
-else { // IE 4 
-document.all.hideshow.style.visibility = 'hidden'; 
-} 
-} 
-}
- 
-function showDiv() { 
-if (document.getElementById) { // DOM3 = IE5, NS6 
-document.getElementById('hideshow').style.visibility = 'visible'; 
-} 
-else { 
-if (document.layers) { // Netscape 4 
-document.hideshow.visibility = 'visible'; 
-} 
-else { // IE 4 
-document.all.hideshow.style.visibility = 'visible'; 
-} 
-} 
-} 
+
 </script> 
 
 

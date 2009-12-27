@@ -55,10 +55,11 @@ public class Product extends LookUpBaseObject {
 
 	@Column(name="price")
 	private Double price;
+	
 	@Column(name="availability")
 	private Integer availability;
-	@Column(name="description")
 	
+	@Column(name="description")
 	@SearchableProperty
 	private String description;
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="product" )
@@ -73,6 +74,7 @@ public class Product extends LookUpBaseObject {
 	
 	@Column(name="barcode")
 	private String barcode;
+	
 	@Column(name="day_life")
 	private Long dayLife;
 	
@@ -249,11 +251,15 @@ public class Product extends LookUpBaseObject {
 
 
 	public Double getDiscountPercentage() {
-		return discountPercentage;
+		if (price != null && discountPrice != null && price != 0){ 
+			return discountPrice * 1.0 / price;
+		}else {
+			return new Double(0);
+		}
 	}
 
 	public void setDiscountPercentage(Double discountPercentage) {
-		this.discountPercentage = discountPercentage;
+		
 	}
 
 	
