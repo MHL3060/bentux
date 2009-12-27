@@ -14,12 +14,17 @@
  
  
  <script type="text/javascript">
+	
+ 	function addItem(pidNodeId, quantityNodeId){
 
- 	function addItem(product, quantity){
+		product = document.getElementById(pidNodeId).value;
+		quantity = document.getElementById(quantityNodeId).value;
+ 	 	
 		shoppingCartManager.addItem(${user.id},product, quantity, 
 				function(result) {
 					if (result == true ) {
-						
+						hide('cart');
+						window.location.reload();
 					}else {
 
 					}
@@ -46,7 +51,8 @@
 		}
 	}
 	 
-	function show(nodeId, pid) { 
+	function show(nodeId, pid) {
+		g_pid = pid; 
 		if (document.getElementById) { // DOM3 = IE5, NS6
 			productManager.getById(pid, function(product) {
 				price = product.price;
@@ -60,8 +66,13 @@
                 cell = document.getElementById("price");
                 cellText = document.createTextNode(price);
                 cell.innerHTML = price;
-                //cell.appendChild(cellText);
-		        
+                inputNode = document.createElement("input");
+                inputNode.name = 'pid';
+                inputNode.id = 'pid';
+                inputNode.type = 'hidden';
+                inputNode.value = product.id;
+                node = document.getElementById(nodeId);
+                node.appendChild(inputNode);
 			}); 
 			document.getElementById(nodeId).style.visibility = 'visible'; 
 		}
@@ -128,10 +139,10 @@
 					<td id="price"></td>
 				</tr>
 				<tr>
-					<td colspan="2"> Add <input type="text" size="3" maxlength="3" />  to my cart  </td>
+					<td colspan="2"> Add <input id="quantity" name="quantity" type="text" size="3" maxlength="3" />  to my cart  </td>
 				</tr>
 				<tr>
-					<td colspan="2"><input type="button" name="add" value="Add" onclick="addItem()"/></td>
+					<td colspan="2"><input type="button" name="add" value="Add" onclick="addItem('pid', 'quantity')"/></td>
 				</tr>
 			</table>
 			 
