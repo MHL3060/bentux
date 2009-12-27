@@ -59,6 +59,8 @@
 				if (product.special) {
 					price = product.discountPrice;
 				}
+				titleNode = document.getElementById("product_title");
+				titleNode.innerHTML = product.name;
                 cell = document.getElementById("available");
                 cellText = document.createTextNode(product.availability);
                 cell.innerHTML = product.availability;

@@ -100,6 +100,7 @@
     	<property name="userManager" ref="userManager" />
     	<property name="pagingLookupManager" ref="pagingLookupManager" />
     	<property name="pojo" value="local.tux.app.model.Catalog" />
+    	<property name="shoppingCartManager" ref="shoppingCartManager" />
     </bean>
     <!--  your own pages -->
     <bean id="catalogFormController" class="local.tux.app.web.controller.CatalogFormController">
@@ -144,9 +145,11 @@
     	<property name="paginatedListFactory" ref="paginatedListFactory" />
     	<property name="pagingLookupManager" ref="pagingLookupManager" />
     	<property name="pojo" value="local.tux.app.model.Product" />
+    	<property name="shoppingCartManager" ref="shoppingCartManager" />
     </bean>
     <bean id="productDetailController" class="local.tux.app.web.controller.ProductDetailController">
     	<property name="productManager" ref="productManager" />
+    	<property name="shoppingCartManager" ref="shoppingCartManager" />
     </bean> 
     <bean id="productFormController" class="local.tux.app.web.controller.ProductFormController">
     	<property name="validator" ref="beanValidator"/>
@@ -182,6 +185,7 @@
     	<property name="userManager" ref="userManager" />
     	<property name="pagingLookupManager" ref="pagingLookupManager" />
     	<property name="pojo" value="local.tux.app.model.Product" />
+    	<property name="shoppingCartManager" ref="shoppingCartManager" />
     </bean>
     
     <bean id="subCatalogController" class="local.tux.app.web.controller.SubCatalogController">
@@ -189,6 +193,7 @@
     	<property name="userManager" ref="userManager" />
     	<property name="pagingLookupManager" ref="pagingLookupManager" />
     	<property name="pojo" value="local.tux.app.model.Catalog" />
+    	<property name="shoppingCartManager" ref="shoppingCartManager" />
     </bean>
     <bean id="newsFormController" class="local.tux.app.web.controller.NewsFormController">
     	<property name="newsManager" ref="newsManager" />
@@ -201,6 +206,7 @@
     	<property name="pojo" value="local.tux.app.model.News" />
     	<property name="userManager" ref="userManager" />
     	<property name="newsManager" ref="newsManager" />
+    	<property name="shoppingCartManager" ref="shoppingCartManager" />
     </bean>
     <bean id="homeController" class="local.tux.app.web.controller.HomeController">
     	<property name="paginatedListFactory" ref="paginatedListFactory" />
@@ -208,5 +214,6 @@
     	<property name="pojo" value="local.tux.app.model.News" />
     	<property name="userManager" ref="userManager" />
     	<property name="newsManager" ref="newsManager" />
+    	<property name="shoppingCartManager" ref="shoppingCartManager" />
     </bean>
 </beans>

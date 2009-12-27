@@ -6,7 +6,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import local.tux.Constants;
+import local.tux.Constants.Status;
+import local.tux.app.model.ShoppingCart;
 import local.tux.app.model.common.TuxBaseObject;
+import local.tux.app.service.ShoppingCartManager;
 import local.tux.app.web.table.pagination.ExtendedPaginatedList;
 import local.tux.app.web.table.pagination.PaginateListFactory;
 import local.tux.app.web.table.pagination.PagingLookupManager;
@@ -28,6 +31,9 @@ import org.springframework.web.servlet.mvc.Controller;
 public class TuxBaseObjectsController implements Controller {
 
 	protected String KEY_REFERENCE_LIST = "tuxBaseObjectList";
+	protected String CART_ITEM_COUNT = "cart_item_count";
+	protected String CART_SUBTOTAL = "cart_sub_total";
+	
 	protected String USER = "user";
 	protected PaginateListFactory factory;
 	protected  PagingLookupManager lookupManager;
@@ -35,6 +41,7 @@ public class TuxBaseObjectsController implements Controller {
 	protected int pageSize = Constants.PAGE_SIZE;
 	protected final String HAS_PERMISSION = "hasPermission";
 	protected UserManager userManager;
+	private ShoppingCartManager shoppingCartManager;
 	
 	public void setUserManager(UserManager userManager){
 		this.userManager = userManager;
@@ -53,6 +60,10 @@ public class TuxBaseObjectsController implements Controller {
     }
 	public void setSize(int size){
 		this.pageSize = size;
+	}
+	
+	public void setShoppingCartManager(ShoppingCartManager shoppingCartManager){
+		this.shoppingCartManager = shoppingCartManager;
 	}
 	/**
 	 * the key for the default list is tuxBaseObjectList.
@@ -74,6 +85,9 @@ public class TuxBaseObjectsController implements Controller {
 			User user = userManager.getUserByUsername(request.getRemoteUser());
 			mav.addObject(HAS_PERMISSION, hasPermissionToAdd(user));
 			mav.addObject(USER, user);
+			mav.addObject(CART_ITEM_COUNT, shoppingCartManager.getOpenItemCount(user.getId()));
+			
+			mav.addObject(CART_SUBTOTAL, shoppingCartManager.getSubTotal(shoppingCartManager.getOpenCart(user)));
 		}
 		ExtendedPaginatedList paginatedList = factory.getPaginatedListFromRequest(request);
 		paginatedList.setPageSize(pageSize);
@@ -82,6 +96,7 @@ public class TuxBaseObjectsController implements Controller {
 		lookupManager.getRecordsPage(getCriteria(request), paginatedList);
 		//((local.tux.app.model.Product)paginatedList.getList().get(0)).getImages().;
 		mav.addObject(KEY_REFERENCE_LIST,paginatedList);
+		
 		return mav;
 	}
 	/**
@@ -111,4 +126,6 @@ public class TuxBaseObjectsController implements Controller {
 		}
 		return result;
 	}
+	
+	
 }

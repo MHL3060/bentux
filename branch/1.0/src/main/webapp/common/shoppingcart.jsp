@@ -4,8 +4,8 @@
 	<ul>
 		<li><a href="<c:url value="cart.html" />"></strong><fmt:message key="view.cart" /></a></li>
 		<li class="label"><fmt:message key="cart.item.count" /> :</li>
-		<li id="item_count">${cart.shoppingItems.size}</li>
+		<li id="item_count">${cart_item_count}</li>
 		<li class="label"><fmt:message key="cart.sub.total" /> : $</li>
-		<li id="item_total">${cart.subTotal}</li>
+		<li id="item_total">${cart_sub_total}</li>
 	</ul>
 </div>

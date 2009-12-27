@@ -19,8 +19,5 @@ public interface ShoppingCartDao extends TuxNameGenericDao<ShoppingCart, Long> {
 	public Integer getCartCount(User user, Status status);
 	public void add(User user, Product p,Integer quantity);
 	public List<ShoppingCart> getShoppingCarts(User user, Status status);
-	
-	
-	
 
 }
