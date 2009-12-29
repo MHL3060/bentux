@@ -66,7 +66,7 @@
 			<input type="reset" name="method" value="Cancel" class="button" onclick="location.href='./worktime.html'" />
         </li>
 			
-			<display:table name="{shoppingItems}" id="items" class="list">
+			<display:table name="${shoppingItems}" id="items" class="list">
   			<display:column style="width: 5%" title="${checkAll}">
     			<input type="checkbox" name="id" value="<c:out value="${test.id}"/>" 
     				<c:if test="${param.id == test.id and param.method != 'Save'}">checked="checked"</c:if>

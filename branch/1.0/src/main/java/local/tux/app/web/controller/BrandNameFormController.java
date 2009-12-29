@@ -10,10 +10,10 @@ import org.springframework.web.bind.ServletRequestDataBinder;
 import local.tux.TuxBaseObjectConverter;
 import local.tux.app.model.Manufacturer;
 import local.tux.app.service.LookUpNameGenericManager;
-import local.tux.app.web.common.controller.LookUpTableController;
+import local.tux.app.web.common.controller.TuxBaseFormController;
 
 
-public class BrandNameFormController extends LookUpTableController {
+public class BrandNameFormController extends TuxBaseFormController {
 	
 	private LookUpNameGenericManager<Manufacturer, Long> manufacturerManager;
 	public void setManufacturerManager(LookUpNameGenericManager<Manufacturer, Long> manufacturerManager){

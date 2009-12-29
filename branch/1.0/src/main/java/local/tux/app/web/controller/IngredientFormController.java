@@ -13,14 +13,14 @@ import local.tux.app.model.Ingredient;
 import local.tux.app.model.FoodProduct;
 //import local.tux.app.service.IngredientManager;
 import local.tux.app.service.LookUpNameGenericManager;
-import local.tux.app.web.common.controller.LookUpTableController;
+import local.tux.app.web.common.controller.TuxBaseFormController;
 /**
  * don't delete this class.
  * this skeleton will do some magics. such as add/edit/edit a catalog entry.
  * @author Ben Li
  *
  */
-public class IngredientFormController extends LookUpTableController {
+public class IngredientFormController extends TuxBaseFormController {
 	private LookUpNameGenericManager<FoodProduct, Long> foodProductManager;
 	public void setFoodProductManager(LookUpNameGenericManager<FoodProduct, Long> foodProductManager){
 		this.foodProductManager = foodProductManager;

@@ -26,11 +26,11 @@ import org.springframework.web.servlet.ModelAndView;
  * @author Ben Li
  *
  */
-public class LookUpTableController extends BaseFormController {
+public class TuxBaseFormController extends BaseFormController {
 
 	
 	
-	private final Log log = LogFactory.getLog(LookUpTableController.class);
+	private final Log log = LogFactory.getLog(TuxBaseFormController.class);
 	protected LookUpNameGenericManager lookUpManager;
 	
 	

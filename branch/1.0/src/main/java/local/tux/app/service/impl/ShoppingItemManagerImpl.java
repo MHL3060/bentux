@@ -57,4 +57,21 @@ public class ShoppingItemManagerImpl extends
 			return false;
 		}
 	}
+	public void remove(Long id){
+		ShoppingItem item = get(id);
+		Product p = item.getProduct();
+		Integer item_count = item.getQuantity();
+		p.setAvailability(p.getAvailability() + item_count);
+		super.remove(id);
+		productManager.save(p);
+		
+	}
+	public ShoppingItem save(ShoppingItem item){
+		Product p = item.getProduct();
+		Integer item_count = item.getQuantity();
+		p.setAvailability(p.getAvailability() - item_count);
+		productManager.save(p);
+		return super.save(item);
+	
+	}
 }

@@ -32,9 +32,9 @@ import local.tux.app.model.Image;
 import local.tux.app.model.Product;
 import local.tux.app.model.common.TuxBaseObject;
 import local.tux.app.service.LookUpNameGenericManager;
-import local.tux.app.web.common.controller.LookUpTableController;
+import local.tux.app.web.common.controller.TuxBaseFormController;
 
-public class ImageFormController extends LookUpTableController {
+public class ImageFormController extends TuxBaseFormController {
 
 	private LookUpNameGenericManager productManager;
 	//private LookUpNameGenericManager imageManager;

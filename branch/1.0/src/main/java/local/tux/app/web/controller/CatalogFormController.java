@@ -19,14 +19,14 @@ import local.tux.app.model.Image;
 import local.tux.app.model.Manufacturer;
 import local.tux.app.service.CatalogManager;
 import local.tux.app.service.LookUpNameGenericManager;
-import local.tux.app.web.common.controller.LookUpTableController;
+import local.tux.app.web.common.controller.TuxBaseFormController;
 /**
  * don't delete this class.
  * this skeleton will do some magics. such as add/edit/edit a catalog entry.
  * @author Ben Li
  *
  */
-public class CatalogFormController extends LookUpTableController {
+public class CatalogFormController extends TuxBaseFormController {
 	
 	private LookUpNameGenericManager<Image, Long> imageManager;
 
