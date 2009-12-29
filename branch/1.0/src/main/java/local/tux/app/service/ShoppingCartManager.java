@@ -12,6 +12,11 @@ public interface ShoppingCartManager extends LookUpNameGenericManager<ShoppingCa
 	//for ajax used.
 	public Integer getOpenItemCount(Long userId);
 	public boolean addItem(Long userId, Long pid, Integer quantity);
+	/**
+	 * if the user doesn't have an open cart, it returns null, otherwise, return the shoppingcart object.
+	 * @param user
+	 * @return
+	 */
 	public ShoppingCart getOpenCart(User user);
 	public Integer getItemCount(Long userId, Status status);
 	public Double getSubTotal(ShoppingCart cart);

@@ -216,4 +216,11 @@
     	<property name="newsManager" ref="newsManager" />
     	<property name="shoppingCartManager" ref="shoppingCartManager" />
     </bean>
+    
+    <bean id="cartController" class="local.tux.app.web.controller.CartController">
+    	<property name="userManager" ref="userManager" />
+    	<property name="productManager" ref="productManager" />
+    	<property name="shoppingCartManager" ref="shoppingCartManager" />
+    	<property name="shoppingItemManager" ref="shoppingItemManager" />
+    </bean>
 </beans>
