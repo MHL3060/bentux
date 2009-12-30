@@ -72,8 +72,8 @@
     				<c:if test="${param.id == test.id and param.method != 'Save'}">checked="checked"</c:if>
         			style="margin: 0 0 0 4px" onclick="radio(this)" />
   			</display:column>
-  			<display:column titleKey="cart.item.product" property="items.product.name" />
- 			<display:column titleKey="cart.time.quantity">
+  			<display:column titleKey="cart.item.product" property="product.name" />
+ 			<display:column titleKey="cart.item.quantity">
  				<c:choose>
  					<c:when test="${method != null}">
  						<form:input path="quantity" />

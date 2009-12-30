@@ -70,7 +70,7 @@ public class TuxBaseFormController extends BaseFormController {
 		boolean isNew = (baseObject.getId() == null);
 		Locale locale = request.getLocale();
 		try {
-			if (request.getParameter(Constants.DELETE_OBJECT) != null){
+			if (request.getParameter(Constants.DELETE_ACTION) != null){
 				lookUpManager.remove(baseObject.getId());
 				saveMessage(request, getText(className+".deleted", locale));
 				return new ModelAndView(getSuccessView());

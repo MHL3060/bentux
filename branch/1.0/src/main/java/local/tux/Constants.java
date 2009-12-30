@@ -16,7 +16,9 @@ public interface Constants {
 	public final int PAGE_SIZE = 25;
 	public final String[] EDIT_PERMISSION = {org.appfuse.Constants.ADMIN_ROLE };  
 	public final String[] WEIGHT_UNIT = {"oz", "lb", "kg", "g", "ml", "l"};
-	public final String DELETE_OBJECT = "delete";
+	public final String DELETE_ACTION = "delete";
+	public final String EDIT_ACTION = "edit";
+	public final String ACTION_PARAM = "action";
 	public final List<TuxBaseObject> EMPTY_LIST = new ArrayList<TuxBaseObject>();
 	
 	public final int CATALOG_FOOD_PRODUCT = -1;

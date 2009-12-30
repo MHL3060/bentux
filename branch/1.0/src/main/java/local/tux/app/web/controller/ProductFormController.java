@@ -130,7 +130,7 @@ public class ProductFormController extends BaseFormController {
 		Locale locale = request.getLocale();
 		String successView = getSuccessView();
 		try {
-			if (request.getParameter(Constants.DELETE_OBJECT) != null){
+			if (request.getParameter(Constants.DELETE_ACTION) != null){
 				productManager.remove(product.getId());
 				saveMessage(request, getText(className+".deleted", locale));
 			}else {

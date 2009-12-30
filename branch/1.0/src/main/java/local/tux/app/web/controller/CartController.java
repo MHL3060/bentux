@@ -76,18 +76,20 @@ public class CartController extends BaseFormController {
 		boolean isNew = (baseObject.getId() == null);
 		Locale locale = request.getLocale();
 		try {
-			if (request.getParameter(Constants.DELETE_OBJECT) != null){
-				shoppingItemManager.remove(baseObject.getId());
-				saveMessage(request, getText(className+".deleted", locale));
-				return new ModelAndView(getSuccessView());
-			}else {
-				shoppingItemManager.save((ShoppingItem)command);
-				String key = (isNew) ? className+ ".added" : className + ".updated";
-				saveMessage(request, getText(key, locale));
-				return showNewForm(request, response);
+			if (StringUtils.isBlank(request.getParameter(Constants.ACTION_PARAM)) == false) {
+				if (request.getParameter(Constants.DELETE_ACTION) != null){
+					shoppingItemManager.remove(baseObject.getId());
+					saveMessage(request, getText(className+".deleted", locale));
+					return new ModelAndView(getSuccessView());
+				}else if (request.getParameter(Constants.EDIT_ACTION) != null ){
+					shoppingItemManager.save((ShoppingItem)command);
+					String key = (isNew) ? className+ ".added" : className + ".updated";
+					saveMessage(request, getText(key, locale));
+					return showNewForm(request, response);
+				}
 			}
 		}catch (Exception e){
-			saveError(request, getText("object.exists",locale));
+			//saveError(request, getText("object.exists",locale));
 			log.error(e);
 		}
 		return showForm(request, response, error);
