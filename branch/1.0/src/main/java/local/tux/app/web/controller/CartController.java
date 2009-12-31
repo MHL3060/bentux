@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import local.tux.Constants;
+import local.tux.TuxBaseObjectConverter;
 import local.tux.app.model.Product;
 import local.tux.app.model.ShoppingCart;
 import local.tux.app.model.ShoppingItem;
@@ -25,6 +26,7 @@ import org.appfuse.service.UserManager;
 import org.appfuse.webapp.controller.BaseFormController;
 import org.springframework.validation.BindException;
 import org.springframework.validation.Errors;
+import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.servlet.ModelAndView;
 
 
@@ -35,7 +37,7 @@ public class CartController extends BaseFormController {
 	private ShoppingCartManager shoppingCartManager;
 	public CartController(){
 		setCommandClass(ShoppingItem.class);
-		setCommandName("ShoppingItem");
+		setCommandName("shoppingItem");
 	}
 	public void setShoppingItemManager(ShoppingItemManager shoppingItemManager){
 		this.shoppingItemManager = shoppingItemManager;
@@ -45,6 +47,13 @@ public class CartController extends BaseFormController {
 	}
 	public void setProductManager(LookUpNameGenericManager<Product, Long> productManager){
 		this.productManager = productManager;
+	}
+	
+	public void initBinder(HttpServletRequest request, ServletRequestDataBinder binder){
+		super.initBinder(request, binder);
+		TuxBaseObjectConverter converter = new TuxBaseObjectConverter(productManager);
+		binder.registerCustomEditor(Product.class, converter);
+		
 	}
 	protected Object formBackingObject(HttpServletRequest request) throws Exception {
 		String id = request.getParameter("id");	
@@ -58,14 +67,20 @@ public class CartController extends BaseFormController {
 	public Map referenceData(HttpServletRequest request, Object command,
 			Errors error) throws Exception {
 		
-		Map<String, Set<ShoppingItem>> result = new HashMap<String, Set<ShoppingItem>>();
+		Map result = new HashMap();
 		if (!StringUtils.isBlank(request.getRemoteUser())){
 			User user = getUserManager().getUserByUsername(request.getRemoteUser());
 			ShoppingCart cart = shoppingCartManager.getOpenCart(user);
 			if(cart != null) {
 				result.put("shoppingItems", cart.getShppingItems());
+				if (StringUtils.isBlank(request.getParameter(Constants.EDIT_ACTION)) == false){
+					result.put(Constants.ACTION_PARAM, Constants.EDIT_ACTION);
+				}
+				
 			}
+			
 		}
+		
 		return result;
 	}
 	public ModelAndView onSubmit(HttpServletRequest request, HttpServletResponse response, 
@@ -76,18 +91,18 @@ public class CartController extends BaseFormController {
 		boolean isNew = (baseObject.getId() == null);
 		Locale locale = request.getLocale();
 		try {
-			if (StringUtils.isBlank(request.getParameter(Constants.ACTION_PARAM)) == false) {
-				if (request.getParameter(Constants.DELETE_ACTION) != null){
-					shoppingItemManager.remove(baseObject.getId());
-					saveMessage(request, getText(className+".deleted", locale));
-					return new ModelAndView(getSuccessView());
-				}else if (request.getParameter(Constants.EDIT_ACTION) != null ){
-					shoppingItemManager.save((ShoppingItem)command);
-					String key = (isNew) ? className+ ".added" : className + ".updated";
-					saveMessage(request, getText(key, locale));
-					return showNewForm(request, response);
-				}
+			
+			if (request.getParameter(Constants.DELETE_ACTION) != null){
+				shoppingItemManager.remove(baseObject.getId());
+				saveMessage(request, getText(className+".deleted", locale));
+				return new ModelAndView(getSuccessView());
+			}else if (request.getParameter(Constants.SAVE_ACTION) != null ){
+				shoppingItemManager.save((ShoppingItem)command);
+				String key = (isNew) ? className+ ".added" : className + ".updated";
+				saveMessage(request, getText(key, locale));
+				return showNewForm(request, response);
 			}
+			
 		}catch (Exception e){
 			//saveError(request, getText("object.exists",locale));
 			log.error(e);

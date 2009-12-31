@@ -19,6 +19,7 @@ public interface Constants {
 	public final String DELETE_ACTION = "delete";
 	public final String EDIT_ACTION = "edit";
 	public final String ACTION_PARAM = "action";
+	public final String SAVE_ACTION = "save";
 	public final List<TuxBaseObject> EMPTY_LIST = new ArrayList<TuxBaseObject>();
 	
 	public final int CATALOG_FOOD_PRODUCT = -1;

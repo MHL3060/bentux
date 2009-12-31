@@ -45,37 +45,38 @@
 			<form:errors path="*" cssClass="error" element="div" />
 			<li>
           
-		  		<input type="submit" name="method" value="Edit" class="button" 
+		  		<input type="submit" name="edit" value="Edit" class="button" 
 			
 				<c:if test="${not empty method and method == 'Add' }">
 					disabled="disabled"
 				</c:if>
 				/> 
 			
-	          <input type="submit" name="method" value="Add" class="button"
-	        	  <c:if test="${not empty method and method == 'Edit' }">
-					disabled="disabled"
-				  </c:if>
-	          /> 
-	          <input type="submit" name="method" value="Delete" class="button" 
+	          <input type="submit" name="delete" value="Delete" class="button" 
 				<c:if test="${not empty method and not ( method == 'Save' or method == 'Delete')}">
 						disabled="disabled"
 				</c:if>	
 				
 				/>
-			<input type="reset" name="method" value="Cancel" class="button" onclick="location.href='./worktime.html'" />
         </li>
 			
 			<display:table name="${shoppingItems}" id="items" class="list">
   			<display:column style="width: 5%" title="${checkAll}">
-    			<input type="checkbox" name="id" value="<c:out value="${test.id}"/>" 
+    			<input type="checkbox" name="id" value="<c:out value="${items.id}"/>" 
     				<c:if test="${param.id == test.id and param.method != 'Save'}">checked="checked"</c:if>
         			style="margin: 0 0 0 4px" onclick="radio(this)" />
   			</display:column>
-  			<display:column titleKey="cart.item.product" property="product.name" />
+  			<display:column titleKey="cart.item.product" >
+  				<c:if test="${action != null}">
+  					<form:hidden path="id"/>
+  					<form:hidden path="product" />
+  				
+  				</c:if>
+  				${items.product.name }
+  			</display:column>
  			<display:column titleKey="cart.item.quantity">
  				<c:choose>
- 					<c:when test="${method != null}">
+ 					<c:when test="${action != null}">
  						<form:input path="quantity" />
  					</c:when>
  					<c:otherwise>
