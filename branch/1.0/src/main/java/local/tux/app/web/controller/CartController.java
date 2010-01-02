@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import local.tux.Constants;
 import local.tux.TuxBaseObjectConverter;
+import local.tux.Constants.Status;
 import local.tux.app.model.Product;
 import local.tux.app.model.ShoppingCart;
 import local.tux.app.model.ShoppingItem;
@@ -86,21 +87,26 @@ public class CartController extends BaseFormController {
 	public ModelAndView onSubmit(HttpServletRequest request, HttpServletResponse response, 
 			Object command, BindException error) throws Exception {
 		
-		TuxBaseObject baseObject = (TuxBaseObject)command;
+		ShoppingItem shoppingItem = (ShoppingItem)command;
 		String className = command.getClass().getName();
-		boolean isNew = (baseObject.getId() == null);
+		boolean isNew = (shoppingItem.getId() == null);
 		Locale locale = request.getLocale();
 		try {
 			
-			if (request.getParameter(Constants.DELETE_ACTION) != null){
-				shoppingItemManager.remove(baseObject.getId());
+			if (StringUtils.isBlank(request.getParameter(Constants.DELETE_ACTION)) == false){
+				shoppingItemManager.remove(shoppingItem.getId());
 				saveMessage(request, getText(className+".deleted", locale));
 				return new ModelAndView(getSuccessView());
-			}else if (request.getParameter(Constants.SAVE_ACTION) != null ){
-				shoppingItemManager.save((ShoppingItem)command);
+			}else if (StringUtils.isBlank(request.getParameter(Constants.SAVE_ACTION))==false ){
+				shoppingItemManager.save(shoppingItem);
 				String key = (isNew) ? className+ ".added" : className + ".updated";
 				saveMessage(request, getText(key, locale));
 				return showNewForm(request, response);
+			}else if (StringUtils.isBlank(request.getParameter(Constants.CHECK_OUT))==false ){
+				ShoppingCart shoppingCart = shoppingItem.getShoppingCart();
+				shoppingCart.setStatus(Status.SUBMITTED);
+				shoppingCartManager.save(shoppingCart);
+				saveMessage(request, getText("order.checkout", locale));
 			}
 			
 		}catch (Exception e){

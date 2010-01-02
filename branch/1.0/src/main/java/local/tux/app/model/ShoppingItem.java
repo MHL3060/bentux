@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import local.tux.app.model.common.TuxBaseObject;
 /**
@@ -38,6 +39,10 @@ public class ShoppingItem extends TuxBaseObject {
 	@ManyToOne
 	@JoinColumn(name="shopping_cart_id")
 	private ShoppingCart shoppingCart;
+	
+	@Transient
+	private Double total;
+	
 	@Override
 	public Long getId() {
 		return id;
@@ -81,7 +86,20 @@ public class ShoppingItem extends TuxBaseObject {
 		this.shoppingCart = shoppingCart;
 	}
 
-	
+	public Double getTotal() {
+		if (quantity != null && product != null){
+			Double price = product.getPrice();
+			if (product.getSpecial()== Boolean.TRUE && product.getDiscountPrice() != null){
+				price = product.getDiscountPrice();
+			}
+			return quantity * price;
+		}
+		return new Double(0);
+	}
+
+	public void setTotal(Double total) {
+		
+	}
 
 	@Override
 	public int hashCode() {

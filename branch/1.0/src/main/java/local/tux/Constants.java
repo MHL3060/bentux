@@ -31,6 +31,7 @@ public interface Constants {
 	public final int NEWS_BACK_TO = -30;
 	public final int NEWS_DISPLAY_ITEM = 5;
 	public final int SEARCH_SHOW_CHARACTER_LENGTH = 1000;
+	public final String CHECK_OUT = "checkout";
 	
 	public enum  Status {OPEN, SUBMITTED, PROCESSING, SHIPPED};
 	

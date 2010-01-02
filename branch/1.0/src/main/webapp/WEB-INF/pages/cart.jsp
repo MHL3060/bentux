@@ -2,39 +2,10 @@
 
 
 <script type="text/javascript">
-	function setAccpacInfo(node) {
-		if (node.value != "") {
-			projectInformationManager.getId(node.value, pInformation);
-		} else {
-			var contractNode = document.getElementById("contract");
-			var projectNode = document.getElementById("project");
-			str = "";
-			contractNode.innerHTML = str;
-			projectNode.innerHTML = str;
-		}
-	}
-	function pInformation(p) {
-		var contractNode = document.getElementById("contract");
-		str = p.contract.name;
-		contractNode.innerHTML = str;
-		var projectNode = document.getElementById("project");
-		str = p.project.name;
-		projectNode.innerHTML = str;
-	}
 	function confirmSubmit(){
 		return confirm("Are you sure you want to submit this week's time?" );
 	}
-
-	function addThisWeek(){
-		dom = document.getElementById("method");
-		value = dom.value;
-		location.href ='./worktime.html?method='+value;
-	}
 </script>
-<c:set var="checkAll">
-	<input type="checkbox" name="allbox" onclick="checkAll(this.form)"
-		style="margin: 0 0 0 4px" />
-</c:set>
 <ul>
 	
 		<div
@@ -60,15 +31,15 @@
 				/>
         </li>
 			
-			<display:table name="${shoppingItems}" id="items" class="list">
+			<display:table name="${shoppingItems}" id="items" class="table">
   			<display:column style="width: 5%" title="${checkAll}">
-    			<input type="checkbox" name="id" value="<c:out value="${items.id}"/>" 
-    				<c:if test="${param.id == test.id and param.method != 'Save'}">checked="checked"</c:if>
-        			style="margin: 0 0 0 4px" onclick="radio(this)" />
+    			<input type="radio" name="id"
+									value="${items.id}" ${(param.id == items.id && param.edit != null) ? 'checked=checked' : ''}/>
+
+        			
   			</display:column>
   			<display:column titleKey="cart.item.product" >
   				<c:if test="${action != null}">
-  					<form:hidden path="id"/>
   					<form:hidden path="product" />
   				
   				</c:if>
@@ -85,13 +56,14 @@
  				</c:choose>
  			</display:column>
   			<display:column title="product.price" property="product.price" />
+  			<display:column title="shopping.item.total" property="total" />
 			</display:table>
-			<c:if test="${not week.submitted}">
-				<input type="submit" name="method" value="Save"
-					onclick="location.href='?method=Submit'" />
-				<input type="submit" name="method" value="Submit" style="font-weight:bold; background-color: #CC6666;" 
-					onclick="return confirmSubmit()" />
-			</c:if>
+			
+			<input type="submit" name="save" value="<fmt:message key="continue.shopping" />"
+				onclick="location.href='?method=Submit'" />
+			<input type="submit" name="checkout" value="Submit" style="font-weight:bold; background-color: #CC6666;" 
+				onclick="return confirmSubmit()" />
+			
 			</form:form>
 </ul>
 <div
