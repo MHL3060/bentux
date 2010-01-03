@@ -32,7 +32,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 public class CartController extends BaseFormController {
-
+	
+	private final String ORIGINAL_ITEM = "originalItem";
 	private ShoppingItemManager shoppingItemManager;
 	private LookUpNameGenericManager<Product, Long> productManager;
 	private ShoppingCartManager shoppingCartManager;
@@ -59,7 +60,9 @@ public class CartController extends BaseFormController {
 	protected Object formBackingObject(HttpServletRequest request) throws Exception {
 		String id = request.getParameter("id");	
 		if (!StringUtils.isBlank(id)) {
-            return shoppingItemManager.get(new Long(id));
+			ShoppingItem item = shoppingItemManager.get(new Long(id));
+			request.getSession().setAttribute(ORIGINAL_ITEM, item.clone());
+            return item;
         }else {
         	return new ShoppingItem();
         }
@@ -92,21 +95,21 @@ public class CartController extends BaseFormController {
 		boolean isNew = (shoppingItem.getId() == null);
 		Locale locale = request.getLocale();
 		try {
-			
 			if (StringUtils.isBlank(request.getParameter(Constants.DELETE_ACTION)) == false){
 				shoppingItemManager.remove(shoppingItem.getId());
 				saveMessage(request, getText(className+".deleted", locale));
-				return new ModelAndView(getSuccessView());
+				return showForm(request, response, error);
 			}else if (StringUtils.isBlank(request.getParameter(Constants.SAVE_ACTION))==false ){
-				shoppingItemManager.save(shoppingItem);
+				shoppingItemManager.save(shoppingItem, (ShoppingItem)request.getSession().getAttribute(ORIGINAL_ITEM));
 				String key = (isNew) ? className+ ".added" : className + ".updated";
 				saveMessage(request, getText(key, locale));
-				return showNewForm(request, response);
+				return showForm(request, response, error);
 			}else if (StringUtils.isBlank(request.getParameter(Constants.CHECK_OUT))==false ){
 				ShoppingCart shoppingCart = shoppingItem.getShoppingCart();
 				shoppingCart.setStatus(Status.SUBMITTED);
 				shoppingCartManager.save(shoppingCart);
 				saveMessage(request, getText("order.checkout", locale));
+				return showForm(request, response, error);
 			}
 			
 		}catch (Exception e){

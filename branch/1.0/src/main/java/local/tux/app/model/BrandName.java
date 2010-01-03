@@ -125,7 +125,10 @@ public class BrandName extends LookUpBaseObject {
 			return false;
 		return true;
 	}
-	
+	public Object clone() throws CloneNotSupportedException {
+		
+		return super.clone();
+	}
 	
 	
 	

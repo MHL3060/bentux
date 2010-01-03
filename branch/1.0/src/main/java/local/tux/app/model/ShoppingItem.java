@@ -18,7 +18,7 @@ import local.tux.app.model.common.TuxBaseObject;
  */
 @Entity
 @Table(name="shopping_item")
-public class ShoppingItem extends TuxBaseObject {
+public class ShoppingItem extends TuxBaseObject{
 
 	/**
 	 * 
@@ -154,6 +154,12 @@ public class ShoppingItem extends TuxBaseObject {
 	public String toString() {
 		return "ShoppingItem [couponCode=" + couponCode + ", id=" + id
 				+ ", product=" + product + ", quantity=" + quantity + "]";
+	}
+	
+	
+public Object clone() throws CloneNotSupportedException {
+		
+		return super.clone();
 	}
 
 	

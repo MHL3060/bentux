@@ -146,6 +146,9 @@ public class ShoppingCart extends TuxBaseObject {
 	}
 
 	
-	
+	public Object clone() throws CloneNotSupportedException {
+		
+		return super.clone();
+	}
 	
 }

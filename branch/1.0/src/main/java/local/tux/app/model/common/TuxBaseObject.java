@@ -5,7 +5,7 @@ import local.tux.TuxBaseObjectConverter;
 
 import org.appfuse.model.BaseObject;
 
-public abstract class TuxBaseObject extends BaseObject {
+public abstract class TuxBaseObject extends BaseObject implements Cloneable {
 
 	/**
 	 * this abstract class is used for {@link TuxBaseObjectConverter}

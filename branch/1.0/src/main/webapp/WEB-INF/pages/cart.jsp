@@ -16,19 +16,8 @@
 			<form:errors path="*" cssClass="error" element="div" />
 			<li>
           
-		  		<input type="submit" name="edit" value="Edit" class="button" 
-			
-				<c:if test="${not empty method and method == 'Add' }">
-					disabled="disabled"
-				</c:if>
-				/> 
-			
-	          <input type="submit" name="delete" value="Delete" class="button" 
-				<c:if test="${not empty method and not ( method == 'Save' or method == 'Delete')}">
-						disabled="disabled"
-				</c:if>	
-				
-				/>
+		  		<input type="submit" name="edit" value="Edit" class="button" ${action != null ? 'disabled="disabled"' : '' } />
+	          <input type="submit" name="delete" value="Delete" class="button" ${action != null ? 'disabled="disabled"' : '' } />
         </li>
 			
 			<display:table name="${shoppingItems}" id="items" class="table">

@@ -66,12 +66,24 @@ public class ShoppingItemManagerImpl extends
 		productManager.save(p);
 		
 	}
-	public ShoppingItem save(ShoppingItem item){
-		Product p = item.getProduct();
-		Integer item_count = item.getQuantity();
-		p.setAvailability(p.getAvailability() - item_count);
+	public ShoppingItem save(ShoppingItem toBeSaveItem, ShoppingItem originalItem ){
+		
+		
+		Product p = toBeSaveItem.getProduct();
+		Integer itemCount = toBeSaveItem.getQuantity();
+		//do update
+		if (toBeSaveItem.getId() != null && originalItem != null){
+			int quantityDiff = itemCount - originalItem.getQuantity();
+			p.setAvailability(p.getAvailability() - quantityDiff);
+		}else {
+			p.setAvailability(p.getAvailability() - itemCount);
+		}
 		productManager.save(p);
-		return super.save(item);
+		return super.save(toBeSaveItem);
 	
 	}
+	public ShoppingItem save(ShoppingItem toBeSaveItem ) {
+		return save(toBeSaveItem, null);
+	}
+	
 }

@@ -448,6 +448,10 @@ public class Product extends LookUpBaseObject {
 		return true;
 	}
 
+	public Object clone() throws CloneNotSupportedException {
+		
+		return super.clone();
+	}
 	
 
 	

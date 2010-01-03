@@ -131,6 +131,12 @@ public class Coupon extends LookUpBaseObject {
 				+ discount_value + ", endDate=" + endDate + ", id=" + id
 				+ ", name=" + name + ", startDate=" + startDate + "]";
 	}
+	@Override
+	public Object clone() throws CloneNotSupportedException {
+		
+		return super.clone();
+	}
+	
 	
 	
 	
