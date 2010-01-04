@@ -22,7 +22,7 @@
  	 	if (quantity < 1) {
 			alert("Error: The quantity must be greater than 0" );
  	 	}else {
-			shoppingCartManager.addItem(${user.id},${user.firstname), product, quantity, 
+			shoppingCartManager.addItem(${user.id},'${user.username}', product, quantity, 
 					function(result) {
 						if (result == true ) {
 							hide('cart');
