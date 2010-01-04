@@ -19,18 +19,21 @@
 
 		product = document.getElementById(pidNodeId).value;
 		quantity = document.getElementById(quantityNodeId).value;
- 	 	
-		shoppingCartManager.addItem(${user.id},product, quantity, 
-				function(result) {
-					if (result == true ) {
-						hide('cart');
-						window.location.reload();
-					}else {
-
-					}
-					
-				}																
-			); 
+ 	 	if (quantity < 1) {
+			alert("Error: The quantity must be greater than 0" );
+ 	 	}else {
+			shoppingCartManager.addItem(${user.id},${user.firstname), product, quantity, 
+					function(result) {
+						if (result == true ) {
+							hide('cart');
+							window.location.reload();
+						}else {
+	
+						}
+						
+					}																
+				); 
+ 	 	}
  	}
 	function popup(pid, toNodeId) {
 		toNode = document.getElementById(toNodeId);
@@ -141,7 +144,7 @@
 					<td id="price"></td>
 				</tr>
 				<tr>
-					<td colspan="2"> Add <input id="quantity" name="quantity" type="text" size="3" maxlength="3" />  to my cart  </td>
+					<td colspan="2"> Add <input id="quantity" name="quantity" value="1" type="text" size="3" maxlength="3" />  to my cart  </td>
 				</tr>
 				<tr>
 					<td colspan="2"><input type="button" name="add" value="Add" onclick="addItem('pid', 'quantity')"/></td>

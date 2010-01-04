@@ -33,14 +33,18 @@ public class ShoppingCartManagerImpl extends
 	}
 	
 
-	public boolean addItem(Long userId, Long pid, Integer quantity) {
+	public boolean addItem(Long userId, String username, Long pid, Integer quantity) {
 		User user = userManager.getUser(userId.toString());
-		Product p = productManager.get(pid);
-		if (p.getAvailability() != null && p.getAvailability() - quantity >= 0){
-			shoppingCartDao.add(user, p, quantity);
-			p.setAvailability(p.getAvailability() - quantity );
-			productManager.save(p);
-			return true;
+		if (user.getUsername().equals(username)){
+			Product p = productManager.get(pid);
+			if (p.getAvailability() != null && p.getAvailability() - quantity >= 0){
+				shoppingCartDao.add(user, p, quantity);
+				p.setAvailability(p.getAvailability() - quantity );
+				productManager.save(p);
+				return true;
+			}else {
+				return false;
+			}
 		}else {
 			return false;
 		}
