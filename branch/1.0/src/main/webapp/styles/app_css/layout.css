@@ -99,6 +99,15 @@
             font-size: 1.0em;
 			font-weight: bold;
         }
+        div#footer a:active {
+			color: #c0f1be;
+			text-decoration: none;	
+		}	
+		
+		 div#footer a:visited {
+			color: #3e9ade;
+			background-color: transparent;
+		}
             div#footer div#divider {
                     margin: 0 0 4px 0;
 					background: #246e21; 
