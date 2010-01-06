@@ -48,6 +48,9 @@ public class ShoppingCart extends TuxBaseObject {
 	@Enumerated(EnumType.ORDINAL)
 	private Status status;
 
+	@Column
+	private String trackingCode;
+	
 	@Override
 	public Long getId() {
 		return id;
@@ -75,7 +78,7 @@ public class ShoppingCart extends TuxBaseObject {
 		this.startDate = startDate;
 	}
 
-	public Set<ShoppingItem> getShppingItems() {
+	public Set<ShoppingItem> getShoppingItems() {
 		return shoppingItems;
 	}
 
@@ -89,6 +92,15 @@ public class ShoppingCart extends TuxBaseObject {
 
 	public void setStatus(Status status) {
 		this.status = status;
+	}
+
+	
+	public String getTrackingCode() {
+		return trackingCode;
+	}
+
+	public void setTrackingCode(String trackingCode) {
+		this.trackingCode = trackingCode;
 	}
 
 	@Override
