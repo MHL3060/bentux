@@ -19,6 +19,7 @@ import javax.persistence.Table;
 
 import org.appfuse.model.User;
 
+import local.tux.Constants.ShippingType;
 import local.tux.Constants.Status;
 import local.tux.app.model.common.TuxBaseObject;
 
@@ -50,6 +51,12 @@ public class ShoppingCart extends TuxBaseObject {
 
 	@Column
 	private String trackingCode;
+	
+	@Column
+	private String shippingInstruction;
+	
+	@Enumerated(EnumType.ORDINAL)
+	private ShippingType shippingType;
 	
 	@Override
 	public Long getId() {
@@ -101,6 +108,23 @@ public class ShoppingCart extends TuxBaseObject {
 
 	public void setTrackingCode(String trackingCode) {
 		this.trackingCode = trackingCode;
+	}
+
+	
+	public String getShippingInstruction() {
+		return shippingInstruction;
+	}
+
+	public void setShippingInstruction(String shippingInstruction) {
+		this.shippingInstruction = shippingInstruction;
+	}
+
+	public ShippingType getShippingType() {
+		return shippingType;
+	}
+
+	public void setShippingType(ShippingType shippingType) {
+		this.shippingType = shippingType;
 	}
 
 	@Override

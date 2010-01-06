@@ -51,7 +51,7 @@ public class ShoppingCartDaoHibernate extends TuxNameGenericDaoHibernate<Shoppin
 	public void add(User user, Product p, Integer quantity) {
 		boolean newItem = true;
 		ShoppingCart cart = getOpenShoppingCart(user);
-		Set<ShoppingItem> items = cart.getShppingItems();
+		Set<ShoppingItem> items = cart.getShoppingItems();
 		//if the shoppingCart is new. create a baskets.
 		if (items == null){
 			items = new HashSet<ShoppingItem>();

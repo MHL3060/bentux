@@ -73,7 +73,7 @@ public class ShoppingCartManagerImpl extends
 	public Double getSubTotal(ShoppingCart cart){
 		double subTotal = 0;
 		if (cart != null){
-			Set<ShoppingItem> items = cart.getShppingItems();
+			Set<ShoppingItem> items = cart.getShoppingItems();
 			if ( items != null && items.size() > 0){
 				for (ShoppingItem item : items){
 					Double price = item.getProduct().getPrice();

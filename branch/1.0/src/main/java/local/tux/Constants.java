@@ -35,4 +35,6 @@ public interface Constants {
 	
 	public enum  Status {OPEN, SUBMITTED, PROCESSING, SHIPPED};
 	
+	public enum ShippingType {PICKUP, DELIVERY};
+	
 }

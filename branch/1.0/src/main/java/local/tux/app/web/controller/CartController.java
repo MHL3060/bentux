@@ -76,7 +76,7 @@ public class CartController extends BaseFormController {
 			User user = getUserManager().getUserByUsername(request.getRemoteUser());
 			ShoppingCart cart = shoppingCartManager.getOpenCart(user);
 			if(cart != null) {
-				result.put("shoppingItems", cart.getShppingItems());
+				result.put("shoppingItems", cart.getShoppingItems());
 				if (StringUtils.isBlank(request.getParameter(Constants.EDIT_ACTION)) == false){
 					result.put(Constants.ACTION_PARAM, Constants.EDIT_ACTION);
 				}
