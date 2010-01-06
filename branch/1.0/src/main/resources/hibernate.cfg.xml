@@ -22,5 +22,6 @@
         <mapping class="local.tux.app.model.ShoppingCart" />
         <mapping class="local.tux.app.model.ShoppingItem" />
         <mapping class="local.tux.app.model.Coupon" />
+        <mapping class="local.tux.app.model.ShippingAddress" />
     </session-factory>
 </hibernate-configuration>
