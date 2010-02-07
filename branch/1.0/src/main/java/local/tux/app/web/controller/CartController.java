@@ -37,6 +37,7 @@ public class CartController extends BaseFormController {
 	private ShoppingItemManager shoppingItemManager;
 	private LookUpNameGenericManager<Product, Long> productManager;
 	private ShoppingCartManager shoppingCartManager;
+	private String nextWebPage;
 	public CartController(){
 		setCommandClass(ShoppingItem.class);
 		setCommandName("shoppingItem");
@@ -50,7 +51,9 @@ public class CartController extends BaseFormController {
 	public void setProductManager(LookUpNameGenericManager<Product, Long> productManager){
 		this.productManager = productManager;
 	}
-	
+	public void setNextWebPage(String nextWebPage){
+		this.nextWebPage = nextWebPage;
+	}
 	public void initBinder(HttpServletRequest request, ServletRequestDataBinder binder){
 		super.initBinder(request, binder);
 		TuxBaseObjectConverter converter = new TuxBaseObjectConverter(productManager);
@@ -109,7 +112,7 @@ public class CartController extends BaseFormController {
 				shoppingCart.setStatus(Status.SUBMITTED);
 				shoppingCartManager.save(shoppingCart);
 				saveMessage(request, getText("order.checkout", locale));
-				return showForm(request, response, error);
+				return  new ModelAndView(nextWebPage); 
 			}
 			
 		}catch (Exception e){

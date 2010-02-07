@@ -3,7 +3,7 @@
 
 <script type="text/javascript">
 	function confirmSubmit(){
-		return confirm("Are you sure you want to submit this week's time?" );
+		return true;
 	}
 </script>
 <ul>
@@ -48,9 +48,9 @@
   			<display:column title="shopping.item.total" property="total" />
 			</display:table>
 			
-			<input type="submit" name="save" value="<fmt:message key="continue.shopping" />"
+			<input type="submit" name="save" value="<fmt:message key="save" />"
 				onclick="location.href='?method=Submit'" />
-			<input type="submit" name="checkout" value="Submit" style="font-weight:bold; background-color: #CC6666;" 
+			<input type="submit" name="checkout" value="Check Out" style="font-weight:bold; background-color: #CC6666;" 
 				onclick="return confirmSubmit()" />
 			
 			</form:form>
@@ -59,12 +59,5 @@
 	style="outline-color: #d7e9f5; outline-style: solid; outline-width: 1px;">
 </div>
 <br />
-<form:form commandName="timeWebBean" action="worktime.html"
-	id="timeWebBeanForm">
-	<c:if test="${submitted}">
-		<input type="submit" name="method" value="Add New Week"
-			onclick="location.href='?method=Submit'" />
-	</c:if>
-</form:form>
 
 

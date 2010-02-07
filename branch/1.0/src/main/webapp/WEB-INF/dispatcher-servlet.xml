@@ -222,5 +222,6 @@
     	<property name="productManager" ref="productManager" />
     	<property name="shoppingCartManager" ref="shoppingCartManager" />
     	<property name="shoppingItemManager" ref="shoppingItemManager" />
+    	<property name=""nextWebPage" ref="redirect:addressform.html" />
     </bean>
 </beans>
