@@ -739,18 +739,17 @@
         <cargo.port>8081</cargo.port>
         <cargo.wait>false</cargo.wait>
                 
-        <!-- Database settings -->
-        <dbunit.dataTypeFactoryName>org.dbunit.dataset.datatype.DefaultDataTypeFactory</dbunit.dataTypeFactoryName>
+        <!-- Database settings -->	
+		<dbunit.dataTypeFactoryName>org.dbunit.dataset.datatype.DefaultDataTypeFactory</dbunit.dataTypeFactoryName>
         <dbunit.operation.type>CLEAN_INSERT</dbunit.operation.type>
-        <hibernate.dialect>org.hibernate.dialect.PostgreSQLDialect</hibernate.dialect>
-		<jdbc.groupId>postgresql</jdbc.groupId>
-		<jdbc.artifactId>postgresql</jdbc.artifactId>
+        <hibernate.dialect>org.hibernate.dialect.MySQLDialect</hibernate.dialect>
+		<jdbc.groupId>mysql</jdbc.groupId>
+		<jdbc.artifactId>mysql</jdbc.artifactId>
 		<jdbc.version>8.1-407.jdbc3</jdbc.version>
-		<jdbc.driverClassName>org.postgresql.Driver</jdbc.driverClassName>
-		<jdbc.url><![CDATA[jdbc:postgresql://localhost/app]]></jdbc.url>
-		<jdbc.username>postgres</jdbc.username>
-		<jdbc.password>postgres</jdbc.password>
-		
+		<jdbc.driverClassName>org.mysql.Driver</jdbc.driverClassName>
+		<jdbc.url><![CDATA[jdbc:mysql://trinitytaste.db.5569487.hostedresource.com/app]]></jdbc.url>
+		<jdbc.username>trinitytaste</jdbc.username>
+		<jdbc.password>Rajesh_1India</jdbc.password>
 		
 		<!--  compass settting -->
 		<compass.version>2.0.0</compass.version>
