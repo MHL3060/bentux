@@ -222,10 +222,10 @@
     	<property name="productManager" ref="productManager" />
     	<property name="shoppingCartManager" ref="shoppingCartManager" />
     	<property name="shoppingItemManager" ref="shoppingItemManager" />
-    	<property name="nextWebPage" ref="redirect:addressform.html" />
+    	<property name="nextWebPage" value="redirect:addressform.html" />
     </bean>
     <bean id="AddressFormController" class="local.tux.app.web.common.controller.TuxBaseFormController">
-    	<property name="lookUpManager" ref="customerAddressDao" />
+    	<property name="lookUpManager" ref="customerAddressManager" />
     	<property name="commandClass" value="local.tux.app.model.ShippingAddress" />
     	<property name="commandName" value="shippingAddress" />
     </bean>
