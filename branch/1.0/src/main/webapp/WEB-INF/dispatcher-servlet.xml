@@ -117,7 +117,6 @@
     	<property name="commandClass" value="local.tux.app.model.Image" />
     	<property name="commandName" value="image" />
     	<property name="productManager" ref="productManager" />
-    	<property name="storeImagePath" value="file://${user.home}/images" />
     	<property name="lookUpManager" ref="imageManager" />
     </bean>
     <bean id="brandNameFormController" class="local.tux.app.web.controller.BrandNameFormController">

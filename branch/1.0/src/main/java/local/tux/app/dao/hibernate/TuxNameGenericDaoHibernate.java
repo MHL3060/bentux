@@ -13,6 +13,7 @@ import org.apache.commons.lang.StringUtils;
 import org.appfuse.dao.hibernate.GenericDaoHibernate;
 import org.hibernate.Session;
 import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
@@ -31,7 +32,7 @@ public class TuxNameGenericDaoHibernate<T, PK extends Serializable> extends Gene
 	@SuppressWarnings("unchecked")
 	public T getLookUpBaseObject( String name) {
 		
-		String hql = new StringBuffer("from ").append(clazz.getName()).append(" where name = ? ").toString();
+		String hql = new StringBuffer("from ").append(clazz.getSimpleName()).append(" where name = ? ").toString();
 		List<LookUpBaseObject> list = super.getHibernateTemplate().find(hql, name);
 		if (list.size() > 0 ){
 			return (T) list.get(0);
@@ -56,7 +57,7 @@ public class TuxNameGenericDaoHibernate<T, PK extends Serializable> extends Gene
 		}else {
 			cleanValue = "%"+ cleanValue + "%";
 		}
-		List list =  session.createCriteria(clazz).add(Restrictions.ilike(propertyName, cleanValue))
+		List list =  session.createCriteria(clazz).add(Restrictions.ilike(propertyName, cleanValue, MatchMode.ANYWHERE))
 												.setFetchSize(fetchSize).list();
 		session.disconnect();
 		return list;

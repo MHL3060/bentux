@@ -11,7 +11,7 @@ public interface Constants {
 	
 	public final int THUMBNAIL_WIDTH = 100;
 	public final int THUMBNAIL_HEIGHT = 100;
-	//public final static String IMAGE_PATH = "/images/app";
+	public final static String IMAGE_PATH = "/images/app";
 	public final String DATE_PATTERN = "MM/dd/yyyy";
 	public final int PAGE_SIZE = 25;
 	public final String[] EDIT_PERMISSION = {org.appfuse.Constants.ADMIN_ROLE };  
@@ -36,5 +36,10 @@ public interface Constants {
 	public enum  Status {OPEN, SUBMITTED, PROCESSING, SHIPPED};
 	
 	public enum ShippingType {PICKUP, DELIVERY};
+	
+	
+	public final String IMAGE_TYPE = "image";
+	public final String THUMB_TYPE = "thumb";
+	
 	
 }

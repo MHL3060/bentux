@@ -37,8 +37,6 @@ import local.tux.app.web.common.controller.TuxBaseFormController;
 public class ImageFormController extends TuxBaseFormController {
 
 	private LookUpNameGenericManager productManager;
-	private String imagePath;
-	private final String THUMB_PATH = "/thumbs";
 	//private LookUpNameGenericManager imageManager;
 
 	public ModelAndView processFormSubmission(HttpServletRequest request, HttpServletResponse response,
@@ -52,11 +50,7 @@ public class ImageFormController extends TuxBaseFormController {
 	public void setProductManager(LookUpNameGenericManager productManager){
 		this.productManager = productManager;
 	}
-	public void setStoreImagePath(String imagePath){
-		this.imagePath = imagePath;
-		createDirIfNotExist(imagePath);
-		createDirIfNotExist(imagePath + THUMB_PATH );
-	}
+	
 	@SuppressWarnings("unchecked")
 	protected Object formBackingObject(HttpServletRequest request) throws Exception {
 		Object object = super.formBackingObject(request);
@@ -103,15 +97,14 @@ public class ImageFormController extends TuxBaseFormController {
 			}
 			fileName = fileName.replaceAll(" ", "");
 			String type = tokens[tokens.length -1];
-			image.setPath(imagePath +THUMB_PATH +"/"+ fileName);
+			image.setPath(Constants.IMAGE_PATH +"/"+ fileName);
 			FileOutputStream out = new FileOutputStream(docBase + image.getPath());
 			ImageInputStream in = new MemoryCacheImageInputStream(file.getInputStream());
 			BufferedImage originalImage = saveFile(in, type, out);
 	        out.close();
 			
 			BufferedImage thumbnail = ThumbnailFactory.getThumbnail(originalImage, Constants.THUMBNAIL_WIDTH, Constants.THUMBNAIL_HEIGHT);
-			
-			image.setThumbPath(imagePath + "/thumbs/" + fileName);
+			image.setThumbPath(Constants.IMAGE_PATH + "/thumbs/" + fileName);
 			
 			out = new FileOutputStream(docBase + image.getThumbPath());
 			ImageIO.write(thumbnail, type, out);
@@ -132,10 +125,4 @@ public class ImageFormController extends TuxBaseFormController {
 		return bufferedImage;
 	}
 
-	private void createDirIfNotExist(String path){
-		File f = new File(path);
-		if (f.exists() == false) {
-			f.mkdir();
-		}
-	}
 }
