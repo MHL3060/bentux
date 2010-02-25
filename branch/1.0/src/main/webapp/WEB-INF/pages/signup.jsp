@@ -108,8 +108,13 @@
                 <appfuse:country name="address.country" prompt="" default="${user.address.country}"/>
                 <p><appfuse:label key="user.address.country"/></p>
             </div>
-        </div>
     </li>
+    	<li>
+        	<div class="left">        
+            	 <img src="jcaptcha"/>
+            	 <input type='text' name='j_captcha_response' value=''>
+        	</div>
+       </li>
     <li class="buttonBar bottom">
         <input type="submit" class="button" name="save" onclick="bCancel=false" value="<fmt:message key="button.register"/>"/>
         <input type="submit" class="button" name="cancel" onclick="bCancel=true" value="<fmt:message key="button.cancel"/>"/>
