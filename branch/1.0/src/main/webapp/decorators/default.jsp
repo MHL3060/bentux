@@ -26,15 +26,11 @@
         </div>
 
         <div id="content" class="clearfix">
-        	<% String myURI = request.getRequestURI();%>
-			<% myURI = myURI.substring(1,5);%>
+        	
 		
-			<% if (!myURI.equals("home") && !myURI.equals("logi")) { %> 	
-				<div id="sidebar">
-					<jsp:include page="/common/sidebar.jsp"/>	
-				</div>  
-			<% } %>
+			
             <div id="main">
+				
                 <%@ include file="/common/messages.jsp" %>
                 <h1><decorator:getProperty property="meta.heading"/></h1>
                 <decorator:body/>

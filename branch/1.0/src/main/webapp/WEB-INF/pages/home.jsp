@@ -8,61 +8,13 @@
 </head>
 
 <div id="wrapper">
+	<div id="sidebar">
+					<jsp:include page="/common/sidebar.jsp"/>	
+	</div>  
 	<div id="main-title">Welcome to Taste of India</div>
 		<div id="main-banner-left"><img src="<c:url value="/images/sample_banner.gif"/>" width="680" height="90" alt="trinity group"></img></div>
-		<div id="main-banner-right">
-					<img src="<c:url value="/images/sample_banner2.jpg"/>" width="160" height="100" alt="trinity group"></img></div>					
-			<div id="leftside">
-				<ul>			
-					<li>
-					<h2 class="hide">Menu:</h2>
-				
-					<ul class="avmenu">
-						<li><a href="subcatalogs.html">Categories</a></li>
-						<ul>
-							<li><a href="subcatalogs.html?pid=-1">Foods</a></li>
-							<li><a href="subcatalogs.html?pid=-4">Cultural</a></li>
-							<li><a href="subcatalogs.html?pid=-2">Entertainment</a></li>
-						</ul>
-						</li>
-					</ul>
-				</li>
-			
-				<li>	
-					<div class="announce">
-					<h2>Feature Products</h2>
-			
-					<p><a href="#">Snacks</a><br />
-					<p><a href="#">Drinks</a><br />
-					<p><strong><a href="#">Movies</a></strong><br />
-					<p><strong><a href="#">Dried Fruits</a></strong><br />
-					<p><strong><a href="#">Rice/Noodles</a></strong><br />
-					</div>
 					
-				</li>
-				
-				<li>		
-					<div class="announce">
-					<h2>List Of Festivals:</h2>
-					<p><strong>Apr 24, 2008:</strong><br />
-					Refreshed: v3.0!</p>
-					<p><strong>Jan 11, 2007:</strong><br />
-					Improved: v2.5!</p>
-					<p><strong>June 25, 2006:</strong><br />
-					Major upgrade: v2.0.</p>
-					<p><strong>June 25, 2005:</strong><br />
-					First release: v1.0.</p>
-					<p class="textright"><a href="#">More Festivals &raquo;</a></p>
-					</div>
-				</li>
-				
-				<li>	
-					<img src="<c:url value="/images/sample_banner2.jpg"/>" width="140" height="100" alt="trinity group"></img>
-				</li>
-			</ul>
-			</div>
-		<div id="page-bgtop">
-		<div id="page-bgbtm">
+		
 		<div id="center-main">
 		
 	
@@ -97,8 +49,7 @@
 							
 		<div style="clear: both;">&nbsp;</div>
 		</div>
-		</div>
-		</div>
+		
 		
 		<div class="sidebar">
 			<ul class="left">
