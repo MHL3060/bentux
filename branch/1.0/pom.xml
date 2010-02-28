@@ -341,6 +341,10 @@
             <url>http://repo1.maven.org/maven2</url>
         </repository>
         <repository>
+            <id>jahia</id>
+            <url>http://maven.jahia.org/maven2/</url>
+        </repository>
+        <repository>
             <id>appfuse</id>
             <url>http://static.appfuse.org/repository</url>
         </repository>
@@ -458,13 +462,13 @@
         	<artifactId>lucene-analyzers</artifactId>
         	<version>${lucene.version}</version>
         </dependency>
-        <!--
+        
         <dependency>
         	<groupId>com.octo.captcha</groupId>
         	<artifactId>jcaptcha</artifactId>
         	<version>1.0</version>
         </dependency>
-          -->
+         
     </dependencies>
 
     <reporting>

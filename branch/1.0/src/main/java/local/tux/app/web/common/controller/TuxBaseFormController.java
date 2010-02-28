@@ -38,6 +38,9 @@ public class TuxBaseFormController extends BaseFormController {
 		this.lookUpManager = lookUpManager;
 	}
 
+	/** if you need captcha service. you can use 
+	 *   validCaptcha = captchaService.validateResponseForID(sessionId, captchaFieldValue);
+	 */
 	@SuppressWarnings("unchecked")
 	public Map referenceData(HttpServletRequest request, Object command,
 			Errors error) throws Exception {

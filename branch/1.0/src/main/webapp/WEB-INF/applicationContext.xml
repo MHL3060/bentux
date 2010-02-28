@@ -161,6 +161,7 @@
    
    <bean id="customerAddressManager" class="local.tux.app.service.impl.LookUpNameGenericManagerImpl">
    		<constructor-arg ref="customerAddressDao" />
-   	
    </bean>
+   
+  
 </beans>
