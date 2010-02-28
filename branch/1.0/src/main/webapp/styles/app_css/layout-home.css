@@ -51,14 +51,6 @@ a {
 
 }
 
-div#a:hover {
-}
-
-div#wrapper {
-	width: 900px;
-	margin: 0 auto;
-	padding: 0;		
-}
 
 div#search {
 	float: left;
@@ -116,11 +108,11 @@ div#main-title {
 div#main-banner-left {
 	float: left;
 	padding-top: 20px;
-	padding-left: 20px;
+	padding-left: 10px;
 }
 
 div#main-banner-right {
-	float: right;
+	float: left;
 	padding-top: 20px;
 }
 
@@ -274,9 +266,9 @@ div#signup-container input {
 
 .sidebar {
 	float:left;
-	width:150px;
+	width:140px;
 	/*overflow:hidden; */
-	padding:25px 10px 0 15px;
+	padding:25px 10px 0 10px;
 }
 
 .sidebar ul {
@@ -290,7 +282,7 @@ div#signup-container input {
 
 .sidebar ul.left {
 	float:left;
-	width:160px;
+	width:150px;
 }
 
 .sidebar ul.right {
@@ -301,6 +293,11 @@ div#signup-container input {
 	background:url(images/rss.gif) 140px 50% no-repeat;
 }
 
+div#main{
+
+	padding-right: 0;
+	margin-right: 0;
+}
 .sidebar .googlereader {
 	background:url(images/googlereader.gif) 140px 50% no-repeat;
 }
@@ -340,9 +337,4 @@ div#signup-container input {
 }
 .sidebar div.partners img {
 	margin:5px 0;
-}
-
-div.result {
-	padding-top: 10px;
-	border-bottom: 2px dotted #ff9900;
 }

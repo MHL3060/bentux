@@ -27,7 +27,9 @@
 
         <div id="content" class="clearfix">
         	
-		
+			<div id="sidebar">
+					<jsp:include page="/common/sidebar.jsp"/>	
+			</div>  
 			
             <div id="main">
 				

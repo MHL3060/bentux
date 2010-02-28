@@ -7,10 +7,8 @@
 </head>
 </head>
 
-<div id="wrapper">
-	<div id="sidebar">
-					<jsp:include page="/common/sidebar.jsp"/>	
-	</div>  
+<div id="main">
+	
 	<div id="main-title">Welcome to Taste of India</div>
 		<div id="main-banner-left"><img src="<c:url value="/images/sample_banner.gif"/>" width="680" height="90" alt="trinity group"></img></div>
 					
