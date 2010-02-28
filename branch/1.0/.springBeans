@@ -15,7 +15,7 @@
 		<config>src/main/webapp/WEB-INF/validation.xml</config>
 		<config>src/main/webapp/WEB-INF/validator-rules-custom.xml</config>
 		<config>src/main/webapp/WEB-INF/validator-rules.xml</config>
-		<config>src/main/resources/applicationContext-captcha.xml</config>
+		<config>src/main/webapp/WEB-INF/applicationContext-captcha.xml</config>
 	</configs>
 	<configSets>
 	</configSets>

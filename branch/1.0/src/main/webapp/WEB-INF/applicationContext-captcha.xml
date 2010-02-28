@@ -63,10 +63,10 @@
 		</constructor-arg>
 	</bean>
 	
-	<bean id="backgroundColor" class="java.awt.Color" >
-		 <constructor-arg type="int" index="0" value="230"/> 
+	<bean id="colorGreen" class="java.awt.Color" >
+		 <constructor-arg type="int" index="0" value="0"/> 
 		 <constructor-arg type="int" index="1" value="230"/> 
-		 <constructor-arg type="int" index="2" value="230"/> 
+		 <constructor-arg type="int" index="2" value="0"/> 
 	</bean>
 
 

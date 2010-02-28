@@ -229,4 +229,8 @@
     	<property name="commandClass" value="local.tux.app.model.ShippingAddress" />
     	<property name="commandName" value="shippingAddress" />
     </bean>
+    
+    <bean id="captchaController" class="local.tux.app.web.common.controller.CaptchaController">
+    	<property name="captchaService" ref="captchaService" />
+    </bean>
 </beans>

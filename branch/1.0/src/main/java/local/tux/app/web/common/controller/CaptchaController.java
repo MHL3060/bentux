@@ -8,11 +8,8 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.i18n.LocaleContextHolder;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.Controller;
 
 import com.octo.captcha.service.CaptchaServiceException;
 import com.octo.captcha.service.multitype.MultiTypeCaptchaService;
@@ -21,8 +18,8 @@ import com.octo.captcha.service.multitype.MultiTypeCaptchaService;
  * Generates captcha image to tell whether its user is a human or a computer.
  * See http://forge.octo.com/jcaptcha/confluence/display/general/Home
  */
-@Controller
-public class CaptchaController {
+
+public class CaptchaController implements Controller{
 	public static final String CAPTCHA_IMAGE_FORMAT = "jpeg";
 
 	
