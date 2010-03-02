@@ -14,6 +14,11 @@ import local.tux.app.model.common.TuxBaseObject;
 @Table(name="subscription")
 public class Subscription extends TuxBaseObject {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 210951944492171813L;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;

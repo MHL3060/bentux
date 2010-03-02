@@ -25,6 +25,11 @@ import local.tux.app.model.common.TuxBaseObject;
 @SearchableConstant(name = "type", values = { "dvd", "vhs"  })
 public class EntertainmentProduct extends TuxBaseObject implements SubProduct{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8133304231283520489L;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@SearchableId

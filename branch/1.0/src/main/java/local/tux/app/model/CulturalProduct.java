@@ -25,6 +25,12 @@ import local.tux.app.model.common.TuxBaseObject;
 @SearchableConstant(name = "type", values = { "god" })
 public class CulturalProduct extends TuxBaseObject implements SubProduct{
 
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8282703610389130576L;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@SearchableId

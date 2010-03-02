@@ -1,7 +1,5 @@
 package local.tux.app.model;
 
-
-import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -26,7 +24,6 @@ import org.compass.annotations.SearchableComponent;
 import org.compass.annotations.SearchableConstant;
 import org.compass.annotations.SearchableId;
 import org.compass.annotations.SearchableProperty;
-import org.compass.annotations.SearchableReference;
 import local.tux.app.model.common.LookUpBaseObject;
 
 @Entity

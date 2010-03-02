@@ -17,14 +17,17 @@ public class CatalogDaoHibernate extends TuxNameGenericDaoHibernate<Catalog, Lon
 		
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Catalog> getParents(){
 		return getHibernateTemplate().find("from Catalog where parent is null " );
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Catalog> getChildren(Long id) {
 		return getHibernateTemplate().find("from Catalog where parent is ?", id);
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Catalog> getAllChidlren() {
 		return getHibernateTemplate().find("from Catalog where parent is not null");
 	}
