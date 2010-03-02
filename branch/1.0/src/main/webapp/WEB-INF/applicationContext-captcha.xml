@@ -69,8 +69,6 @@
 		 <constructor-arg type="int" index="2" value="0"/> 
 	</bean>
 
-
-
 	<bean id="captchaService" class="com.octo.captcha.service.multitype.GenericManageableCaptchaService">
 		<constructor-arg index="0"><ref bean="imageEngine"/></constructor-arg>
 		<constructor-arg type="int" index="1"><value>180</value></constructor-arg>

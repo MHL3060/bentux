@@ -230,7 +230,15 @@
     	<property name="commandName" value="shippingAddress" />
     </bean>
     
+    <bean id="subscriptionFormController" class="local.tux.app.web.controller.SubscriptionFormController">
+    	<property name="commandClass" value="local.tux.app.model.Subscription" />
+    	<property name="commandName" value="subscription" />
+    	<property name="lookUpManager" ref="subscriptionManager" />
+    	<property name="captchaService" ref="captchaService" />
+    </bean>
+    
     <bean id="captchaController" class="local.tux.app.web.common.controller.CaptchaController">
     	<property name="captchaService" ref="captchaService" />
     </bean>
+    
 </beans>

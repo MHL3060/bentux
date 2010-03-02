@@ -111,6 +111,11 @@
 		<constructor-arg value="local.tux.app.model.ShippingAddress" />
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+	
+	<bean id="subscriptionDao" class="org.appfuse.dao.hibernate.GenericDaoHibernate">
+		<constructor-arg value="local.tux.app.model.Subscription" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
     <!-- Add new Managers here --> 
     <bean id="catalogManager" class="local.tux.app.service.impl.CatalogManagerImpl">
     	<constructor-arg ref="catalogDao"/>
@@ -163,5 +168,8 @@
    		<constructor-arg ref="customerAddressDao" />
    </bean>
    
+   <bean id ="subscriptionManager" class="org.appfuse.service.impl.GenericManagerImpl">
+   		<constructor-arg ref="subscriptionDao" />
+   </bean>
   
 </beans>

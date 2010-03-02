@@ -17,6 +17,7 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import org.appfuse.service.GenericManager;
 import org.appfuse.webapp.controller.BaseFormController;
 import org.springframework.validation.BindException;
 import org.springframework.validation.Errors;
@@ -31,10 +32,10 @@ public class TuxBaseFormController extends BaseFormController {
 	
 	
 	private final Log log = LogFactory.getLog(TuxBaseFormController.class);
-	protected LookUpNameGenericManager lookUpManager;
+	protected GenericManager lookUpManager;
 	
 	
-	public void setLookUpManager(LookUpNameGenericManager lookUpManager) {
+	public void setLookUpManager(GenericManager lookUpManager) {
 		this.lookUpManager = lookUpManager;
 	}
 
