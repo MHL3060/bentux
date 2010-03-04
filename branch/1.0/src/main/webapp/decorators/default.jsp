@@ -17,7 +17,15 @@
         
         <decorator:head/>
     </head>
-    
+
+ <% 
+ 	String myURI = request.getRequestURI();	
+	if (myURI.startsWith("/login")){
+		request.setAttribute("isLoginPage", Boolean.TRUE);
+	}else {
+		request.setAttribute("isLoginPage", Boolean.FALSE);
+	}
+%>   
 <body<decorator:getProperty property="body.id" writeEntireProperty="true"/><decorator:getProperty property="body.class" writeEntireProperty="true"/>>
 
     <div id="page">
@@ -26,10 +34,12 @@
         </div>
 
         <div id="content" class="clearfix">
-        	
-			<div id="sidebar">
+			<c:if test="${isLoginPage == false}">
+				 <div id="sidebar">
 					<jsp:include page="/common/sidebar.jsp"/>	
-			</div>  
+				</div>  
+			</c:if>
+			
 			
             <div id="main">
 				
