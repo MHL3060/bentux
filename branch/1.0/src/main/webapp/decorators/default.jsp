@@ -20,7 +20,7 @@
 
  <% 
  	String myURI = request.getRequestURI();	
-	if (myURI.startsWith("/login")){
+	if (myURI.contains("/login")){
 		request.setAttribute("isLoginPage", Boolean.TRUE);
 	}else {
 		request.setAttribute("isLoginPage", Boolean.FALSE);
