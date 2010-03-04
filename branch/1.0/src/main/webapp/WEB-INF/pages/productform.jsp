@@ -173,19 +173,19 @@ Event.observe(window, 'load', function() {
 	
 		<appfuse:label key="product.catalogs" styleClass="desc" />
 		<form:errors path="catalogs" cssStyle="fieldErrors" />
-		<spring:bind path="catalogs" >
+		<spring:bind path="catalogs">
 			<select name="catalogs" id="catalogs" multiple="multiple" size="5"  >
-				<c:forEach var="catalog" items="${catalogs }">
-					<option value="${catalog.id }"
+				<c:forEach var="catalog" items="${catalogs}">
+					<option value="${catalog.id}"
 						<c:forEach var="entered" items="${product.catalogs}">
-							${catalog.id == entered.id ? "selected" : ""}
+							${catalog.id == entered.id ? "selected" : " "}
 						</c:forEach>
-					>${catalog.name}</option>
+					>${catalog.name}
+					</option>
 				</c:forEach>
 			</select>
 		</spring:bind>
-		
-		
+
 	</li>
 	<li>
 		<a href="<c:url value="manufacturerform.html" />" target="manufacturer"><fmt:message key="add.manufacturer" /></a>
@@ -196,7 +196,7 @@ Event.observe(window, 'load', function() {
 		<select id="manufacturer" name="manufacturer" class="text medium" onchange="fillChildren(this,brandNameManager,'manufacturer.id', brandName)">
 			<c:out value="${pleaseSelect}" escapeXml="flase" />
 			<c:forEach var="manufacturer" items="${manufacturers }">
-				<option value="${manufacturer.id }" ${manufacturer.id == product.brandName.manufacturer.id ? 'selected' : '' }> ${manufacturer.name }</option>
+				<option value="${manufacturer.id }" ${manufacturer.id == product.brandName.manufacturer.id ? 'selected' : "" }> ${manufacturer.name }</option>
 			</c:forEach>
 		</select>
 	</li>
