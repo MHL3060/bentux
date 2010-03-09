@@ -2,7 +2,7 @@
 
 <h1><fmt:message key="checkout.address" /></h1>
 
-<form:form commandName="shoppingAddress" >
+<form:form commandName="shippingAddress" >
 
 	<ul>
 	
@@ -30,7 +30,7 @@
                 <p><appfuse:label key="user.address.postalCode"/></p>
             </div>
             <div>
-                <appfuse:country name="user.address.country" prompt="" default="${user.user.address.country}"/>
+                <appfuse:country name="user.address.country" prompt="" default="${shippingAddress.user.address.country}"/>
                 <p><appfuse:label key="user.address.country"/></p>
             </div>
         </div>
@@ -60,7 +60,7 @@
                 <p><appfuse:label key="user.address.postalCode"/></p>
             </div>
             <div>
-                <appfuse:country name="address.country" prompt="" default="${user.address.country}"/>
+                <appfuse:country name="address.country" prompt="" default="${shippingAddress.address.country}"/>
                 <p><appfuse:label key="user.address.country"/></p>
             </div>
         </div>

@@ -228,6 +228,7 @@
     	<property name="lookUpManager" ref="customerAddressManager" />
     	<property name="commandClass" value="local.tux.app.model.ShippingAddress" />
     	<property name="commandName" value="shippingAddress" />
+    	<property name="userManager" ref="userManager" />
     </bean>
     
     <bean id="subscriptionFormController" class="local.tux.app.web.controller.SubscriptionFormController">
