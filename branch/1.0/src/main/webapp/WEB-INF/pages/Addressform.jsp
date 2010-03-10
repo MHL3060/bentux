@@ -2,13 +2,24 @@
 
 <h1><fmt:message key="checkout.address" /></h1>
 
+<c:set var="buttons" >
+    <li class="buttonBar bottom">
+        <input type="submit" class="button" name="next" value="<fmt:message key="button.next"/>"/>
+        <c:if test="${not empty id}">
+        <input type="submit" class="button" name="delete" onclick="return confirmDelete('')" 
+            value="<fmt:message key="button.delete"/>" />
+        </c:if>
+        <input type="submit" class="button" name="cancel" value="<fmt:message key="button.cancel"/>"/>
+    </li>
+</c:set>
 <form:form commandName="shippingAddress" >
 
 	<ul>
 	
 		<li>
-			<label class="desc"><fmt:message key="user.billing.address"/></label>
+			
         <div class="group">
+        <label class="desc"><fmt:message key="user.billing.address"/></label>
             <div>
                 <form:input path="user.address.address" id="user.address.address" cssClass="text large" cssErrorClass="text large error"/>
                 <form:errors path="user.address.address" cssClass="fieldError"/>
@@ -34,11 +45,11 @@
                 <p><appfuse:label key="user.address.country"/></p>
             </div>
         </div>
-		</li>
 		
-		<li>
-			<label class="desc"><fmt:message key="user.address.address"/></label>
+		<br />
+		
         <div class="group">
+        	<label class="desc"><fmt:message key="user.address.address"/></label>
             <div>
                 <form:input path="address.address" id="address.address" cssClass="text large" cssErrorClass="text large error"/>
                 <form:errors path="address.address" cssClass="fieldError"/>
@@ -64,6 +75,9 @@
                 <p><appfuse:label key="user.address.country"/></p>
             </div>
         </div>
+		</li>
+		<li>
+			<c:out value="${buttons}" escapeXml="false" />
 		</li>
 	</ul>
 </form:form>

@@ -42,4 +42,7 @@ public interface Constants {
 	public final String THUMB_TYPE = "thumb";
 	
 	
+	public final String ADDRESS_SESSION = "address";
+	
+	
 }

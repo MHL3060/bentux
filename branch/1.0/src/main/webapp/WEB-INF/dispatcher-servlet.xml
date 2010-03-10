@@ -222,13 +222,14 @@
     	<property name="productManager" ref="productManager" />
     	<property name="shoppingCartManager" ref="shoppingCartManager" />
     	<property name="shoppingItemManager" ref="shoppingItemManager" />
-    	<property name="nextWebPage" value="redirect:addressform.html" />
+    	<property name="nextPage" value="redirect:addressform.html" />
     </bean>
     <bean id="AddressFormController" class="local.tux.app.web.controller.AddressFormController">
     	<property name="lookUpManager" ref="customerAddressManager" />
     	<property name="commandClass" value="local.tux.app.model.ShippingAddress" />
     	<property name="commandName" value="shippingAddress" />
     	<property name="userManager" ref="userManager" />
+    	<property name="nextPage" value="redirect:confirm.html" />
     </bean>
     
     <bean id="subscriptionFormController" class="local.tux.app.web.controller.SubscriptionFormController">
