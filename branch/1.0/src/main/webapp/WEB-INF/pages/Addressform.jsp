@@ -50,6 +50,16 @@
 		
         <div class="group">
         	<label class="desc"><fmt:message key="user.address.address"/></label>
+            <div class="left">
+            	<form:input path="firstName" cssClass="text medium" />
+            	<form:errors path="firstName" cssClass="fieldError" />
+            	<appfuse:label key="shippingAddress.firstName" />
+            </div>
+            <div>
+            	<form:input path="lastName" cssClass="text medium" />
+            	<form:errors path="lastName" cssClass="fieldError" />
+            	<appfuse:label key="shippingAddress.lastName" />
+            </div>
             <div>
                 <form:input path="address.address" id="address.address" cssClass="text large" cssErrorClass="text large error"/>
                 <form:errors path="address.address" cssClass="fieldError"/>

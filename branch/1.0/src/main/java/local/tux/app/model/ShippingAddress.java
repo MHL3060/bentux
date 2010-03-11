@@ -1,5 +1,6 @@
 package local.tux.app.model;
 
+import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,7 +31,11 @@ public class ShippingAddress extends TuxBaseObject {
 	@JoinColumn(name="user_id")
 	private User user;
 	
+	@Column(name="first_name", nullable=false)
+	private String firstName;
 	
+	@Column(name="last_name",nullable=false)
+	private String lastName;
 	@Embedded
 	private Address address = new Address();
 
@@ -59,6 +64,23 @@ public class ShippingAddress extends TuxBaseObject {
 
 	public void setAddress(Address address) {
 		this.address = address;
+	}
+
+	
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	@Override
