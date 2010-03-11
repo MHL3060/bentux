@@ -1,5 +1,6 @@
 package local.tux.app.model;
 
+import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -98,9 +99,14 @@ public class Product extends LookUpBaseObject {
 	@JoinTable(name="catalog_product")
 	private Set<Catalog> catalogs;
 	
-	@Column(name="is_special")
+	@Transient
 	private Boolean special = Boolean.FALSE;
 	
+	@Column(name="speical_start")
+	private Date specialStart;
+	
+	@Column(name="special_end")
+	private Date specialEnd;
 	@Column(name="discount_price")
 	private Double discountPrice;
 	
@@ -121,6 +127,28 @@ public class Product extends LookUpBaseObject {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	
+	public Date getSpecialStart() {
+		return specialStart;
+	}
+
+
+	public void setSpecialStart(Date specialStart) {
+		this.specialStart = specialStart;
+	}
+
+
+	public Date getSpecialEnd() {
+		return specialEnd;
+	}
+
+
+	public void setSpecialEnd(Date specialEnd) {
+		this.specialEnd = specialEnd;
+	}
+
+
 	public BrandName getBrandName() {
 		return brandName;
 	}
@@ -228,7 +256,11 @@ public class Product extends LookUpBaseObject {
 
 
 	public Boolean getSpecial() {
-		return special;
+		Date today = new Date();
+		if (specialStart != null && specialEnd != null){
+			return today.compareTo(specialStart) >= 0 && today.compareTo(specialEnd) <= 0;
+		}
+		return false;
 	}
 
 

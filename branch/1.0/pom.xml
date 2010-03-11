@@ -468,7 +468,11 @@
         	<artifactId>jcaptcha</artifactId>
         	<version>1.0</version>
         </dependency>
-         
+        <dependency>
+        	<groupId>org.quartz-scheduler</groupId>
+        	<artifactId>quartz</artifactId>
+        	<version>1.7.3</version>
+        </dependency>
     </dependencies>
 
     <reporting>
