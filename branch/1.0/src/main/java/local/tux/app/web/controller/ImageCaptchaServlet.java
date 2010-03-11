@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.Map;
 import javax.imageio.ImageIO;
 
-import local.tux.app.model.CaptchaServiceSingleton;
+import local.tux.CaptchaServiceSingleton;
 public class ImageCaptchaServlet extends HttpServlet
 {
   /**

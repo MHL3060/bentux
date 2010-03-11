@@ -1,4 +1,4 @@
-package local.tux.app.model;
+package local.tux;
 
 import com.octo.captcha.service.image.ImageCaptchaService;
 import com.octo.captcha.service.image.DefaultManageableImageCaptchaService;

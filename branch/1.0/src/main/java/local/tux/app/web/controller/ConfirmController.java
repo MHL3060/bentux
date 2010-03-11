@@ -31,8 +31,8 @@ public class ConfirmController implements Controller {
 		ShoppingCart cart = shoppingCartManager.getOpenCart(userManager.getUserByUsername(request.getRemoteUser()));
 		ShippingAddress address = (ShippingAddress) request.getSession().getAttribute(Constants.ADDRESS_SESSION);
 		
-		mav.addObject("cart", cart);
-		mav.addObject("address", address);
+		mav.addObject("cartItems", cart.getShoppingItems());
+		mav.addObject("shippingAddress", address);
 		return mav;
 		
 	}
