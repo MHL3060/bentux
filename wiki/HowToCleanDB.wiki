@@ -1,0 +1,11 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+
+there is a simple way to clean the db. modify the sample-data.xml file to remove unnecessary  table data.
+
+but some of the table data are required in order to make the app works.
+
+for example.
+
+ app_user, role, user_role and catalog table.
