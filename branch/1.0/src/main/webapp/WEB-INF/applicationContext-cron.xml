@@ -2,16 +2,18 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
-
+<!-- 
 	<bean id="specialPriceChecking"
 		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		
 		<property name="target">
-			<!--
+			
 				add your crontask bean here your crontask must implment the
 				TuxCronTask interface.
-			-->
+			
 
 		</property>
+		
 		<property name="transactionAttributes">
 			<props>
 				<prop key="execute">PROPAGATION_REQUIRED</prop>
@@ -19,7 +21,7 @@
 		</property>
 	</bean>
 
-	<!--  add your job detail Bean here -->
+	
 	<bean id="specialPriceCheckingJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
 		<property name="targetObject" ref="specialPriceChecking" />
 		<property name="targetMethod" value="execute" />
@@ -27,14 +29,13 @@
 
 	</bean>
 	
-	<!-- add your triggers here -->
+	
 	<bean id="specialPriceCheckingTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
 	      <property name="jobDetail" ref="specialPriceCheckingJobDetail" />
-                                        <!--     s m  h  d m dw-->
+                                      
           <property name="cronExpression" value="0 */5 * * * ?"/>
     </bean>
 	
-	<!--  register your trigger here -->
 	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
                <property name="triggers">
                   <list>
@@ -43,5 +44,5 @@
                  </list>
          </property>
      </bean>
-	
+      -->
 </beans>
