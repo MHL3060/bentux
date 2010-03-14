@@ -1,5 +1,6 @@
 package local.tux.app.service.impl;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -77,7 +78,9 @@ public class ShoppingCartManagerImpl extends
 			if ( items != null && items.size() > 0){
 				for (ShoppingItem item : items){
 					Double price = item.getProduct().getPrice();
-					if (item.getProduct().getSpecial() == Boolean.TRUE){
+					if (item.getProduct().getSpecial() == Boolean.TRUE || 
+							item.getQuantity() >= item.getProduct().getMultipleSpeicalCount()){
+						
 						price = item.getProduct().getDiscountPrice();
 					}
 					subTotal += item.getQuantity() * price;

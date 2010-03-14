@@ -3,9 +3,13 @@
 <script type='text/javascript' src='<c:url value="/dwr/interface/catalogManager.js" />'></script>
 <script type='text/javascript' src='<c:url value="/dwr/interface/manufacturerManager.js" />'></script>
 <script type='text/javascript' src='<c:url value="/dwr/interface/brandNameManager.js" />'></script>
-<script type='text/javascript' src='/dwr/engine.js'></script>
-<script type='text/javascript' src='/dwr/util.js'></script>
 
+<script type='text/javascript' src='<c:url value="/dwr/engine.js" />' >
+</script>
+<script type='text/javascript' src='<c:url value="/dwr/util.js" />'></script>
+<script type="text/javascript" src='<c:url value="/scripts/calendar/lang/calendar-en.js"/>'></script>
+<script type="text/javascript" src='<c:url value="/scripts/calendar/calendar-setup.js"/>'></script>
+<script type="text/javascript" src='<c:url value="/scripts/calendar/calendar.js"/>'></script>
 <script type="text/javascript">
 /**
  * todo : 
@@ -244,6 +248,49 @@ Event.observe(window, 'load', function() {
 		<appfuse:label key="product.price" styleClass="desc" />
 		<form:errors path="price" cssStyle="fieldErrors" />
 		<form:input path="price" cssStyle="text medium" />
+	</li>
+	<li>
+		<appfuse:label key="product.special.start.date" styleClass="desc" />
+		<form:errors path="speicalStart" cssStyle="fieldErrors" />
+		<form:input path="specialStart" cssStyle="text medium" />
+		<img src="<c:url value='/images/iconCalendar.gif'/>" id="to_trigger_c"
+	                        style="cursor: pointer; border: 1px solid red;"
+	                        title="Date selector"
+	                        onmouseover="this.style.background='red';"
+	                        onmouseout="this.style.background=''" />
+                        <script type="text/javascript">
+                        Calendar.setup({
+	                                inputField     :    "specialStart",
+	                                ifFormat       :    "%m-%d-%Y",
+	                                button         :    "to_trigger_c",
+	                                align          :    "Tl",
+	                                singleClick    :    false
+	                        });
+	                        </script>
+	</li>
+	<li>
+		<appfuse:label key="product.special.end.date" styleClass="desc" />
+		<form:errors path="speicalEnd" cssStyle="fieldErrors" />
+		<form:input path="specialEnd" cssStyle="text medium" />
+		<img src="<c:url value='/images/iconCalendar.gif'/>" id="to_trigger_c"
+	                        style="cursor: pointer; border: 1px solid red;"
+	                        title="Date selector"
+	                        onmouseover="this.style.background='red';"
+	                        onmouseout="this.style.background=''" />
+                        <script type="text/javascript">
+                        Calendar.setup({
+	                                inputField     :    "specialEnd",
+	                                ifFormat       :    "%m-%d-%Y",
+	                                button         :    "to_trigger_c",
+	                                align          :    "Tl",
+	                                singleClick    :    false
+	                        });
+	                        </script>
+	</li>
+	<li>
+		<appfuse:label key="product.special.multiple.special.count" styleClass="desc" />
+		<form:errors path="multipleSpecialCount" cssStyle="fieldErrors" />
+		<form:path path="multipleSpecialCount" cssStyle="text medium" />
 	</li>
 	<li><p>
 		<fmt:message key="for.discount.price.only" />

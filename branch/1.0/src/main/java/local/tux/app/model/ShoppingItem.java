@@ -1,5 +1,7 @@
 package local.tux.app.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -87,18 +89,11 @@ public class ShoppingItem extends TuxBaseObject{
 	}
 
 	public Double getTotal() {
-		if (quantity != null && product != null){
-			Double price = product.getPrice();
-			if (product.getSpecial()== Boolean.TRUE && product.getDiscountPrice() != null){
-				price = product.getDiscountPrice();
-			}
-			return quantity * price;
-		}
-		return new Double(0);
+		return total;
 	}
 
 	public void setTotal(Double total) {
-		
+		this.total = total;
 	}
 
 	@Override

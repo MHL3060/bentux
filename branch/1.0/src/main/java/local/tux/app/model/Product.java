@@ -110,6 +110,8 @@ public class Product extends LookUpBaseObject {
 	@Column(name="discount_price")
 	private Double discountPrice;
 	
+	@Column(name="multiple_special_count")
+	private Integer multipleSpeicalCount;
 	
 	@Transient
 	private Double discountPercentage;
@@ -131,6 +133,15 @@ public class Product extends LookUpBaseObject {
 	
 	public Date getSpecialStart() {
 		return specialStart;
+	}
+
+	public Integer getMultipleSpeicalCount() {
+		return multipleSpeicalCount;
+	}
+
+
+	public void setMultipleSpeicalCount(Integer multipleSpeicalCount) {
+		this.multipleSpeicalCount = multipleSpeicalCount;
 	}
 
 
@@ -255,10 +266,16 @@ public class Product extends LookUpBaseObject {
 	}
 
 
+	/**
+	 * check if today is within the special price day.
+	 * @return
+	 */
 	public Boolean getSpecial() {
 		Date today = new Date();
-		if (specialStart != null && specialEnd != null){
-			return today.compareTo(specialStart) >= 0 && today.compareTo(specialEnd) <= 0;
+		if (specialStart != null && today.compareTo(specialStart) >= 0 ){
+			if (specialEnd == null || specialEnd.compareTo(today) <= 0){
+				return false;
+			}
 		}
 		return false;
 	}
