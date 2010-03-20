@@ -135,6 +135,7 @@ public class Product extends LookUpBaseObject {
 		return specialStart;
 	}
 
+
 	public Integer getMultipleSpeicalCount() {
 		return multipleSpeicalCount;
 	}
