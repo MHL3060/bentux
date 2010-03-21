@@ -23,7 +23,9 @@
     }
 	function handleAdd() {
 		var searchString = DWRUtil.getValue('imageName');
-		imageManager.getLookUpBaseObject(searchString, function(LookUpBaseObject){dwr.util.setValue('image',LookUpBaseObject.id)});
+		if (searchString != ''){
+			imageManager.getLookUpBaseObject(searchString, function(LookUpBaseObject){dwr.util.setValue('image',LookUpBaseObject.id)});
+		}
 	}
 	
 </script>

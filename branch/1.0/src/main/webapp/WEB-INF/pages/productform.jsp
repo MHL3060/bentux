@@ -7,9 +7,10 @@
 <script type='text/javascript' src='<c:url value="/dwr/engine.js" />' >
 </script>
 <script type='text/javascript' src='<c:url value="/dwr/util.js" />'></script>
+<script type="text/javascript" src='<c:url value="/scripts/calendar/calendar.js"/>'></script>
 <script type="text/javascript" src='<c:url value="/scripts/calendar/lang/calendar-en.js"/>'></script>
 <script type="text/javascript" src='<c:url value="/scripts/calendar/calendar-setup.js"/>'></script>
-<script type="text/javascript" src='<c:url value="/scripts/calendar/calendar.js"/>'></script>
+
 <script type="text/javascript">
 /**
  * todo : 
@@ -310,9 +311,9 @@ Event.observe(window, 'load', function() {
 	
 	
 
-<li class="buttonBar bottom">	
+	
 <c:out value="${buttons}" escapeXml="false" />	
-</li>
+
 </ul>
 </form:form>
 
