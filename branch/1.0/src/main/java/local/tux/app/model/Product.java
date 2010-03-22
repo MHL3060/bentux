@@ -275,7 +275,7 @@ public class Product extends LookUpBaseObject {
 		Date today = new Date();
 		if (specialStart != null && today.compareTo(specialStart) >= 0 ){
 			if (specialEnd == null || specialEnd.compareTo(today) <= 0){
-				return false;
+				return true;
 			}
 		}
 		return false;
