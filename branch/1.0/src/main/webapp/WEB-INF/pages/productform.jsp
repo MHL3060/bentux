@@ -156,7 +156,7 @@ Event.observe(window, 'load', function() {
 
 
 
-<form:form commandName="product" action="/productform.html" method="post">
+<form:form commandName="product" action="productform.html" method="post">
 	<form:hidden path="id"/>
 <ul>
 
