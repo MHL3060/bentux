@@ -43,6 +43,7 @@ public interface Constants {
 	
 	
 	public final String ADDRESS_SESSION = "address";
+	public final String CANCEL_ACTION = "cancel";
 	
 	
 }

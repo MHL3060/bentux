@@ -89,8 +89,8 @@
 	    </li>
 	    <li class="buttonBar bottom">
 	        <input type="submit" name="upload" class="button" onclick="bCancel=false"
-	            value="<fmt:message key="button.upload"/>" />
-	        <input type="submit" name="cancel" class="button" onclick="bCancel=true"
+	            value="<fmt:message key="button.save"/>" />
+	        <input type="submit" name="cancel" class="button"
 	            value="<fmt:message key="button.cancel"/>" />
 	    </li>
 	</ul>

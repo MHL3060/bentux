@@ -118,6 +118,7 @@
     	<property name="commandName" value="image" />
     	<property name="productManager" ref="productManager" />
     	<property name="lookUpManager" ref="imageManager" />
+    	<property name="cancelView"	value="redirect:imageform.html" />
     </bean>
     <bean id="brandNameFormController" class="local.tux.app.web.controller.BrandNameFormController">
        	<property name="validator" ref="beanValidator"/>
