@@ -18,7 +18,9 @@
     }
 	function handleAdd() {
 		var searchString = DWRUtil.getValue('productName');
-		productManager.getLookUpBaseObject(searchString, function(product){dwr.util.setValue('product',product.id)});
+		if (searchString != null ){
+			productManager.getLookUpBaseObject(searchString, function(product){dwr.util.setValue('product',product.id)});
+		}
 	}
 	
 </script>
@@ -32,7 +34,20 @@
 
 
 <display:table id="list" name="list" class="table" requestURI="imageform.html">
-	<display:column property="id" titleKey="lookup.id"/>
+	<display:column titleKey="image.id">
+                <c:url value="/imageform.html" var="imageUrl">
+                        <c:param name="id" value="${list.id}" />
+                        <c:param name="pid" value="${param.pid }" />
+                </c:url>
+                <a href="${imageUrl }"> ${list.id }</a>
+        </display:column>
+        <display:column property="product.name" titleKey="product.name" />
+        <display:column property="name" titleKey="lookup.name"/>
+        <display:column titleKey="image.thumbnail">
+                <img src="<c:url value="${list.thumbPath}" />" />
+        </display:column>
+
+	 property="id" titleKey="lookup.id"/>
 	<display:column property="product.name" titleKey="product.name" />
 	<display:column property="name" titleKey="lookup.name"/>
 	<display:column titleKey="image.thumbnail">

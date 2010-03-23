@@ -106,7 +106,7 @@
 			<c:url var="imageUrl" value="/imageform.html">
 				<c:param name="pid" value="${tuxBaseObjectList.id }" />
 			</c:url>
-			<a href="<c:url value="${imageUrl}" />" /><fmt:message key="add.image" /></a>
+			<a href="${imageUrl}"><fmt:message key="add.image" /></a>
 		</display:column>
 	</c:if>
 	<display:column titleKey="more.info" >
