@@ -263,7 +263,7 @@ Event.observe(window, 'load', function() {
 	                        <script type="text/javascript">
 	                        Calendar.setup({
 		                                inputField     :    "specialStart",
-		                                ifFormat       :    "%m-%d-%Y",
+		                                ifFormat       :    "%m/%d/%Y",
 		                                button         :    "from_trigger_c",
 		                                align          :    "Tl",
 		                                singleClick    :    false
@@ -282,7 +282,7 @@ Event.observe(window, 'load', function() {
 	                        <script type="text/javascript">
 	                        Calendar.setup({
 		                                inputField     :    "specialEnd",
-		                                ifFormat       :    "%m-%d-%Y",
+		                                ifFormat       :    "%m/%d/%Y",
 		                                button         :    "to_trigger_c",
 		                                align          :    "Tl",
 		                                singleClick    :    false
