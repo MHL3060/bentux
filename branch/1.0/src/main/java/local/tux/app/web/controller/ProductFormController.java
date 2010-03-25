@@ -81,6 +81,11 @@ public class ProductFormController extends BaseFormController {
 	@SuppressWarnings("unchecked")
 	protected Map referenceData(HttpServletRequest request, Object command, Errors errors){
 		Map models = new HashMap(); 
+		int[] multipleCount = new int[Constants.MULTIPLE_COUNT];
+		for (int i = 0; i < multipleCount.length; i++){
+			multipleCount[i] = i + 1;
+		}
+		models.put("multipleCount", multipleCount);
 		models.put("catalogParents", catalogManager.getParents());
 		models.put("catalogs", catalogManager.getAllChildren());
 		models.put("manufacturers", manufacturerManager.getAll());
@@ -91,6 +96,8 @@ public class ProductFormController extends BaseFormController {
 		models.put("entertainService", Constants.CATALOG_ENTERTAIN_SERIVCE);
 		models.put("culturalProduct", Constants.CATALOG_CULTURAL_PRODUCT);
 		models.put("ingredients", ingredientManager.getAll());
+
+		
 		if (command != null ){
 			Product p = (Product) command;
 			if (p.getCatalogs() != null && p.getCatalogs().size() > 0){

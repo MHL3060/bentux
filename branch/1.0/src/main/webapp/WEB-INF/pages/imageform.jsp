@@ -46,13 +46,6 @@
         <display:column titleKey="image.thumbnail">
                 <img src="<c:url value="${list.thumbPath}" />" />
         </display:column>
-
-	 property="id" titleKey="lookup.id"/>
-	<display:column property="product.name" titleKey="product.name" />
-	<display:column property="name" titleKey="lookup.name"/>
-	<display:column titleKey="image.thumbnail">
-		<img src="<c:url value="${list.thumbPath}" />" />
-	</display:column>
 </display:table>
 
 

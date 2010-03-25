@@ -163,7 +163,7 @@ Event.observe(window, 'load', function() {
 	<li>
 		<a href="<c:url value="catalogform.html" />"  target="catalog" ><fmt:message key="catalog.add.item" /></a>
 		<p>
-		<a  name="anchor" id="anchor" onclick="fillChildren(mainCatalogy, catalogManager,'parent.id', catalogs)" /><fmt:message key="refresh.list" /></a>
+		<a  name="anchor" id="anchor" onclick="fillChildren(mainCatalogy, catalogManager,'parent.id', catalogs)"><fmt:message key="refresh.list" /></a>
 		</p>
 		<appfuse:label key="product.catalog" styleClass="desc" />
 		<select name="mainCategory" id="mainCategory" onchange="fillChildren(this, catalogManager,'parent.id', catalogs); showProduct(this)"
@@ -195,7 +195,7 @@ Event.observe(window, 'load', function() {
 	<li>
 		<a href="<c:url value="manufacturerform.html" />" target="manufacturer"><fmt:message key="add.manufacturer" /></a>
 		<p>
-			<a href="#"  onclick="refresOptionhList(manufacturerManager, 'manufacturer');" /><fmt:message key="refresh.list" /></a>
+			<a href="#"  onclick="refresOptionhList(manufacturerManager, 'manufacturer');" ><fmt:message key="refresh.list" /></a>
 		</p>
 		<appfuse:label key="product.manufacturer" styleClass="desc" />
 		<select id="manufacturer" name="manufacturer" class="text medium" onchange="fillChildren(this,brandNameManager,'manufacturer.id', brandName)">
@@ -293,7 +293,9 @@ Event.observe(window, 'load', function() {
 	<li>
 		<appfuse:label key="product.special.multiple.special.count" styleClass="desc" />
 		<form:errors path="multipleSpeicalCount" cssStyle="fieldErrors" />
-		<form:input path="multipleSpeicalCount" cssStyle="text medium" />
+		<form:select path="multipleSpeicalCount" cssStyle="text medium">
+			<form:options items="${multipleCount}" />
+		</form:select>
 	</li>
 	<li><p>
 		<fmt:message key="for.discount.price.only" />
