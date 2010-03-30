@@ -1,6 +1,7 @@
 package local.tux.app.web.controller;
 
 
+import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 
 import java.io.File;
@@ -24,9 +25,10 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.cedarsoft.image.ImageConverter;
+
 
 import local.tux.Constants;
-import local.tux.ThumbnailFactory;
 import local.tux.TuxBaseObjectConverter;
 import local.tux.app.model.Image;
 import local.tux.app.model.Product;
@@ -37,7 +39,6 @@ public class ImageFormController extends TuxBaseFormController {
 
 	private LookUpNameGenericManager productManager;
 	//private LookUpNameGenericManager imageManager;
-
 	public ModelAndView processFormSubmission(HttpServletRequest request, HttpServletResponse response,
             Object command, BindException errors) throws Exception {
 		if (request.getParameter("cancel") != null) {
@@ -101,8 +102,8 @@ public class ImageFormController extends TuxBaseFormController {
 		ImageInputStream in = new MemoryCacheImageInputStream(file.getInputStream());
 		BufferedImage originalImage = saveFile(in, type, out);
         out.close();
-		
-		BufferedImage thumbnail = ThumbnailFactory.getThumbnail(originalImage, Constants.THUMBNAIL_WIDTH, Constants.THUMBNAIL_HEIGHT);
+        ImageConverter converter = new ImageConverter();
+		BufferedImage thumbnail = converter.resize(originalImage, new Dimension(Constants.THUMBNAIL_WIDTH, Constants.THUMBNAIL_HEIGHT));
 		image.setThumbPath(Constants.IMAGE_PATH + "/thumbs/" + fileName);
 		
 		out = new FileOutputStream(docBase + image.getThumbPath());
