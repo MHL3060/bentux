@@ -95,7 +95,9 @@
 			paramProperty="id" />
 	</c:if>
 	<display:column titleKey="product.image">
-		<img src="<c:url value="${tuxBaseObjectList.firstImage.thumbPath}"  />" title="<fmt:message key="click.enlarge" />" />
+		<a href="<c:url value="${tuxBaseObjectList.firstImage.path}"/>" rel="lightbox" title="">
+			<img src="<c:url value="${tuxBaseObjectList.firstImage.thumbPath}"  />" title="<fmt:message key="click.enlarge" />" />
+		</a>
 	</display:column>
 	<display:column property="brandName.name" titleKey="product.brandName.name" sortable="true" />
 	<display:column property="name" titleKey="product.name" sortable="true" />
