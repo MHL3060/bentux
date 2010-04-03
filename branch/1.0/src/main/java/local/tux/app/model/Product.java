@@ -102,7 +102,7 @@ public class Product extends LookUpBaseObject {
 	@Transient
 	private Boolean special = Boolean.FALSE;
 	
-	@Column(name="speical_start")
+	@Column(name="special_start")
 	private Date specialStart;
 	
 	@Column(name="special_end")
