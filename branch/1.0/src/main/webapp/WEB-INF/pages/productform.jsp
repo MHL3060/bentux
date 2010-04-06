@@ -246,6 +246,11 @@ Event.observe(window, 'load', function() {
 		
 	</li>
 	<li>
+		<appfuse:label key="product.availability" styleClass="desc" />
+		<form:errors path="availability" cssStyle="fieldErrors" />
+		<form:input path="availability" cssStyle="text medium" />
+	</li>
+	<li>
 		<appfuse:label key="product.price" styleClass="desc" />
 		<form:errors path="price" cssStyle="fieldErrors" />
 		<form:input path="price" cssStyle="text medium" />

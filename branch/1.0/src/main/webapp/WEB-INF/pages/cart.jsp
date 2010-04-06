@@ -13,6 +13,7 @@
 		</div>
 		
 			<form:form commandName="shoppingItem" action="cart.html" id="shoppingItem">
+			<form:hidden path="shoppingCart" />
 			<form:errors path="*" cssClass="error" element="div" />
 			<li>
           

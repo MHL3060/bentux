@@ -58,6 +58,8 @@ public class CartController extends BaseFormController {
 		super.initBinder(request, binder);
 		TuxBaseObjectConverter converter = new TuxBaseObjectConverter(productManager);
 		binder.registerCustomEditor(Product.class, converter);
+		TuxBaseObjectConverter shoppingCartConverter = new TuxBaseObjectConverter(shoppingCartManager);
+		binder.registerCustomEditor(ShoppingCart.class, shoppingCartConverter);
 		
 	}
 	protected Object formBackingObject(HttpServletRequest request) throws Exception {
@@ -67,7 +69,11 @@ public class CartController extends BaseFormController {
 			request.getSession().setAttribute(ORIGINAL_ITEM, item.clone());
             return item;
         }else {
-        	return new ShoppingItem();
+        	ShoppingItem item = new ShoppingItem();
+        	User user = getUserManager().getUserByUsername(request.getRemoteUser());
+        	ShoppingCart cart = shoppingCartManager.getOpenCart(user);
+        	item.setShoppingCart(cart == null ? new ShoppingCart() : cart);
+        	return item;
         }
 	}
 	@SuppressWarnings("unchecked")

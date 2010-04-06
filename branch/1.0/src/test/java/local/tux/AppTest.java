@@ -1,16 +1,5 @@
 package local.tux;
 
-import java.awt.Dimension;
-import java.awt.Image;
-import java.awt.Toolkit;
-import java.awt.image.BufferedImage;
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-
-import com.cedarsoft.image.ImageConverter;
-import com.cedarsoft.image.ImageUtil;
 
 import junit.framework.TestCase;
 
@@ -31,7 +20,7 @@ public class AppTest extends TestCase {
     	ImageUtil.writeImage(thumb, "j:\\1.jpg");
     	
     }
-    */
+    
     
     public void testGenerateThumbs() throws IOException{
     	String inDir = "j:\\images\\app";
@@ -51,4 +40,5 @@ public class AppTest extends TestCase {
     	
     	
     }
+    */
 }
