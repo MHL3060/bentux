@@ -238,6 +238,7 @@
     	<property name="commandName" value="subscription" />
     	<property name="lookUpManager" ref="subscriptionManager" />
     	<property name="captchaService" ref="captchaService" />
+    	<property name="userManager" ref="userManager" />
     </bean>
     
     <bean id="captchaController" class="local.tux.app.web.common.controller.CaptchaController">
