@@ -8,6 +8,8 @@
 				|<a href="productlist.html">Product</a>
 				|<a href="search.html">Search</a>
 				|<a href="disclaimer.jsp">Disclaimer</a>
+				|<a href="subscriptionform.html">Subscribe</a>
+				
 			
 			
 			<c:choose>

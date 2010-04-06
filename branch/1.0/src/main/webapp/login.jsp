@@ -45,6 +45,9 @@
             <fmt:message key="login.signup">
                 <fmt:param><c:url value="/signup.html"/></fmt:param>
             </fmt:message>
+            <fmt:message key="login.subscribe">
+                <fmt:param><c:url value="/subscriptionform.html"/></fmt:param>
+            </fmt:message>
         </p>
     </li>
 </ul>

@@ -14,7 +14,6 @@
 					
 		
 		<div id="center-main">
-		
 	
 		
 		<c:forEach var="news" items="${tuxBaseObjectList}">
@@ -23,7 +22,8 @@
 			<p class="meta"><span class="date"><fmt:formatDate
 				value="${news.addedOn}" pattern="${datePattern}" /></span><span
 				class="posted">Posted by <a href="#">${news.user.firstName
-			} ${news.user.lastName }</a></span>
+			} ${news.user.lastName } 		${news.user.email}
+			</a></span>
 			<div style="clear: both;">&nbsp;</div>
 			<div class="entry"><c:out value="${news.contentBody}"
 				escapeXml="false" />
@@ -51,7 +51,7 @@
 		
 		<div class="sidebar">
 			<ul class="left">
-				<a href="login.jsp">Login</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;<a href="signup.html">Sign Up</a>
+				<a href="login.jsp">Login</a>&nbsp;|&nbsp;<a href="signup.html">Sign Up</a>&nbsp;|&nbsp;<a href="subscriptionform.html">Subscribe</a>
 			
 				<li>
 					<ul>	

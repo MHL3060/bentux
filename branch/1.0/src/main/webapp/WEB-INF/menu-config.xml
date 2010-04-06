@@ -8,7 +8,6 @@
         <Menu name="AdminMenu" title="menu.admin" description="Admin Menu" roles="ROLE_ADMIN" width="120" page="/users.html">
             <Item name="ViewUsers" title="menu.admin.users" page="/admin/users.html"/>
             <Item name="ActiveUsers" title="mainMenu.activeUsers" page="/admin/activeUsers.html"/>
-            <Item name="SubscribeUsers" title="mainMenu.subscribeUser" page="/subscriptionform.html" />           
             <Item name="News" title="mainMenu.news" page="/newsform.html" />
             <Item name="Catalog" title="mainMenu.catalog" page="/catalogform.html"/>
             <Item name="Manufacturer" title="mainMenu.manufacturer" page="/manufacturerform.html" />
@@ -21,6 +20,6 @@
         <Menu name="CatalogMenu" title="catalog.menu" page="/catalogs.html" roles="ROLE_ADMIN,ROLE_USER,ROLE_ANONYMOUS" />
         <Menu name="Logout" title="user.logout" page="/logout.jsp" roles="ROLE_ADMIN,ROLE_USER"/>
         <Menu name="Search" title="search.page" page="/search.html" roles="ROLE_ADMIN,ROLE_USER,ROLE_ANONYMOUS"/> 
-        <Menu name="AboutUs" title="menu.about.us" page="/about_us.jsp" roles="ROLE_ADMIN,ROLE_USER,ROLE_ANONYMOUS" />
+        <Menu name="AboutUs" title="menu.about.us" page="/about_us.jsp" roles="ROLE_ADMIN,ROLE_USER,ROLE_ANONYMOUS" />        
     </Menus>
 </MenuConfig>

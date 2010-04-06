@@ -48,6 +48,8 @@ public class SubscriptionFormController extends TuxBaseFormController {
         	if (StringUtils.isBlank(username) == false){
         		User user = userManager.getUserByUsername(request.getRemoteUser());
         		sub.setEmail(user.getEmail());
+        		sub.setPhoneNumber(user.getPhoneNumber());
+        		sub.setUser(user);
         	}
         	return sub;
         }
@@ -74,13 +76,7 @@ public class SubscriptionFormController extends TuxBaseFormController {
 					
 					lookUpManager.save((TuxBaseObject)command);
 					
-					User user = userManager.getUserByUsername(request.getRemoteUser());
-					if (request.getRemoteUser() != null && sub.getEmail() != null && sub.getPhoneNumber() != null){
-						sub.setUser(user);
-						sub.setEmail(user.getEmail());	
-						sub.setPhoneNumber(user.getPhoneNumber());
-						((Subscription)baseObject).setEmail(userManager.getUserByUsername(request.getRemoteUser()).getEmail());
-					}					
+							
 					String key = (isNew) ? className+ ".added" : className + ".updated";
 					saveMessage(request, getText(key, locale));
 					return showNewForm(request, response);
