@@ -81,8 +81,8 @@ public class ProductFormController extends BaseFormController {
 	@SuppressWarnings("unchecked")
 	protected Map referenceData(HttpServletRequest request, Object command, Errors errors){
 		Map models = new HashMap(); 
-		int[] multipleCount = new int[Constants.MULTIPLE_COUNT];
-		for (int i = 0; i <= multipleCount.length; i++){
+		int[] multipleCount = new int[Constants.MULTIPLE_COUNT ];
+		for (int i = 0; i < multipleCount.length; i++){
 			multipleCount[i] = i;
 		}
 		models.put("multipleCount", multipleCount);
