@@ -36,6 +36,22 @@ public class SubscriptionFormController extends TuxBaseFormController {
 		this.captchaService = captchaService;
 	}
 	
+	protected Object formBackingObject(HttpServletRequest request) throws Exception {
+		String id = request.getParameter("id");
+		
+		if (!StringUtils.isBlank(id)) {
+            return lookUpManager.get(new Long(id));
+        }else {
+        	
+        	Subscription sub = new Subscription();
+        	String username = request.getRemoteUser();
+        	if (StringUtils.isBlank(username) == false){
+        		User user = userManager.getUserByUsername(request.getRemoteUser());
+        		sub.setEmail(user.getEmail());
+        	}
+        	return sub;
+        }
+	}
 	public ModelAndView onSubmit(HttpServletRequest request, HttpServletResponse response, 
 			Object command, BindException error) throws Exception {
 		

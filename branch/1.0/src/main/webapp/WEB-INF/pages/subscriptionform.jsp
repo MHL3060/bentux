@@ -21,7 +21,6 @@
 
 <form:form commandName="subscription" method="post" action="subscriptionform.html" onsubmit="return onFormSubmit(this)" id="subscriptionForm">
     <form:hidden path="id"/>
-    <form:hidden path="user"/>
     
 	<ul>
 		<li>
@@ -37,7 +36,7 @@
 		<li>
 			<appfuse:label key="subscription.email" styleClass="desc" />
 			<form:errors path="email" cssClass="fieldError"  />
-			<form:input path="email"/>
+			<form:input path="email" cssClass="text medium"/>
 		</li>
 	
 
