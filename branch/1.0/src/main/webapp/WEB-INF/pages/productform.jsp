@@ -255,8 +255,12 @@ Event.observe(window, 'load', function() {
 		<form:errors path="price" cssStyle="fieldErrors" />
 		<form:input path="price" cssStyle="text medium" />
 	</li>
+	<li><p>
+		<fmt:message key="for.discount.price.only" />
+	</p></li>
+	<fieldset  title="<fmt:message key='product.special.fields'/>">
 	<li>
-		<fieldset title="<fmt:message key='product.special.fields'/>">
+		
 			<div class="left">
 				<appfuse:label key="product.special.start.date" styleClass="desc" />
 				<form:errors path="specialStart" cssStyle="fieldErrors" />
@@ -295,22 +299,25 @@ Event.observe(window, 'load', function() {
 			                        });
 			                        </script>
 		   </div>
-			<div class="left">
-			<appfuse:label key="product.special.multiple.special.count" styleClass="desc" />
-			<form:errors path="multipleSpeicalCount" cssStyle="fieldErrors" />
-			<form:select path="multipleSpeicalCount" cssStyle="text medium">
-				<form:options items="${multipleCount}" />
-			</form:select>
-			</div>
-		</fieldset>
 	</li>
-	<li><p>
-		<fmt:message key="for.discount.price.only" />
-	</p></li>
 	<li>
-		<appfuse:label key="product.discountPrice" styleClass="desc" />
-		<form:errors path="discountPrice" cssStyle="fieldErrors" />
-		<form:input path="discountPrice" cssStyle="text medium" />
+			<div class="left">
+				<appfuse:label key="product.special.multiple.special.count" styleClass="desc" />
+				<form:errors path="multipleSpeicalCount" cssStyle="fieldErrors" />
+				<form:select path="multipleSpeicalCount" cssStyle="text medium">
+					<form:options items="${multipleCount}" />
+				</form:select>
+			</div>
+			<div>
+				<appfuse:label key="product.discountPrice" styleClass="desc" />
+				<form:errors path="discountPrice" cssStyle="fieldErrors" />
+				<form:input path="discountPrice" cssStyle="text medium" />
+			</div>
+	</li>
+	</fieldset>
+	
+	<li>
+		
 	</li>
 	
 	 <%@ include file="common/food_product.jsp" %>

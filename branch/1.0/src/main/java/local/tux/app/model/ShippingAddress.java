@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -40,8 +41,19 @@ public class ShippingAddress extends TuxBaseObject {
 	private Address address = new Address();
 
 	
+	@Transient
+	private Boolean sameShipping;
 	
 	
+	
+	public Boolean getSameShipping() {
+		return sameShipping;
+	}
+
+	public void setSameShipping(Boolean sameShipping) {
+		this.sameShipping = sameShipping;
+	}
+
 	public Long getId() {
 		return id;
 	}

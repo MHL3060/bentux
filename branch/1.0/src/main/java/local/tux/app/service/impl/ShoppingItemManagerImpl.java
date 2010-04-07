@@ -2,7 +2,7 @@ package local.tux.app.service.impl;
 
 import java.util.List;
 
-import local.tux.Constants.Status;
+import local.tux.Constants.CART_STATUS;
 import local.tux.app.dao.ShoppingItemDao;
 import local.tux.app.model.Product;
 import local.tux.app.model.ShoppingItem;
@@ -28,7 +28,7 @@ public class ShoppingItemManagerImpl extends
 	}
 	
 	public List<ShoppingItem> getShoppingItem(User user, Product p,
-			Status status) {
+			CART_STATUS status) {
 		
 		return shoppingItemDao.getShoppingItem(user, p, status);
 	}

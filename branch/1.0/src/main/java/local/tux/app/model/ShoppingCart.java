@@ -19,7 +19,7 @@ import javax.persistence.Table;
 import org.appfuse.model.User;
 
 import local.tux.Constants.ShippingType;
-import local.tux.Constants.Status;
+import local.tux.Constants.CART_STATUS;
 import local.tux.app.model.common.TuxBaseObject;
 
 @Entity
@@ -46,7 +46,7 @@ public class ShoppingCart extends TuxBaseObject {
 	private Set<ShoppingItem> shoppingItems;
 	
 	@Enumerated(EnumType.ORDINAL)
-	private Status status;
+	private CART_STATUS status;
 
 	@Column
 	private String trackingCode;
@@ -92,11 +92,11 @@ public class ShoppingCart extends TuxBaseObject {
 		this.shoppingItems = shoppingItems;
 	}
 
-	public Status getStatus() {
+	public CART_STATUS getStatus() {
 		return status;
 	}
 
-	public void setStatus(Status status) {
+	public void setStatus(CART_STATUS status) {
 		this.status = status;
 	}
 

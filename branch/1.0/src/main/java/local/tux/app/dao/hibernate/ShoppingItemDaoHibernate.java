@@ -2,7 +2,7 @@ package local.tux.app.dao.hibernate;
 
 import java.util.List;
 
-import local.tux.Constants.Status;
+import local.tux.Constants.CART_STATUS;
 import local.tux.app.dao.ShoppingItemDao;
 import local.tux.app.model.Product;
 import local.tux.app.model.ShoppingItem;
@@ -20,7 +20,7 @@ public class ShoppingItemDaoHibernate extends
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<ShoppingItem> getShoppingItem(User user, Product p, Status status) {
+	public List<ShoppingItem> getShoppingItem(User user, Product p, CART_STATUS status) {
 		DetachedCriteria criteria = DetachedCriteria.forClass(ShoppingItem.class);
 		criteria.createAlias("shoppingCart", "cart");
 		criteria.add(Restrictions.eq("product", p))

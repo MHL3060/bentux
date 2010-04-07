@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import local.tux.Constants;
-import local.tux.Constants.Status;
+import local.tux.Constants.CART_STATUS;
 import local.tux.app.model.ShoppingCart;
 import local.tux.app.model.common.TuxBaseObject;
 import local.tux.app.service.ShoppingCartManager;

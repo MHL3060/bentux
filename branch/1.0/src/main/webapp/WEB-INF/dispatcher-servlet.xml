@@ -240,7 +240,10 @@
     	<property name="captchaService" ref="captchaService" />
     	<property name="userManager" ref="userManager" />
     </bean>
-    
+    <bean id="confirmController" class="local.tux.app.web.controller.ConfirmController">
+    	<property name="shoppingCartManager" ref="shoppingCartManager" />
+    	<property name="userManager" ref="userManager" />
+    </bean>
     <bean id="captchaController" class="local.tux.app.web.common.controller.CaptchaController">
     	<property name="captchaService" ref="captchaService" />
     </bean>

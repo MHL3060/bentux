@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import local.tux.Constants;
-import local.tux.Constants.Status;
+import local.tux.Constants.CART_STATUS;
 import local.tux.app.dao.ShoppingCartDao;
 import local.tux.app.model.Product;
 import local.tux.app.model.ShoppingCart;
@@ -27,9 +27,9 @@ public class ShoppingCartDaoHibernate extends TuxNameGenericDaoHibernate<Shoppin
 
 	/**
 	 * (non-Javadoc)
-	 * @see local.tux.app.dao.ShoppingCartDao#getCartCount(org.appfuse.model.User, local.tux.Constants.Status)
+	 * @see local.tux.app.dao.ShoppingCartDao#getCartCount(org.appfuse.model.User, local.tux.Constants.CART_STATUS)
 	 */
-	public Integer getCartCount(User user, Status status) {
+	public Integer getCartCount(User user, CART_STATUS status) {
 		DetachedCriteria criteria = DetachedCriteria.forClass(ShoppingCart.class);
 		criteria.createAlias("shoppingItems", "item");
 		criteria.add(Restrictions.eq("user", user))
@@ -92,14 +92,14 @@ public class ShoppingCartDaoHibernate extends TuxNameGenericDaoHibernate<Shoppin
 	 */
 	private ShoppingCart getOpenShoppingCart(User user){
 		
-		List<ShoppingCart> carts = getShoppingCarts(user, Status.OPEN);
+		List<ShoppingCart> carts = getShoppingCarts(user, CART_STATUS.OPEN);
 		if ( !carts.isEmpty()){
 			return carts.get(0);
 		}else {
 			
 			ShoppingCart cart = new ShoppingCart();
 			cart.setStartDate(new Date());
-			cart.setStatus(Constants.Status.OPEN);
+			cart.setStatus(Constants.CART_STATUS.OPEN);
 			cart.setUser(user);
 			return cart;
 			
@@ -107,7 +107,7 @@ public class ShoppingCartDaoHibernate extends TuxNameGenericDaoHibernate<Shoppin
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<ShoppingCart> getShoppingCarts(User user, Status status){
+	public List<ShoppingCart> getShoppingCarts(User user, CART_STATUS status){
 		
 		DetachedCriteria criteria = DetachedCriteria.forClass(ShoppingCart.class);
 		criteria.add(Restrictions.eq("user", user))

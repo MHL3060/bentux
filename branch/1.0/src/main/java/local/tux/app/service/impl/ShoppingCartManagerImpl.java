@@ -8,7 +8,7 @@ import org.appfuse.model.User;
 import org.appfuse.service.GenericManager;
 import org.appfuse.service.UserManager;
 
-import local.tux.Constants.Status;
+import local.tux.Constants.CART_STATUS;
 import local.tux.app.dao.ShoppingCartDao;
 import local.tux.app.model.Product;
 import local.tux.app.model.ShoppingCart;
@@ -54,17 +54,17 @@ public class ShoppingCartManagerImpl extends
 	public Integer getOpenItemCount(Long userId) {
 		
 		User user = userManager.getUser(userId.toString());
-		return shoppingCartDao.getCartCount(user, Status.OPEN);
+		return shoppingCartDao.getCartCount(user, CART_STATUS.OPEN);
 	}
-	public Integer getItemCount(Long userId, Status status) {
+	public Integer getItemCount(Long userId, CART_STATUS status) {
 		User user = userManager.getUser(userId.toString());
 		return shoppingCartDao.getCartCount(user, status);
 	}
-	public List<ShoppingCart> getShoppingCarts(User user, Status status) {
+	public List<ShoppingCart> getShoppingCarts(User user, CART_STATUS status) {
 		return shoppingCartDao.getShoppingCarts(user, status);
 	}
 	public ShoppingCart getOpenCart(User user) {
-		List<ShoppingCart> carts = getShoppingCarts(user, Status.OPEN);
+		List<ShoppingCart> carts = getShoppingCarts(user, CART_STATUS.OPEN);
 		if (carts.size() == 0){
 			return null;
 		}else {

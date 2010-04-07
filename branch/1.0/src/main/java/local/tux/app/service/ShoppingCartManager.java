@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.appfuse.model.User;
 
-import local.tux.Constants.Status;
+import local.tux.Constants.CART_STATUS;
 import local.tux.app.model.ShoppingCart;
 
 public interface ShoppingCartManager extends LookUpNameGenericManager<ShoppingCart, Long> {
@@ -18,9 +18,9 @@ public interface ShoppingCartManager extends LookUpNameGenericManager<ShoppingCa
 	 * @return
 	 */
 	public ShoppingCart getOpenCart(User user);
-	public Integer getItemCount(Long userId, Status status);
+	public Integer getItemCount(Long userId, CART_STATUS status);
 	public Double getSubTotal(ShoppingCart cart);
-	public List<ShoppingCart> getShoppingCarts(User user, Status status);
+	public List<ShoppingCart> getShoppingCarts(User user, CART_STATUS status);
 	
 	
 	

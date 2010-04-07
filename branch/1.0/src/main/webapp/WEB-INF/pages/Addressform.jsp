@@ -2,6 +2,25 @@
 
 <h1><fmt:message key="checkout.address" /></h1>
 
+<script type="text/javascript">
+
+function autoField(node){
+	shipping = document.getElementById("shippingDiv");
+	if (node.checked == true ){
+		shipping.style.visibility="hidden";
+	}else {
+		shipping.style.visibility="visible";
+	}
+}
+
+</script>
+<style>
+  div#shippingDiv{
+  	display: block;
+  
+  }
+
+</style>
 <c:set var="buttons" >
     <li class="buttonBar bottom">
         <input type="submit" class="button" name="next" value="<fmt:message key="button.next"/>"/>
@@ -47,18 +66,18 @@
         </div>
 		
 		<br />
-		
-        <div class="group">
-        	<label class="desc"><fmt:message key="user.address.address"/></label>
+		<form:checkbox path="sameShipping" onclick="autoField(this);"/><fmt:message key="same.as.billing.address"/>
+        <div id="shippingDiv" class="group">
+        	<label class="desc"><fmt:message key="user.shipping.address"/></label>
             <div class="left">
             	<form:input path="firstName" cssClass="text medium" />
             	<form:errors path="firstName" cssClass="fieldError" />
-            	<appfuse:label key="shippingAddress.firstName" />
+            	<p><appfuse:label key="shippingAddress.firstName" /></p>
             </div>
             <div>
             	<form:input path="lastName" cssClass="text medium" />
             	<form:errors path="lastName" cssClass="fieldError" />
-            	<appfuse:label key="shippingAddress.lastName" />
+            	<p><appfuse:label key="shippingAddress.lastName" /></p>
             </div>
             <div>
                 <form:input path="address.address" id="address.address" cssClass="text large" cssErrorClass="text large error"/>

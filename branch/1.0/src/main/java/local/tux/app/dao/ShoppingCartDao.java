@@ -2,7 +2,7 @@ package local.tux.app.dao;
 
 import java.util.List;
 
-import local.tux.Constants.Status;
+import local.tux.Constants.CART_STATUS;
 import local.tux.app.model.Product;
 import local.tux.app.model.ShoppingCart;
 
@@ -16,8 +16,8 @@ import org.appfuse.model.User;
  */
 public interface ShoppingCartDao extends TuxNameGenericDao<ShoppingCart, Long> {
 	
-	public Integer getCartCount(User user, Status status);
+	public Integer getCartCount(User user, CART_STATUS status);
 	public void add(User user, Product p,Integer quantity);
-	public List<ShoppingCart> getShoppingCarts(User user, Status status);
+	public List<ShoppingCart> getShoppingCarts(User user, CART_STATUS status);
 
 }
