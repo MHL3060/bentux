@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import local.tux.Constants;
 import local.tux.TuxBaseObjectConverter;
-import local.tux.Constants.Status;
+import local.tux.Constants.CART_STATUS;
 import local.tux.app.model.Product;
 import local.tux.app.model.ShoppingCart;
 import local.tux.app.model.ShoppingItem;
@@ -115,7 +115,7 @@ public class CartController extends BaseFormController {
 				return showForm(request, response, error);
 			}else if (StringUtils.isBlank(request.getParameter(Constants.CHECK_OUT))==false ){
 				ShoppingCart shoppingCart = shoppingItem.getShoppingCart();
-				shoppingCart.setStatus(Status.SUBMITTED);
+				shoppingCart.setStatus(CART_STATUS.OPEN);
 				shoppingCartManager.save(shoppingCart);
 				saveMessage(request, getText("order.checkout", locale));
 				return  new ModelAndView(nextPage); 
