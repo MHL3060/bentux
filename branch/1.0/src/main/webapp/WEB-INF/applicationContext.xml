@@ -107,7 +107,7 @@
 	
 	</bean>
 	
-	<bean id="customerAddressDao" class="local.tux.app.dao.hibernate.TuxNameGenericDaoHibernate">
+	<bean id="customerAddressDao" class="local.tux.app.dao.hibernate.UserReferenceObjectDaoHibernate">
 		<constructor-arg value="local.tux.app.model.ShippingAddress" />
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
@@ -164,7 +164,7 @@
    		<property name="productManager" ref="productManager" />
    </bean>
    
-   <bean id="customerAddressManager" class="local.tux.app.service.impl.LookUpNameGenericManagerImpl">
+   <bean id="customerAddressManager" class="local.tux.app.service.impl.UserReferenceObjectManagerImpl">
    		<constructor-arg ref="customerAddressDao" />
    </bean>
    

@@ -23,7 +23,7 @@ import local.tux.app.model.common.TuxBaseObject;
 
 @Entity
 @Table(name="subscription")
-public class Subscription extends TuxBaseObject {
+public class Subscription extends TuxBaseObject implements UserReference{
 
 	/**
 	 * 

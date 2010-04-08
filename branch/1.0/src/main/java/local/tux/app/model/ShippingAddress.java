@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
 
 import javax.persistence.JoinColumn;
@@ -20,7 +21,7 @@ import org.appfuse.model.User;
 
 @Entity
 @Table(name="shipping_address")
-public class ShippingAddress extends TuxBaseObject {
+public class ShippingAddress extends TuxBaseObject implements UserReference {
 
 	private static final long serialVersionUID = -7932943991220437344L;
 	
@@ -28,7 +29,7 @@ public class ShippingAddress extends TuxBaseObject {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name="user_id")
 	private User user;
 	

@@ -24,7 +24,7 @@ import local.tux.app.model.common.TuxBaseObject;
 
 @Entity
 @Table(name="shopping_cart")
-public class ShoppingCart extends TuxBaseObject {
+public class ShoppingCart extends TuxBaseObject implements UserReference {
 	
 	/**
 	 * 
