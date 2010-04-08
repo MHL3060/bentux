@@ -10,9 +10,11 @@
         <intercept-url pattern="/scripts/*" filters="none"/-->
         
         <intercept-url pattern="/admin/*" access="ROLE_ADMIN"/>
+        <intercept-url pattern="/subscriptionform.html" access="ROLE_ANONYMOUS,ROLE_ADMIN,ROLE_USER"/>
+        
+        <!--  these pages do not need security 
         <intercept-url pattern="index.html" filters="none" />
         <intercept-url pattern="mainMenu.html" filters="none" />
-        <!--  these pages do not need security 
         <intercept-url pattern="/special.html*" access="ROLE_ADMIN,ROLE_USER,ROLE_ANONYMOUS" />
         <intercept-url pattern="/*catalogs.html*" access="ROLE_ANONYMOUS,ROLE_ADMIN,ROLE_USER"/>
         <intercept-url pattern="/home.html*" access="ROLE_ANONYMOUS,ROLE_ADMIN,ROLE_USER" />
