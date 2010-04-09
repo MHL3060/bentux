@@ -47,6 +47,9 @@ div.center{
 }
 
 </style>
+<c:if test="${user != null }">
+	<%@ include file="/common/shoppingcart.jsp" %>
+</c:if>
 <h1><fmt:message key="catalog.title" /></h1> 
 <div id="whole" class="center">
 	<c:forEach var="catalog" items="${tuxBaseObjectList.list}">

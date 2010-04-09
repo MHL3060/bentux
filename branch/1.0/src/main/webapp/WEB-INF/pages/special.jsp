@@ -1,5 +1,9 @@
 <%@ include file="/common/taglibs.jsp" %>
 
+<c:if test="${user != null }">
+	<%@ include file="/common/shoppingcart.jsp" %>
+</c:if>
+
 <h1><fmt:message key="special.product" /></h1>
 <display:table id="tuxBaseObjectList" name="tuxBaseObjectList" cellspacing="0" cellpadding="0" requestURI=""
 	pagesize="25" class="table uutResultList" export="true" >

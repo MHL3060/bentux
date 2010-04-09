@@ -1,5 +1,10 @@
 <%@ include file="/common/taglibs.jsp"%>
+
 <P>
+
+<c:if test="${user != null }">
+	<%@ include file="/common/shoppingcart.jsp" %>
+</c:if>
 <H2>Product Search:</H2>
 
 <FORM method="GET"><spring:bind path="command.query">

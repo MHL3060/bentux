@@ -8,13 +8,15 @@
 </head>
 
 <div id="main">
-	
 	<div id="main-title">Welcome to Taste of India</div>
-		<div id="main-banner-left"><img src="<c:url value="/images/sample_banner.gif"/>" width="680" height="90" alt="trinity group"></img></div>
-					
-		
+		<div id="main-banner-left">
+		<img src="<c:url value="/images/sample_banner.gif"/>" width="680" height="90" alt="trinity group"></img>
+		<c:if test="${user != null }">
+			<%@ include file="/common/shoppingcart.jsp" %>
+		</c:if>			
+		</div>
 		<div id="center-main">
-	
+
 		
 		<c:forEach var="news" items="${tuxBaseObjectList}">
 			<div class="post">
@@ -156,11 +158,6 @@
 				
 			</ul>
 		</div>
-
-		
-			
-		
-		
 		
 		
 		
