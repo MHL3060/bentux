@@ -16,15 +16,25 @@ public class HibernateUtil {
 	 */
 	public static DetachedCriteria copy(DetachedCriteria criteria) throws Exception {
         
-        ByteArrayOutputStream baostream = new ByteArrayOutputStream();
+       return (DetachedCriteria) clone(criteria);
+    }
+	/**
+	 * Convenient function to convert POJO that didn't implement clonable but implement serializable.
+	 * 
+	 * @param obj
+	 * @return
+	 * @throws Exceptions
+	 */
+	public static Object clone(Object obj) throws Exception{
+		ByteArrayOutputStream baostream = new ByteArrayOutputStream();
         ObjectOutputStream oostream = new ObjectOutputStream(baostream);
-        oostream.writeObject(criteria);
+        oostream.writeObject(obj);
         oostream.flush();
         oostream.close();
         ByteArrayInputStream baistream = new ByteArrayInputStream(baostream.toByteArray());
         ObjectInputStream oistream = new ObjectInputStream(baistream);
-        DetachedCriteria copy = (DetachedCriteria)oistream.readObject();
+        Object copy = oistream.readObject();
         oistream.close();            
         return copy;
-    }
+	}
 }

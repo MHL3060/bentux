@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang.StringUtils;
+import org.appfuse.model.Address;
 import org.appfuse.model.User;
 import org.appfuse.service.LookupManager;
 import org.springframework.validation.BindException;
@@ -16,6 +17,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.servlet.ModelAndView;
 
 import local.tux.Constants;
+import local.tux.HibernateUtil;
 import local.tux.app.model.ShippingAddress;
 import local.tux.app.service.LookUpNameGenericManager;
 import local.tux.app.service.UserReferenceObjectManager;
@@ -56,7 +58,8 @@ public class AddressFormController extends TuxBaseFormController {
 		HttpSession session = request.getSession();
 		ShippingAddress address = (ShippingAddress)command;
 		if (address.getSameShipping().booleanValue() == true){
-			address.setAddress(address.getUser().getAddress());
+			Address shippingAddress = (Address) HibernateUtil.clone(address.getUser().getAddress());
+			address.setAddress(shippingAddress);
 		}
 		lookUpManager.save(address);
 		session.setAttribute(Constants.ADDRESS_SESSION, command);
