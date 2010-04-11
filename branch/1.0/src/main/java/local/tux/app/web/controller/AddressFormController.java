@@ -11,7 +11,6 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.lang.StringUtils;
 import org.appfuse.model.Address;
 import org.appfuse.model.User;
-import org.appfuse.service.LookupManager;
 import org.springframework.validation.BindException;
 import org.springframework.validation.Errors;
 import org.springframework.web.servlet.ModelAndView;
@@ -19,7 +18,6 @@ import org.springframework.web.servlet.ModelAndView;
 import local.tux.Constants;
 import local.tux.HibernateUtil;
 import local.tux.app.model.ShippingAddress;
-import local.tux.app.service.LookUpNameGenericManager;
 import local.tux.app.service.UserReferenceObjectManager;
 import local.tux.app.web.common.controller.TuxBaseFormController;
 
