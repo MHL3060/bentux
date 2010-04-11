@@ -25,10 +25,11 @@
 
 <div>
 	<label class="desc"><fmt:message key="order.items"/></label>
-	<display:table id="cartItems" name="cartItems" class="cart Item List">
+	<display:table id="cartItems" name="cartItems"  class="table items">
 		<display:column property="product.name" titleKey="product.name" />
 		<display:column property="quantity" titleKey="product.quantity" />
 		<display:column property="product.price" titleKey="product.price" />
 		
 	</display:table>
+	
 </div>

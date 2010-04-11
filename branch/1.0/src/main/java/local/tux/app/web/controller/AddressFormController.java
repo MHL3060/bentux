@@ -61,7 +61,7 @@ public class AddressFormController extends TuxBaseFormController {
 			address.setFirstName(address.getUser().getFirstName());
 			address.setLastName(address.getUser().getLastName());
 		}
-		lookUpManager.save(address);
+		//lookUpManager.save(address);
 		session.setAttribute(Constants.ADDRESS_SESSION, command);
 		return new ModelAndView(nextPage);
 		

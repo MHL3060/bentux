@@ -12,7 +12,6 @@ function autoField(node){
 		shipping.style.visibility="visible";
 	}
 }
-
 </script>
 <style>
   div#shippingDiv{
@@ -32,7 +31,7 @@ function autoField(node){
     </li>
 </c:set>
 <form:form commandName="shippingAddress" >
-
+	<form:hidden path="id"/>
 	<ul>
 	
 		<li>
@@ -65,13 +64,7 @@ function autoField(node){
             </div>
         </div>
 		
-		<select name="existAddress" onchange="fillShippingAddress(this)">
-			<option value="">New</option>
-			<c:forEach items="${addresses}" var="address">
-				<option value="${address.id }">${address.address.address}</option>
-			</c:forEach>
-		</select>
-		<br />
+		
 		<form:checkbox path="sameShipping" onclick="autoField(this);"/><fmt:message key="same.as.billing.address"/>
         <div id="shippingDiv" class="group">
         	<label class="desc"><fmt:message key="user.shipping.address"/></label>
