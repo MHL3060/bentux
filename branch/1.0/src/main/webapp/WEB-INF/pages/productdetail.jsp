@@ -5,6 +5,9 @@
 <link rel="stylesheet" type="text/css" media="all"
 	href="<c:url value='/styles/${appConfig["csstheme"]}/layout-other.css'/>" />
 </head>
+<c:if test="${user != null }">
+	<%@ include file="/common/shoppingcart.jsp" %>
+</c:if>
 <c:choose>
 	<c:when test="${not empty product }">	
 	
