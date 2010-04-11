@@ -68,7 +68,7 @@ function autoField(node){
 		<select name="existAddress" onchange="fillShippingAddress(this)">
 			<option value="">New</option>
 			<c:forEach items="${addresses}" var="address">
-				<option value="${address.id }">${address.address.}</option>
+				<option value="${address.id }">${address.address.address}</option>
 			</c:forEach>
 		</select>
 		<br />
