@@ -118,16 +118,6 @@ public class ShippingAddress extends TuxBaseObject implements UserReference {
 				return false;
 		} else if (!address.equals(other.address))
 			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (user == null) {
-			if (other.user != null)
-				return false;
-		} else if (!user.equals(other.user))
-			return false;
 		return true;
 	}
 

@@ -243,6 +243,12 @@
     <bean id="confirmController" class="local.tux.app.web.controller.ConfirmController">
     	<property name="shoppingCartManager" ref="shoppingCartManager" />
     	<property name="userManager" ref="userManager" />
+    	<property name="submitPage" value="redirect:submitorder.html" />
+    	<property name="editPage" value="redirect:cart.html" />
+    </bean>
+    <bean id="submitOrderController" class="local.tux.app.web.controller.SubmitOrderController">
+    	<property name="shoppingCartManager" ref="shoppingCartManager" />
+    	<property name="userManager" ref="userManager" />
     </bean>
     <bean id="captchaController" class="local.tux.app.web.common.controller.CaptchaController">
     	<property name="captchaService" ref="captchaService" />

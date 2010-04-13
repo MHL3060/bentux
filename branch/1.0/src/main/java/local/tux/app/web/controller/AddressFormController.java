@@ -25,7 +25,7 @@ public class AddressFormController extends TuxBaseFormController {
 
 	private String nextPage;
 	
-
+	
 	public void setNextPage(String nextPage){
 		this.nextPage = nextPage;
 	}
@@ -33,7 +33,9 @@ public class AddressFormController extends TuxBaseFormController {
 	
 	protected Object formBackingObject(HttpServletRequest request) throws Exception {
 		ShippingAddress shippingAddress = (ShippingAddress) super.formBackingObject(request);
-		if (StringUtils.isBlank(request.getRemoteUser())== false ) {
+		if(StringUtils.isBlank(request.getParameter("id")) == false){
+			shippingAddress =  (ShippingAddress) lookUpManager.get(new Long(request.getParameter("id")));
+		}else if (StringUtils.isBlank(request.getRemoteUser())== false ) {
 			shippingAddress.setUser(getUserManager().getUserByUsername(request.getRemoteUser()));
 		}else {
 			shippingAddress.setUser(new User());
@@ -61,9 +63,24 @@ public class AddressFormController extends TuxBaseFormController {
 			address.setFirstName(address.getUser().getFirstName());
 			address.setLastName(address.getUser().getLastName());
 		}
-		//lookUpManager.save(address);
+		
 		session.setAttribute(Constants.ADDRESS_SESSION, command);
 		return new ModelAndView(nextPage);
 		
+	}
+	
+	private void saveAddress(ShippingAddress address){
+		User user = address.getUser();
+		boolean isExist =false;
+		List<ShippingAddress> addresses = ((UserReferenceObjectManager)lookUpManager).getObjectsByUser(user);
+		for (ShippingAddress sAddress : addresses){
+			if (address.equals(sAddress)){
+				isExist = true;
+				break;
+			}
+		}
+		if (isExist == false){
+			lookUpManager.save(address);
+		}
 	}
 }

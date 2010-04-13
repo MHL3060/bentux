@@ -70,19 +70,18 @@ public class TuxBaseFormController extends BaseFormController {
 			Object command, BindException error) throws Exception {
 		
 		TuxBaseObject baseObject = (TuxBaseObject)command;
-		String className = command.getClass().getName();
+		
 		boolean isNew = (baseObject.getId() == null);
 		Locale locale = request.getLocale();
 		try {
-			if (request.getParameter(Constants.DELETE_ACTION) != null){
-				lookUpManager.remove(baseObject.getId());
-				saveMessage(request, getText(className+".deleted", locale));
-				return new ModelAndView(getSuccessView());
-			}else {
-				lookUpManager.save((LookUpBaseObject)command);
-				String key = (isNew) ? className+ ".added" : className + ".updated";
-				saveMessage(request, getText(key, locale));
-				return showNewForm(request, response);
+			if (request.getParameter(getText("form.delete", locale).trim()) != null){
+				return deleteAction(request, response, baseObject, error);
+			}else if (request.getParameter(getText("form.edit", locale).trim()) != null){
+				return editAction(request, response, baseObject, error);
+			}else if (request.getParameter(getText("form.save",locale).trim()) != null ) {
+				return saveAction(request, response, baseObject, error);
+			}else if (request.getParameter(getText("form.cancel", locale).trim()) != null){
+				return cancelAction(request, response, baseObject, error);
 			}
 			
 		}catch (Exception e){
@@ -90,5 +89,46 @@ public class TuxBaseFormController extends BaseFormController {
 			log.error(e);
 		}
 		return showForm(request, response, error);
+	}
+	
+	/**
+	 * the following actions is predefine for delete, save, edit and cancel if your form using the 
+	 * <fmt:message key="form.${actionName}" />
+	 * @param request
+	 * @param response
+	 * @param baseObject
+	 * @param error
+	 * @return
+	 */
+	protected ModelAndView cancelAction(HttpServletRequest request,
+			HttpServletResponse response, TuxBaseObject baseObject,
+			BindException error) {
+		return new ModelAndView(getCancelView());
+	}
+
+	protected ModelAndView deleteAction(HttpServletRequest request, HttpServletResponse response, 
+			TuxBaseObject baseObject, BindException error) throws Exception {
+		String className = baseObject.getClass().getName();
+		Locale locale = request.getLocale();
+		lookUpManager.remove(baseObject.getId());
+		saveMessage(request, getText(className+".deleted", locale));
+		return new ModelAndView(getSuccessView());
+		
+	}
+	protected ModelAndView editAction(HttpServletRequest request, HttpServletResponse response, 
+			TuxBaseObject baseObject, BindException error) throws Exception {
+		String className = baseObject.getClass().getName();
+		boolean isNew = (baseObject.getId() == null);
+		lookUpManager.save(baseObject);
+		String key = (isNew) ? className+ ".added" : className + ".updated";
+		saveMessage(request, getText(key, request.getLocale()));
+		return showNewForm(request, response);
+		
+	}
+	
+	protected ModelAndView saveAction(HttpServletRequest request, HttpServletResponse response, 
+			TuxBaseObject baseObject, BindException error) throws Exception {
+		
+		return editAction(request, response, baseObject, error);
 	}
 }
