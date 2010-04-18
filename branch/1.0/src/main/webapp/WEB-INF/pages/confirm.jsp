@@ -1,5 +1,7 @@
 <%@ include file="/common/taglibs.jsp" %>
 
+
+
 <div class="group">
 	<label class="desc"><fmt:message key="user.billing.address"/></label>
 	<div class="left">${shippingAddress.user.firstName }</div>	
@@ -23,13 +25,23 @@
 </div>
 
 
+<form:form commandName="confirmItem" >
+<c:set var="buttons" >
+    <li class="buttonBar bottom">
+        <input type="submit" class="button" name="edit" value="<fmt:message key="button.edit"/>"/>
+        <input type="submit" class="button" name="submit" value="<fmt:message key="button.submit"/>"/>        
+        </li>
+</c:set>
 <div>
 	<label class="desc"><fmt:message key="order.items"/></label>
-	<display:table id="cartItems" name="cartItems"  class="table items">
+		<display:table id="cartItems" name="cartItems"  class="table items">
 		<display:column property="product.name" titleKey="product.name" />
 		<display:column property="quantity" titleKey="product.quantity" />
 		<display:column property="product.price" titleKey="product.price" />
 		
 	</display:table>
-	
 </div>
+<li>
+	<c:out value="${buttons}" escapeXml="false" />
+</li>
+</form:form>

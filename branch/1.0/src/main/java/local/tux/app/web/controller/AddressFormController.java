@@ -57,7 +57,9 @@ public class AddressFormController extends TuxBaseFormController {
 		
 		HttpSession session = request.getSession();
 		ShippingAddress address = (ShippingAddress)command;
-		if (address.getSameShipping().booleanValue() == true){
+		if (StringUtils.isBlank(request.getParameter(Constants.CANCEL_ACTION)) == false ) {
+			return showForm(request, response, error);
+		}else if (address.getSameShipping().booleanValue() == true){
 			Address shippingAddress = (Address) HibernateUtil.clone(address.getUser().getAddress());
 			address.setAddress(shippingAddress);
 			address.setFirstName(address.getUser().getFirstName());

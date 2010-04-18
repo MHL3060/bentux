@@ -231,6 +231,7 @@
     	<property name="commandName" value="shippingAddress" />
     	<property name="userManager" ref="userManager" />
     	<property name="nextPage" value="redirect:confirm.html" />
+    	<property name="cancelView"	value="redirect:cart.html" />
     </bean>
     
     <bean id="subscriptionFormController" class="local.tux.app.web.controller.SubscriptionFormController">
@@ -243,6 +244,8 @@
     <bean id="confirmController" class="local.tux.app.web.controller.ConfirmController">
     	<property name="shoppingCartManager" ref="shoppingCartManager" />
     	<property name="userManager" ref="userManager" />
+    	<property name="mailSender" ref="mailSender"/>
+      	<property name="velocityEngine" ref="velocityEngine"/>
     	<property name="submitPage" value="redirect:submitorder.html" />
     	<property name="editPage" value="redirect:cart.html" />
     </bean>
@@ -253,5 +256,8 @@
     <bean id="captchaController" class="local.tux.app.web.common.controller.CaptchaController">
     	<property name="captchaService" ref="captchaService" />
     </bean>
+    	<bean id="velocityConfig" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
+    	<property name="configLocation" value= "/WEB-INF/velocity.properties" />          
+	</bean>
     
 </beans>
