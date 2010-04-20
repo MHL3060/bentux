@@ -256,8 +256,5 @@
     <bean id="captchaController" class="local.tux.app.web.common.controller.CaptchaController">
     	<property name="captchaService" ref="captchaService" />
     </bean>
-    	<bean id="velocityConfig" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
-    	<property name="configLocation" value= "/WEB-INF/velocity.properties" />          
-	</bean>
     
 </beans>

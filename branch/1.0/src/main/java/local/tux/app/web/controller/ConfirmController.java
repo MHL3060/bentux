@@ -45,7 +45,6 @@ public class ConfirmController extends TuxBaseFormController {
 	public void setMailSender(JavaMailSender mailSender) {
         this.mailSender = mailSender;
     }
-
 	public void setVelocityEngine(VelocityEngine velocityEngine) {
 	      this.velocityEngine = velocityEngine;
 	}
