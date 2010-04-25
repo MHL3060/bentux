@@ -23,6 +23,9 @@ import org.springframework.ui.velocity.VelocityEngineUtils;
  * class to send html email out. This class is instantiated by the Spring Bean
  * 
  * in your class you can use setMethod to set this class.
+ * please note: this class doesn't put the email back to the queue if the smtp has problem
+ * to prevent losing mail, you can add your MimeMessage Object to the MailManager.
+ * 
  */
 public class SendHtmlMailService {
 

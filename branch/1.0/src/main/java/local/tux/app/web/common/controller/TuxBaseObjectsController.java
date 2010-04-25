@@ -41,7 +41,7 @@ public class TuxBaseObjectsController implements Controller {
 	protected int pageSize = Constants.PAGE_SIZE;
 	protected final String HAS_PERMISSION = "hasPermission";
 	protected UserManager userManager;
-	private ShoppingCartManager shoppingCartManager;
+	protected ShoppingCartManager shoppingCartManager;
 	
 	public void setUserManager(UserManager userManager){
 		this.userManager = userManager;
