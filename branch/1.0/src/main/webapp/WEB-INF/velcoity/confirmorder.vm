@@ -1,0 +1,78 @@
+
+<html>
+	<style>
+	
+	
+	</style>
+	<body>
+		<h1>$title</h1>
+		
+	Hello $shippingAddress.getUser().getFirstname(),
+	
+	$bodyContent
+	
+	
+	<h2>Order Information</h2>
+	
+	<div class="left">
+		<strong>Billing Address: </strong><br />
+		$shippingAddress.getUser().getFirstname() $shippingAddress.getUser().getLastName() <br />
+		$shippingAddress.getUser().getAddress().getAddress() <br />
+		$shippingAddress.getUser().getAddress().getCity(), $shippingAddress.getUser().getAddress().getProvince()<br />
+		$shippingAddress.getUser().getAddress().getCountry() <br />
+		
+	</div>
+	
+	<div>
+		<strong> Shipping Address: </strong><br />
+		$shippingAddress.getFirstname() $shippingAddress.getLastname()<br />
+		$shippingAddress.getAddress().getAddress()<br />
+		$shippingAddress.getAddress().getCity(), $shippingAddress.getAddress.getProvince()<br />
+		$shippingAddress.getAddress().getCountry()<br />
+	</div>
+	
+	<h2>Product</h2>
+	#set( $subtotal = 0)
+	<table>
+		<tr class="heading">
+			<td colspan=2>Product</td>
+			<td> Qty.</td>
+			<td> Price</td>
+			<td>Total</td>
+		</tr>
+		#foreach ( $item in $shippingCart.getItems() )
+		<tr class="item">
+		<td>$item.getProudct().getId()</td>
+		<td>$item.getProduct().getName()</td>
+		<td>$item.getQuantity()</td>
+		<td>
+		#if ($item.getProduct().getSpecial())
+			$item.getProduct().getDiscountPrice()
+		#else
+			$item.getProduct().getPrice()
+		#end
+		</td>
+		<td>
+			#set ( $subtotal = $subtotal + $item.getTotal())
+			$item.getTotal()
+		</td>
+		</tr>
+		#end
+		<tr class="sub">
+			<td colspan=4>
+				Sub Total:
+			</td>
+			<td>
+				$subtotal
+			</td>
+		</tr>
+	</table>
+	
+		
+	
+	
+		
+	</body>
+
+
+</html>

@@ -4,7 +4,30 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
 
 
+	<!--  if your schedule doesn't involve hibernate, you can use the simple job
+		if your schedule need to access the databsae (aka, hibernate) you need to use the 
+		use the complex job 
+	 -->
+	<!--  simple jobs -->
+	<bean id="mailQueue" class="local.tux.app.service.cron.impl.MailService">
+		<property name="sendHtmMailSender" ref="sendHtmlMailSender" />
+		
+	</bean>
 
+	<bean id="mailQueueJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="mailQueue" />
+		<property name="targetMethod" value="execute" />
+		<property name="concurrent" value="false" />
+	</bean>
+	<bean id="mailQueueTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean" >
+		<property name="jobDetail" ref="mailQueue" />
+										   <!-- s m h d M dw  -->
+		<property name="cronExpression" value="0 * * * * ?" />
+	
+	</bean>
+	
+	<!--  complex job -->
+	<!--  end simple jobs -->
 	<bean id="specialPriceChecking"
 		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
 		
@@ -37,11 +60,12 @@
           <property name="cronExpression" value="0 */5 * * * ?"/>
     </bean>
 	
+	<!--  end complex job -->
 	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
                <property name="triggers">
                   <list>
                       <ref bean="specialPriceCheckingTrigger"/>
-                     
+                     <ref bean ="mailQueueTrigger" /> 
                  </list>
          </property>
      </bean> 

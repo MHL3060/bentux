@@ -4,19 +4,20 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import javax.mail.Message;
 import javax.mail.internet.MimeMessage;
-import javax.transaction.Synchronization;
 
-import org.springframework.mail.MailSender;
+import org.quartz.JobExecutionContext;
+import org.quartz.JobExecutionException;
+
+import org.springframework.scheduling.quartz.QuartzJobBean;
 
 import local.tux.SendHtmlMailService;
-import local.tux.app.service.MailManager;
 import local.tux.app.service.cron.TuxCronTask;
 
 public class MailService implements TuxCronTask {
 
 	private SendHtmlMailService sendHtmMailSender;
+	private int timeout;
 	private static List<MimeMessage> mailHolder = new ArrayList<MimeMessage>();
 	public void addMessage(MimeMessage mimeMessage) {
 		synchronized (mailHolder) {
@@ -24,14 +25,13 @@ public class MailService implements TuxCronTask {
 		}
 
 	}
-
-	
 	
 	public void setSendHtmMailSender(SendHtmlMailService sendHtmMailSender) {
 		this.sendHtmMailSender = sendHtmMailSender;
 	}
 
-	public void execute() {
+	public void execute(){
+			
 		
 		synchronized (mailHolder) {
 			for (Iterator<MimeMessage> i =  mailHolder.iterator(); i.hasNext();){
@@ -40,6 +40,7 @@ public class MailService implements TuxCronTask {
 				i.remove();
 			}
 		}
+		
 	}
 
 }
