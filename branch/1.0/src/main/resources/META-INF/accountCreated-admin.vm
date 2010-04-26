@@ -1,0 +1,24 @@
+${message}
+
+To Admin:
+
+New registered account has been created: 
+
+<h3> Account Type </h3>
+Role: $<user.roleList} <br />
+
+<h3> Detail </h3>
+
+Name: ${user.firstname} ${user.lastname} <br />	
+email Address:${user.email} <br />
+Phone Number: ${user.phoneNumber} <br />
+WebSite: ${user.website} <br />
+
+<h3> Address </h3>
+Address: ${address.address} <br />
+City: ${address.city} <br />
+Province: ${address.province} <br />
+Postal Code: ${address.postalCode} <br />
+Country: ${address.country} <br />
+
+To approve, click here.
