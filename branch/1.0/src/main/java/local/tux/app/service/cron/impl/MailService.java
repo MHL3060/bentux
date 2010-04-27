@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.mail.internet.MimeMessage;
 
+import org.quartz.Job;
+import org.quartz.JobDetail;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 
@@ -14,7 +16,7 @@ import org.springframework.scheduling.quartz.QuartzJobBean;
 import local.tux.SendHtmlMailService;
 import local.tux.app.service.cron.TuxCronTask;
 
-public class MailService implements TuxCronTask {
+public class MailService implements TuxCronTask{
 
 	private SendHtmlMailService sendHtmMailSender;
 	private int timeout;
@@ -42,5 +44,6 @@ public class MailService implements TuxCronTask {
 		}
 		
 	}
+
 
 }

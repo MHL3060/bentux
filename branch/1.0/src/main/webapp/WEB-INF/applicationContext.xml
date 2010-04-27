@@ -12,7 +12,10 @@
 	</bean>
 	
 	<bean id="paginatedListFactory" class="local.tux.app.web.table.pagination.PaginateListFactory" />
-	
+	<bean id="sendHtmlMailSender" class="local.tux.SendHtmlMailService">
+		<property name="mailSender" ref="mailSender" />
+		<property name="velocityEngine" ref="velocityEngine" />
+	</bean>
 	
 	<!--  compass -->
 	<bean id="compass" class="org.compass.spring.LocalCompassBean">

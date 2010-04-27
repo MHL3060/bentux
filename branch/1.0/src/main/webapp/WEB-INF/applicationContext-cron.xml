@@ -20,7 +20,7 @@
 		<property name="concurrent" value="false" />
 	</bean>
 	<bean id="mailQueueTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean" >
-		<property name="jobDetail" ref="mailQueue" />
+		<property name="jobDetail" ref="mailQueueJobDetail" />
 										   <!-- s m h d M dw  -->
 		<property name="cronExpression" value="0 * * * * ?" />
 	
