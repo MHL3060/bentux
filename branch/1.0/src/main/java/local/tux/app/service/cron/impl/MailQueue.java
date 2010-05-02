@@ -11,15 +11,16 @@ import org.quartz.JobDetail;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.scheduling.quartz.QuartzJobBean;
 
 import local.tux.SendHtmlMailService;
 import local.tux.app.service.cron.TuxCronTask;
 
-public class MailService implements TuxCronTask{
+public class MailQueue implements TuxCronTask{
 
-	private SendHtmlMailService sendHtmMailSender;
-	private int timeout;
+	private JavaMailSenderImpl mailSender;
 	private static List<MimeMessage> mailHolder = new ArrayList<MimeMessage>();
 	public void addMessage(MimeMessage mimeMessage) {
 		synchronized (mailHolder) {
@@ -28,8 +29,11 @@ public class MailService implements TuxCronTask{
 
 	}
 	
-	public void setSendHtmMailSender(SendHtmlMailService sendHtmMailSender) {
-		this.sendHtmMailSender = sendHtmMailSender;
+	public MimeMessage createMimeMessage(){
+		return mailSender.createMimeMessage();
+	}
+	public void setMailSender(JavaMailSender mailSender) {
+		this.mailSender = (JavaMailSenderImpl) mailSender;
 	}
 
 	public void execute(){
@@ -38,7 +42,7 @@ public class MailService implements TuxCronTask{
 		synchronized (mailHolder) {
 			for (Iterator<MimeMessage> i =  mailHolder.iterator(); i.hasNext();){
 				MimeMessage message = i.next();
-				sendHtmMailSender.sendMimeMessage(message);
+				mailSender.send(message);
 				i.remove();
 			}
 		}

@@ -11,6 +11,8 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
+import local.tux.app.service.cron.impl.MailQueue;
+
 import org.apache.velocity.app.VelocityEngine;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -29,28 +31,30 @@ import org.springframework.ui.velocity.VelocityEngineUtils;
  */
 public class SendHtmlMailService {
 
-	private JavaMailSender mailSender;
+	
 	private VelocityEngine velocityEngine;
+	private MailQueue mailQueue;
 
-	public void setMailSender(JavaMailSender mailSender) {
-		this.mailSender = mailSender;
+
+	public void setMailQueue(MailQueue mailQueue){
+		this.mailQueue = mailQueue;
 	}
-
 	public void setVelocityEngine(VelocityEngine velocityEngine) {
 		this.velocityEngine = velocityEngine;
 	}
 
+	
 	/**
 	 * 
 	 * @param mailMessage
 	 * @param templateName
 	 * @param attachements
 	 * @param model
-	 * @throws MessagingException
+	 * @throws Exception 
 	 */
 	public void sendHtmlMessage(final SimpleMailMessage mailMessage,
 			final String templateName, final Map<String, File> attachements,
-			final Map<String, Object> model) throws MessagingException {
+			final Map<String, Object> model) throws Exception {
 
 		MimeMessagePreparator preparator = new MimeMessagePreparator() {
 			public void prepare(MimeMessage mimeMessage) throws Exception {
@@ -79,17 +83,10 @@ public class SendHtmlMailService {
 				}
 			}
 		};
-
-		((JavaMailSenderImpl) mailSender).send(preparator);
-	}
-
-	public void sendMimeMessage(final MimeMessage mimeMessage) {
-
-		((JavaMailSenderImpl) mailSender).send(mimeMessage);
-	}
-
-	public JavaMailSender getMailSender() {
-		return mailSender;
+		
+		MimeMessage mimeMessage = mailQueue.createMimeMessage();
+		preparator.prepare(mimeMessage);
+		mailQueue.addMessage(mimeMessage);
 	}
 
 }

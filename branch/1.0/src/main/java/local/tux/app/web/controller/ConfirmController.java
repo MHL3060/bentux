@@ -1,6 +1,7 @@
 package local.tux.app.web.controller;
 
 import org.apache.velocity.app.VelocityEngine;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.mail.javamail.MimeMessagePreparator;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import local.tux.Constants;
+import local.tux.SendHtmlMailService;
 import local.tux.Constants.CART_STATUS;
 import local.tux.app.model.ShippingAddress;
 import local.tux.app.model.ShoppingCart;
@@ -35,27 +37,24 @@ public class ConfirmController extends TuxBaseFormController {
 
 	private String submitPage;
 	private String editPage;
-
-	private JavaMailSender mailSender;
-	private VelocityEngine velocityEngine;
 		
 	private ShoppingCartManager shoppingCartManager;
 	private UserManager userManager;
+	private SendHtmlMailService htmlMailService;
+	private String emailTmeplatePath;
 	
-	public void setMailSender(JavaMailSender mailSender) {
-        this.mailSender = mailSender;
-    }
-	public void setVelocityEngine(VelocityEngine velocityEngine) {
-	      this.velocityEngine = velocityEngine;
+	public void setEmailTemplatePath(String emailTmeplatePath){
+		this.emailTmeplatePath = emailTmeplatePath;
 	}
-
 	public void setShoppingCartManager(ShoppingCartManager shoppingCartManager){
 		this.shoppingCartManager = shoppingCartManager;
 	}
 	public void setUserManager(UserManager userManager){
 		this.userManager = userManager;
 	}
-
+	public void setHtmlMailService(SendHtmlMailService mailService){
+		this.htmlMailService = mailService;
+	}
 	public void setSubmitPage(String submitPage){
 		this.submitPage = submitPage;
 	}
@@ -85,17 +84,7 @@ public class ConfirmController extends TuxBaseFormController {
 
 		
 	private void sendConfirmationEmail() {
-		      MimeMessagePreparator preparator = new MimeMessagePreparator() {
-		         public void prepare(MimeMessage mimeMessage) throws Exception {
-		            MimeMessageHelper message = new MimeMessageHelper(mimeMessage);
-		            message.setFrom("order@shopattrinity.com"); // could be parameterized...
-		            Map model = new HashMap();
-		            model.put("title", "avx");
-		            String text = VelocityEngineUtils.mergeTemplateIntoString(
-		               velocityEngine, "secondaryTemplate.vm", model);
-		            message.setText(text, true);
-		         }
-		      };
-		      this.mailSender.send(preparator);
+		  //   htmlMailService.sendHtmlMessage(new SimpleMailMessage(), emailTmeplatePath, new HashMap());
+		     
 	}
 }
