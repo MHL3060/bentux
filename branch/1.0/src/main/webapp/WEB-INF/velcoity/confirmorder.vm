@@ -16,19 +16,19 @@
 	
 	<div class="left">
 		<strong>Billing Address: </strong><br />
-		$shippingAddress.getUser().getFirstname() $shippingAddress.getUser().getLastName() <br />
-		$shippingAddress.getUser().getAddress().getAddress() <br />
-		$shippingAddress.getUser().getAddress().getCity(), $shippingAddress.getUser().getAddress().getProvince()<br />
-		$shippingAddress.getUser().getAddress().getCountry() <br />
+		$cart.getUser().getFirstname() $cart.getUser().getLastName() <br />
+		$cart.getUser().getAddress().getAddress() <br />
+		$cart.getUser().getAddress().getCity(), $cart.getUser().getAddress().getProvince()<br />
+		$cart.getUser().getAddress().getCountry() <br />
 		
 	</div>
 	
 	<div>
 		<strong> Shipping Address: </strong><br />
-		$shippingAddress.getFirstname() $shippingAddress.getLastname()<br />
-		$shippingAddress.getAddress().getAddress()<br />
-		$shippingAddress.getAddress().getCity(), $shippingAddress.getAddress.getProvince()<br />
-		$shippingAddress.getAddress().getCountry()<br />
+		$cart.getFirstname() $cart.getLastname()<br />
+		$cart.getAddress().getAddress()<br />
+		$cart.getAddress().getCity(), $cart.getAddress.getProvince()<br />
+		$cart.getAddress().getCountry()<br />
 	</div>
 	
 	<h2>Product</h2>
@@ -40,7 +40,7 @@
 			<td> Price</td>
 			<td>Total</td>
 		</tr>
-		#foreach ( $item in $shippingCart.getItems() )
+		#foreach ( $item in $cart.getItems() )
 		<tr class="item">
 		<td>$item.getProudct().getId()</td>
 		<td>$item.getProduct().getName()</td>
