@@ -72,8 +72,6 @@ public class SendHtmlMailService {
 				message.setTo(mailMessage.getTo());
 				message.setFrom(mailMessage.getFrom());
 				message.setSubject(mailMessage.getSubject());
-				// for inline image, the order is very important.
-				// so it have to add them at the end.
 				if (hasInLineImage) {
 					Set<String> imageNames = attachements.keySet();
 					for (String imageName : imageNames) {

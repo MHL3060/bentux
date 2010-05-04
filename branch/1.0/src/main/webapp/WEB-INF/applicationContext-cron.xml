@@ -10,7 +10,7 @@
 	 -->
 	<!--  simple jobs -->
 	<bean id="mailQueue" class="local.tux.app.service.cron.impl.MailQueue">
-		<property name="sendHtmMailSender" ref="sendHtmlMailSender" />
+		<property name="mailSender" ref="mailSender" />
 		
 	</bean>
 

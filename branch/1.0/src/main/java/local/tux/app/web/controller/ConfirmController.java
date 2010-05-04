@@ -1,36 +1,27 @@
 package local.tux.app.web.controller;
 
-import org.apache.velocity.app.VelocityEngine;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
-import org.springframework.mail.javamail.MimeMessagePreparator;
-import org.springframework.ui.velocity.VelocityEngineUtils;
 
-import javax.mail.internet.MimeMessage;
+import org.springframework.mail.SimpleMailMessage;
+
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import local.tux.Constants;
 import local.tux.SendHtmlMailService;
 import local.tux.Constants.CART_STATUS;
 import local.tux.app.model.ShippingAddress;
 import local.tux.app.model.ShoppingCart;
-import local.tux.app.model.ShoppingItem;
 import local.tux.app.service.ShoppingCartManager;
 import local.tux.app.web.common.controller.TuxBaseFormController;
 
 
 import org.apache.commons.lang.StringUtils;
-import org.appfuse.model.User;
-import org.apache.commons.lang.StringUtils;
 import org.appfuse.service.UserManager;
-import org.springframework.validation.BindException;
 import org.springframework.web.servlet.ModelAndView;
 
 public class ConfirmController extends TuxBaseFormController {
@@ -52,8 +43,8 @@ public class ConfirmController extends TuxBaseFormController {
 	public void setUserManager(UserManager userManager){
 		this.userManager = userManager;
 	}
-	public void setHtmlMailService(SendHtmlMailService mailService){
-		this.htmlMailService = mailService;
+	public void setHtmlMailService(SendHtmlMailService htmlMailService){
+		this.htmlMailService = htmlMailService;
 	}
 	public void setSubmitPage(String submitPage){
 		this.submitPage = submitPage;
@@ -68,6 +59,11 @@ public class ConfirmController extends TuxBaseFormController {
 		ModelAndView mav;
 		if (StringUtils.isBlank(request.getParameter("submit")) == false){
 			mav = new ModelAndView(submitPage);
+			Map velocityParams = new HashMap();
+			ShoppingCart cart = shoppingCartManager.getOpenCart(userManager.getUserByUsername(request.getRemoteUser()));
+			cart.setStatus(CART_STATUS.SUBMITTED);
+			shoppingCartManager.save(cart);
+			sendConfirmationEmail(request.getLocale(), cart);
 			return mav;
 		}else if (StringUtils.isBlank(request.getParameter("edit"))== false){
 			mav = new ModelAndView(editPage);
@@ -83,8 +79,15 @@ public class ConfirmController extends TuxBaseFormController {
 	}
 
 		
-	private void sendConfirmationEmail() {
-		  //   htmlMailService.sendHtmlMessage(new SimpleMailMessage(), emailTmeplatePath, new HashMap());
+	private void sendConfirmationEmail(Locale locale, ShoppingCart cart) throws Exception {
+		Map velocityparams = new HashMap();
+		velocityparams.put("cart", cart);
+		SimpleMailMessage mailMessage = new SimpleMailMessage();
+		mailMessage.setTo(cart.getUser().getEmail());
+		
+		mailMessage.setFrom("automation@shopattrinity.com");
+		mailMessage.setSubject(getText("email.subject", locale));
+		htmlMailService.sendHtmlMessage(mailMessage, emailTmeplatePath,null, velocityparams);
 		     
 	}
 }

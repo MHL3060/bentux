@@ -13,7 +13,7 @@
 	
 	<bean id="paginatedListFactory" class="local.tux.app.web.table.pagination.PaginateListFactory" />
 	<bean id="sendHtmlMailSender" class="local.tux.SendHtmlMailService">
-		<property name="mailSender" ref="mailSender" />
+		<property name="mailQueue" ref="mailQueue" />
 		<property name="velocityEngine" ref="velocityEngine" />
 	</bean>
 	

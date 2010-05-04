@@ -37,8 +37,6 @@ public class MailQueue implements TuxCronTask{
 	}
 
 	public void execute(){
-			
-		
 		synchronized (mailHolder) {
 			for (Iterator<MimeMessage> i =  mailHolder.iterator(); i.hasNext();){
 				MimeMessage message = i.next();
