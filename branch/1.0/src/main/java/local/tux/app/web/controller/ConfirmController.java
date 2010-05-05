@@ -34,9 +34,6 @@ public class ConfirmController extends TuxBaseFormController {
 	private SendHtmlMailService htmlMailService;
 	private String emailTmeplatePath;
 	
-	public void setEmailTemplatePath(String emailTmeplatePath){
-		this.emailTmeplatePath = emailTmeplatePath;
-	}
 	public void setShoppingCartManager(ShoppingCartManager shoppingCartManager){
 		this.shoppingCartManager = shoppingCartManager;
 	}
@@ -55,7 +52,7 @@ public class ConfirmController extends TuxBaseFormController {
 
 	public ModelAndView handleRequest(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-
+		
 		ModelAndView mav;
 		if (StringUtils.isBlank(request.getParameter("submit")) == false){
 			mav = new ModelAndView(submitPage);
@@ -98,7 +95,7 @@ public class ConfirmController extends TuxBaseFormController {
 		
 		mailMessage.setFrom("automation@shopattrinity.com");
 		mailMessage.setSubject(getText("email.subject", locale));
-		htmlMailService.sendHtmlMessage(mailMessage, emailTmeplatePath,null, velocityparams);
+		htmlMailService.sendHtmlMessage(mailMessage, templateName,null, velocityparams);
 		     
 	}
 }

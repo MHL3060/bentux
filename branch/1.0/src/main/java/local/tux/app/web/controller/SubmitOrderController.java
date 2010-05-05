@@ -26,9 +26,9 @@ public class SubmitOrderController extends TuxBaseObjectsController {
 			throw new Exception("user is not found in  the system");
 		}
 		User user = userManager.getUserByUsername(request.getRemoteUser());
-		ShoppingCart cart = shoppingCartManager.getOpenCart(user);
-		cart.setStatus(CART_STATUS.SUBMITTED);
-		shoppingCartManager.save(cart);
+		//ShoppingCart cart = shoppingCartManager.getOpenCart(user);
+		//cart.setStatus(CART_STATUS.SUBMITTED);
+		//shoppingCartManager.save(cart);
 		
 		return new ModelAndView();
 		
