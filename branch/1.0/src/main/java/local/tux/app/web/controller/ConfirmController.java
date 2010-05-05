@@ -61,9 +61,13 @@ public class ConfirmController extends TuxBaseFormController {
 			mav = new ModelAndView(submitPage);
 			Map velocityParams = new HashMap();
 			ShoppingCart cart = shoppingCartManager.getOpenCart(userManager.getUserByUsername(request.getRemoteUser()));
-			cart.setStatus(CART_STATUS.SUBMITTED);
-			shoppingCartManager.save(cart);
-			sendConfirmationEmail(request.getLocale(), cart);
+			if (cart != null){
+				sendConfirmationEmail(request.getLocale(), cart);
+				cart.setStatus(CART_STATUS.SUBMITTED);
+				shoppingCartManager.save(cart);
+				
+			}
+			
 			return mav;
 		}else if (StringUtils.isBlank(request.getParameter("edit"))== false){
 			mav = new ModelAndView(editPage);
