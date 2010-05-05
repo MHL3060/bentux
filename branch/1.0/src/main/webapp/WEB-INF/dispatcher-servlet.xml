@@ -247,7 +247,7 @@
     	<property name="userManager" ref="userManager" />
     	<property name="submitPage" value="redirect:submitorder.html" />
     	<property name="editPage" value="redirect:cart.html" />
-    	<property name=""templateName" value="velocity/confirmorder.vm" />
+    	<property name="templateName" value="velocity/confirmorder.vm" />
     </bean>
     <bean id="submitOrderController" class="local.tux.app.web.controller.SubmitOrderController">
     	<property name="shoppingCartManager" ref="shoppingCartManager" />

@@ -65,7 +65,10 @@ public class ConfirmController extends TuxBaseFormController {
 				sendConfirmationEmail(request.getLocale(), cart);
 				cart.setStatus(CART_STATUS.SUBMITTED);
 				shoppingCartManager.save(cart);
+			
 				
+			}else {
+				mav.addObject("emptyCart", Boolean.TRUE );
 			}
 			
 			return mav;
@@ -75,9 +78,13 @@ public class ConfirmController extends TuxBaseFormController {
 		}else {
 			mav = new ModelAndView();
 			ShoppingCart cart = shoppingCartManager.getOpenCart(userManager.getUserByUsername(request.getRemoteUser()));
-			ShippingAddress address = (ShippingAddress) request.getSession().getAttribute(Constants.ADDRESS_SESSION);
-			mav.addObject("cartItems", cart.getShoppingItems());
-			mav.addObject("shippingAddress", address);
+			if (cart != null){
+				ShippingAddress address = (ShippingAddress) request.getSession().getAttribute(Constants.ADDRESS_SESSION);
+				mav.addObject("cartItems", cart.getShoppingItems());
+				mav.addObject("shippingAddress", address);
+			}else {
+				mav.addObject("emptyCart", Boolean.TRUE );
+			}
 			return mav;
 		}
 	}
