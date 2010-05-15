@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -36,13 +37,17 @@ import org.springframework.security.providers.UsernamePasswordAuthenticationToke
 import org.springframework.validation.BindException;
 import org.springframework.web.servlet.ModelAndView;
 
-public class SignUpHandleController extends SignupController{
+import com.octo.captcha.service.multitype.MultiTypeCaptchaService;
+
+public class SignUpController extends SignupController{
 	  
 	 private SendHtmlMailService htmlMailService;
 	private RoleManager roleManager;
-	private String adminEmail;
+	private String adminEmail = "benli3060@gmail.com";
+	private MultiTypeCaptchaService captchaService;
+	private String adminEmailTemplate;
      
-	 public SignUpHandleController(){
+	 public SignUpController(){
 		 super();
 	 }
 	 public void setHtmlMailService(SendHtmlMailService htmlMailService){
@@ -55,12 +60,28 @@ public class SignUpHandleController extends SignupController{
 	 public void setAdminEmail(String adminEmail){
 		 this.adminEmail = adminEmail;
 	 }
+	 public void setCaptchaService(MultiTypeCaptchaService captchaService) {
+			this.captchaService = captchaService;
+	 }
+	 public void setAdminEmailTemplate(String adminEmailTemplate){
+		 this.adminEmailTemplate = adminEmailTemplate;
+	 }
 	 public ModelAndView onSubmit(HttpServletRequest request, HttpServletResponse response, 
 				Object command, BindException error) throws Exception {
 			 	
 		User user = (User)command;
 		Locale locale = request.getLocale();
 		
+		//first test for captcha first
+		String sessionId = request.getSession().getId();
+		String userCaptcha = request.getParameter("captcha");
+		
+		if (captchaService.validateResponseForID(sessionId, userCaptcha).booleanValue() == false ){
+			error.rejectValue("capcha", "Captcha value doesn't match");
+			return showForm(request,response, error);
+		}
+		
+		log.debug(userCaptcha);
 		user.setEnabled(false);
 		user.addRole(roleManager.getRole(org.appfuse.Constants.USER_ROLE));
 		try {
@@ -74,15 +95,11 @@ public class SignUpHandleController extends SignupController{
 			return showForm(request, response, error);
 		}
 		saveMessage(request, getText("user.registered", user.getUsername(), locale));
-		//request.getSession().setAttribute(org.appfuse.Constants.REGISTERED, Boolean.TRUE);
-		
-		UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(user.getUsername(), user.getConfirmPassword(), user.getAuthorities());
-		
-		auth.setDetails(user);
-		SecurityContextHolder.getContext().setAuthentication(auth);
 		
 		message.setSubject(getText("signup.email.subject", locale));
-		message.setTo(adminEmail);
+		
+		sendAdminMessage(user, locale);
+		
 		try {
 			sendUserMessage(user, getText("signup.email.message", locale), RequestUtil.getAppURL(request));
 		} catch (MailException me) {
@@ -91,7 +108,28 @@ public class SignUpHandleController extends SignupController{
 		return new ModelAndView(getSuccessView());
 	 }
 
-     private void sendConfirmationEmail(Locale locale, UserManager cart) throws Exception {
+     private void sendAdminMessage(User user, Locale  locale) {
+		
+    	SimpleMailMessage adminMessage = new SimpleMailMessage();
+		adminMessage.setTo(adminEmail);
+		adminMessage.setFrom(getText("from.email", locale));
+		adminMessage.setSubject(getText("user.send.request.to.reqister", locale ));
+		Map model = new HashMap();
+		model.put("user", user);
+		
+		try {
+			htmlMailService.sendHtmlMessage(adminMessage, adminEmailTemplate, null, model);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+		
+	}
+	private void sendConfirmationEmail(Locale locale, UserManager cart) throws Exception {
              Map velocityparams = new HashMap();
              SimpleMailMessage mailMessage = new SimpleMailMessage();
            
