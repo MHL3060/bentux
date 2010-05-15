@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 import local.tux.PasswordGenerator;
 import local.tux.SendHtmlMailService;
 
+import org.apache.commons.lang.StringUtils;
 import org.appfuse.model.User;
+import org.appfuse.service.GenericManager;
 import org.appfuse.webapp.controller.UserFormController;
 
 import org.springframework.mail.SimpleMailMessage;
@@ -27,6 +29,7 @@ public class UserformController extends UserFormController {
 	private SendHtmlMailService htmlMailService;
 
 	private String passwordEmailTemplate;
+	private GenericManager<User, Long> nonVersionUserManager;
 	
 	public void setHtmlMailService(SendHtmlMailService htmlMailService){
 		this.htmlMailService = htmlMailService;
@@ -34,14 +37,19 @@ public class UserformController extends UserFormController {
 	public void setPasswordEmailTemplate(String passwordEmailTemplate){
 		this.passwordEmailTemplate = passwordEmailTemplate;
 	}
-	public ModelAndView OnSubmit(HttpServletRequest request, HttpServletResponse response, 
+	public void setNonVersionUserManager(GenericManager<User, Long> nonVersionUserManager){
+		this.nonVersionUserManager = nonVersionUserManager;
+	}
+	public ModelAndView onSubmit(HttpServletRequest request, HttpServletResponse response, 
 			Object command, BindException error)throws Exception {
 		
 		ModelAndView mav;
 		User user = (User)command;
-		User persistedUser = getUserManager().getUserByUsername(user.getUsername());
+		Long userId = user.getId();
 		
-		if (user.isEnabled() && persistedUser.isEnabled() == false){
+		User persistedUser = nonVersionUserManager.get(userId);
+		
+		if (user.isEnabled()){
 			String password = PasswordGenerator.get(passwordLength);
 			user.setPassword(password);
 			user.setConfirmPassword(password);
@@ -50,6 +58,14 @@ public class UserformController extends UserFormController {
 		mav = super.onSubmit(request, response, user, error);
 		
 		return mav;
+	}
+	
+	public ModelAndView processFormSubmission(HttpServletRequest request, HttpServletResponse response, 
+			Object command, BindException errors) throws Exception {
+		
+		log.info("submitting form");
+		
+		return super.processFormSubmission(request, response, command, errors);
 	}
 	private void sendPasswordEmail(User user , Locale locale) throws Exception {
 		SimpleMailMessage message = new SimpleMailMessage();

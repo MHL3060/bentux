@@ -175,4 +175,12 @@
    		<constructor-arg ref="subscriptionDao" />
    </bean>
   
+   <bean id="nonVersionUserManager" class="local.tux.app.service.impl.LookUpNameGenericManagerImpl">
+   		<constructor-arg>
+   			<bean class="local.tux.app.dao.hibernate.TuxNameGenericDaoHibernate">
+   				<constructor-arg value="org.appfuse.model.User" />
+				<property name="sessionFactory" ref="sessionFactory" />
+   			</bean>
+   		</constructor-arg>
+   </bean>
 </beans>
