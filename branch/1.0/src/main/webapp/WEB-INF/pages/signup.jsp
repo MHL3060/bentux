@@ -93,7 +93,10 @@
         	<div class="left">        
     
        		<li>
-			<img src="<c:url value="/captcha.html" />" />
+				<img src="<c:url value="/captcha.html" />" />
+			</li>
+			<li>
+				<input type="text" name="captcha" />
 			</li>
 		
 	

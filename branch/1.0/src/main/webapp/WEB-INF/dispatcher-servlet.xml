@@ -30,7 +30,7 @@
 
     <bean id="reloadController" class="org.appfuse.webapp.controller.ReloadController"/>
 
-    <bean id="signupController" class="org.appfuse.webapp.controller.SignupController">
+    <bean id="signupController" class="local.tux.app.web.controller.SignUpController">
         <property name="validator" ref="beanValidator"/>
         <property name="formView" value="signup"/>
         <property name="successView" value="redirect:mainMenu.html"/>
@@ -38,6 +38,10 @@
         <property name="roleManager" ref="roleManager"/>
         <property name="mailEngine" ref="mailEngine"/>
         <property name="message" ref="mailMessage"/>
+        <property name="htmlMailService" ref="sendHtmlMailSender" />
+        <property name="captchaService" ref="captchaService"/>
+        <property name="adminEmail" value="benli3060@gmail.com" />
+        <property name="adminEmailTemplate" value="velocity/accountcreatedadmin.vm" />
         <property name="templateName" value="accountCreated.vm"/>
     </bean>
 
