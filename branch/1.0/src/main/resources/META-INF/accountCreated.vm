@@ -1,6 +1,9 @@
 ${message}
 
 Username: ${user.username}
-Password: ${user.confirmPassword}
+
+Please be patient as our Management team will verify your information and will send you the login credential information.
+
+Thanks,
 
 Login at: ${applicationURL}
