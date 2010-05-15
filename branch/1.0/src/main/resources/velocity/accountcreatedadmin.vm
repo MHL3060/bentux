@@ -1,0 +1,16 @@
+<html>
+<body>
+Hi, <br />
+
+some one have send a request to open an account. <br />
+
+Please goto the website to enable or delete this user. <br />
+
+User Information <br />
+
+$user.getFirstName() $user.getLastName() <br/>
+$user.getAddress().getAddress() <br />
+$user.getPhoneNumber()<br />
+
+Thanks, <br />
+
