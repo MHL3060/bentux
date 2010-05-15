@@ -168,5 +168,13 @@
       		<arg0 key="product.name" />
       	</field>
       </form> 
+      <form name="subscription">
+      	<field property="phoneNumber" depends="required">
+      		<arg0 key="subscription.phoneNumber" />
+      	</field>
+      	<field property="email" depends="required">
+      		<arg0 key="subscription.email" />
+      	</field>
+      </form>
   </formset>
 </form-validation>
