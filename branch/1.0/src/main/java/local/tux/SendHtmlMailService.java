@@ -39,6 +39,9 @@ public class SendHtmlMailService {
 	public void setMailQueue(MailQueue mailQueue){
 		this.mailQueue = mailQueue;
 	}
+	public MailQueue getMailQueue(){
+		return mailQueue;
+	}
 	public void setVelocityEngine(VelocityEngine velocityEngine) {
 		this.velocityEngine = velocityEngine;
 	}
