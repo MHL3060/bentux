@@ -90,17 +90,17 @@
                 <p><appfuse:label key="user.address.country"/></p>
             </div>
     </li>
-        	<div class="left">        
+        	       
     
-       		<li>
-				<img src="<c:url value="/captcha.html" />" />
-			</li>
-			<li>
-				<input type="text" name="captcha" />
-			</li>
+     <li>
+		<img src="<c:url value="/captcha.html" />" />
+	</li>
+	<li>
+		<input type="text" name="captcha" />
+	</li>
 		
 	
-			</div>
+			
     <li class="buttonBar bottom">
         <input type="submit" class="button" name="save" onclick="bCancel=false" value="<fmt:message key="button.register"/>"/>
         <input type="submit" class="button" name="cancel" onclick="bCancel=true" value="<fmt:message key="button.cancel"/>"/>

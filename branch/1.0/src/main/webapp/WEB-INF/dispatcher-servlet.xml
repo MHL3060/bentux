@@ -45,15 +45,6 @@
         <property name="templateName" value="accountCreated.vm"/>
     </bean>
 
- 	<bean id="signUpHandleController" class="org.appfuse.webapp.controller.SignUpHandleController">
-        <property name="validator" ref="beanValidator"/>
-        <property name="formView" value="signup"/>
-        <property name="userManager" ref="userManager"/>
-        <property name="roleManager" ref="roleManager"/>
-        <property name="mailEngine" ref="mailEngine"/>
-        <property name="message" ref="mailMessage"/>
-        <property name="captchaService" ref="captchaService" />
-    </bean>
 
     <bean id="userController" class="org.appfuse.webapp.controller.UserController">
         <property name="userManager" ref="userManager"/>
