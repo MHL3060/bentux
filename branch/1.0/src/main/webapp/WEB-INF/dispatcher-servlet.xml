@@ -60,8 +60,8 @@
         <property name="message" ref="mailMessage"/>
         <property name="passwordEmailTemplate" value="velocity/userpassword.vm" />
         <property name="htmlMailService" ref="sendHtmlMailSender" />
+        <property name="passWordEncoder" ref="passwordEncoder" />
         <property name="templateName" value="accountCreated.vm"/>
-        <property name="nonVersionUserManager" ref="nonVersionUserManager" />
     </bean>
 
     <!-- Add additional controller beans here -->

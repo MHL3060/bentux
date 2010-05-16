@@ -11,11 +11,13 @@ import local.tux.PasswordGenerator;
 import local.tux.SendHtmlMailService;
 
 import org.apache.commons.lang.StringUtils;
+import org.appfuse.Constants;
 import org.appfuse.model.User;
 import org.appfuse.service.GenericManager;
 import org.appfuse.webapp.controller.UserFormController;
 
 import org.springframework.mail.SimpleMailMessage;
+import org.springframework.security.providers.encoding.PasswordEncoder;
 import org.springframework.validation.BindException;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -29,7 +31,7 @@ public class UserformController extends UserFormController {
 	private SendHtmlMailService htmlMailService;
 
 	private String passwordEmailTemplate;
-	private GenericManager<User, Long> nonVersionUserManager;
+	private PasswordEncoder passwordEncoder;
 	
 	public void setHtmlMailService(SendHtmlMailService htmlMailService){
 		this.htmlMailService = htmlMailService;
@@ -37,24 +39,25 @@ public class UserformController extends UserFormController {
 	public void setPasswordEmailTemplate(String passwordEmailTemplate){
 		this.passwordEmailTemplate = passwordEmailTemplate;
 	}
-	public void setNonVersionUserManager(GenericManager<User, Long> nonVersionUserManager){
-		this.nonVersionUserManager = nonVersionUserManager;
+	public void setPassWordEncoder(PasswordEncoder passwordEncoder){
+		this.passwordEncoder = passwordEncoder;
 	}
 	public ModelAndView onSubmit(HttpServletRequest request, HttpServletResponse response, 
 			Object command, BindException error)throws Exception {
 		
 		ModelAndView mav;
 		User user = (User)command;
-		Long userId = user.getId();
 		
-		User persistedUser = nonVersionUserManager.get(userId);
-		
-		if (user.isEnabled()){
+		if (! user.getUsername().equals(request.getRemoteUser()) && request.isUserInRole(Constants.ADMIN_ROLE) && 
+					user.isEnabled() && isAdd(request) == false){
+			
 			String password = PasswordGenerator.get(passwordLength);
 			user.setPassword(password);
 			user.setConfirmPassword(password);
-			sendPasswordEmail(user, request.getLocale());	
+			sendPasswordEmail(user, request.getLocale());
+			user.setPassword(passwordEncoder.encodePassword(user.getPassword(), null));	
 		}
+		//
 		mav = super.onSubmit(request, response, user, error);
 		
 		return mav;
