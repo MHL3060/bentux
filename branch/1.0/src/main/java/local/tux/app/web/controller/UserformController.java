@@ -63,13 +63,6 @@ public class UserformController extends UserFormController {
 		return mav;
 	}
 	
-	public ModelAndView processFormSubmission(HttpServletRequest request, HttpServletResponse response, 
-			Object command, BindException errors) throws Exception {
-		
-		log.info("submitting form");
-		
-		return super.processFormSubmission(request, response, command, errors);
-	}
 	private void sendPasswordEmail(User user , Locale locale) throws Exception {
 		SimpleMailMessage message = new SimpleMailMessage();
 		message.setSubject(getText("user.password", locale));
