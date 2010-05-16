@@ -92,9 +92,8 @@ public class ConfirmController extends TuxBaseFormController {
 		velocityparams.put("cart", cart);
 		SimpleMailMessage mailMessage = new SimpleMailMessage();
 		mailMessage.setTo(cart.getUser().getEmail());
-		
 		mailMessage.setFrom("automation@shopattrinity.com");
-		mailMessage.setSubject(getText("email.subject", locale));
+		mailMessage.setSubject(getText("cart.email.subject", locale));
 		htmlMailService.sendHtmlMessage(mailMessage, templateName,null, velocityparams);
 		     
 	}
