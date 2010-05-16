@@ -175,6 +175,7 @@
       	<field property="email" depends="required">
       		<arg0 key="subscription.email" />
       	</field>
+
       </form>
   </formset>
 </form-validation>
