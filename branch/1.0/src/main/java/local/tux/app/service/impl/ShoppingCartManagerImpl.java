@@ -93,5 +93,8 @@ public class ShoppingCartManagerImpl extends
 		
 		
 	}
+	public List<ShoppingCart> getCartByStatus(CART_STATUS status) {
+		return shoppingCartDao.getShoppingCarts(null, status);
+	}
 	
 }

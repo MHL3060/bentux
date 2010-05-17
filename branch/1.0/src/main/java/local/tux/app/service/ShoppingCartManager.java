@@ -22,6 +22,7 @@ public interface ShoppingCartManager extends LookUpNameGenericManager<ShoppingCa
 	public Double getSubTotal(ShoppingCart cart);
 	public List<ShoppingCart> getShoppingCarts(User user, CART_STATUS status);
 	
+	public List<ShoppingCart> getCartByStatus(CART_STATUS status);
 	
 	
 }

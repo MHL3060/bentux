@@ -110,8 +110,10 @@ public class ShoppingCartDaoHibernate extends TuxNameGenericDaoHibernate<Shoppin
 	public List<ShoppingCart> getShoppingCarts(User user, CART_STATUS status){
 		
 		DetachedCriteria criteria = DetachedCriteria.forClass(ShoppingCart.class);
-		criteria.add(Restrictions.eq("user", user))
-				.add(Restrictions.eq("status",status));
+		if (user != null){
+			criteria.add(Restrictions.eq("user", user));
+		}
+			criteria.add(Restrictions.eq("status",status));
 		
 		List<ShoppingCart> carts = getHibernateTemplate().findByCriteria(criteria);
 		return carts;
