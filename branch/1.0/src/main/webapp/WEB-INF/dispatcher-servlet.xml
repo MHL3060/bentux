@@ -268,5 +268,11 @@
     <bean id="captchaController" class="local.tux.app.web.common.controller.CaptchaController">
         <property name="captchaService" ref="captchaService" />
     </bean>
-    
+   
+    <bean id="orderController" class="local.tux.app.web.controller.OrderController">
+    	<property name="paginatedListFactory" ref="paginatedListFactory" />
+        <property name="pagingLookupManager" ref="pagingLookupManager" />
+        <property name="size" value="25" />
+        <property name="userManager" ref="userManager" />
+    </bean> 
 </beans>
