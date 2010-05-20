@@ -32,6 +32,7 @@ function autoField(node){
 </c:set>
 <form:form commandName="shippingAddress" >
 	<form:hidden path="id"/>
+	<form:hidden path="user.id" />
 	<ul>
 	
 		<li>

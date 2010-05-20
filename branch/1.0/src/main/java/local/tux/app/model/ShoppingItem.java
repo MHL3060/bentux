@@ -89,7 +89,32 @@ public class ShoppingItem extends TuxBaseObject{
 	}
 
 	public Double getTotal() {
-		return total;
+		Double normalPrice = quantity * product.getPrice();
+		if (total == null){
+			if (product.getSpecial()== Boolean.TRUE){
+				Double discountPrice = null;
+				Double percentagePrice = null;
+				if (product.getDiscountPrice() != null){
+					discountPrice = quantity * product.getDiscountPrice();
+				}
+				if (product.getDiscountPercentage() != null){
+					percentagePrice = normalPrice * product.getDiscountPercentage();
+				}
+				if (discountPrice != null && percentagePrice != null){
+					return (discountPrice > percentagePrice ? percentagePrice : discountPrice);
+				}else if (discountPrice != null) {
+					return discountPrice;
+				}else if (percentagePrice != null){
+					return percentagePrice;
+				}else {
+					return normalPrice;
+				}
+			}else {
+				return normalPrice;
+			}
+		}else {
+			return total;
+		}
 	}
 
 	public void setTotal(Double total) {

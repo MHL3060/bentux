@@ -237,6 +237,7 @@
         <property name="lookUpManager" ref="customerAddressManager" />
         <property name="commandClass" value="local.tux.app.model.ShippingAddress" />
         <property name="commandName" value="shippingAddress" />
+        <property name="shoppingCartManager" ref="shoppingCartManager" />
         <property name="userManager" ref="userManager" />
         <property name="nextPage" value="redirect:confirm.html" />
         <property name="cancelView"     value="redirect:cart.html" />

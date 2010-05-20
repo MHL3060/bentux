@@ -16,6 +16,8 @@ import local.tux.SendHtmlMailService;
 import local.tux.Constants.CART_STATUS;
 import local.tux.app.model.ShippingAddress;
 import local.tux.app.model.ShoppingCart;
+import local.tux.app.model.ShoppingItem;
+import local.tux.app.service.LookUpNameGenericManager;
 import local.tux.app.service.ShoppingCartManager;
 import local.tux.app.web.common.controller.TuxBaseFormController;
 
@@ -33,6 +35,7 @@ public class ConfirmController extends TuxBaseFormController {
 	private UserManager userManager;
 	private SendHtmlMailService htmlMailService;
 	private String emailTmeplatePath;
+	private LookUpNameGenericManager<ShippingAddress, Long> shippingAddressManager;
 	
 	public void setShoppingCartManager(ShoppingCartManager shoppingCartManager){
 		this.shoppingCartManager = shoppingCartManager;
@@ -49,6 +52,9 @@ public class ConfirmController extends TuxBaseFormController {
 	public void setEditPage(String editPage){
 		this.editPage = editPage;
 	}
+	public void setShippingAddressManager(LookUpNameGenericManager<ShippingAddress, Long> shippingAddressManager){
+		this.shippingAddressManager = shippingAddressManager;
+	}
 
 	public ModelAndView handleRequest(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
@@ -59,7 +65,8 @@ public class ConfirmController extends TuxBaseFormController {
 			Map velocityParams = new HashMap();
 			ShoppingCart cart = shoppingCartManager.getOpenCart(userManager.getUserByUsername(request.getRemoteUser()));
 			if (cart != null){
-				sendConfirmationEmail(request.getLocale(), cart);
+				
+				sendConfirmationEmail(request.getLocale(), cart, cart.getShippingAddress());
 				cart.setStatus(CART_STATUS.SUBMITTED);
 				shoppingCartManager.save(cart);
 			
@@ -76,9 +83,9 @@ public class ConfirmController extends TuxBaseFormController {
 			mav = new ModelAndView();
 			ShoppingCart cart = shoppingCartManager.getOpenCart(userManager.getUserByUsername(request.getRemoteUser()));
 			if (cart != null){
-				ShippingAddress address = (ShippingAddress) request.getSession().getAttribute(Constants.ADDRESS_SESSION);
+				
 				mav.addObject("cartItems", cart.getShoppingItems());
-				mav.addObject("shippingAddress", address);
+				mav.addObject("cart", cart);
 			}else {
 				mav.addObject("emptyCart", Boolean.TRUE );
 			}
@@ -87,9 +94,18 @@ public class ConfirmController extends TuxBaseFormController {
 	}
 
 		
-	private void sendConfirmationEmail(Locale locale, ShoppingCart cart) throws Exception {
+	private void sendConfirmationEmail(Locale locale, ShoppingCart cart, ShippingAddress address) throws Exception {
 		Map velocityparams = new HashMap();
 		velocityparams.put("cart", cart);
+		velocityparams.put("address", address);
+		velocityparams.put("title", getText("order.title", locale));
+		velocityparams.put("bodyContent", getText("body.content", locale));
+		
+		double total = 0;
+		for (ShoppingItem item : cart.getShoppingItems()){
+			total += item.getTotal();
+		}
+		velocityparams.put("subTotal", total);
 		SimpleMailMessage mailMessage = new SimpleMailMessage();
 		mailMessage.setTo(cart.getUser().getEmail());
 		mailMessage.setFrom("automation@shopattrinity.com");

@@ -13,30 +13,31 @@
 	<c:otherwise>
 
 
-
-		<div class="group">
+	<ul>
+		<li>
+		<div class="left">
 			<label class="desc"><fmt:message key="user.billing.address"/></label>
 			<div class="left">${shippingAddress.user.firstName }</div>	
-			<div>${shippingAddress.user.lastName }</div>
-			<div>${shippingAddress.user.address.address }</div>
-			<div class="left">${shippingAddress.user.address.city }</div>
-			<div>${shippingAddress.user.address.province }</div>
-			<div class="left">${shippingAddress.user.address.postalCode }</div>
-			<div>${shippingAddress.user.address.country }</div>
+			<div>${cart.user.lastName }</div>
+			<div>${cart.user.address.address }</div>
+			<div class="left">${cart.user.address.city }</div>
+			<div>${cart.user.address.province }</div>
+			<div class="left">${cart.user.address.postalCode }</div>
+			<div>${cart.user.address.country }</div>
 		</div>
 		
 		<div>
 			<label class="desc"><fmt:message key="user.shipping.address"/></label>
-			<div class="left">${shippingAddress.firstName }</div>	
-			<div>${shippingAddress.lastName }</div>
-			<div>${shippingAddress.address.address }</div>
-			<div class="left">${shippingAddress.address.city }</div>
-			<div>${shippingAddress.address.province }</div>
-			<div class="left">${shippingAddress.address.postalCode }</div>
-			<div>${shippingAddress.address.country }</div>
+			<div class="left">${cart.shippingAddress.firstName }</div>	
+			<div>${cart.shippingAddress.lastName }</div>
+			<div>${cart.shippingAddress.address.address }</div>
+			<div class="left">${cart.shippingAddress.address.city }</div>
+			<div>${cart.shippingAddress.address.province }</div>
+			<div class="left">${cart.shippingAddress.address.postalCode }</div>
+			<div>${cart.shippingAddress.address.country }</div>
 		</div>
-		
-		
+		</li>
+	</ul>
 		<form:form commandName="confirmItem" >
 		<c:set var="buttons" >
 		    <li class="buttonBar bottom">

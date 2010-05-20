@@ -52,18 +52,23 @@ public class ShoppingCart extends TuxBaseObject implements UserReference {
 	@Column(name="tracking_code")
 	private String trackingCode;
 	
-	@Column(name="shipping_instructions")
+	@Column(name="shipping_instruction")
 	private String shippingInstruction;
 	
 	@Enumerated(EnumType.ORDINAL)
 	@Column(name="shipping_type")
 	private ShippingType shippingType;
 	
+	@ManyToOne
+	@JoinColumn(name="shipping_address_id")
+	private ShippingAddress shippingAddress;
+	
 	@Override
 	public Long getId() {
 		return id;
 	}
 
+	
 	@Override
 	public void setId(Long id) {
 		this.id = id;
@@ -127,6 +132,17 @@ public class ShoppingCart extends TuxBaseObject implements UserReference {
 	public void setShippingType(ShippingType shippingType) {
 		this.shippingType = shippingType;
 	}
+
+	
+	public ShippingAddress getShippingAddress() {
+		return shippingAddress;
+	}
+
+
+	public void setShippingAddress(ShippingAddress shippingAddress) {
+		this.shippingAddress = shippingAddress;
+	}
+
 
 	@Override
 	public int hashCode() {

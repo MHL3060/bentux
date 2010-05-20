@@ -1,5 +1,6 @@
 package local.tux.app.web.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,28 +19,28 @@ import org.springframework.web.servlet.ModelAndView;
 import local.tux.Constants;
 import local.tux.HibernateUtil;
 import local.tux.app.model.ShippingAddress;
+import local.tux.app.model.ShoppingCart;
+import local.tux.app.service.ShoppingCartManager;
 import local.tux.app.service.UserReferenceObjectManager;
 import local.tux.app.web.common.controller.TuxBaseFormController;
 
 public class AddressFormController extends TuxBaseFormController {
 
 	private String nextPage;
+	private ShoppingCartManager shoppingCartManager;
 	
 	
 	public void setNextPage(String nextPage){
 		this.nextPage = nextPage;
 	}
-	
+	public void setShoppingCartManager(ShoppingCartManager shoppingCartManager){
+		this.shoppingCartManager = shoppingCartManager;
+	}
 	
 	protected Object formBackingObject(HttpServletRequest request) throws Exception {
+		User user = getUserManager().getUserByUsername(request.getRemoteUser());
 		ShippingAddress shippingAddress = (ShippingAddress) super.formBackingObject(request);
-		if(StringUtils.isBlank(request.getParameter("id")) == false){
-			shippingAddress =  (ShippingAddress) lookUpManager.get(new Long(request.getParameter("id")));
-		}else if (StringUtils.isBlank(request.getRemoteUser())== false ) {
-			shippingAddress.setUser(getUserManager().getUserByUsername(request.getRemoteUser()));
-		}else {
-			shippingAddress.setUser(new User());
-		}
+		shippingAddress.setUser(user);
 		return shippingAddress;
 	}
 	
@@ -48,41 +49,32 @@ public class AddressFormController extends TuxBaseFormController {
 			Errors error) throws Exception {
 		Map map = new HashMap();
 		User user = getUserManager().getUserByUsername(request.getRemoteUser());
-		List<ShippingAddress> addresses = ((UserReferenceObjectManager)lookUpManager).getObjectsByUser(user);
+		List<ShippingAddress> addresses = new ArrayList<ShippingAddress>(); //((UserReferenceObjectManager)lookUpManager).getObjectsByUser(user);
 		map.put("addresses", addresses);
 		return map;
 	}
 	public ModelAndView onSubmit(HttpServletRequest request, HttpServletResponse response, 
 			Object command, BindException error) throws Exception {
-		
-		HttpSession session = request.getSession();
+		User user = getUserManager().getUserByUsername(request.getRemoteUser());
+		ShoppingCart cart =  shoppingCartManager.getOpenCart(user);
+	
 		ShippingAddress address = (ShippingAddress)command;
 		if (StringUtils.isBlank(request.getParameter(Constants.CANCEL_ACTION)) == false ) {
 			return showForm(request, response, error);
 		}else if (address.getSameShipping().booleanValue() == true){
-			Address shippingAddress = (Address) HibernateUtil.clone(address.getUser().getAddress());
+			Address shippingAddress = (Address) HibernateUtil.clone(user.getAddress());
 			address.setAddress(shippingAddress);
-			address.setFirstName(address.getUser().getFirstName());
-			address.setLastName(address.getUser().getLastName());
+			address.setFirstName(user.getFirstName());
+			address.setLastName(user.getLastName());
 		}
-		
-		session.setAttribute(Constants.ADDRESS_SESSION, command);
+		if (address.getUser().equals(user) == false){
+			getUserManager().save(address.getUser());
+		}
+		address = (ShippingAddress) lookUpManager.save(address);
+		cart.setShippingAddress(address);
+		shoppingCartManager.save(cart);
 		return new ModelAndView(nextPage);
 		
 	}
 	
-	private void saveAddress(ShippingAddress address){
-		User user = address.getUser();
-		boolean isExist =false;
-		List<ShippingAddress> addresses = ((UserReferenceObjectManager)lookUpManager).getObjectsByUser(user);
-		for (ShippingAddress sAddress : addresses){
-			if (address.equals(sAddress)){
-				isExist = true;
-				break;
-			}
-		}
-		if (isExist == false){
-			lookUpManager.save(address);
-		}
-	}
 }
