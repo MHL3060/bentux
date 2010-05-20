@@ -18,7 +18,7 @@
 				</c:when>
 				<c:otherwise>	
 					 <fmt:message key="user.status"/> ${pageContext.request.remoteUser}
-					|<a href="<c:url value="/userForm.html" />"> <fmt:message key="user.profile"/></a>
+					|<a href="<c:url value="/userform.html" />"> <fmt:message key="user.profile"/></a>
 						 
 				 </c:otherwise>
 			</c:choose>
