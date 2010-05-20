@@ -46,15 +46,17 @@ public class ShoppingCart extends TuxBaseObject implements UserReference {
 	private Set<ShoppingItem> shoppingItems;
 	
 	@Enumerated(EnumType.ORDINAL)
+	@Column(name="status")
 	private CART_STATUS status;
 
-	@Column
+	@Column(name="tracking_code")
 	private String trackingCode;
 	
-	@Column
+	@Column(name="shipping_instructions")
 	private String shippingInstruction;
 	
 	@Enumerated(EnumType.ORDINAL)
+	@Column(name="shipping_type")
 	private ShippingType shippingType;
 	
 	@Override
