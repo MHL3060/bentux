@@ -49,6 +49,16 @@
   			<display:column title="shopping.item.total" property="total" />
 			</display:table>
 			
+			
+			
+			
+			<c:set var="i" value="${0}"/> 
+			<c:forEach var="c" items="${shoppingItems}">
+			 	<c:set var="i" value="${i+c.total}"/>
+			</c:forEach>
+			<li class="label"><fmt:message key="cart.sub.total" /> : $ ${i}</li>
+				
+			
 			<input type="submit" name="save" value="<fmt:message key="save" />"
 				onclick="location.href='?method=Submit'" />
 			<input type="submit" name="checkout" value="Check Out" style="font-weight:bold; background-color: #CC6666;" 

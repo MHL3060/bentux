@@ -54,9 +54,11 @@
 				
 			</display:table>
 		</div>
-		<li>
-			<c:out value="${buttons}" escapeXml="false" />
-		</li>
+		
+			<li class="label"><fmt:message key="cart.sub.total" /> : $ <c:out value="${total}" /> </li>
+		
+		
+		<c:out value="${buttons}" escapeXml="false" />
 		</form:form>
 	</c:otherwise>
 </c:choose>
