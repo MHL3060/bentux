@@ -3,25 +3,12 @@
     <div id="divider">
 		<span class="center">
 			<span class="left">
-				<a href="home.html">Home</a>
-				|<a href="catalogs.html">Categories</a>
-				|<a href="productlist.html">Product</a>
-				|<a href="search.html">Search</a>
-				|<a href="disclaimer.jsp">Disclaimer</a>
-				|<a href="subscriptionform.html">Subscribe</a>
-				
-			
-			
-			<c:choose>
-				<c:when test="${pageContext.request.remoteUser == null}">
-					|<a href="<c:url value="/login.jsp"/>"><fmt:message key="login.title"/></a>	       		
-				</c:when>
-				<c:otherwise>	
-					 <fmt:message key="user.status"/> ${pageContext.request.remoteUser}
-					|<a href="<c:url value="/userform.html" />"> <fmt:message key="user.profile"/></a>
-						 
-				 </c:otherwise>
-			</c:choose>
+				<a href="home.html">Home</a>&nbsp;
+				|&nbsp;&nbsp;<a href="disclaimer.jsp">Disclaimer</a>&nbsp;
+				|&nbsp;&nbsp;<a href="productlist.html">Product</a>&nbsp;
+				|&nbsp;&nbsp;<a href="search.html">Archive</a>&nbsp;
+				|&nbsp;&nbsp;<a href="disclaimer.jsp">Help</a>&nbsp;
+				|&nbsp;&nbsp;<a href="subscriptionform.html">Privacy Policy</a>&nbsp;
 			</span>
 			<span class="right">
 				&copy;<fmt:message key="copyright.year"/> <a href="<fmt:message key="company.url"/>"><fmt:message key="company.name"/></a>
