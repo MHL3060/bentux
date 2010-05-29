@@ -60,14 +60,14 @@
         </create>
         
         <convert converter="enum" match="local.tux.Constants.Status"/>
-        <convert converter="bean" match="local.tux.app.model.Product" />
-        <convert converter="bean" match="local.tux.app.model.FoodProduct" />
-        <convert converter="bean" match="local.tux.app.model.Image" />
-        <convert converter="bean" match="local.tux.app.model.EntertainmentProduct" />
-        <convert converter="bean" match="local.tux.app.model.EntertainmentService" />
-        <convert converter="bean" match="local.tux.app.model.BrandName" />
-        <convert converter="bean" match="local.tux.app.model.Manufacturer" />
-        <convert converter="bean" match="org.appfuse.model.User"/>
-        <convert converter="bean" match="local.tux.app.model.Catalog" />
+        <convert converter="hibernate3" match="local.tux.app.model.Product" />
+        <convert converter="hibernate3" match="local.tux.app.model.FoodProduct" />
+        <convert converter="hibernate3" match="local.tux.app.model.Image" />
+        <convert converter="hibernate3" match="local.tux.app.model.EntertainmentProduct" />
+        <convert converter="hibernate3" match="local.tux.app.model.EntertainmentService" />
+        <convert converter="hibernate3" match="local.tux.app.model.BrandName" />
+        <convert converter="hibernate3" match="local.tux.app.model.Manufacturer" />
+        <convert converter="hibernate3" match="org.appfuse.model.User"/>
+        <convert converter="hibernate3" match="local.tux.app.model.Catalog" />
     </allow>
 </dwr>
