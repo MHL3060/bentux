@@ -48,12 +48,15 @@
     Welcome, 
 	<c:choose>
 				<c:when test="${pageContext.request.remoteUser == null}">
-					Please&nbsp;(<a href="<c:url value="/login.jsp"/>">sign in</a> )! or not yet a member? (<a href="<c:url value="/signup.html"/>">register</a>) 	       		
+					Please&nbsp;(<a href="<c:url value="/login.jsp"/>">sign in</a> ) or not yet a member? (<a href="<c:url value="/signup.html"/>">register</a>) 	       		
 				</c:when>
 				<c:otherwise>	
 					 <fmt:message key="user.status"/> ${pageContext.request.remoteUser}		 
 			    </c:otherwise>
 			</c:choose>
+</div>
+<div id="divider">
+
 </div>
 <hr />
 <%-- Put constants into request scope --%>

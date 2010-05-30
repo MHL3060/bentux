@@ -6,6 +6,10 @@
 	href="<c:url value='/styles/${appConfig["csstheme"]}/layout-other.css'/>" />
 </head>
 
+<c:if test="${user != null }">
+	<%@ include file="/common/shoppingcart.jsp" %>
+</c:if>
+
 <div id="photo">
 	<img src="<c:url value="/images/location.png"/>" width="360" height="400" alt="location">
 </div>
@@ -39,5 +43,7 @@
 				<li>&nbsp;&nbsp;&nbsp;&nbsp; and walk to 1210.</li>
 			</ul>
 </div>
+
+
 <div style="clear: both;">&nbsp;</div>
 

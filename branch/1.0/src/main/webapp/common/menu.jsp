@@ -1,9 +1,13 @@
 <%@ include file="/common/taglibs.jsp"%>
 
-<menu:useMenuDisplayer name="Velocity" config="cssHorizontalMenu.vm" permissions="rolesAdapter">
+<menu:useMenuDisplayer name="Velocity" config="cssVerticalMenu.vm" permissions="rolesAdapter">
 <ul id="primary-nav" class="menuList">
     <li class="pad">&nbsp;</li>
      <%-- these are not the errors. stupid Eclipse doesn't know how to handle EL. --%>
+     
+	<div id="vertmenu"> 
+
+
      <li>
      	<a href="<c:url value="/home.html"/>" class="${pageContext.request.requestURI == '/home.html' ? 'current' : '' }" >
      		<fmt:message key="home.list" />
@@ -44,9 +48,10 @@
          <li>
      	<a href="<c:url value="/search.html"/>" class="${pageContext.request.requestURI == '/search.html' ? 'current' : '' }" >
      	    	<fmt:message key="search.page" />
-     	
      	</a>
      </li>
+     
     <menu:displayMenu name="Logout"/>
+   </div>
 </ul>
 </menu:useMenuDisplayer>
