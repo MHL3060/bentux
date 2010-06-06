@@ -1,5 +1,6 @@
 <%@ include file="/common/taglibs.jsp"%>
 
+<!--
 <c:if test="${pageContext.request.locale.language != 'en'}">
     <div id="switchLocale"><a href="<c:url value='/?locale=en'/>"><fmt:message key="webapp.name"/> in English</a></div>
 </c:if>
@@ -27,13 +28,14 @@
 	//window.onload=cycleBan;
 
 </script>
+-->
 
 <div id="top">
 		<span class="left">
 			<fmt:message key="company.url"/>	    
 		</span>
 	<span class="right">
-		<a href="userform.jsp">My ACCOUNT</a>&nbsp;|&nbsp;<a href="login.jsp">LOGIN</a>&nbsp;|&nbsp;<a href="signup.html">REGISTER</a>&nbsp;|&nbsp;<a href="disclaimer.jsp">DISCLAIMER</a>&nbsp;|&nbsp;<a href="subscriptionform.html">SUBSCRIBE</a>
+		<a href="userform.jsp">MY ACCOUNT</a>&nbsp;|&nbsp;<a href="login.jsp">LOGIN</a>&nbsp;|&nbsp;<a href="signup.html">REGISTER</a>&nbsp;|&nbsp;<a href="disclaimer.jsp">DISCLAIMER</a>&nbsp;|&nbsp;<a href="subscriptionform.html">SUBSCRIBE</a>
 	</span>
 </div>
 
@@ -45,15 +47,24 @@
 </div>
 
 <div id="news">
-    Welcome, 
-	<c:choose>
-				<c:when test="${pageContext.request.remoteUser == null}">
-					Please&nbsp;(<a href="<c:url value="/login.jsp"/>">sign in</a> ) or not yet a member? (<a href="<c:url value="/signup.html"/>">register</a>) 	       		
-				</c:when>
-				<c:otherwise>	
-					 <fmt:message key="user.status"/> ${pageContext.request.remoteUser} &nbsp;&nbsp;<a href="<c:url value="/logout.jsp"/>">sign out</a>
-			    </c:otherwise>
-			</c:choose>
+	<div class="left">
+
+	    Hi, 
+		<c:choose>
+					<c:when test="${pageContext.request.remoteUser == null}">
+						Please&nbsp;(<a href="<c:url value="/login.jsp"/>">sign in</a>) or not yet a member? (<a href="<c:url value="/signup.html"/>">register</a>) 	       		
+					</c:when>
+					<c:otherwise>	
+						 <fmt:message key="user.status"/> ${pageContext.request.remoteUser} &nbsp;&nbsp;<a href="<c:url value="/logout.jsp"/>">sign out</a>
+				    </c:otherwise>
+				</c:choose>
+
+	</div>
+	<div class="right">
+		<c:if test="${pageContext.request.remoteUser != null}">
+			<%@ include file="/common/shoppingcart.jsp" %>
+		</c:if>	
+	</div>
 </div>
 <div id="divider">
 

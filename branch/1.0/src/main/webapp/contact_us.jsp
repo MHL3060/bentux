@@ -36,11 +36,12 @@
 			</p>			
 			<ul>
 				<li>Going Trinity by MTR?</li>
-				<li>&nbsp;&nbsp;&nbsp;&nbsp; Our store is located near the Kwun Tong MTR Station.</li>
-				<li>&nbsp;&nbsp;&nbsp;&nbsp; Get down to B1 Exit, walk along and take the 1st left</li>
-				<li>&nbsp;&nbsp;&nbsp;&nbsp; turn to Shing Yip Street. Another 150m walk and take the </li>
-				<li>&nbsp;&nbsp;&nbsp;&nbsp; lift from the Carpark area to the 12th floor. Turn right</li>
-				<li>&nbsp;&nbsp;&nbsp;&nbsp; and walk to 1210.</li>
+				<li>&nbsp;&nbsp;&nbsp;&nbsp; Our store is located near the Kwun Tong</li>
+				<li>&nbsp;&nbsp;&nbsp;&nbsp; MTR Station. Get down to B1 Exit, walk </li>
+				<li>&nbsp;&nbsp;&nbsp;&nbsp; along and take the 1st left turn to Shing</li>
+				<li>&nbsp;&nbsp;&nbsp;&nbsp; Yip Street. Another 150m walk and take the </li>
+				<li>&nbsp;&nbsp;&nbsp;&nbsp; lift from the Carpark area to the 12th floor.</li>
+				<li>&nbsp;&nbsp;&nbsp;&nbsp;  Turn right and walk to suite #1210.</li>
 			</ul>
 </div>
 
