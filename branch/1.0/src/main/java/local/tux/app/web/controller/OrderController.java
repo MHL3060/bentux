@@ -65,7 +65,7 @@ public class OrderController implements Controller {
 		paginatedList.setSortDirection(orderEnum);
 		lookupManager.getRecordsPage(getCriteria(request), paginatedList);
 		
-		mav.addObject("carts",paginatedList);
+		mav.addObject("orders",paginatedList);
 		
 		return mav;
 		
