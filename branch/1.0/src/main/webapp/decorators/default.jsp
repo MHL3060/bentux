@@ -38,25 +38,36 @@
         </div>
 
         <div id="content" class="clearfix">
-			
-			 <div id="nav">
-                <div class="wrapper">
-                    <h2 class="accessibility">Navigation</h2>
-                    <jsp:include page="/common/menu.jsp"/>
-                </div>
-                <hr/>
-    		</div>
-            <div id="main">
+			 <c:if test="${isLoginPage == false}">
+				
+				 <div id="nav">
+	                <div class="wrapper">
+	                    <h2 class="accessibility">Navigation</h2>
+	                    <jsp:include page="/common/menu.jsp"/>
+	                </div>
+	                <hr/>
+	    		</div>
+	    	</c:if>
+	        <div id="main">
                 <%@ include file="/common/messages.jsp" %>
                 <h1><decorator:getProperty property="meta.heading"/></h1>
                 <decorator:body/>
             </div>
-            <c:set var="currentMenu" scope="request"><decorator:getProperty property="meta.menu"/></c:set>
- 
-            <div id="sub" class="clearfix">
-                <%@ include file="/common/sub.jsp" %>
-            
-            </div>
+           <!-- <c:set var="currentMenu" scope="request"><decorator:getProperty property="meta.menu"/></c:set>-->
+           <!-- =<c:if test="${currentMenu == 'AdminMenu'}">
+               <menu:useMenuDisplayer name="Velocity" config="cssVerticalMenu.vm" permissions="rolesAdapter">
+                        <menu:displayMenu name="AdminMenu"/>
+                 </menu:useMenuDisplayer>
+			</c:if>
+			-->
+			<c:if test="${isLoginPage == false}">
+			
+	            <div id="sub" class="clearfix">
+	                <%@ include file="/common/sub.jsp" %>
+	           
+	            </div>
+			</c:if>
+
  
          
          </div><!-- end nav -->

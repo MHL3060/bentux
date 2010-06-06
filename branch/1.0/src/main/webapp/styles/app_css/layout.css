@@ -86,7 +86,7 @@ p, ul, ol {
             width: 950px;
             background: #fd8719; 
             padding: 3px 0px 3px 2px;     
-            border-top: 110px solid #ffffff;
+            border-top: 105px solid #ffffff;
             text-align: left;
         }
        div#divider{
@@ -108,9 +108,11 @@ p, ul, ol {
         /*	div#sidebar {float:left; margin:0 0 5px; padding:5px; width:140px;}*/
         	
             div#main {
-            /*	float:left;
-                padding-left: 12px;
-            */}
+            	float:left;
+                padding-left: 13px;
+                margin-bottom: 20px;
+                width:650px;
+            }
                 div#main form ul li {
               /*      list-style-type: none;
                     margin-left: 0;
@@ -125,9 +127,9 @@ p, ul, ol {
 			padding-left: 10px;
 		}
 		div#sub .title{
-            width: 150px;
+            width: 130px;
 			float: center;
-            line-height:20px;
+            line-height:15px;
             text-align: center;
 			font-size: 13px;
 			color: green;
@@ -136,12 +138,9 @@ p, ul, ol {
 			border-bottom:1px solid #FF9400;
 		}
 		div#sub .ul {
-			list-style:none;
 			color:#555;
-			font-size:11px;
 			overflow:hidden;
 			margin:0;
-			padding:0;
 		}
 		
 		div#sub .ul .left {
@@ -156,7 +155,20 @@ p, ul, ol {
 		div#sub .partners .img {
 			margin:5px 0;
 		}
-	
+	   div#sub .partners .subtitle {
+	        width:130px;
+            text-align: left;
+            font-size: 11px;
+		    color: green;
+                   margin-bottom:-6px;
+
+        }
+        div#sub .advertise{
+        	width:130px;
+        	padding-top:8px;
+        	border-top:1px solid #FF9400;
+            margin-top: -10px;
+        }
             
         /* END SUB */
         

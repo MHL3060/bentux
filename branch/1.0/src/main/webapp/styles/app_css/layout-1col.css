@@ -5,9 +5,9 @@
 /* NAV BAR AT THE TOP AND ONE COLUMN OF CONTENT */
     div#content {
         position: relative;
-        width: 990px;
-        margin: 0 auto 20px auto;
-        padding: 0;
+        width: 950px;
+        margin: 0 auto 10px auto;      
+        padding-bottom: 15px;
         text-align: left;
     }
     div#main {

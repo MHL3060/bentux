@@ -2,9 +2,39 @@
 /* Based on "A CSS Framework by Mike Stenhouse of Content with Style" */
 
 /* NAV */
+    div div.heading{
+       width:150px;
+       font-size:16px;
+       line-height:19px;
+       color:purple;
+       margin-bottom: -21px;
+       border-bottom: 1.3px solid #FF9400;
+    }
     div#nav {
-        font-size: 11px;
-         margin-bottom: 20px;
+       font-size: 11px;
+       margin-bottom: 20px;
+    }
+    div#nav div.search{
+       font-weight:bold;
+       margin-top:5px;
+       margin-bottom:7px;
+       margin-left:5px;
+       color:green;
+    }
+   
+    div#nav div.partners{
+       margin-top:5px;
+       padding-bottom:5px;
+       margin-bottom:5px;
+       border-bottom: 1.3px dotted #FF9400;
+    }
+    div#nav div.share{
+        
+        font-size:12px;
+        font-weight:bold;
+        color:orange;
+        border-bottom: 1.3px dotted #FF9400;
+        padding-bottom:5px;
     }
     * html div#nav {
         /* hide ie/mac \*/

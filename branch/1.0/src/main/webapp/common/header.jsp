@@ -40,7 +40,7 @@
 <div id="branding">
 
     <img src="<c:url value="/images/common/header_logo.jpg"/>" width="190" height="110"  hspace="0" vspace="0" align="left" />
-   	<img src="<c:url value="/images/common/header_banner_1.jpg"/>" width="760" float="left" height="110" name="banner  hspace="0" vspace="0" align="left"/>
+   	<img src="<c:url value="/images/common/header_banner_1.jpg"/>" width="760" float="left" height="110" name="banner"  hspace="0" vspace="0" align="left"/>
        
 </div>
 
@@ -51,7 +51,7 @@
 					Please&nbsp;(<a href="<c:url value="/login.jsp"/>">sign in</a> ) or not yet a member? (<a href="<c:url value="/signup.html"/>">register</a>) 	       		
 				</c:when>
 				<c:otherwise>	
-					 <fmt:message key="user.status"/> ${pageContext.request.remoteUser}		 
+					 <fmt:message key="user.status"/> ${pageContext.request.remoteUser} &nbsp;&nbsp;<a href="<c:url value="/logout.jsp"/>">sign out</a>
 			    </c:otherwise>
 			</c:choose>
 </div>
