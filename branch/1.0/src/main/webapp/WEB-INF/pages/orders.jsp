@@ -17,12 +17,18 @@ function showOrderDetail(nodeId, oid) {
 
 	shoppingCartManager.get(oid, addRows(objects){
 		//http://directwebremoting.org/dwr/browser/util/tables.html
-		dwr.
+		dwr.util.addRows("items", objects.shoppingItems, cellFunc, {escapeHtml:false });
 
 	}); 
 
 	
-} 
+}
+
+var cellFunc = [
+	function(data) {return data.product.name; },
+	function(data) {return quantity; },
+	function(data) {return total;}
+];
 
 
 
