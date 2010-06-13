@@ -54,8 +54,11 @@
 					<c:when test="${pageContext.request.remoteUser == null}">
 						Please&nbsp;(<a href="<c:url value="/login.jsp"/>">sign in</a>) or not yet a member? (<a href="<c:url value="/signup.html"/>">register</a>) 	       		
 					</c:when>
-					<c:otherwise>	
-						 <fmt:message key="user.status"/> ${pageContext.request.remoteUser} &nbsp;&nbsp;<a href="<c:url value="/logout.jsp"/>">sign out</a>
+					<c:otherwise>
+						 	
+						 <fmt:message key="user.status"/> ${pageContext.request.remoteUser} 
+						 | <a href="<c:url value='/orders.html' />"><fmt:message key="order.history" /></a>
+						 | <a href="<c:url value="/logout.jsp"/>">sign out</a>
 				    </c:otherwise>
 				</c:choose>
 

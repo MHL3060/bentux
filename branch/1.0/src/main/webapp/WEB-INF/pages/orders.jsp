@@ -67,9 +67,12 @@
 
 	function addRows(objects){
 		//http://directwebremoting.org/dwr/browser/util/tables.html
+		dwr.util.removeAllRows('items');
 		dwr.util.addRows("items", objects, cellFunc, {escapeHtml:false});
 
-	}             	 
+	} 
+	
+	            	 
 </script>
 
 
@@ -80,8 +83,10 @@
 
 <display:table id="orders" name="orders" cellspacing="0" cellpadding="0" requestURI=""
 	pagesize="25" class="table uutResultList" export="true">
-
-	<display:column property="id" titleKey="order.id" url="/items.html" paramId="id" paramProperty="id" />
+	
+	<c:if test="${hasPermission }">
+		<display:column titleKey="order.id" property="id" url="/cartform.html" paramId="id" paramProperty="id" />
+	</c:if>
 	<display:column property="user.username" titleKey="user.name"/>
 	<display:column property="startDate" titleKey="ordered.date" format="{0,date,dd-MMM-yyyy}" sortable="true"/>
 	<display:column property="status" titleKey="order.status" sortable="true" />
@@ -89,8 +94,7 @@
 		${fn:length(orders.shoppingItems)}
 	</display:column>
 	<display:column titleKey="item.detail">
-		<a href="javascript:showOrderDetail(orderDetail,${orders.id});"><fmt:message key="view.order.detail" /></a> <br/>
-		<a href="javascript:show('orderDetail',${orders.id});"><fmt:message key="add.to.cart" /></a>
+		<a href="javascript:show('orderDetail',${orders.id});"><fmt:message key="view.order.detail" /></a>
 	</display:column>
 </display:table>
 

@@ -2,6 +2,7 @@ package local.tux.app.web.controller;
 
 import java.lang.annotation.Annotation;
 import java.util.Locale;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,6 +15,7 @@ import local.tux.app.web.table.pagination.PagingLookupManager;
 
 import org.apache.commons.lang.StringUtils;
 import org.appfuse.Constants;
+import org.appfuse.model.Role;
 import org.appfuse.model.User;
 import org.appfuse.service.UserManager;
 import org.displaytag.properties.SortOrderEnum;
@@ -67,6 +69,7 @@ public class OrderController implements Controller {
 		
 		mav.addObject("orders",paginatedList);
 		mav.addObject("username",request.getRemoteUser());
+		mav.addObject("hasPermission", hasPermissionToAdd(userManager.getUserByUsername(request.getRemoteUser())));
 		return mav;
 		
 	}
@@ -93,6 +96,25 @@ public class OrderController implements Controller {
 		}
 		
 		return criteria;
+	}
+	
+	protected Boolean hasPermissionToAdd(User user){
+		boolean result = Boolean.FALSE;
+		if (user != null){
+			Set<Role> roles = user.getRoles();
+			for (Role role : roles){
+				for (String name : local.tux.Constants.EDIT_PERMISSION){
+					if (name.equals(role.getName())){
+						result = Boolean.TRUE;
+						break;
+					}
+				}
+				if (result){
+					break;
+				}
+			}
+		}
+		return result;
 	}
 
 	
