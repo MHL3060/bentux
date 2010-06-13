@@ -4,36 +4,75 @@
  <script type='text/javascript' src='<c:url value="/dwr/interface/productManager.js" />'></script>
  <script type='text/javascript' src="<c:url value='/dwr/engine.js' />"></script>
 <script type="text/javascript" src="<c:url value='/scripts/effects.js'/>"></script>
+<script type="text/javascript" src="<c:url value='/dwr/util.js' />"></script>
 
 <script type="text/javascript">
-function hide(nodeId) { 
-	if (document.getElementById) { // DOM3 = IE5, NS6 
-		
-		document.getElementById(nodeId).style.visibility = 'hidden'; 
-	}
-}
- 
-function showOrderDetail(nodeId, oid) {
-
-	shoppingCartManager.get(oid, addRows(objects){
-		//http://directwebremoting.org/dwr/browser/util/tables.html
-		dwr.util.addRows("items", objects.shoppingItems, cellFunc, {escapeHtml:false });
-
-	}); 
-
 	
-}
+ 	function addItem(pidNodeId, quantityNodeId){
 
-var cellFunc = [
-	function(data) {return data.product.name; },
-	function(data) {return quantity; },
-	function(data) {return total;}
-];
+		product = document.getElementById(pidNodeId).value;
+		quantity = document.getElementById(quantityNodeId).value;
+ 	 	if (quantity < 1) {
+			alert("Error: The quantity must be greater than 0" );
+ 	 	}else {
+			shoppingCartManager.addItem(-1,'admin', product, quantity, 
+					function(result) {
+						if (result == true ) {
+							hide('cart');
+							window.location.reload();
+						}else {
+	
+						}
+						
+					}																
+				); 
+ 	 	}
+ 	}
+	function popup(pid, toNodeId) {
+		toNode = document.getElementById(toNodeId);
+		productManager.getById(pid, function(product) {
+			var ul = toNode.createNode('ul');
+			var li = ul.createElement('li');
+			li.innerText = product.name;
+			li = ul.createElement('li');
+			li.innerText = product.availibility;
+			
+		});
+		myLightWindow.createWindow(toNodeId);
+	}
+	function hide(nodeId) { 
+		if (document.getElementById) { // DOM3 = IE5, NS6 
+			
+			document.getElementById(nodeId).style.visibility = 'hidden'; 
+		}
+	}
+	 
+	function show(nodeId, oid) {
+		g_pid = oid; 
+		if (document.getElementById) { // DOM3 = IE5, NS6
+			shoppingCartManager.getItemsByCartId("${username}",oid, function(cart){
+				addRows(cart);
+			});
 
+					
+			document.getElementById(nodeId).style.visibility = 'visible'; 
+		}
+	}
+	var cellFunc = [
+	            	function(data) {return data.product.name; },
+	            	function(data) {return data.quantity; },
+	            	function(data) {return data.product.price},
+	            	function(data) {return data.total;}
+	            ];
 
+	function addRows(objects){
+		//http://directwebremoting.org/dwr/browser/util/tables.html
+		dwr.util.addRows("items", objects, cellFunc, {escapeHtml:false});
 
-
+	}             	 
 </script>
+
+
 <h1>
 	<fmt:message key="view.orders" />
 </h1>
@@ -50,23 +89,27 @@ var cellFunc = [
 		${fn:length(orders.shoppingItems)}
 	</display:column>
 	<display:column titleKey="item.detail">
-		<a href="/orders.html" onclick="showOrderDetail(orderDetail,${orders.id})"><fmt:message key="view.order.detail" /></a>
+		<a href="javascript:showOrderDetail(orderDetail,${orders.id});"><fmt:message key="view.order.detail" /></a> <br/>
+		<a href="javascript:show('orderDetail',${orders.id});"><fmt:message key="add.to.cart" /></a>
 	</display:column>
 </display:table>
 
-<div id="orderDetail" style="visibility:hidden;">
-	
+
+<div id="orderDetail" style="visibility:hidden;"> 
 	<div id="fade"></div> 
 	<div class="popup_block"> 
 		<div class="popup"> 
 			<a href="javascript:hide('orderDetail')"><img src="<c:url value="/images/icon_close.png" />" class="cntrl" title="Close" /></a> 
-			<h3 id="product_title"></h3>
-			<table id="order_detail_data">
+			<h3 id="product_title"><fmt:message key="shopping.items" /></h3>
+			<table id="product_data" class="table">
+				<thead>
 				<tr>
-					<td class="strong"><fmt:message key="product.name" /> :</td>
-					<td class="strong"><fmt:message key="order.quantity" /> :</td>
-					<td class="strong"><fmt:message key="product.price" /> :</td>
+					<th class="strong"><fmt:message key="product.name" /></th>
+					<th class="strong"><fmt:message key="order.quantity" /></th>
+					<th class="strong"><fmt:message key="product.price" /></th>
+					<th class="Strong"><fmt:message key="product.total" /></th>
 				</tr>
+				</thead>
 				<tbody id="items">
 					
 				</tbody>
@@ -74,6 +117,4 @@ var cellFunc = [
 			 
 		</div> 
 	</div> 
-
-
-</div>
+</div> 

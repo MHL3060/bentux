@@ -29,4 +29,14 @@ public class ShoppingItemDaoHibernate extends
 		return getHibernateTemplate().findByCriteria(criteria);
 	}
 
+	public List<ShoppingItem> getItemByCartId( Long cartId) {
+		DetachedCriteria criteria = DetachedCriteria.forClass(ShoppingItem.class);
+		criteria.createAlias("shoppingCart", "cart");
+		criteria.add(Restrictions.eq("cart.id", cartId));
+		
+		return getHibernateTemplate().findByCriteria(criteria); 
+		
+		
+	}
+
 }

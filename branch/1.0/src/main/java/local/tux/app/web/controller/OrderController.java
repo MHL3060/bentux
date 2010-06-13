@@ -66,7 +66,7 @@ public class OrderController implements Controller {
 		lookupManager.getRecordsPage(getCriteria(request), paginatedList);
 		
 		mav.addObject("orders",paginatedList);
-		
+		mav.addObject("username",request.getRemoteUser());
 		return mav;
 		
 	}

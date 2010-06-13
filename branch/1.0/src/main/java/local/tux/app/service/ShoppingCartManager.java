@@ -6,6 +6,7 @@ import org.appfuse.model.User;
 
 import local.tux.Constants.CART_STATUS;
 import local.tux.app.model.ShoppingCart;
+import local.tux.app.model.ShoppingItem;
 
 public interface ShoppingCartManager extends LookUpNameGenericManager<ShoppingCart, Long> {
 
@@ -24,5 +25,5 @@ public interface ShoppingCartManager extends LookUpNameGenericManager<ShoppingCa
 	
 	public List<ShoppingCart> getCartByStatus(CART_STATUS status);
 	
-	
+	public List<ShoppingItem> getItemsByCartId(String username, Long cartId);
 }

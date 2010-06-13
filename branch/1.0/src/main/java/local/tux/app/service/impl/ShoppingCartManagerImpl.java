@@ -1,9 +1,12 @@
 package local.tux.app.service.impl;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
+import org.appfuse.Constants;
+import org.appfuse.model.Role;
 import org.appfuse.model.User;
 import org.appfuse.service.GenericManager;
 import org.appfuse.service.UserManager;
@@ -95,6 +98,27 @@ public class ShoppingCartManagerImpl extends
 	}
 	public List<ShoppingCart> getCartByStatus(CART_STATUS status) {
 		return shoppingCartDao.getShoppingCarts(null, status);
+	}
+	public List<ShoppingItem> getItemsByCartId(String username, Long cartId) {
+		ShoppingCart cart = shoppingCartDao.get(cartId);
+		User user = userManager.getUserByUsername(username);
+		boolean hasPermission = false;
+		Set<Role> roles = user.getRoles();
+		if (cart.getUser().equals(user)){
+			hasPermission = true;
+		}else {
+			for (Role r : roles){
+				if (Constants.ADMIN_ROLE.equals(r.getName())){
+					hasPermission = true;
+					break;
+				}
+			}
+		}
+		if (hasPermission){
+			return new ArrayList<ShoppingItem>(cart.getShoppingItems());
+		}else {
+			return new ArrayList<ShoppingItem>();
+		}
 	}
 	
 }

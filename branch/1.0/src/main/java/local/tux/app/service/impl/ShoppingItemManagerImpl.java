@@ -10,6 +10,7 @@ import local.tux.app.service.LookUpNameGenericManager;
 import local.tux.app.service.ShoppingItemManager;
 
 import org.appfuse.model.User;
+import org.appfuse.service.UserManager;
 import org.appfuse.service.impl.GenericManagerImpl;
 
 public class ShoppingItemManagerImpl extends
@@ -17,6 +18,7 @@ public class ShoppingItemManagerImpl extends
 
 	private ShoppingItemDao shoppingItemDao;
 	private LookUpNameGenericManager<Product, Long> productManager;
+	private UserManager userManager;
 
 	public ShoppingItemManagerImpl(ShoppingItemDao shoppingItemDao) {
 		super(shoppingItemDao);
@@ -32,7 +34,6 @@ public class ShoppingItemManagerImpl extends
 		
 		return shoppingItemDao.getShoppingItem(user, p, status);
 	}
-	
 	public boolean removeItemQuantity(Long userId, Long itemId, Integer quantity){
 		
 		ShoppingItem item = get(itemId);
@@ -85,5 +86,6 @@ public class ShoppingItemManagerImpl extends
 	public ShoppingItem save(ShoppingItem toBeSaveItem ) {
 		return save(toBeSaveItem, null);
 	}
+	
 	
 }

@@ -50,6 +50,7 @@
         	<param name="beanName" value="shoppingCartManager" />
         	<include method="getOpenItemCount" />
         	<include method="addItem" />
+        	<include method="getItemsByCartId" />
         </create>
         
         <create creator="spring" javascript="shoppingItemManager" >
@@ -69,5 +70,11 @@
         <convert converter="hibernate3" match="local.tux.app.model.Manufacturer" />
         <convert converter="hibernate3" match="org.appfuse.model.User"/>
         <convert converter="hibernate3" match="local.tux.app.model.Catalog" />
+        <convert converter="hibernate3" match="local.tux.app.model.ShoppingCart" />
+        <convert converter="hibernate3" match="local.tux.app.model.ShoppingItem" />
+        <convert converter="hibernate3" match="org.appfuse.model.Role" />
+        <convert converter="hibernate3" match="org.appfuse.model.Address" />
+        <convert converter="hibernate3" match="local.tux.app.model.ShippingAddress" />
+        
     </allow>
 </dwr>

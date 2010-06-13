@@ -12,4 +12,6 @@ import org.appfuse.model.User;
 public interface ShoppingItemDao extends GenericDao<ShoppingItem, Long> {
 	public List<ShoppingItem> getShoppingItem(User user, Product p, CART_STATUS status);
 
+	public List<ShoppingItem> getItemByCartId( Long cartId);
+
 }

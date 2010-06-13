@@ -16,4 +16,5 @@ public interface ShoppingItemManager extends GenericManager<ShoppingItem, Long> 
 	
 	public ShoppingItem save(ShoppingItem toBeSaveItem, ShoppingItem originalItem );
 	
+	
 }
