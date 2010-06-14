@@ -16,14 +16,16 @@ public class TuxBaseObjectConverter extends PropertyEditorSupport {
 
 	@SuppressWarnings("unchecked")
 	private GenericManager genericManager = null;
-	@SuppressWarnings("unchecked")
+	
 	
 	public TuxBaseObjectConverter(){}
 	
+	@SuppressWarnings("unchecked")
 	public TuxBaseObjectConverter(GenericManager genericManager){
 		this.genericManager = genericManager;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public GenericManager getGenericManager(){
 		if (genericManager == null ) {
 			throw new RuntimeException("Didn't set GenericManager");

@@ -276,4 +276,12 @@
         <property name="size" value="25" />
         <property name="userManager" ref="userManager" />
     </bean> 
+    <bean id="cartformController" class="local.tux.app.web.controller.CartFormController">
+    	<property name="lookUpManager" ref="shoppingCartManager" />
+    	<property name="commandClass" value="local.tux.app.model.ShoppingCart" />
+    	<property name="commandName" value="shoppingCart" />
+    	<property name="userManager" ref="userManager" />
+    	<property name="successView" value="redirect:orders.html" />
+    
+    </bean>
 </beans>
