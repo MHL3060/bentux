@@ -34,7 +34,7 @@ public class CartFormController extends TuxBaseFormController {
 	public void initBinder(HttpServletRequest request, ServletRequestDataBinder binder){
 		super.initBinder(request, binder);
 		EnumPropertyConverter converter = new EnumPropertyConverter(CART_STATUS.values());
-		binder.registerCustomEditor(Enum.class, converter);
+		binder.registerCustomEditor(Constants.CART_STATUS.class, converter);
 		
 	}
 	

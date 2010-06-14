@@ -24,10 +24,4 @@ public class EnumPropertyConverter extends PropertyEditorSupport{
         }
         throw new IllegalArgumentException("Invalid text for enum of type '" + es + ": '" + text + "'.");
     }
-	 public String getAsText(){
-		 Enum e = (Enum) getValue();
-		 return e.name();
-	 }
-	 
-	 
 }

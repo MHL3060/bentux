@@ -1,6 +1,6 @@
 <%@ include file="/common/taglibs.jsp" %>
 
-<form:form commandName="shoppingCart">
+<form:form commandName="shoppingCart" method="post" action="cartform.html">
 	<form:hidden path="id"/>
 	<ul>
 		<li>
