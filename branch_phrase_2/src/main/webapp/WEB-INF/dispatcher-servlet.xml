@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+    <bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="exceptionMappings">
+            <props>
+                <prop key="org.springframework.dao.DataAccessException">        
+                    dataAccessFailure
+                </prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="filenameController" class="org.springframework.web.servlet.mvc.UrlFilenameViewController"/>
+
+    <bean id="fileUploadController" class="org.appfuse.webapp.controller.FileUploadController">
+        <property name="validator" ref="beanValidator"/>
+        <property name="cancelView" value="redirect:mainMenu.html"/>
+        <property name="formView" value="uploadForm"/>
+        <property name="successView" value="uploadDisplay"/>
+    </bean>
+
+    <bean id="passwordHintController" class="org.appfuse.webapp.controller.PasswordHintController">
+        <property name="userManager" ref="userManager"/>
+        <property name="messageSource" ref="messageSource"/>
+        <property name="mailEngine" ref="mailEngine"/>
+        <property name="message" ref="mailMessage"/>
+    </bean>
+
+    <bean id="reloadController" class="org.appfuse.webapp.controller.ReloadController"/>
+
+    <bean id="signupController" class="local.tux.app.web.controller.SignUpController">
+        <property name="validator" ref="beanValidator"/>
+        <property name="formView" value="signup"/>
+        <property name="successView" value="redirect:mainMenu.html"/>
+        <property name="userManager" ref="userManager"/>
+        <property name="roleManager" ref="roleManager"/>
+        <property name="mailEngine" ref="mailEngine"/>
+        <property name="message" ref="mailMessage"/>
+        <property name="htmlMailService" ref="sendHtmlMailSender" />
+        <property name="captchaService" ref="captchaService"/>
+        <property name="adminEmail" value="lhkhome@gmail.com" />
+        <property name="adminEmailTemplate" value="velocity/accountcreatedadmin.vm" />
+        <property name="templateName" value="accountCreated.vm"/>
+    </bean>
+
+
+    <bean id="userController" class="org.appfuse.webapp.controller.UserController">
+        <property name="userManager" ref="userManager"/>
+    </bean>
+
+    <bean id="userFormController" class="local.tux.app.web.controller.UserformController">
+        <property name="validator" ref="beanValidator"/>
+        <property name="formView" value="userForm"/>
+        <property name="successView" value="redirect:users.html"/>
+        <property name="cancelView" value="redirect:mainMenu.html"/>
+        <property name="userManager" ref="userManager"/>
+        <property name="roleManager" ref="roleManager"/>
+        <property name="mailEngine" ref="mailEngine"/>
+        <property name="message" ref="mailMessage"/>
+        <property name="passwordEmailTemplate" value="velocity/userpassword.vm" />
+        <property name="htmlMailService" ref="sendHtmlMailSender" />
+        <property name="passWordEncoder" ref="passwordEncoder" />
+        <property name="templateName" value="accountCreated.vm"/>
+    </bean>
+
+    <!-- Add additional controller beans here -->
+
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="2097152"/>
+    </bean>
+
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basename" value="ApplicationResources"/>
+        <property name="useCodeAsDefaultMessage" value="true"/>
+    </bean>
+
+    <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <value>
+                /admin/activeUsers.html=filenameController
+                /admin/flushCache.html=filenameController
+                /admin/reload.html=reloadController
+                /admin/users.html=userController
+                /mainMenu.html=filenameController
+                /passwordHint.html=passwordHintController
+                /search.html=searchController
+                /reindex.html=indexController
+            </value>
+        </property>
+        <property name="order" value="0"/>
+    </bean>
+
+    <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping">
+        <property name="order" value="1"/>
+    </bean>
+
+    <!-- View Resolver for JSPs -->
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="requestContextAttribute" value="rc"/>
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="prefix" value="/WEB-INF/pages/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+    <bean id="catalogController" class="local.tux.app.web.controller.CatalogController">
+        <property name="paginatedListFactory" ref="paginatedListFactory" />
+        <property name="userManager" ref="userManager" />
+        <property name="pagingLookupManager" ref="pagingLookupManager" />
+        <property name="pojo" value="local.tux.app.model.Catalog" />
+        <property name="shoppingCartManager" ref="shoppingCartManager" />
+    </bean>
+    <!--  your own pages -->
+    <bean id="catalogFormController" class="local.tux.app.web.controller.CatalogFormController">
+         <property name="validator" ref="beanValidator"/>
+        <property name="commandClass" value="local.tux.app.model.Catalog" />
+        <property name="commandName" value="catalog" />
+        <property name="successView" value="redirect:catalogform.html"/>
+        <property name="lookUpManager" ref="catalogManager" />
+        <property name="imageManager" ref="imageManager" />
+        
+    </bean>    
+    <bean id="imageFormController" class="local.tux.app.web.controller.ImageFormController">
+         <property name="validator" ref="beanValidator"/>
+        <property name="commandClass" value="local.tux.app.model.Image" />
+        <property name="commandName" value="image" />
+        <property name="productManager" ref="productManager" />
+        <property name="lookUpManager" ref="imageManager" />
+        <property name="cancelView"     value="redirect:imageform.html" />
+    </bean>
+    <bean id="brandNameFormController" class="local.tux.app.web.controller.BrandNameFormController">
+        <property name="validator" ref="beanValidator"/>
+        <property name="commandClass" value="local.tux.app.model.BrandName" />
+        <property name="commandName" value="brandName" />
+        <property name="lookUpManager" ref="brandNameManager" />
+        <property name="manufacturerManager" ref="manufacturerManager" />
+    </bean>
+    <bean id="ingredientFormController" class="local.tux.app.web.controller.IngredientFormController">
+        <property name="validator" ref="beanValidator"/>
+        <property name="commandClass" value="local.tux.app.model.Ingredient" />
+        <property name="commandName" value="ingredient" />
+        <property name="lookUpManager" ref="ingredientManager" />
+        <property name="foodProductManager" ref="foodProductManager" />
+    </bean>
+    <bean id="manufacturerFormController" class="local.tux.app.web.controller.ManufacturerFormController">
+         <property name="validator" ref="beanValidator"/>
+        <property name="commandClass" value="local.tux.app.model.Manufacturer" />
+        <property name="commandName" value="manufacturer" />
+        <property name="successView" value="redirect:manufacturerform.html"/>
+        <property name="lookUpManager" ref="manufacturerManager" />
+    </bean>
+    <bean id="productListController" class="local.tux.app.web.controller.ProductListController">
+        <property name="userManager" ref="userManager" />
+        <property name="paginatedListFactory" ref="paginatedListFactory" />
+        <property name="pagingLookupManager" ref="pagingLookupManager" />
+        <property name="pojo" value="local.tux.app.model.Product" />
+        <property name="shoppingCartManager" ref="shoppingCartManager" />
+    </bean>
+    <bean id="productDetailController" class="local.tux.app.web.controller.ProductDetailController">
+        <property name="productManager" ref="productManager" />
+        <property name="shoppingCartManager" ref="shoppingCartManager" />
+    </bean> 
+    <bean id="productFormController" class="local.tux.app.web.controller.ProductFormController">
+        <property name="validator" ref="beanValidator"/>
+        <property name="userManager" ref="userManager" />
+        <property name="commandClass" value="local.tux.app.model.Product" />
+        <property name="commandName" value="product" />
+        <property name="successView" value="redirect:productlist.html" />
+        <property name="productManager" ref="productManager" />
+        <property name="catalogManager" ref="catalogManager" />
+        <property name="manufacturerManager" ref="manufacturerManager" />
+        <property name="brandNameManager" ref="brandNameManager" />
+        <property name="ingredientManager" ref="ingredientManager" />
+        <property name="entertainmentProductManager" ref="entertainmentProductManager" />
+        <property name="entertainmentServiceManager" ref="entertainmentServiceManager" />
+        <property name="foodProductManager" ref="foodProductManager" />
+    </bean>
+    <!--  compass pages -->
+    <bean id="indexController" class="org.compass.spring.web.mvc.CompassIndexController">
+        <property name="compassGps"><ref bean="compassGps"/></property>
+        <property name="indexView"><value>reindex</value></property>
+        <property name="indexResultsView"><value>reindex</value></property>
+    </bean>
+
+    <bean id="searchController" class="local.tux.app.web.controller.SearchController">
+        <property name="compass"><ref bean="compass"/></property>
+        <property name="searchView"><value>search</value></property>
+        <property name="searchResultsView"><value>search</value></property>
+        <property name="pageSize"><value>25</value></property>
+    </bean> 
+    
+    <bean id="specialController" class="local.tux.app.web.controller.SpecialController">
+        <property name="paginatedListFactory" ref="paginatedListFactory" />
+        <property name="userManager" ref="userManager" />
+        <property name="pagingLookupManager" ref="pagingLookupManager" />
+        <property name="pojo" value="local.tux.app.model.Product" />
+        <property name="shoppingCartManager" ref="shoppingCartManager" />
+    </bean>
+    
+    <bean id="subCatalogController" class="local.tux.app.web.controller.SubCatalogController">
+        <property name="paginatedListFactory" ref="paginatedListFactory" />
+        <property name="userManager" ref="userManager" />
+        <property name="pagingLookupManager" ref="pagingLookupManager" />
+        <property name="pojo" value="local.tux.app.model.Catalog" />
+        <property name="shoppingCartManager" ref="shoppingCartManager" />
+    </bean>
+    <bean id="newsFormController" class="local.tux.app.web.controller.NewsFormController">
+        <property name="newsManager" ref="newsManager" />
+        <property name="successView" value="redirect:news.html"/>
+        <property name="userManager" ref="userManager" />
+    </bean>
+    <bean id="newsController" class="local.tux.app.web.controller.NewsController">
+        <property name="paginatedListFactory" ref="paginatedListFactory" />
+        <property name="pagingLookupManager" ref="pagingLookupManager" />
+        <property name="pojo" value="local.tux.app.model.News" />
+        <property name="userManager" ref="userManager" />
+        <property name="newsManager" ref="newsManager" />
+        <property name="shoppingCartManager" ref="shoppingCartManager" />
+    </bean>
+    <bean id="homeController" class="local.tux.app.web.controller.HomeController">
+        <property name="paginatedListFactory" ref="paginatedListFactory" />
+        <property name="pagingLookupManager" ref="pagingLookupManager" />
+        <property name="pojo" value="local.tux.app.model.News" />
+        <property name="userManager" ref="userManager" />
+        <property name="newsManager" ref="newsManager" />
+        <property name="shoppingCartManager" ref="shoppingCartManager" />
+    </bean>
+    
+    <bean id="cartController" class="local.tux.app.web.controller.CartController">
+        <property name="userManager" ref="userManager" />
+        <property name="productManager" ref="productManager" />
+        <property name="shoppingCartManager" ref="shoppingCartManager" />
+        <property name="shoppingItemManager" ref="shoppingItemManager" />
+        <property name="nextPage" value="redirect:addressform.html" />
+    </bean>
+    <bean id="AddressFormController" class="local.tux.app.web.controller.AddressFormController">
+        <property name="lookUpManager" ref="customerAddressManager" />
+        <property name="commandClass" value="local.tux.app.model.ShippingAddress" />
+        <property name="commandName" value="shippingAddress" />
+        <property name="shoppingCartManager" ref="shoppingCartManager" />
+        <property name="userManager" ref="userManager" />
+        <property name="nextPage" value="redirect:confirm.html" />
+        <property name="cancelView"     value="redirect:cart.html" />
+    </bean>
+    
+    <bean id="subscriptionFormController" class="local.tux.app.web.controller.SubscriptionFormController">
+        <property name="commandClass" value="local.tux.app.model.Subscription" />
+        <property name="commandName" value="subscription" />
+        <property name="lookUpManager" ref="subscriptionManager" />
+        <property name="captchaService" ref="captchaService" />
+        <property name="userManager" ref="userManager" />
+        <property name="message" ref="mailMessage"/>
+        <property name="htmlMailService" ref="sendHtmlMailSender" />
+        <property name="templateName" value="velocity/subscription.vm"/>
+        
+    </bean>
+    <bean id="confirmController" class="local.tux.app.web.controller.ConfirmController">
+        <property name="shoppingCartManager" ref="shoppingCartManager" />
+        <property name="htmlMailService" ref="sendHtmlMailSender" />
+        <property name="userManager" ref="userManager" />
+        <property name="submitPage" value="redirect:submitorder.html" />
+        <property name="editPage" value="redirect:cart.html" />
+        <property name="templateName" value="velocity/confirmorder.vm" />
+    </bean>
+    <bean id="submitOrderController" class="local.tux.app.web.controller.SubmitOrderController">
+        <property name="shoppingCartManager" ref="shoppingCartManager" />
+        <property name="userManager" ref="userManager" />
+    </bean>
+    <bean id="captchaController" class="local.tux.app.web.common.controller.CaptchaController">
+        <property name="captchaService" ref="captchaService" />
+    </bean>
+   
+    <bean id="orderController" class="local.tux.app.web.controller.OrderController">
+    	<property name="paginatedListFactory" ref="paginatedListFactory" />
+        <property name="pagingLookupManager" ref="pagingLookupManager" />
+        <property name="size" value="25" />
+        <property name="userManager" ref="userManager" />
+    </bean> 
+    <bean id="cartformController" class="local.tux.app.web.controller.CartFormController">
+    	<property name="lookUpManager" ref="shoppingCartManager" />
+    	<property name="commandClass" value="local.tux.app.model.ShoppingCart" />
+    	<property name="commandName" value="shoppingCart" />
+    	<property name="userManager" ref="userManager" />
+    	<property name="successView" value="redirect:orders.html" />
+    
+    </bean>
+</beans>

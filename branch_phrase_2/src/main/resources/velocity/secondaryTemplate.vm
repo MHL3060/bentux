@@ -1,0 +1,7 @@
+## $title is set in the view definition file for this view.
+<html>
+    <head><title>$title</title></head>
+    <body>
+        <h1>This is $title!!</h1>
+    </body>
+</html>

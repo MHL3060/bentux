@@ -1,0 +1,252 @@
+/* A CSS Framework by Mike Stenhouse of Content with Style */
+h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+	padding: 0;
+	font-family: "Avenir LT Std 55 Roman";
+	color: green;
+}
+
+h1 {
+	font-size: 2.2em;
+}
+
+h2 {
+	font-size: 1.8em;
+}
+
+h3 {
+	font-size: 1.3em;
+}
+
+p, ul, ol {
+	margin-top: 0;
+	line-height: 180%;
+}
+
+/* SITE SPECIFIC LAYOUT */
+    body {
+    	height: 100%;
+		//margin: 0;
+		//padding: 0;
+		font: normal 12px Verdana, Arial, Helvetica, sans-serif;
+		background: #555;
+		position: relative;
+	
+        margin: 0;
+        padding: 0;
+      /*  background: white url(images/background.gif) top left repeat-x; */
+        text-align: center;
+    }
+    div#page {
+        width: 1030px;
+        margin: 0 auto;
+        padding: 0;
+        text-align: center;
+    }
+
+/* HEADER */
+	div#header {
+	    margin: 0.5em 0 4em 0;
+	    padding-left: 40px;
+	    padding-right:4opx;
+	   /* height: 100px;*/ /* needed by IE 7 */
+	}
+    /* SWITCHLOCALE WILL NOT APPLIED IN THIS VERSION
+   	div#switchLocale {
+       position: absolute;
+       right: 10px;
+    }*/
+    div#top {
+	   width: 950px;
+	   padding-left: 5px;
+	   padding-bottom: 5px;
+                    
+	   font-family: "Avenir LT Std 55 Roman";
+       color: green;
+	   font-size: 11px;
+	 }
+     div#top .left {
+          float: left;
+		  text-align: left;
+	 }
+     div#top .right{
+          padding-left: 400px;
+     	  float: right;
+	 }	
+     div#branding {
+           width: 950px;
+		    margin-bottom: 10px; 
+		padding-bottom: 10px;	
+		background: #ffffff; 
+
+		
+        }
+       
+       div#news {
+            width: 950px;
+            background: #fd8719; 
+            padding: 3px 0px 16px 0px;     
+            border-top: 105px solid #ffffff;
+            text-align: left;
+        }
+         div#news .left {
+            margin-left:4px;
+          float: left;
+		  text-align: left;
+		 }
+		 div#news .right{
+		   margin-top:-4px;
+		   padding-right: 10px;
+	       float: right;
+		 }
+	   
+       div#divider{
+            width: 950px;
+            margin-top:7px;
+            border-top: 1px dotted ;
+       }
+
+
+   
+    /* END HEADER */
+    
+    /* CONTENT */
+        div#content {            
+            width: 950px;
+            margin-bottom:10px;
+        }
+            body#error #content {
+                margin-top: 20px;
+            }
+        /* MAIN */
+        /*	div#sidebar {float:left; margin:0 0 5px; padding:5px; width:140px;}*/
+        	
+            div#main {
+            	float:left;
+                padding-left: 13px;
+                margin-bottom: 20px;
+                width:650px;
+            }
+                div#main form ul li {
+              /*      list-style-type: none;
+                    margin-left: 0;
+               */}
+        /* END MAIN */
+        
+        /* SUB */
+        div#sub {
+			float:left;
+			width:140px;
+			/*overflow:hidden; */
+			padding-left: 10px;
+		}
+		div#sub .title{
+            width: 130px;
+			float: center;
+            line-height:15px;
+            text-align: center;
+			font-size: 13px;
+			color: green;
+            margin-bottom: 10px;
+            margin-left: 40px;
+			border-bottom:1px solid #FF9400;
+		}
+		div#sub .ul {
+			color:#555;
+			overflow:hidden;
+			margin:0;
+		}
+		
+		div#sub .ul .left {
+			float:left;
+			width:150px;
+		}
+		
+		div#sub .ul .right {
+			float:right;
+			width:150px;
+		}
+		div#sub .partners .img {
+			margin:5px 0;
+		}
+	   div#sub .partners .subtitle {
+	        width:130px;
+            text-align: left;
+            font-size: 11px;
+		    color: green;
+                   margin-bottom:-6px;
+
+        }
+        div#sub .advertise{
+        	width:130px;
+        	padding-top:8px;
+        	border-top:1px solid #FF9400;
+            margin-top: -10px;
+        }
+            
+        /* END SUB */
+        
+    /* END CONTENT */
+    
+    /* FOOTER */
+        div#footer {
+            margin-top: 10px;
+            color: #ffffff;
+            padding: 0 39px;
+            text-align: left;
+            font-size: 1em;
+        }
+        div#footer a:active {
+			color: #94bf00;
+			text-decoration: none;	
+		}	
+		
+		 div#footer a:visited {
+			color: #ffffff;
+			background-color: transparent;
+		}
+		div#footer a:link {
+			color: #ffffff;
+			background-color: transparent;
+		}
+            div#footer div#divider {
+                    margin: 0 0 4px 0;
+					background: #246e21; 
+                    border-top: 10px solid #246e21;
+            }
+
+            div#footer div#divider div {
+                    margin: 30px 0 0 0;
+                    border-top: 6px solid #246e21; /*#ebf5fc; */
+            }
+
+            div#footer .left {
+                    float: left;
+					padding-left: 20%;
+            }
+            
+            div#footer .center {
+            		margin-top:25%;
+            		margin-bottom: 5px;
+            		padding-left:15%; 
+            		padding-right:15%;    		
+            }	
+
+            div#footer .right {
+                    float: right;
+					padding-right: 80px;
+            }
+	
+    /* END FOOTER */
+
+		
+       div#shopping_cart ul{
+            font-weight:bold;
+	      	float: right;
+			list-style-type: none;
+	   }
+	   div#shopping_cart ul li {
+			float: left;
+			padding-right: 10px;
+	   }
+/* END LAYOUT */

@@ -1,0 +1,80 @@
+<!DOCTYPE dwr PUBLIC
+    "-//GetAhead Limited//DTD Direct Web Remoting 2.0//EN"
+    "http://getahead.ltd.uk/dwr/dwr20.dtd">
+<dwr>
+    <allow>
+        <create creator="spring" javascript="UserManager">
+            <param name="class" value="org.appfuse.service.UserManager"/>
+            <param name="beanName" value="userManager"/>
+            <include method="getUsers"/>
+        </create>
+        <create creator="spring" javascript="catalogManager">
+        	<param name="class" value="local.tux.app.service.CatalogManager" />
+        	<param name="beanName" value="catalogManager" />
+        	<include method="getRelativeObjects" />
+        	<include method="getParents" />
+        	<include method="getAll" />
+        </create>
+        <create creator="spring" javascript="brandNameManager">
+        	<param name="class" value="local.tux.app.service.LookUpNameGenericManager" />
+        	<param name="beanName" value="brandNameManager" />
+        	<include method="getRelativeObjects" />
+        	<include method="getAll" />
+        </create>
+        
+        <create creator="spring" javascript="manufacturerManager" >
+        	<param name="class" value="local.tux.app.service.LookUpNameGenericManager" />
+        	<param name="beanName" value="manufacturerManager" />
+        	<include method="getRelativeObjects" />
+        	<include method="getAll" />
+        </create>
+        <create creator="spring" javascript="productManager" >
+        	<param name="class" value="local.tux.app.service.LookUpNameGenericManager" />
+        	<param name="beanName" value="productManager" />
+        	<include method="getLookUpBaseObject" />
+        	<include method="getAll" />
+        	<include method="search" />
+        	<include method="getById" />
+        </create>
+        
+        <create creator="spring" javascript="imageManager" >
+        	<param name="class" value="local.tux.app.service.LookUpNameGenericManager" />
+        	<param name="beanName" value="imageManager" />
+        	<include method="getLookUpBaseObject" />
+        	<include method="getAll" />
+        	<include method="search" />
+        </create>
+        
+        <create creator="spring" javascript="shoppingCartManager" >
+        	<param name="class" value="local.tux.app.service.ShoppingCartManager" />
+        	<param name="beanName" value="shoppingCartManager" />
+        	<include method="getOpenItemCount" />
+        	<include method="addItem" />
+        	<include method="getItemsByCartId" />
+        </create>
+        
+        <create creator="spring" javascript="shoppingItemManager" >
+        	<param name="class" value="local.tux.app.service.ShoppingItemManager" />
+        	<param name="beanName" value="shoppingItemManager" />
+        	<include method="getShoppingItem" />
+        	<include method="removeItemQuantity" />
+        </create>
+        
+        <convert converter="enum" match="local.tux.Constants.Status"/>
+        <convert converter="hibernate3" match="local.tux.app.model.Product" />
+        <convert converter="hibernate3" match="local.tux.app.model.FoodProduct" />
+        <convert converter="hibernate3" match="local.tux.app.model.Image" />
+        <convert converter="hibernate3" match="local.tux.app.model.EntertainmentProduct" />
+        <convert converter="hibernate3" match="local.tux.app.model.EntertainmentService" />
+        <convert converter="hibernate3" match="local.tux.app.model.BrandName" />
+        <convert converter="hibernate3" match="local.tux.app.model.Manufacturer" />
+        <convert converter="hibernate3" match="org.appfuse.model.User"/>
+        <convert converter="hibernate3" match="local.tux.app.model.Catalog" />
+        <convert converter="hibernate3" match="local.tux.app.model.ShoppingCart" />
+        <convert converter="hibernate3" match="local.tux.app.model.ShoppingItem" />
+        <convert converter="hibernate3" match="org.appfuse.model.Role" />
+        <convert converter="hibernate3" match="org.appfuse.model.Address" />
+        <convert converter="hibernate3" match="local.tux.app.model.ShippingAddress" />
+        
+    </allow>
+</dwr>

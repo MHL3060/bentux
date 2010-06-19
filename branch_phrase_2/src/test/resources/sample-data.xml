@@ -1,0 +1,136 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+  <table name="app_user">
+    <column>id</column>
+    <column>account_expired</column>
+    <column>account_locked</column>
+    <column>address</column>
+    <column>city</column>
+    <column>country</column>
+    <column>postal_code</column>
+    <column>province</column>
+    <column>credentials_expired</column>
+    <column>email</column>
+    <column>account_enabled</column>
+    <column>first_name</column>
+    <column>last_name</column>
+    <column>password</column>
+    <column>password_hint</column>
+    <column>phone_number</column>
+    <column>username</column>
+    <column>version</column>
+    <column>website</column>
+    <row>
+      <value>-2</value>
+      <value>false</value>
+      <value>false</value>
+      <value/>
+      <value>Vancouver</value>
+      <value>CA</value>
+      <value>80210</value>
+      <value>BC</value>
+      <value>false</value>
+      <value>zuoxiangli@hotmail.com</value>
+      <value>true</value>
+      <value>Ben</value>
+      <value>Li</value>
+      <value>d033e22ae348aeb5660fc2140aec35850c4da997</value>
+      <value><![CDATA[Not a female kitty.]]></value>
+      <value/>
+      <value>admin</value>
+      <value>1</value>
+      <value>http://raibledesigns.com</value>
+    </row>
+    <row>
+      <value>-1</value>
+      <value>false</value>
+      <value>false</value>
+      <value/>
+      <value>Vancouver</value>
+      <value>CA</value>
+      <value>80210</value>
+      <value>BC</value>
+      <value>false</value>
+      <value>benli3060@gmail.com</value>
+      <value>true</value>
+      <value>Tomcat</value>
+      <value>User</value>
+      <value>12dea96fec20593566ab75692c9949596833adc9</value>
+      <value><![CDATA[A male kitty.]]></value>
+      <value/>
+      <value>user</value>
+      <value>1</value>
+      <value>http://tomcat.apache.org</value>
+    </row>
+  </table>
+  
+  
+  <table name="catalog">
+    <column>id</column>
+    <column>description</column>
+    <column>display_order</column>
+    <column>name</column>
+    <column>image_id</column>
+    <column>parent</column>
+    <row>
+      <value>-4</value>
+      <value><![CDATA[Cultural Product]]></value>
+      <null/>
+      <value><![CDATA[Cultural Product]]></value>
+      <null/>
+      <null/>
+    </row>
+    <row>
+      <value>-3</value>
+      <value><![CDATA[Entertainment Service]]></value>
+      <null/>
+      <value><![CDATA[Entertainment Service]]></value>
+      <null/>
+      <null/>
+    </row>
+    <row>
+      <value>-2</value>
+      <value><![CDATA[All the entertainment Product should go this category.]]></value>
+      <null/>
+      <value><![CDATA[Entertainment Product]]></value>
+      <null/>
+      <null/>
+    </row>
+    <row>
+      <value>-1</value>
+      <value><![CDATA[All the food product should within this big category.]]></value>
+      <null/>
+      <value><![CDATA[Food Product]]></value>
+      <null/>
+      <null/>
+    </row>
+  </table>
+  
+  <table name="role">
+    <column>id</column>
+    <column>description</column>
+    <column>name</column>
+    <row>
+      <value>-2</value>
+      <value><![CDATA[Default role for all Users]]></value>
+      <value>ROLE_USER</value>
+    </row>
+    <row>
+      <value>-1</value>
+      <value><![CDATA[Administrator role (can edit Users)]]></value>
+      <value>ROLE_ADMIN</value>
+    </row>
+  </table>
+  <table name="user_role">
+    <column>user_id</column>
+    <column>role_id</column>
+    <row>
+      <value>-2</value>
+      <value>-1</value>
+    </row>
+    <row>
+      <value>-1</value>
+      <value>-2</value>
+    </row>
+  </table>
+</dataset>
