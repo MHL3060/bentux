@@ -11,7 +11,19 @@
 </c:if>
 
 <div id="photo">
-	<img src="<c:url value="/images/location.png"/>" width="360" height="400" alt="location">
+	<iframe width="400" height="400" 
+						frameborder="0" 
+						scrolling="no" 
+						marginheight="0" 
+						marginwidth="0" 
+						src="http://maps.google.com/maps?f=d&amp;source=s_d&amp;saddr=22.31218,114.226425&amp;daddr=Sunbeam+Centre,+27+Shing+Yip+St,+Kwun+Tong,+Hong+Kong&amp;geocode=%3BFZprVAEd1vjOBilJm7O1WgEENDGOsvCWKyeT4w&amp;hl=en&amp;mra=ls&amp;dirflg=w&amp;doflg=ptm&amp;sll=22.31126,114.22187&amp;sspn=0.009032,0.016512&amp;ie=UTF8&amp;ll=22.310716,114.226313&amp;spn=0.00397,0.004549&amp;z=17&amp;output=embed">
+	</iframe>
+	<br />
+	<small>
+		<a href="http://maps.google.com/maps?f=d&amp;source=embed&amp;saddr=22.31218,114.226425&amp;daddr=Sunbeam+Centre,+27+Shing+Yip+St,+Kwun+Tong,+Hong+Kong&amp;geocode=%3BFZprVAEd1vjOBilJm7O1WgEENDGOsvCWKyeT4w&amp;hl=en&amp;mra=ls&amp;dirflg=w&amp;doflg=ptm&amp;sll=22.31126,114.22187&amp;sspn=0.009032,0.016512&amp;ie=UTF8&amp;ll=22.310716,114.226313&amp;spn=0.00397,0.004549&amp;z=17" style="color:#0000FF;text-align:left">
+			View Larger Map
+		</a>
+	</small>
 </div>
 <div class="detail">
 			<ul>
@@ -20,11 +32,14 @@
 				<li>Email: &nbsp;&nbsp;til@biznetvigator.com</li>
 			</ul>
 			<p></p>
-			<div class="picture">
+				
+				
+			<!--
+						<div class="picture">
 				<a href="<c:url value="http://maps.google.com/maps?f=q&hl=en&q=Unit+1210%2C+12%2FF%2C+Sunbeam+Centre%2C+27+Shing+Yip+Street%2C+%2C+Kwun+Tong%2C+Hong+Kong"/>">
 				<img src="<c:url value="/images/google_map.png"/>" width="120" height="42" alt="location"></a>
 			</div>	
-	
+			-->
 			<ul>
 				<li>Address:</li>
 				<li>&nbsp;&nbsp;&nbsp;&nbsp; Unit 1210, 12/F, Sunbeam Centre,</li>
