@@ -17,6 +17,8 @@ import local.tux.app.web.table.pagination.ExtendedPaginatedList;
 
 public class SubCatalogController extends TuxBaseObjectsController {
 
+	
+	
 	public DetachedCriteria getCriteria(HttpServletRequest request){
 		DetachedCriteria criteria = super.getCriteria(request);
 		if (StringUtils.isBlank(request.getParameter("pid"))== false){
