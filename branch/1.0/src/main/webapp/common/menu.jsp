@@ -21,14 +21,16 @@
      		<fmt:message key="special.product" />
      	</a>
      </li>
+     <%--
      <li>
      	<a href="<c:url value="/catalogs.html"/>" class="${pageContext.request.requestURI == '/catalogs.html' ? 'current' : '' }" >
      		<fmt:message key="main.catalog.list" />
      	</a>
      
      </li>
+      --%>
      <li>
-     	<a href="<c:url value="/productlist.html"/>" class="${pageContext.request.requestURI == '/productlist.html' ? 'current' : '' }" >
+     	<a href="<c:url value="/catalogs.html"/>" class="${pageContext.request.requestURI == '/catalogs.html' ? 'current' : '' }" >
      		<fmt:message key="product.list" />
      	</a>
      </li>
