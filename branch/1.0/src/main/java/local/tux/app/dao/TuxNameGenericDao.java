@@ -23,5 +23,5 @@ public interface TuxNameGenericDao<T, PK extends Serializable> extends GenericDa
 	public List<T> search(String propertyName, String value, int fetchSize);
 	public int getAllRecordsCount();
 	public List<T> getItemsInInterval(String attribute, Object from, Object to);
-	
+	public List<T> getItems(String propertyName, Object o);
 }

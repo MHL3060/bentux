@@ -80,5 +80,8 @@ public class TuxNameGenericDaoHibernate<T, PK extends Serializable> extends Gene
 				.addOrder(Order.desc(attribute));
 		return getHibernateTemplate().findByCriteria(criteria);
 	}
+	public List<T> getItems(String propertyName, Object o){
+		return getHibernateTemplate().find("from " + clazz.getSimpleName() + " where "+ propertyName + " = ? ", o);
+	}
 
 }

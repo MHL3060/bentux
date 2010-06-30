@@ -4,44 +4,18 @@
             <div class="title">
 				 <fmt:message key="current.page.home"/>
             </div>
+			
 			<ul class="left">
-					<div class="partners">
-					    <img src="<c:url value="/images/home_sub_1.jpg"/>" width="130"
-									height="80" alt="partners"></img>
-						<div class="subtitle">
-						Home made tea Masala
-						</div>
-	                </div> 					
+			<c:forEach var="sideBanner" items="${sideBanners }">
+				<li>
+					<div class="banner">
+						<img src="<c:url value="${sideBanner.thumbPath}"/>" width="130"
+									height="80" alt="${sideBanner.name}"></img>
+						<a href="<c:url value="${sideBanner.url }" />">${sideBanner.name}</a>
+					</div>
+				</li>
+	         </c:forEach>					
 		     </ul>
 			
-			<ul id="left">
-			
-					  <div class="partners">
-						<img src="<c:url value="/images/home_sub_2.jpg"/>" width="130"
-									height="80" alt="partners"></img>
-						<div class="subtitle">
-						Mouth Freshners 
-						</div>
-	                </div> 	
-			</ul>
-			
-			<ul id="left">
-					
-					  <div class="partners">
-					<img src="<c:url value="/images/home_sub_3.jpg"/>" width="130"
-									height="80" alt="partners"></img>	
-						<div class="subtitle">
-						Ginger Cookies 
-						</div>
-				 </div>
-			</ul>
-			
-			<ul id="left">
-					
-					 <div class="advertise">
-							<img src="<c:url value="/images/common/ad.png"/>" width="130"
-											height="80" alt="ads"></img>	
-					</div>
-			</ul>
 		</div>
 		

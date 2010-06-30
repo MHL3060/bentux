@@ -8,8 +8,11 @@ import javax.servlet.http.HttpServletResponse;
 import local.tux.Constants;
 import local.tux.Constants.CART_STATUS;
 import local.tux.app.model.ShoppingCart;
+import local.tux.app.model.SideBanner;
 import local.tux.app.model.common.TuxBaseObject;
+import local.tux.app.service.LookUpNameGenericManager;
 import local.tux.app.service.ShoppingCartManager;
+import local.tux.app.util.CommonPageUtil;
 import local.tux.app.web.table.pagination.ExtendedPaginatedList;
 import local.tux.app.web.table.pagination.PaginateListFactory;
 import local.tux.app.web.table.pagination.PagingLookupManager;
@@ -33,6 +36,7 @@ public class TuxBaseObjectsController implements Controller {
 	protected String KEY_REFERENCE_LIST = "tuxBaseObjectList";
 	protected String CART_ITEM_COUNT = "cart_item_count";
 	protected String CART_SUBTOTAL = "cart_sub_total";
+	protected String SIDE_BANNER = "sideBanners";
 	
 	protected String USER = "user";
 	protected PaginateListFactory factory;
@@ -41,7 +45,8 @@ public class TuxBaseObjectsController implements Controller {
 	protected int pageSize = Constants.PAGE_SIZE;
 	protected final String HAS_PERMISSION = "hasPermission";
 	protected UserManager userManager;
-	protected ShoppingCartManager shoppingCartManager;
+
+	private CommonPageUtil commonPageUtil;
 	
 	public void setUserManager(UserManager userManager){
 		this.userManager = userManager;
@@ -62,8 +67,9 @@ public class TuxBaseObjectsController implements Controller {
 		this.pageSize = size;
 	}
 	
-	public void setShoppingCartManager(ShoppingCartManager shoppingCartManager){
-		this.shoppingCartManager = shoppingCartManager;
+	
+	public void setCommonPageUtil(CommonPageUtil commonPageUtil){
+		this.commonPageUtil = commonPageUtil;
 	}
 	/**
 	 * the key for the default list is tuxBaseObjectList.
@@ -85,10 +91,12 @@ public class TuxBaseObjectsController implements Controller {
 			User user = userManager.getUserByUsername(request.getRemoteUser());
 			mav.addObject(HAS_PERMISSION, hasPermissionToAdd(user));
 			mav.addObject(USER, user);
-			mav.addObject(CART_ITEM_COUNT, shoppingCartManager.getOpenItemCount(user.getId()));
+			mav.addObject(CART_ITEM_COUNT, commonPageUtil.getShoppingCartManager().getOpenItemCount(user.getId()));
 			
-			mav.addObject(CART_SUBTOTAL, shoppingCartManager.getSubTotal(shoppingCartManager.getOpenCart(user)));
+			mav.addObject(CART_SUBTOTAL, commonPageUtil.getShoppingCartManager().getSubTotal(commonPageUtil.getShoppingCartManager().getOpenCart(user)));
+			
 		}
+		mav.addObject(SIDE_BANNER, commonPageUtil.getSideBannerManager().getItems("enable", Boolean.TRUE));
 		ExtendedPaginatedList paginatedList = factory.getPaginatedListFromRequest(request);
 		paginatedList.setPageSize(pageSize);
 		paginatedList.setSortCriterion(sortByColumn);

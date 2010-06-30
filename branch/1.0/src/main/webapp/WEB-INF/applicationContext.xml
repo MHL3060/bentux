@@ -193,4 +193,9 @@
    			</bean>
    		</constructor-arg>
    </bean>
+   
+   <bean id="commonPageUtil" class="local.tux.app.util.CommonPageUtil">
+   		<property name="shoppingCartManager" ref="shoppingCartManager" />
+   		<property name="sideBannerManager" ref="sideBannerManager" />
+   </bean>
 </beans>

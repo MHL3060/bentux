@@ -64,5 +64,7 @@ public class LookUpNameGenericManagerImpl<T, PK extends Serializable> extends Ge
 	public T getById(Long id) {
 		return get((PK) id);
 	}
-
+	public List<T> getItems(String propertyName, Object o){
+		return genericDao.getItems(propertyName, o);
+	}
 }

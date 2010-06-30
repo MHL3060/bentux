@@ -28,4 +28,5 @@ public interface LookUpNameGenericManager<T, PK extends Serializable> extends Ge
 	 */
 	public List<T> getItemsInInterval(String attribute, Object from, Object to);
 	public T getById(Long id);
+	public List<T> getItems(String propertyName, Object o);
 }

@@ -27,8 +27,8 @@ public class SideBanner extends Image {
 	private String url;
 	@Column(name="is_enable")
 	private Boolean enable;
-	
-
+	@Column(name="display_order")
+	private Integer displayOrder;
 	public String getUrl() {
 		return url;
 	}
@@ -43,6 +43,16 @@ public class SideBanner extends Image {
 
 	public void setEnable(Boolean enable) {
 		this.enable = enable;
+	}
+	
+	
+
+	public Integer getDisplayOrder() {
+		return displayOrder;
+	}
+
+	public void setDisplayOrder(Integer displayOrder) {
+		this.displayOrder = displayOrder;
 	}
 
 	@Override
