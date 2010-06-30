@@ -13,7 +13,7 @@ import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.servlet.ModelAndView;
 import org.tuckey.web.filters.urlrewrite.utils.StringUtils;
 
-import local.tux.TuxBaseObjectConverter;
+import local.tux.app.converter.TuxBaseObjectConverter;
 import local.tux.app.model.Catalog;
 import local.tux.app.model.Image;
 import local.tux.app.model.Manufacturer;

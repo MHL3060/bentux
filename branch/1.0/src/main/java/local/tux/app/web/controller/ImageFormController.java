@@ -27,7 +27,7 @@ import com.cedarsoft.image.ImageConverter;
 
 
 import local.tux.Constants;
-import local.tux.TuxBaseObjectConverter;
+import local.tux.app.converter.TuxBaseObjectConverter;
 import local.tux.app.model.Image;
 import local.tux.app.model.Product;
 import local.tux.app.service.LookUpNameGenericManager;

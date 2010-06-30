@@ -1,4 +1,4 @@
-package local.tux;
+package local.tux.app.converter;
 
 import java.beans.PropertyEditorSupport;
 import java.util.EnumMap;

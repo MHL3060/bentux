@@ -1,7 +1,7 @@
 package local.tux.app.model.common;
 
 
-import local.tux.TuxBaseObjectConverter;
+import local.tux.app.converter.TuxBaseObjectConverter;
 
 import org.appfuse.model.BaseObject;
 

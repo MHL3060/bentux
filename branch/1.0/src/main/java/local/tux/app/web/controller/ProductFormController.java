@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import local.tux.Constants;
-import local.tux.TuxBaseObjectConverter;
+import local.tux.app.converter.TuxBaseObjectConverter;
 import local.tux.app.model.BrandName;
 import local.tux.app.model.Catalog;
 import local.tux.app.model.EntertainmentProduct;

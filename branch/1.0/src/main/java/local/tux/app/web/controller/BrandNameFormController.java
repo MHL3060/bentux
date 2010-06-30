@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.ServletRequestDataBinder;
 
-import local.tux.TuxBaseObjectConverter;
+import local.tux.app.converter.TuxBaseObjectConverter;
 import local.tux.app.model.Manufacturer;
 import local.tux.app.service.LookUpNameGenericManager;
 import local.tux.app.web.common.controller.TuxBaseFormController;

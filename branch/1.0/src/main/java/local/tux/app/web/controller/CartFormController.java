@@ -13,8 +13,8 @@ import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.servlet.ModelAndView;
 
 import local.tux.Constants;
-import local.tux.EnumPropertyConverter;
 import local.tux.Constants.CART_STATUS;
+import local.tux.app.converter.EnumPropertyConverter;
 import local.tux.app.model.ShoppingCart;
 import local.tux.app.model.common.ValuePair;
 import local.tux.app.model.common.LookUpBaseObject;

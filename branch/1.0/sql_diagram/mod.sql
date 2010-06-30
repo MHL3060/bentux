@@ -10,3 +10,9 @@ alter table shopping_cart change trackingCode tracking_code varchar(255);
 alter table shopping_cart add shipping_address_id integer;
 alter table shipping_address drop user_id;
 
+CREATE TABLE side_banner (
+  id bigint(20) NOT NULL,
+  is_enable bit(1) DEFAULT NULL,
+  url varchar(255) DEFAULT NULL,
+  PRIMARY KEY (id)
+);

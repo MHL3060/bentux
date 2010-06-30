@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -21,11 +23,10 @@ import local.tux.app.model.common.LookUpBaseObject;
 
 @Entity
 @Table(name="image")
-
+@Inheritance(strategy=InheritanceType.JOINED)
 @Searchable(alias = "image")
 @SearchableAllMetaData(enable = EnableAll.TRUE)
 @SearchableConstant(name = "type", values = { "image" })
-
 public class Image extends LookUpBaseObject {
 
 	/**

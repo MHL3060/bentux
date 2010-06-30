@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import local.tux.Constants;
-import local.tux.TuxBaseObjectConverter;
 import local.tux.Constants.CART_STATUS;
+import local.tux.app.converter.TuxBaseObjectConverter;
 import local.tux.app.model.Product;
 import local.tux.app.model.ShoppingCart;
 import local.tux.app.model.ShoppingItem;

@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.ServletRequestDataBinder;
 
-import local.tux.TuxBaseObjectConverter;
+import local.tux.app.converter.TuxBaseObjectConverter;
 import local.tux.app.model.Ingredient;
 import local.tux.app.model.FoodProduct;
 //import local.tux.app.service.IngredientManager;
