@@ -10,4 +10,5 @@ public interface UserReferencObjectDao<T, PK extends Serializable> extends TuxNa
 	
 	public List<T> getObjectsByUser(User user);
 
+	
 }

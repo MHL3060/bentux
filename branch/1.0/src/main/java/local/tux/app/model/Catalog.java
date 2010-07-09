@@ -5,12 +5,14 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.compass.annotations.EnableAll;
@@ -67,6 +69,8 @@ public class Catalog extends LookUpBaseObject {
 		return name;
 	}
 	
+	@OneToMany(mappedBy="parent", fetch=FetchType.LAZY)
+	private Set<Catalog> children;
 	
 	@Override
 	public void setName(String name) {
@@ -113,6 +117,15 @@ public class Catalog extends LookUpBaseObject {
 		this.displayOrder = displayOrder;
 	}
 
+
+	
+	public Set<Catalog> getChildren() {
+		return children;
+	}
+
+	public void setChildren(Set<Catalog> children) {
+		this.children = children;
+	}
 
 	@Override
 	public boolean equals(Object obj) {

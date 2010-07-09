@@ -46,6 +46,27 @@ div.center{
 
 }
 
+div.subcatalog { 
+    float: left; 
+	width: 6em; 
+	padding: 40px; 
+	margin: 1em;
+	height: 6em;
+    background: #ccc; 
+    color:#000; 
+    text-align: center; 
+    font: verdana, arial, sans-serif;
+}
+div.new_line {
+   
+	width: 100%;
+	background: #fff;
+	height: 1px;
+	display: block;
+	overflow: none;
+	float: left;
+}
+
 </style>
 <c:if test="${user != null }">
 	<%@ include file="/common/shoppingcart.jsp" %>
@@ -57,6 +78,22 @@ div.center{
 		<img alt="image holder" src="<c:url value="${catalog.image.thumbPath }" />" />
 		<a class="product" href="<c:url value="/subcatalogs.html?pid=${catalog.id}" />" > ${catalog.name}</a>
 	</div>
+	<div class="new_line"></div>
+		<c:forEach var="subCatalog" items="${catalog.children}" >
+			<div class="subcatalog" id="subcatalog_${subCatalog.id}">
+				<img alt="image holder" src="<c:url value="${subCatalog.image.thumbPath }" />" 
+					onclick="new Effect.Puff('subcatalog_${subCatalog.id}'); 
+					window.setTimeout('Effect.Appear(\'subcatalog_${subCatalog.id}\', {duration:.3})',4000); 
+					document.location='<c:url value="/productlist.html?catalogId=${subCatalog.id}" />'"
+				/>
+				<a class="product" alt="click here to view all the products related to ${subCatalog.name }"
+				onclick="new Effect.Puff('subcatalog_${subCatalog.id}'); 
+				window.setTimeout('Effect.Appear(\'subcatalog_${subCatalog.id}\', {duration:.3})',4000); "
+				href='<c:url value="/productlist.html?catalogId=${subCatalog.id}" />' > ${subCatalog.name}</a>
+			</div>
+	
+		</c:forEach>
+		<div class="new_line"></div>
 	</c:forEach>
 </div>
 
