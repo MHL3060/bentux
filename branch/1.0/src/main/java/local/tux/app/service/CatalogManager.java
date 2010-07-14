@@ -9,7 +9,7 @@ import local.tux.app.model.Catalog;
 
 public interface CatalogManager extends LookUpNameGenericManager<Catalog, Long> {
 	
-	public List<Catalog> getParents();
+	public List<Catalog> getMostTopLevel();
 	public List<Catalog> getChildren(Catalog parent);
 	public List<Catalog> getChildrenByParentId(Long parentId);
 	public Object getAllChildren();

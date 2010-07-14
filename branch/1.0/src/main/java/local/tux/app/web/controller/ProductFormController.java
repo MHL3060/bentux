@@ -86,7 +86,7 @@ public class ProductFormController extends BaseFormController {
 			multipleCount[i] = i;
 		}
 		models.put("multipleCount", multipleCount);
-		models.put("catalogParents", catalogManager.getParents());
+		models.put("catalogParents", catalogManager.getMostTopLevel());
 		models.put("catalogs", catalogManager.getAllChildren());
 		models.put("manufacturers", manufacturerManager.getAll());
 		models.put("units", Constants.WEIGHT_UNIT);

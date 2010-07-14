@@ -53,6 +53,12 @@
     onsubmit="return validateFileUpload(this)" id="imageForm">
     <form:hidden path="id"/>
 	<ul>
+       	 <li>
+	        <appfuse:label key="image.file" styleClass="desc"/>
+	        <form:errors path="file" cssClass="fieldError"/>
+	        <input type="file" name="file" id="file" class="file medium"/>
+		   
+	    </li>
        	<li>
 	        <appfuse:label key="sideBanner.name" styleClass="desc"/>
 	        <form:errors path="name" cssClass="fieldError"/>

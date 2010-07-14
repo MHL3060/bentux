@@ -46,7 +46,7 @@
  				</c:choose>
  			</display:column>
   			<display:column title="product.price" property="product.price" />
-  			<display:column title="shopping.item.total" property="total" />
+  			<display:column title="shopping.item.total" property="total" total="true"/>
 			</display:table>
 			
 			

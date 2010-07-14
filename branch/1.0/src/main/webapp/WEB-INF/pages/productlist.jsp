@@ -12,7 +12,7 @@
  --%>
  <script type="text/javascript" src="<c:url value='/scripts/effects.js'/>"></script>
  
- 
+ <%--
  <script type="text/javascript">
 	
  	function addItem(pidNodeId, quantityNodeId){
@@ -83,7 +83,7 @@
 		}
 	} 
 </script>
-
+ --%>
 <c:if test="${hasPermission }"><c:out value="${button}" escapeXml="false" /></c:if>
 <c:if test="${user != null }">
 	<%@ include file="/common/shoppingcart.jsp" %>
@@ -156,10 +156,6 @@
 		</div> 
 	</div> 
 </div> 
-
-<script language=javascript type='text/javascript'> 
-
-</script> 
 
 
 

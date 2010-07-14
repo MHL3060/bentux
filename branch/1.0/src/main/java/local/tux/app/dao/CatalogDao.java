@@ -15,7 +15,7 @@ public interface CatalogDao extends GenericDao<Catalog, Long> {
 	 * @param name
 	 * @return
 	 */
-	public List<Catalog> getParents();
+	public List<Catalog> getMostTopLevel();
 	
 	public List<Catalog> getChildren(Long id);
 	public List<Catalog> getAllChidlren();

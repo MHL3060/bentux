@@ -50,7 +50,7 @@
         </display:column>
         
         <display:column property="name" titleKey="lookup.name" sortable="true"/>
-		<display:column property="parent.name" titleKey="lookup.parent" sortable="true" />
+		<display:column property="htmlDisplayName" titleKey="lookup.parent" sortProperty="parent.name" sortable="true" />
 		<display:column property="description" titleKey="lookup.description" />
 		<display:column sortProperty="displayOrder" titleKey="lookup.displayOrder" >
 			<c:url var="url" value="catalogform.html" >
@@ -84,12 +84,13 @@
                 		<select name="parent" id="parent">
                 		${pleaseSelect }	
                			<c:forEach var="c" items="${parents}" >
-               				<option value="${c.id }" ${c.id == catalog.parent.id ? 'selected' : '' }>${c.name}</option>
+               				<option value="${c.id }" ${c.id == catalog.parent.id ? 'selected' : '' }>${c.htmlOptionName}</option>
                			</c:forEach>
                 		 
                 		</select>
                 	</spring:bind>
                 </li>
+                
                 <li>
                 	<appfuse:label key="catalog.image" styleClass="desc" />
                 	<form:errors path="image" cssClass="fieldError" />

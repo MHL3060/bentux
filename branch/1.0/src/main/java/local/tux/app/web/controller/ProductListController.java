@@ -22,8 +22,11 @@ public class ProductListController extends TuxBaseObjectsController {
 	public DetachedCriteria getCriteria(HttpServletRequest request){
 		DetachedCriteria criteria = super.getCriteria(request);
 		String catalogId = request.getParameter("catalogId");
+		criteria.createAlias("brandName","brandName");
+		criteria.createAlias("catalogs", "catalog");
 		if (StringUtils.isBlank(catalogId)== false){
-			criteria.createAlias("catalogs", "catalog");
+			
+			
 			criteria.add(Restrictions.eq("catalog.id", new Long(catalogId)));
 		}
 		return criteria;

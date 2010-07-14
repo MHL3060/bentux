@@ -18,9 +18,9 @@ public class CatalogManagerImpl extends LookUpNameGenericManagerImpl<Catalog, Lo
 		super(catalogDao);
 		this.catalogDao = catalogDao;
 	}
-
-	public List<Catalog> getParents() {
-		return catalogDao.getParents();
+	
+	public List<Catalog> getMostTopLevel() {
+		return catalogDao.getMostTopLevel();
 	}
 
 	public List<Catalog> getChildren(Catalog parent) {

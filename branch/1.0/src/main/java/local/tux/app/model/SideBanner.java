@@ -25,6 +25,10 @@ public class SideBanner extends Image {
 	
 	@Column(name="url")
 	private String url;
+	
+	@Column(name="title")
+	private String title;
+	
 	@Column(name="is_enable")
 	private Boolean enable;
 	@Column(name="display_order")
@@ -32,7 +36,9 @@ public class SideBanner extends Image {
 	public String getUrl() {
 		return url;
 	}
-
+	@Column(name="page")
+	private String page;
+	
 	public void setUrl(String url) {
 		this.url = url;
 	}
@@ -45,7 +51,13 @@ public class SideBanner extends Image {
 		this.enable = enable;
 	}
 	
-	
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
 
 	public Integer getDisplayOrder() {
 		return displayOrder;
@@ -55,6 +67,7 @@ public class SideBanner extends Image {
 		this.displayOrder = displayOrder;
 	}
 
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

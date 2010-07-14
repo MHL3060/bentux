@@ -163,10 +163,10 @@ Event.observe(window, 'load', function() {
 	<li>
 		<a href="<c:url value="catalogform.html" />"  target="catalog" ><fmt:message key="catalog.add.item" /></a>
 		<p>
-		<a  name="anchor" id="anchor" onclick="fillChildren(mainCatalogy, catalogManager,'parent.id', catalogs)"><fmt:message key="refresh.list" /></a>
+		<a  name="anchor" id="anchor" onclick="fillChildren(mainCatalogy, catalogManager,'parent.id', c_children)"><fmt:message key="refresh.list" /></a>
 		</p>
 		<appfuse:label key="product.catalog" styleClass="desc" />
-		<select name="mainCategory" id="mainCategory" onchange="fillChildren(this, catalogManager,'parent.id', catalogs); showProduct(this)"
+		<select name="mainCategory" id="mainCategory" onchange="fillChildren(this, catalogManager,'parent.id', c_children); dwr.util.removeAllOptions(catalogs)"
 			${product.id  == null ? "" : 'disabled="disabled"'}>
 			${pleaseSelect }
 			<c:forEach var="catalog" items="${catalogParents}">
@@ -175,7 +175,13 @@ Event.observe(window, 'load', function() {
 		</select>
 	</li>
 	<li>
-	
+		<appfuse:label key="product.catalog.children" styleClass="desc" />
+		<select name="c_children" id="c_children" onchange="fillChildren(this, catalogManager,'parent.id',catalogs); showProduct(this)">
+			${pleaseSelect }
+		</select>
+	</li>
+	<li>
+		
 		<appfuse:label key="product.catalogs" styleClass="desc" />
 		<form:errors path="catalogs" cssStyle="fieldErrors" />
 		<spring:bind path="catalogs">

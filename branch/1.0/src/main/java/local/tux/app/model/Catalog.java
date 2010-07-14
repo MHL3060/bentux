@@ -14,6 +14,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.compass.annotations.EnableAll;
 import org.compass.annotations.Searchable;
@@ -78,6 +79,33 @@ public class Catalog extends LookUpBaseObject {
 
 	}
 
+	@Transient
+	public String getHtmlDisplayName(){
+		String s ="" ;
+		Catalog next = parent;
+		
+		while (next != null){
+			String name = next.getName();
+			if (s != ""){
+				s = name +" -> "+ s;
+			}else {
+				s = name;
+			}
+			next = next.getParent();
+		}
+		return s;
+	}
+	@Transient
+	public String getHtmlOptionName(){
+		String s = getHtmlDisplayName();
+		
+		if (s == ""){
+			return name;
+		}else {
+			return s + " -> " + name;
+		
+		}
+	}
 	@Override
 	public Long getId() {
 		return id;

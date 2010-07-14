@@ -46,7 +46,7 @@ public class CatalogFormController extends TuxBaseFormController {
 			Errors error) throws Exception {
 		Map model = super.referenceData(request, command, error);
 		
-		List<Catalog> parents = ((CatalogManager)lookUpManager).getParents();
+		List<Catalog> parents = ((CatalogManager)lookUpManager).getAll();
 		model.put("parents", parents);
 		return model;
 	}

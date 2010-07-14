@@ -82,8 +82,7 @@
 		<constructor-arg value="local.tux.app.model.Ingredient" />
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-	<bean id="productDao" class="local.tux.app.dao.hibernate.TuxNameGenericDaoHibernate">
-		<constructor-arg value="local.tux.app.model.Product" />
+	<bean id="productDao" class="local.tux.app.dao.hibernate.ProductDaoHibernate">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	<bean id="brandNameDao" class="local.tux.app.dao.hibernate.TuxNameGenericDaoHibernate">
@@ -140,7 +139,7 @@
     <bean id="ingredientManager" class="local.tux.app.service.impl.LookUpNameGenericManagerImpl">
     	<constructor-arg ref="ingredientDao" />
     </bean>   
-    <bean id="productManager" class="local.tux.app.service.impl.LookUpNameGenericManagerImpl">
+    <bean id="productManager" class="local.tux.app.service.impl.ProductManagerImpl">
     	<constructor-arg ref="productDao" />
     </bean>
     <bean id="brandNameManager" class="local.tux.app.service.impl.LookUpNameGenericManagerImpl">

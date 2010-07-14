@@ -50,7 +50,7 @@
         <property name="userManager" ref="userManager"/>
     </bean>
 
-    <bean id="userFormController" class="local.tux.app.web.controller.UserformController">
+    <bean id="userFormController" class="org.appfuse.webapp.controller.UserFormController">
         <property name="validator" ref="beanValidator"/>
         <property name="formView" value="userForm"/>
         <property name="successView" value="redirect:users.html"/>
@@ -59,9 +59,6 @@
         <property name="roleManager" ref="roleManager"/>
         <property name="mailEngine" ref="mailEngine"/>
         <property name="message" ref="mailMessage"/>
-        <property name="passwordEmailTemplate" value="velocity/userpassword.vm" />
-        <property name="htmlMailService" ref="sendHtmlMailSender" />
-        <property name="passWordEncoder" ref="passwordEncoder" />
         <property name="templateName" value="accountCreated.vm"/>
     </bean>
 

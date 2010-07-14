@@ -29,12 +29,14 @@
         	<include method="getAll" />
         </create>
         <create creator="spring" javascript="productManager" >
-        	<param name="class" value="local.tux.app.service.LookUpNameGenericManager" />
+        	<param name="class" value="local.tux.app.service.ProductManager" />
         	<param name="beanName" value="productManager" />
         	<include method="getLookUpBaseObject" />
         	<include method="getAll" />
         	<include method="search" />
         	<include method="getById" />
+        	<include method="getProductByCatalogId" />
+        	            
         </create>
         
         <create creator="spring" javascript="imageManager" >

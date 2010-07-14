@@ -2,6 +2,8 @@ package local.tux.app.dao.hibernate;
 
 import java.util.List;
 
+import org.hibernate.criterion.DetachedCriteria;
+
 import local.tux.app.dao.CatalogDao;
 import local.tux.app.model.Catalog;
 
@@ -11,9 +13,9 @@ public class CatalogDaoHibernate extends TuxNameGenericDaoHibernate<Catalog, Lon
 		super(Catalog.class);
 		
 	}
-
+	
 	@SuppressWarnings("unchecked")
-	public List<Catalog> getParents(){
+	public List<Catalog> getMostTopLevel(){
 		return getHibernateTemplate().find("from Catalog where parent is null " );
 	}
 

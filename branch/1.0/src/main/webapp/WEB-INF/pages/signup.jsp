@@ -32,6 +32,25 @@
         <form:input path="username" id="username" cssClass="text large" cssErrorClass="text large error"/>
     </li>
     <li>
+    	<div>
+            <div class="left">
+                <appfuse:label styleClass="desc" key="user.password"/>
+                <form:errors path="password" cssClass="fieldError"/>
+                <form:password path="password" id="password" cssClass="text medium" cssErrorClass="text medium error" showPassword="true"/>
+            </div>
+            <div>
+                <appfuse:label styleClass="desc" key="user.confirmPassword"/>
+                <form:errors path="confirmPassword" cssClass="fieldError"/>
+                <form:password path="confirmPassword" id="confirmPassword" cssClass="text medium" cssErrorClass="text medium error" showPassword="true"/>
+            </div>
+        </div>
+    </li>
+    <li>
+        <appfuse:label styleClass="desc" key="user.passwordHint"/>
+        <form:errors path="passwordHint" cssClass="fieldError"/>
+        <form:input path="passwordHint" id="passwordHint" cssClass="text large" cssErrorClass="text large error"/>
+    </li>
+    <li>
         <div class="left">
             <appfuse:label styleClass="desc" key="user.firstName"/>
             <form:errors path="firstName" cssClass="fieldError"/>
