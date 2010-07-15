@@ -25,6 +25,7 @@ import org.compass.annotations.SearchableMetaData;
 import org.compass.annotations.SearchableProperty;
 
 
+import local.tux.Constants;
 import local.tux.app.model.common.LookUpBaseObject;
 
 @Entity
@@ -83,8 +84,9 @@ public class Catalog extends LookUpBaseObject {
 	public String getHtmlDisplayName(){
 		String s ="" ;
 		Catalog next = parent;
-		
-		while (next != null){
+		int level = 0;
+		while (next != null && level < Constants.MAX_CATALOG_LEVEL){
+			level++;
 			String name = next.getName();
 			if (s != ""){
 				s = name +" -> "+ s;

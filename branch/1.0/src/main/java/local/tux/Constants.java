@@ -46,5 +46,6 @@ public interface Constants {
 	public final String CANCEL_ACTION = "cancel";
 	public final int MULTIPLE_COUNT = 10;
 	
+	public final int MAX_CATALOG_LEVEL = 3;
 	
 }
