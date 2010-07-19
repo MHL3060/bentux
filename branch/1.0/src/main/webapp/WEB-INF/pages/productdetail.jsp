@@ -1,5 +1,9 @@
 <%@ include file="/common/taglibs.jsp" %>
 
+ <script type='text/javascript' src='<c:url value="/dwr/interface/shoppingCartManager.js" />'></script>
+ <script type='text/javascript' src='<c:url value="/dwr/interface/productManager.js" />'></script>
+ <script type='text/javascript' src="<c:url value='/dwr/engine.js' />"></script>
+ <script type='text/javascript' src="<c:url value='/dwr/util.js' />"></script>
 <head>
 <meta name="menu" content="Product Detail" />
 <link rel="stylesheet" type="text/css" media="all"
@@ -134,9 +138,21 @@
 				escapeXml="false" />
 			</div>
 		</div>
+		<div id="add_to_cart">
+			<c:choose>
+			<c:when test="${product.availability > 0}">
+					<a href="javascript:show('cart','${product.id}');">Add to Cart</a>; 
+			</c:when>
+			<c:otherwise>
+				Out of Stock
+			</c:otherwise>
+		</c:choose>
+		</div>
+		
 	</c:when>
 	<c:otherwise>
 		<fmt:message key="product.not.found" />
 	</c:otherwise>
 </c:choose>
 
+<%@ include file="/common/cart.jsp" %>

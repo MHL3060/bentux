@@ -52,9 +52,11 @@ public class Product extends LookUpBaseObject {
 	private BrandName brandName;
 
 	@Column(name="price")
+	@SearchableProperty
 	private Double price;
 	
 	@Column(name="availability")
+	@SearchableProperty
 	private Integer availability;
 	
 	@Column(name="description")

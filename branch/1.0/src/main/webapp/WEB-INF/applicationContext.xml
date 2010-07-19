@@ -26,7 +26,6 @@
 				<value>local.tux.app.model.Manufacturer</value>
 				<value>local.tux.app.model.Product</value>
 				<value>local.tux.app.model.BrandName</value>
-				<value>local.tux.app.model.News</value>
 				<value>local.tux.app.model.FoodProduct</value>
 				<value>local.tux.app.model.EntertainmentProduct</value>
 				<value>local.tux.app.model.EntertainmentService</value>

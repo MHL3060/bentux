@@ -1,28 +1,24 @@
 package local.tux.app.web.controller;
 
-import org.apache.commons.beanutils.BeanUtils;
 import org.apache.log4j.Logger;
-import org.apache.xmlbeans.impl.regex.RegularExpression;
+import org.appfuse.service.UserManager;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
+
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import local.tux.Constants;
-import local.tux.app.model.BrandName;
-import local.tux.app.model.Manufacturer;
-import local.tux.app.model.News;
+
 import local.tux.app.model.Product;
-import local.tux.app.model.common.TuxBaseObject;
-import local.tux.app.model.web.SearchResultBean;
+
+import local.tux.app.service.ProductManager;
 
 import org.compass.core.CompassHit;
-import org.compass.core.CompassHits;
 import org.compass.core.support.search.CompassSearchCommand;
 import org.compass.core.support.search.CompassSearchHelper;
 import org.compass.core.support.search.CompassSearchResults;
@@ -80,10 +76,18 @@ public class SearchController extends AbstractCompassCommandController {
 
     private CompassSearchHelper searchHelper;
 
+
+	private UserManager userManager;
+
     public SearchController() {
         setCommandClass(CompassSearchCommand.class);
     }
 
+    
+    public void setUserManager(UserManager userManager){
+    	this.userManager = userManager;
+    }
+    
     public void afterPropertiesSet() throws Exception {
         logger.debug("afterPropertiesSet() - start");
 
@@ -102,8 +106,9 @@ public class SearchController extends AbstractCompassCommandController {
 
         logger.debug("afterPropertiesSet() - end");
     }
-
-    protected ModelAndView handle(HttpServletRequest request,
+   
+    @SuppressWarnings("unchecked")
+	protected ModelAndView handle(HttpServletRequest request,
             HttpServletResponse response, Object command, BindException errors)
             throws Exception {
         logger.debug("handle(HttpServletRequest, HttpServletResponse, Object, BindException) - start");
@@ -125,58 +130,29 @@ public class SearchController extends AbstractCompassCommandController {
         }
         CompassSearchResults searchResults = searchHelper.search(searchCommand);
         HashMap data = new HashMap();
-        List<SearchResultBean> srbs = convert(searchResults);
+        List<Product> srbs = convert(searchResults);
         data.put(getCommandName(), searchCommand);
         data.put(getSearchResultsName(), searchResults);
-        data.put("list", srbs);
+        
         ModelAndView returnModelAndView = new ModelAndView(getSearchResultsView(), data);
+        returnModelAndView.addObject("tuxBaseObjectList", srbs);
+        returnModelAndView.addObject("user", userManager.getUserByUsername(request.getRemoteUser()));
         logger.debug("handle(HttpServletRequest, HttpServletResponse, Object, BindException) - end");
         return returnModelAndView;
     }
 
-    private List<SearchResultBean> convert(CompassSearchResults searchResults) throws Exception {
-		List<SearchResultBean> list = new ArrayList<SearchResultBean>();
+    private List<Product> convert(CompassSearchResults searchResults) throws Exception {
+		Set<Product> list = new HashSet<Product>();
     	CompassHit[] hits = searchResults.getHits();
 		for (CompassHit hit : hits){
 			Object o = hit.data();
-			if ((o instanceof News ) || (o instanceof Product)){
-				SearchResultBean srb = new SearchResultBean();
-				srb.setId(new Long(BeanUtils.getProperty(o, "id")));
-				srb.setObjectName(o.getClass().getSimpleName().toLowerCase());
-				String name;
-				try {
-					name = BeanUtils.getProperty(o, "name");
-				}catch (Exception e){
-					name = BeanUtils.getProperty(o, "title");
-				}
-				srb.setName(name);
-				String content = "";
-				if (hit.getHighlightedText() != null){
-					content = hit.getHighlightedText().getHighlightedText();
-				}else {
-					try {
-						content = BeanUtils.getProperty(o, "description");
-						
-	
-					}catch (Exception e){
-						try {
-							content = BeanUtils.getProperty(o, "contentBody");
-						}catch (Exception ex){
-							
-						}
-					}
-				}
-				content = content.replaceAll("\\<.*?>","");
-				if (content.length() > 1000){
-					content = content.substring(0, Constants.SEARCH_SHOW_CHARACTER_LENGTH);
-				}
-				srb.setResource(content);
-				
+			if (o instanceof Product){
+				Product srb = (Product) o;
 				list.add(srb);
 			}
 			
 		}
-		return list;
+		return new ArrayList(list);
 	}
 	
 

@@ -156,6 +156,7 @@
     <bean id="productDetailController" class="local.tux.app.web.controller.ProductDetailController">
         <property name="productManager" ref="productManager" />
         <property name="commonPageUtil" ref="commonPageUtil" />
+        <property name="userManager" ref="userManager" />
     </bean> 
     <bean id="productFormController" class="local.tux.app.web.controller.ProductFormController">
         <property name="validator" ref="beanValidator"/>
@@ -180,6 +181,7 @@
     </bean>
 
     <bean id="searchController" class="local.tux.app.web.controller.SearchController">
+    	<property name="userManager" ref="userManager" />
         <property name="compass"><ref bean="compass"/></property>
         <property name="searchView"><value>search</value></property>
         <property name="searchResultsView"><value>search</value></property>

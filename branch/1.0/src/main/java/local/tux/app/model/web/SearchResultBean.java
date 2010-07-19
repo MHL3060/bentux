@@ -6,6 +6,8 @@ public class SearchResultBean {
 	private String ObjectName;
 	private String name;
 	private String resource;
+	
+	private Double price;
 	public Long getId() {
 		return id;
 	}
@@ -30,6 +32,14 @@ public class SearchResultBean {
 	public void setResource(String resource) {
 		this.resource = resource;
 	}
+	public Double getPrice() {
+		return price;
+	}
+	public void setPrice(Double price) {
+		this.price = price;
+	}
+	
+	
 	
 	
 }

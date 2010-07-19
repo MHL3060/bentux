@@ -34,6 +34,7 @@ public class ProductDetailController extends TuxBaseObjectsController {
 			if (productManager.exists(new Long(id))){
 				product = productManager.get(new Long(id));
 				mav.addObject("product", product);
+				mav.addObject("user", userManager.getUserByUsername(request.getRemoteUser()));
 			}
 		}
 		return mav;
