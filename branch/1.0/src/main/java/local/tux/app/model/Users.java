@@ -1,5 +1,4 @@
 package local.tux.app.model;
-import org.appfuse.model.User;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
@@ -16,24 +15,12 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import org.compass.annotations.EnableAll;
-import org.compass.annotations.Searchable;
-import org.compass.annotations.SearchableAllMetaData;
-import org.compass.annotations.SearchableConstant;
-import org.compass.annotations.SearchableId;
-
-import local.tux.app.model.common.SubProduct;
-import local.tux.app.model.common.TuxBaseObject;
-import local.tux.app.web.controller.SignUpController;
 
 @Entity
-@Table(name="app_user")
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="TYPE", discriminatorType=DiscriminatorType.STRING,length=100)
-@DiscriminatorValue("app_user")
+@DiscriminatorColumn(name="TYPE", discriminatorType=DiscriminatorType.STRING)
+@DiscriminatorValue("Users")
 
 public class Users extends org.appfuse.model.User{
-	  
 	
 	private static final long serialVersionUID = -8133304231283520489L;
 	@Column(name="firstName2")
@@ -42,14 +29,13 @@ public class Users extends org.appfuse.model.User{
 	@Column(name="lastName2")
 	private String lastName2;
 	
-	//@Column(name="phoneNumber2")
-	//private String phoneNumber2;
-
-	
 	public String getFirstName2() {
 		return firstName2;
 	}
 
+    /**
+     * @spring.validator type="required" msgkey="errors.required"
+     */
 	public void setFirstName2(String firstName2) {
 		this.firstName2 = firstName2;
 	}
@@ -58,36 +44,11 @@ public class Users extends org.appfuse.model.User{
 		return lastName2;
 	}
 
+	 /**
+     * @spring.validator type="required" msgkey="errors.required"
+     */
 	public void setLastName2(String lastName2) {
 		this.lastName2 = lastName2;
-	}
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		
-		if (getClass() != obj.getClass())
-			return false;
-		Users other = (Users) obj;
-		if (firstName2 == null) {
-			if (other.firstName2 != null)
-				return false;
-		} else if (!firstName2.equals(other.firstName2))
-			return false;
-		if (lastName2 == null) {
-			if (other.lastName2 != null)
-				return false;
-		} else if (!lastName2.equals(other.lastName2))
-			return false;
-		return true;
-	}
-
-	@Transient
-	public boolean isEmpty() {
-		if (firstName2 == null && lastName2 == null){
-			return true;
-		}
-		return false;
 	}
 	
 	
