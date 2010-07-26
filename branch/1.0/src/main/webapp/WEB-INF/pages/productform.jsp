@@ -185,7 +185,7 @@ Event.observe(window, 'load', function() {
 		<appfuse:label key="product.catalogs" styleClass="desc" />
 		<form:errors path="catalogs" cssStyle="fieldErrors" />
 		<spring:bind path="catalogs">
-			<select name="catalogs" id="catalogs" multiple="multiple" size="5"  >
+			<select name="catalogs" id="catalogs" multiple="multiple" size="5" onchange="fillChildren(this,brandNameManager,'manufacturer.id', brandName)" >
 				<c:forEach var="catalog" items="${catalogs}">
 					<option value="${catalog.id}"
 						<c:forEach var="entered" items="${product.catalogs}">
@@ -204,7 +204,7 @@ Event.observe(window, 'load', function() {
 			<a href="#"  onclick="refresOptionhList(manufacturerManager, 'manufacturer');" ><fmt:message key="refresh.list" /></a>
 		</p>
 		<appfuse:label key="product.manufacturer" styleClass="desc" />
-		<select id="manufacturer" name="manufacturer" class="text medium" onchange="fillChildren(this,brandNameManager,'manufacturer.id', brandName)">
+		<select id="manufacturer" name="manufacturer" class="text medium" >
 			<c:out value="${pleaseSelect}" escapeXml="flase" />
 			<c:forEach var="manufacturer" items="${manufacturers }">
 				<option value="${manufacturer.id }" ${manufacturer.id == product.brandName.manufacturer.id ? 'selected' : "" }> ${manufacturer.name }</option>
