@@ -142,10 +142,10 @@
                         </component>
                     </components>
                     <componentProperties>
-                        <drop>false</drop>
+                        <drop>true</drop>
                         <jdk5>true</jdk5>
                         <propertyfile>target/classes/jdbc.properties</propertyfile>
-                        <skip>true</skip>
+                        <skip>${maven.test.skip}</skip>
                     </componentProperties>
                 </configuration>
                 <executions>

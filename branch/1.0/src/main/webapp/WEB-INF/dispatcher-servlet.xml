@@ -51,7 +51,6 @@
     </bean>
 
     <bean id="userFormController" class="org.appfuse.webapp.controller.UserFormController">
-        <property name="commandClass" value="local.tux.app.model.Users"/>
         <property name="validator" ref="beanValidator"/>
         <property name="formView" value="userForm"/>
         <property name="successView" value="redirect:users.html"/>

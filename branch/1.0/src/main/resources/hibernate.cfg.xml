@@ -7,7 +7,7 @@
     	<property name="hibernate.show_sql">true</property>
  		<property name="hibernate.format_sql">true</property>
  		 -->
-        <mapping class="org.appfuse.model.User"/>
+        
         <mapping class="org.appfuse.model.Role"/>
         <mapping class="local.tux.app.model.Catalog" />
         <mapping class="local.tux.app.model.Image" />

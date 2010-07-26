@@ -19,3 +19,6 @@ CREATE TABLE side_banner (
   url varchar(255) DEFAULT NULL,
   PRIMARY KEY (id)
 );
+
+-- for dumb users
+ alter table app_user add (DTYPE varchar(31), firstName varchar(255), lastName varchar(255));

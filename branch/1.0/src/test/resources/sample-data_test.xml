@@ -20,6 +20,7 @@
     <column>username</column>
     <column>version</column>
     <column>website</column>
+    
     <row>
       <value>-2</value>
       <value>false</value>
