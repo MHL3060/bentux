@@ -1,5 +1,43 @@
 <%@ include file="/common/taglibs.jsp"%>
 
+<script>
+
+//"Accept terms" form submission- By Dynamic Drive
+//For full source code and more DHTML scripts, visit http://www.dynamicdrive.com
+//This credit MUST stay intact for use
+
+var checkobj
+
+function agreesubmit(el){
+checkobj=el
+if (document.all||document.getElementById){
+for (i=0;i<checkobj.form.length;i++){  //hunt down submit button
+var tempobj=checkobj.form.elements[i]
+if(tempobj.type.toLowerCase()=="submit")
+tempobj.disabled=!checkobj.checked
+}
+}
+}
+
+function defaultagree(el){
+if (!document.all&&!document.getElementById){
+if (window.checkobj&&checkobj.checked)
+return true
+else{
+alert("Please read/accept terms to submit form")
+return false
+}
+}
+}
+
+
+function tryAnotherCaptcha() {
+	document.getElementById('captcha_image').src = '<c:url value="/captcha.html"/>' + '?' + (new Date()).getTime();
+}
+</script>
+
+
+
 <head>
     <title><fmt:message key="signup.title"/></title>
     <meta name="heading" content="<fmt:message key='signup.heading'/>"/>
@@ -82,7 +120,7 @@
         <form:input path="website" id="website" cssClass="text large" cssErrorClass="text large error"/>
     </li>
     <li>
-        <label class="desc"><fmt:message key="user.address.address"/></label>
+        <label class="desc"><fmt:message key="user.address.address" /></label>
         <div class="group">
             <div>
                 <form:input path="address.address" id="address.address" cssClass="text large" cssErrorClass="text large error"/>
@@ -108,21 +146,43 @@
                 <appfuse:country name="address.country" prompt="" default="${user.address.country}"/>
                 <p><appfuse:label key="user.address.country"/></p>
             </div>
+       </div>
     </li>
-        	       
-    
-     <li>
-		<img src="<c:url value="/captcha.html" />" />
-	</li>
-	<li>
-		<input type="text" name="captcha" />
-	</li>
-		
+
 	
-			
+	  <li>
+        <div class="group">
+	        <div>
+				<img id="captcha_image" src="<c:url value="/captcha.html"/>" alt="Dynamic Verification Code" border="5"/>
+			</div>
+			<div>
+				<input type="text" name="captcha"  />
+				<a href="javascript:tryAnotherCaptcha()">Refresh</a>
+				    
+			</div>
+		</div>
+	</li>
+
+
+        	       	
+	<li>
+	    <label class="desc"><fmt:message key="user.agreement"/></label>
+		<div class="group">
+			<div>
+				<form name="agreeform" onSubmit="return defaultagree(this)">
+				If you want to turn on Registration Agreement you must put a check the box for, "Show and require agreement letter when registering." This makes every new Member agree to your terms before allowing them to register. Otherwise if this is disabled no registration agreement will be shown on the registration page.<br>
+				<input name="agreecheck" type="checkbox" onClick="agreesubmit(this)"><b>I agree to the above terms</b><br>
+				</form>	
+			</div>
+		<script>
+		//change two names below to your form's names
+		document.forms.agreeform.agreecheck.checked=false
+		</script>
+		</div>
+	</li>			
     <li class="buttonBar bottom">
-        <input type="submit" class="button" name="save" onclick="bCancel=false" value="<fmt:message key="button.register"/>"/>
-        <input type="submit" class="button" name="cancel" onclick="bCancel=true" value="<fmt:message key="button.cancel"/>"/>
+        <input type="submit" value="submit" disabled class="button" name="save" onclick="bCancel=false" value="<fmt:message key="button.register"/>"/>
+        <input type="submit" value="cancel" disabled class="button" name="cancel" onclick="bCancel=true" value="<fmt:message key="button.cancel"/>"/>
     </li>
 </ul>
 </form:form>

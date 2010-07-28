@@ -5,7 +5,7 @@
      <global>
       <constant>
         <constant-name>phone</constant-name>
-        <constant-value>^\(?(\d{3})\)?[-| ]?(\d{3})[-| ]?(\d{4})$</constant-value>
+        <constant-value>^\(?(\d{8})\)$</constant-value>
       </constant>
       <constant>
         <constant-name>zip</constant-name>
@@ -78,6 +78,11 @@
 
                   <arg0 key="user.lastName"/>
               </field>
+              <field property="address.address"
+                     depends="required">
+
+                  <arg0 key="user.address.address"/>
+              </field>
               <field property="address.city"
                      depends="required">
 
@@ -88,23 +93,7 @@
 
                   <arg0 key="user.address.country"/>
               </field>
-              <field property="address.postalCode"
-                     depends="required,mask">
-                  <msg
-                    name="mask"
-                    key="errors.zip"/>
-
-                  <arg0 key="user.address.postalCode"/>
-                  <var>
-                    <var-name>mask</var-name>
-                    <var-value>${zip}</var-value>
-                  </var>
-              </field>
-              <field property="address.province"
-                     depends="required">
-
-                  <arg0 key="user.address.province"/>
-              </field>
+    
               <field property="email"
                      depends="required,email">
 
