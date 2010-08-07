@@ -9,6 +9,7 @@
  		 -->
         
         <mapping class="org.appfuse.model.Role"/>
+        <mapping class="org.appfuse.model.User"/>
         <mapping class="local.tux.app.model.Catalog" />
         <mapping class="local.tux.app.model.Image" />
         <mapping class="local.tux.app.model.Manufacturer" />

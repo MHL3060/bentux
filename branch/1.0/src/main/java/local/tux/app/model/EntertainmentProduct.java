@@ -37,6 +37,9 @@ public class EntertainmentProduct extends TuxBaseObject implements SubProduct{
 	
 	@Column(name="imdb_link")
 	private String imdbLink;
+	
+	@Column(name="issn")
+	private String issn;
 
 	@OneToOne
 	@JoinColumn(name="product_id")
@@ -58,6 +61,13 @@ public class EntertainmentProduct extends TuxBaseObject implements SubProduct{
 		this.imdbLink = imdbLink;
 	}
 
+	public String getIssn() {
+		return issn;
+	}
+	
+	public void setIssn(String issn) {
+		this.issn = issn;
+	}
 	
 	public Product getProduct() {
 		return product;
@@ -95,17 +105,24 @@ public class EntertainmentProduct extends TuxBaseObject implements SubProduct{
 				return false;
 		} else if (!imdbLink.equals(other.imdbLink))
 			return false;
-		return true;
+		if (issn == null) {
+			if (other.issn != null)
+				return false;
+		}
+ 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "EntertainmentProduct [id=" + id + ", imdbLink=" + imdbLink
+		return "EntertainmentProduct [id=" + id + ", imdbLink=" + imdbLink + ", issn=" + issn
 				+ "]";
 	}
 
 	public boolean isEmpty() {
 		if (imdbLink == null){
+			return true;
+		}
+		else if (issn == null){
 			return true;
 		}
 		return false;

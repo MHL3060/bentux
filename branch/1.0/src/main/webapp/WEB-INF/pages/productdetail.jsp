@@ -77,6 +77,8 @@
 					<ul>			
 						<li>Catalog: ${item.name}</li>
 						<li>IMDB Link: ${product.entertainmentProduct.imdbLink}</li>
+						<li>ISSN: ${product.entertainmentProduct.issn}</li>
+						
 					</ul>
 				</c:if>		
 				<c:if test="${item.parent.id == -1}">
