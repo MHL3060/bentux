@@ -9,7 +9,7 @@ alter table shopping_cart change shippingType shipping_type integer;
 alter table shopping_cart change trackingCode tracking_code varchar(255);
 alter table shopping_cart add shipping_address_id integer;
 alter table shipping_address drop user_id;
-
+alter table entertain_product add (issn varchar(25));
 create table side_banner (id bigint not null, display_order integer, is_enable bit, url varchar(255), primary key (id))
 
 CREATE TABLE side_banner (
@@ -20,5 +20,6 @@ CREATE TABLE side_banner (
   PRIMARY KEY (id)
 );
 
+
 -- for dumb users
- alter table app_user add (DTYPE varchar(31), firstName varchar(255), lastName varchar(255));
+-- alter table app_user add (DTYPE varchar(31), firstName varchar(255), lastName varchar(255));
