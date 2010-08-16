@@ -20,8 +20,8 @@
 
 <div id="branding">
 
-    <img src="<c:url value="/images/common/header_logo.jpg"/>" width="190" height="110"  hspace="0" vspace="0" align="left" />
-   	<img src="<c:url value="/images/common/header_banner_1.jpg"/>" width="760" float="left" height="110" name="banner"  hspace="0" vspace="0" align="left"/>
+    <img src="<c:url value="/images/common/header_logo.jpg"/>" width="184" height="110"  hspace="0" vspace="0" align="left" />
+   	<img src="<c:url value="/images/common/header_banner_2.png"/>" width="775" float="left" height="110" name="banner"  hspace="0" vspace="0" align="left"/>
        
 </div>
 

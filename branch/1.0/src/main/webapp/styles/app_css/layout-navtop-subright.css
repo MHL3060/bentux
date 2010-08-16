@@ -6,12 +6,12 @@
 /* NAV BAR ON THE LEFT AND TWO COLUMNS OF CONTENT */
     div#content {
         position: relative;
-        width: 950px;
+        width: 960px;
         
         padding: 0;
         
         text-align: left;
-         margin-top:-40px;
+        margin-top:-40px;
         margin-right: 50px;
         margin-bottom: auto;
         margin-left:40px;
@@ -31,13 +31,14 @@
         /*width: 500px;*/
         display: inline;
     }
-    div#sub {
+
+ div#sub {
         float: right;
-        width: 150PX;
+        width: 150px;
         /*width: 500px;*/
         
         display: inline;
         /*margin-left: 42px;*/
     	margin-left: -27px;
-    
+
     }

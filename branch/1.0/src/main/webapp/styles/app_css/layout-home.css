@@ -94,6 +94,17 @@ div#search-submit {
 
 /* Content */
 
+div#text-over-image {
+	position:absolute; 
+	top:250px; 
+	left:20px; 
+	width:200px; 
+	height:25px;
+	font-size: large;
+	color:0000000;
+	
+}
+
 div#main-title {
 	width: 400px;
 	float: left;	

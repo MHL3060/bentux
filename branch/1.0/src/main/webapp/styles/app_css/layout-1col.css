@@ -5,7 +5,7 @@
 /* NAV BAR AT THE TOP AND ONE COLUMN OF CONTENT */
     div#content {
         position: relative;
-        width: 950px;
+        width: 960px;
         margin: 0 auto 10px auto;      
         padding-bottom: 15px;
         text-align: left;
@@ -37,5 +37,81 @@
         width: 100%;
 
         text-align: left;
+	}
+	 div#login {
+        float:center;
+	    text-align:left;
+        margin: 0px 30px 80px 150px;
+        width:80%;
+       
+    }
+     div#login .title{
+        margin-bottom:28px;       
+    }
+
+    div#login .h1{
+                font-size: 30px;
+                padding-right:200px;
+    }
+    div#login .h3{
+                font-size: 1.0em;
+                color: grey;
+                font-weight:lighter;
+                padding-right:300px;
+    }
+    div#login .h4{
+                font-size:1.2em;
+                color:black;
+                font-weight:bold;
+                padding-bottom:10px;
+                padding-right:50px;
+
+     }
+     div#login .left-bar{
+                position: relative;
+                float:left; 
+                border-right: 1px solid green;
+                margin-right:70px;
+                padding-right:80px;
+                display: inline;
+     }
+     div#login .right-bar{
+                position: relative;
+                float:right
+                display: inline;
+     }
+     div#login .login-form{
+                padding-left:0px;
+                text-align:left;
+
+     }
+     div#login .register-form{
+                text-align:left;
+                margin-right:100px;
+     }
+ 
+     div#login .register-form .wording{
+                line-height:155%;
+                margin:10px 10px 10px 40px 30px;
+                padding:10px 0 7px 0;
+     }
+div#login .button{
+          margin-top:15px;
+	  Color:White;
+	  font: bold 120%'trebuchet ms',helvetica,sans-serif; 
+	  background-color: orange; 
+	 
+    }
+    div#login .button2{
+
+          margin-top:15px;
+          float:left;
+          width:14%;
+	  background-color: green;
+          border:5px solid green; 
+	  font: 'trebuchet ms',helvetica,sans-serif; 
+          text-align:center;
+
+	 
     }
 /* END CONTENT */

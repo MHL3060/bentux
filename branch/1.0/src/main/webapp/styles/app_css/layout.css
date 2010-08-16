@@ -48,7 +48,7 @@ p, ul, ol {
 	div#header {
 	    margin: 0.5em 0 4em 0;
 	    padding-left: 40px;
-	    padding-right:4opx;
+	    padding-right:40px;
 	   /* height: 100px;*/ /* needed by IE 7 */
 	}
     /* SWITCHLOCALE WILL NOT APPLIED IN THIS VERSION
@@ -57,24 +57,27 @@ p, ul, ol {
        right: 10px;
     }*/
     div#top {
-	   width: 950px;
+	   width: 960px;
 	   padding-left: 5px;
-	   padding-bottom: 5px;
-                    
+	   padding-bottom: 5px;              
 	   font-family: "Avenir LT Std 55 Roman";
        color: green;
 	   font-size: 11px;
+
 	 }
      div#top .left {
           float: left;
 		  text-align: left;
+	   padding-bottom: 4px;              
 	 }
      div#top .right{
-          padding-left: 400px;
+          padding-left: 390px;
+          margin-right:10px;
      	  float: right;
+	   padding-bottom: 4px;              
 	 }	
      div#branding {
-           width: 950px;
+           width: 960px;
 		    margin-bottom: 10px; 
 		padding-bottom: 10px;	
 		background: #ffffff; 
@@ -83,7 +86,7 @@ p, ul, ol {
         }
        
        div#news {
-            width: 950px;
+            width: 960px;
             background: #fd8719; 
             padding: 3px 0px 16px 0px;     
             border-top: 105px solid #ffffff;
@@ -98,10 +101,11 @@ p, ul, ol {
 		   margin-top:-4px;
 		   padding-right: 10px;
 	       float: right;
+	       margin-left:
 		 }
 	   
        div#divider{
-            width: 950px;
+            width: 960px;
             margin-top:7px;
             border-top: 1px dotted ;
        }
@@ -112,7 +116,7 @@ p, ul, ol {
     
     /* CONTENT */
         div#content {            
-            width: 950px;
+            width: 960px;
             margin-bottom:10px;
         }
             body#error #content {
@@ -135,48 +139,56 @@ p, ul, ol {
         
         /* SUB */
         div#sub {
-			float:left;
-			width:140px;
-			/*overflow:hidden; */
-			padding-left: 10px;
-		}
-		div#sub .title{
-            width: 130px;
-			float: center;
-            line-height:15px;
-            text-align: center;
-			font-size: 13px;
-			color: green;
-            margin-bottom: 10px;
-            margin-left: 40px;
-			border-bottom:1px solid #FF9400;
-		}
-		div#sub .ul {
-			color:#555;
-			overflow:hidden;
-			margin:0;
-		}
-		
-		div#sub .ul .left {
-			float:left;
-			width:150px;
+		float:left;
+		width:146px;
+		/*overflow:hidden; */
+		padding-left: 10px;
+	}
+	
+        div#sub .title{
+                width: 141px;
+		float: center;
+                line-height:170%;
+                text-align: center;
+		font-size: 1.1em;
+		color: purple;
+                margin-bottom: 10px;
+                margin-left: 40px;
+		border-bottom:1px solid #FF9400;
+	}
+	div#sub .ul {
+		color:#555;
+		overflow:hidden;
+		margin:0;
 		}
 		
-		div#sub .ul .right {
-			float:right;
-			width:150px;
-		}
-		div#sub .partners .img {
-			margin:5px 0;
-		}
-	   div#sub .partners .subtitle {
-	        width:130px;
-            text-align: left;
-            font-size: 11px;
-		    color: green;
-                   margin-bottom:-6px;
+	div#sub .ul .left {
+		float:left;
+		width:150px;
+	}
+		
+	div#sub .ul .right {
+		float:right;
+		width:150px;
+	}
+	div#sub .partners .img {
+		margin:5px 0;
+	}
+        div#sub .partners .subtitle {
+	        width:146px;
+                text-align: left;
+                font-size: 10px;
+	        color: green;
+                margin-bottom:-15px;
 
         }
+       
+       div#sub .partners .cart{
+	     	width: 130px;
+	        padding: 3px 0px 35px 0px;
+	        border-top: 25px solid #FF9400;
+			border-bottom: 25px solid #FF9400;
+    	}
         div#sub .advertise{
         	width:130px;
         	padding-top:8px;
