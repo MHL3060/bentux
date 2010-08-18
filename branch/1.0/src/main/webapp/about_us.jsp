@@ -1,14 +1,20 @@
 <%@ include file="/common/taglibs.jsp"%>
 
-<h1><fmt:message key="about.us.header" /></h1>
 <head>
 <meta name="menu" content="About Us" />
 <link rel="stylesheet" type="text/css" media="all"
 	href="<c:url value='/styles/${appConfig["csstheme"]}/layout-other.css'/>" />
 </head>
 
-<div class="post">
-		<div class="description">
-				<img src="<c:url value="/images/products_brief.jpg"/>" width="600" height="410" alt="trinity group" ></img>			
-		</div>
+<div id="main">
+<img src="<c:url value="/images/about_us.png"/>" width="606" height="226" alt="about us" ></img>			
+
+<div id="about-us">
+	<h1><fmt:message key="company.name"/></h1>
+	
+	<p><h5><fmt:message key="about.us.content"/></h5></p>
+	
+	<p><h5><fmt:message key="about.us.content2"/></h5></p>
+	
+	</div>
 </div>

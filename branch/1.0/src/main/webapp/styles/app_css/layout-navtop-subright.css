@@ -6,27 +6,27 @@
 /* NAV BAR ON THE LEFT AND TWO COLUMNS OF CONTENT */
     div#content {
         position: relative;
-        width: 960px;
+        width: 947px;
         
         padding: 0;
         
         text-align: left;
-        margin-top:-40px;
-        margin-right: 50px;
+        margin-top:-45px;
         margin-bottom: auto;
-        margin-left:40px;
-        padding-top: 0px;
-        border-bottom: 1px dotted ;
+        margin-left:39px;
+        border-bottom: green 1px dotted;
         text-align: left;
     }
    div#nav {
         float: left;
         /*width: 150px;*/
         
-        width: 150px;
+        width: 145px;
         display: inline;
+        margin-right:12px;
     }
     div#main {
+        margin-left:0px;
         float: left;
         /*width: 500px;*/
         display: inline;
@@ -34,11 +34,8 @@
 
  div#sub {
         float: right;
-        width: 150px;
-        /*width: 500px;*/
-        
+        width: 145px;
         display: inline;
-        /*margin-left: 42px;*/
-    	margin-left: -27px;
+    	margin-left: -24px;
 
     }
