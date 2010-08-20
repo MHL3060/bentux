@@ -29,9 +29,10 @@
 				<value>local.tux.app.model.FoodProduct</value>
 				<value>local.tux.app.model.EntertainmentProduct</value>
 				<value>local.tux.app.model.EntertainmentService</value>
+				<value>local.tux.app.model.MiscellaneousProduct</value>
 				<value>local.tux.app.model.Ingredient</value>
 				<value>local.tux.app.model.Comment</value>
-				<value>local.tux.app.model.CulturalProduct</value>			
+				<value>local.tux.app.model.CulturalProduct</value>	
 			</list>
 		</property>
 		<property name="compassSettings">
@@ -92,7 +93,14 @@
 		<constructor-arg value="local.tux.app.model.FoodProduct" />
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-	
+	<bean id="culturalProductDao" class="local.tux.app.dao.hibernate.TuxNameGenericDaoHibernate">
+		<constructor-arg value="local.tux.app.model.CulturalProduct" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="miscellaneousProductDao" class="local.tux.app.dao.hibernate.TuxNameGenericDaoHibernate">
+		<constructor-arg value="local.tux.app.model.MiscellaneousProduct" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
 	<bean id="newsDao" class="local.tux.app.dao.hibernate.TuxNameGenericDaoHibernate">
 		<constructor-arg value="local.tux.app.model.News" />
 		<property name="sessionFactory" ref="sessionFactory" />
@@ -161,6 +169,9 @@
    </bean>
    <bean id="culturalProductManager" class="local.tux.app.service.impl.LookUpNameGenericManagerImpl">
    		<constructor-arg ref="foodProductDao" />
+   </bean>
+    <bean id="miscellaneousProductManager" class="local.tux.app.service.impl.LookUpNameGenericManagerImpl">
+    	<constructor-arg ref="foodProductDao" />
    </bean>
    <bean id="sideBannerManager" class="local.tux.app.service.impl.LookUpNameGenericManagerImpl">
    		<constructor-arg ref="sideBannerDao" />

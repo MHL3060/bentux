@@ -97,6 +97,10 @@ public class Product extends LookUpBaseObject {
 	@SearchableComponent
 	private CulturalProduct culturalProduct = new CulturalProduct();
 	
+	@OneToOne(mappedBy="product", optional=true, cascade=CascadeType.ALL)
+	@SearchableComponent
+	private MiscellaneousProduct miscellaneousProduct = new MiscellaneousProduct();
+	
 	@ManyToMany
 	@JoinTable(name="catalog_product")
 	private Set<Catalog> catalogs;
@@ -362,6 +366,17 @@ public class Product extends LookUpBaseObject {
 	public void setCulturalProduct(CulturalProduct culturalProduct) {
 		this.culturalProduct = culturalProduct;
 	}
+
+
+	public MiscellaneousProduct getMiscellaneousProduct() {
+		return miscellaneousProduct;
+	}
+
+
+	public void setMiscellaneousProduct(MiscellaneousProduct miscellaneousProduct) {
+		this.miscellaneousProduct = miscellaneousProduct;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -452,6 +467,16 @@ public class Product extends LookUpBaseObject {
 			if (other.foodProduct != null)
 				return false;
 		} else if (!foodProduct.equals(other.foodProduct))
+			return false;
+		if (culturalProduct == null) {
+			if (other.culturalProduct != null)
+				return false;
+		} else if (!culturalProduct.equals(other.culturalProduct))
+			return false;
+		if (miscellaneousProduct == null) {
+			if (other.miscellaneousProduct != null)
+				return false;
+		} else if(!miscellaneousProduct.equals(other.miscellaneousProduct))
 			return false;
 		if (id == null) {
 			if (other.id != null)

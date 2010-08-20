@@ -158,6 +158,7 @@
         <property name="commonPageUtil" ref="commonPageUtil" />
         <property name="userManager" ref="userManager" />
     </bean> 
+
     <bean id="productFormController" class="local.tux.app.web.controller.ProductFormController">
         <property name="validator" ref="beanValidator"/>
         <property name="userManager" ref="userManager" />
@@ -172,6 +173,8 @@
         <property name="entertainmentProductManager" ref="entertainmentProductManager" />
         <property name="entertainmentServiceManager" ref="entertainmentServiceManager" />
         <property name="foodProductManager" ref="foodProductManager" />
+        <property name="culturalProductManager" ref="culturalProductManager" />
+        <property name="miscellaneousProductManager" ref="miscellaneousProductManager" />   
     </bean>
     <!--  compass pages -->
     <bean id="indexController" class="org.compass.spring.web.mvc.CompassIndexController">

@@ -1,3 +1,8 @@
+--update on August 19th 2010
+insert into catalog (id, name) VALUES('-5', 'Miscellaneous Product');
+update  catalog (description) VALUES('Miscellaneous Product') where ='-5' ;
+
+
 alter table product add (multiple_special_count int(11));
 alter table product add (special_end datetime);
 alter table product add (special_start datetime);

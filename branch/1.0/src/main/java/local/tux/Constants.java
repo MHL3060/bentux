@@ -26,6 +26,7 @@ public interface Constants {
 	public final int CATALOG_ENTERTAIN_PRODUCT = -2;
 	public final int CATALOG_ENTERTAIN_SERIVCE = -3;
 	public final int CATALOG_CULTURAL_PRODUCT = -4;
+	public final int CATALOG_MISCELLANEOUS_PRODUCT = -5;
 	public final int AJAX_SIZE = 25;
 	
 	public final int NEWS_BACK_TO = -30;

@@ -16,6 +16,8 @@ import local.tux.app.model.Catalog;
 import local.tux.app.model.EntertainmentProduct;
 import local.tux.app.model.EntertainmentService;
 import local.tux.app.model.FoodProduct;
+import local.tux.app.model.CulturalProduct;
+import local.tux.app.model.MiscellaneousProduct;
 import local.tux.app.model.Manufacturer;
 import local.tux.app.model.Product;
 import local.tux.app.model.common.LookUpBaseObject;
@@ -41,6 +43,8 @@ public class ProductFormController extends BaseFormController {
 	private LookUpNameGenericManager<FoodProduct, Long> foodProductManager;
 	private LookUpNameGenericManager<EntertainmentProduct, Long> entertainmentproductManager;
 	private LookUpNameGenericManager<EntertainmentService, Long> entertainmentServiceManager;
+	private LookUpNameGenericManager<CulturalProduct, Long> culturalProductManager;
+	private LookUpNameGenericManager<MiscellaneousProduct, Long> miscellaneousProductManager;
 	
 	public void setBrandNameManager(LookUpNameGenericManager<BrandName, Long> brandNameManager){
 		this.brandNameManager = brandNameManager;
@@ -63,6 +67,12 @@ public class ProductFormController extends BaseFormController {
 	}
 	public void setEntertainmentServiceManager(LookUpNameGenericManager<EntertainmentService, Long> entertainmentServiceManager){
 		this.entertainmentServiceManager = entertainmentServiceManager;
+	}
+	public void setCulturalProductManager(LookUpNameGenericManager<CulturalProduct, Long> cuturalProductManager){
+		this.culturalProductManager = culturalProductManager;
+	}
+	public void setMiscellaneousProductManager(LookUpNameGenericManager<MiscellaneousProduct, Long> miscellaneousProductManager){
+		this.miscellaneousProductManager = miscellaneousProductManager;
 	}
 	@SuppressWarnings("unchecked")
 	public void setIngredientManager(LookUpNameGenericManager ingredientManager){
@@ -95,6 +105,7 @@ public class ProductFormController extends BaseFormController {
 		models.put("entertainProduct", Constants.CATALOG_ENTERTAIN_PRODUCT);
 		models.put("entertainService", Constants.CATALOG_ENTERTAIN_SERIVCE);
 		models.put("culturalProduct", Constants.CATALOG_CULTURAL_PRODUCT);
+		models.put("miscellaneousProduct", Constants.CATALOG_MISCELLANEOUS_PRODUCT);
 		models.put("ingredients", ingredientManager.getAll());
 
 		
@@ -119,6 +130,12 @@ public class ProductFormController extends BaseFormController {
 			}
 			if (product.getEntertainmentService() == null){
 				product.setEntertainmentService(new EntertainmentService());
+			}
+			if (product.getCulturalProduct() == null){
+				product.setCulturalProduct(new CulturalProduct());
+			}
+			if (product.getMiscellaneousProduct() == null){
+				product.setMiscellaneousProduct(new MiscellaneousProduct());
 			}
 			return product;
 		}
@@ -173,9 +190,13 @@ public class ProductFormController extends BaseFormController {
 		}else if (product.getEntertainmentService() != null && product.getEntertainmentService().isEmpty() == false){
 			product.getEntertainmentService().setProduct(product);
 			entertainmentServiceManager.save(product.getEntertainmentService());
+		}else if (product.getCulturalProduct() != null && product.getCulturalProduct().isEmpty() == false){
+			product.getCulturalProduct().setProduct(product);
+			culturalProductManager.save(product.getCulturalProduct());
+		}else if (product.getMiscellaneousProduct() != null && product.getMiscellaneousProduct().isEmpty() == false){
+			product.getMiscellaneousProduct().setProduct(product);
+			miscellaneousProductManager.save(product.getMiscellaneousProduct());
 		}
-		
-		
 	}
 
 	private void removeUslessProduct(Product product) {
@@ -183,12 +204,29 @@ public class ProductFormController extends BaseFormController {
 		if (catalog.getId() == Constants.CATALOG_ENTERTAIN_PRODUCT){
 			product.setFoodProduct(null);
 			product.setEntertainmentService(null);
+			product.setCulturalProduct(null);
+			product.setMiscellaneousProduct(null);
 		}else if (catalog.getId() == Constants.CATALOG_ENTERTAIN_SERIVCE){
 			product.setFoodProduct(null);
 			product.setEntertainmentProduct(null);
+			product.setCulturalProduct(null);
+			product.setMiscellaneousProduct(null);
 		}else if (catalog.getId() == Constants.CATALOG_FOOD_PRODUCT){
 			product.setEntertainmentProduct(null);
 			product.setEntertainmentService(null);
+			product.setCulturalProduct(null);
+			product.setMiscellaneousProduct(null);
+		}else if(catalog.getId() == Constants.CATALOG_CULTURAL_PRODUCT){
+			product.setEntertainmentService(null);
+			product.setEntertainmentProduct(null);
+			product.setFoodProduct(null);
+			product.setMiscellaneousProduct(null);
+		}
+		else if(catalog.getId() == Constants.CATALOG_MISCELLANEOUS_PRODUCT){
+			product.setEntertainmentService(null);
+			product.setEntertainmentProduct(null);
+			product.setFoodProduct(null);
+			product.setCulturalProduct(null);
 		}
 	}
 }

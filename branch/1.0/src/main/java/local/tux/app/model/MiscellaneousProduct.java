@@ -18,26 +18,18 @@ import org.compass.annotations.SearchableId;
 import local.tux.app.model.common.SubProduct;
 import local.tux.app.model.common.TuxBaseObject;
 
+
 @Entity
-@Table(name="cultural_product")
-@Searchable(alias = "culturalProduct")
+@Table(name="miscellaneous_product")
+@Searchable(alias = "miscellaneousProduct")
 @SearchableAllMetaData(enable = EnableAll.TRUE)
-@SearchableConstant(name = "type", values = { "god", "cultrue" })
-public class CulturalProduct extends TuxBaseObject implements SubProduct{
-
+@SearchableConstant(name = "type", values = { "other", "miscellaneous"  })
+public class MiscellaneousProduct extends TuxBaseObject implements SubProduct{
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -8282703610389130576L;
-
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@SearchableId
 	private Long id;
-	
-	@Column(name="imdb_link")
-	private String imdbLink;
 
 	@OneToOne
 	@JoinColumn(name="product_id")
@@ -64,8 +56,6 @@ public class CulturalProduct extends TuxBaseObject implements SubProduct{
 		final int prime = 31;
 		int result = 23;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result
-				+ ((imdbLink == null) ? 0 : imdbLink.hashCode());
 		return result;
 	}
 
@@ -76,7 +66,7 @@ public class CulturalProduct extends TuxBaseObject implements SubProduct{
 		
 		if (getClass() != obj.getClass())
 			return false;
-		CulturalProduct other = (CulturalProduct) obj;
+		MiscellaneousProduct other = (MiscellaneousProduct) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -87,17 +77,15 @@ public class CulturalProduct extends TuxBaseObject implements SubProduct{
 
 	@Override
 	public String toString() {
-		return "CulturalProduct [id=" + id 
+		return "MiscellaneousProduct [id=" + id 
 				+ "]";
 	}
 
 	public boolean isEmpty() {
-		if (imdbLink == null){
-			return true;
-		}
-		return false;
+		return true;
 	}
 
 	
 	
 }
+
