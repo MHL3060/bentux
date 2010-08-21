@@ -5,7 +5,7 @@
 /* NAV BAR AT THE TOP AND ONE COLUMN OF CONTENT */
     div#content {
         position: relative;
-        width: 960px;
+        width: 947px;
         margin: 0 auto 10px auto;      
         padding-bottom: 15px;
         text-align: left;
@@ -41,7 +41,7 @@
 	 div#login {
         float:center;
 	    text-align:left;
-        margin: 0px 30px 80px 150px;
+        margin: 50px 30px 80px 150px;
         width:80%;
        
     }

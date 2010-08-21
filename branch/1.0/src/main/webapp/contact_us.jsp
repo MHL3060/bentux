@@ -6,10 +6,6 @@
 	href="<c:url value='/styles/${appConfig["csstheme"]}/layout-other.css'/>" />
 </head>
 
-<c:if test="${user != null }">
-	<%@ include file="/common/shoppingcart.jsp" %>
-</c:if>
-
 <div id="photo">
 	<iframe width="400" height="400" 
 						frameborder="0" 

@@ -3,16 +3,14 @@
 
 /* NAV */
     div div.heading{
-       width:150px;
-       font-size:16px;
-       line-height:19px;
-       color:purple;
-       margin-bottom: -21px;
-       border-bottom: 1.3px solid #FF9400;
+		border-bottom: 1.3px solid #FF9400;
+		color: purple;
+		font-size: 15px;
+		line-height: 130%;
+		width: 145px;
     }
     div#nav {
        font-size: 11px;
-       margin-bottom: 20px;
     }
     div#nav div.search{
        font-weight:bold;

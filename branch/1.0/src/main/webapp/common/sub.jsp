@@ -18,44 +18,36 @@
 	         
 	         --%>			
 		     <%-- The following are for the static sidebar for phrase 3 will use a dynamic sidebar until the next phraes 7/8/2010 --%>
-			<ul class="left">
-				<div class="partners">
+			<div class="partners">
 				    <img src="<c:url value="/images/home_sub_mtr.png"/>" width="140"
 								height="76" alt="partners"></img>
 					<div class="subtitle">
 						<a href="<c:url value="/contact_us.jsp"/>">By MTR</a>						
 					</div>
-				</div>
-			</ul>	
+			</div>
 		
 		
-			<ul class="left">
-				<div class="partners">
+			<div class="partners">
 				    <img src="<c:url value="/images/home_sub_bus.png"/>" width="140"
 								height="76" alt="partners"></img>
 					<div class="subtitle">
 						<a href="<c:url value="/contact_us.jsp"/>">By Bus</a>						
 					</div>
-	         	</div> 					
-		     </ul>
+	       	 </div> 					
 			
-			<ul class="left">
-				 <div class="partners">
+			 <div class="partners">
 					<img src="<c:url value="/images/home_sub_road.png"/>" width="140"
 							height="76" alt="partners"></img>
 					<div class="subtitle">
 						<a href="<c:url value="/contact_us.jsp"/>">By Road</a>						
 					</div>
                </div> 	
-			</ul>
 			
-			<ul class="left">	
-				<div class="partners">
+			<div class="partners">
 					<c:if test="${user != null }">		
 						<div class="cart">
 								
 						</div>
 					</c:if>
-				</div>
-			</ul>															
+			</div>
 	</div>	

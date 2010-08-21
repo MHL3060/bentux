@@ -7,35 +7,19 @@
     div#content {
         position: relative;
         width: 947px;
-        
-        padding: 0;
-        
         text-align: left;
-        margin-top:-45px;
         margin-bottom: auto;
-        margin-left:39px;
+        margin-top: 10px;
         border-bottom: green 1px dotted;
-        text-align: left;
     }
    div#nav {
-        float: left;
-        /*width: 150px;*/
-        
-        width: 145px;
-        display: inline;
-        margin-right:12px;
+       	float: left;
+		width: 145px;
+		margin-bottom: 10px;
     }
-    div#main {
-        margin-left:0px;
-        float: left;
-        /*width: 500px;*/
-        display: inline;
-    }
-
- div#sub {
-        float: right;
-        width: 145px;
-        display: inline;
-    	margin-left: -24px;
-
-    }
+  
+  	div#sub {
+		    float: right;
+	        width: 140px;
+	        display: inline;
+	}

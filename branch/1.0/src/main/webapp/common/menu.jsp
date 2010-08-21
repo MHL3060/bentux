@@ -6,7 +6,6 @@
 	
 <menu:useMenuDisplayer name="Velocity" config="cssVerticalMenu.vm" permissions="rolesAdapter">
 <ul id="primary-nav" class="menuList">
-    <li class="pad">&nbsp;</li>
      <%-- these are not the errors. stupid Eclipse doesn't know how to handle EL. --%>
        	   
 	<div id="nav"> 
