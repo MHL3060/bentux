@@ -30,16 +30,15 @@
 	}
 
 }
-function setParent( fromNode, manager,fieldKey, toNode,selectedValue){
+
+ function setParent( fromNode, manager,fieldKey, toNode,selectedValue){
 	 var parentId = fromNode.value;
         if (parentId != null ) {
                 manager.getRelativeObjects(fieldKey, parentId, function(children) {addSelectedOptions(children, toNode, selectedValue)});
         }
-
-
-
 }
 
+ 
  function refresOptionhList(manager, toNodeName) {
 	toNode = document.getElementById(toNodeName);
 	manager.getAll(function(children){addOptions(children, toNode)});  
@@ -63,26 +62,27 @@ function setParent( fromNode, manager,fieldKey, toNode,selectedValue){
 		toDom.options[i + nextOptionPosition ] = option;
 	}
 }
+
 function addSelectedOptions(array, toDom,selectedValue){
-        dwr.util.removeAllOptions(toDom);
-        var multiple = toDom.multiple;
-        var nextOptionPosition = 0;
-        if (multiple == false ) {
-                option = document.createElement("option");
-                option.value = "";
-                option.text = "<fmt:message key="please.select" />";
-                toDom.options[0] = option;
-                nextOptionPosition = 1;
-        }
-        for (i = 0; i < array.length; i++ ) {
-                option = document.createElement("option");
-                option.value = array[i].id;
-                option.text = array[i].name;
+     dwr.util.removeAllOptions(toDom);
+     var multiple = toDom.multiple;
+     var nextOptionPosition = 0;
+     if (multiple == false ) {
+             option = document.createElement("option");
+             option.value = "";
+             option.text = "<fmt:message key="please.select" />";
+             toDom.options[0] = option;
+             nextOptionPosition = 1;
+     }
+     for (i = 0; i < array.length; i++ ) {
+             option = document.createElement("option");
+             option.value = array[i].id;
+             option.text = array[i].name;
 		if (array[i].id == selectedValue ){
 			option.selected = true;
 		}
-                toDom.options[i + nextOptionPosition ] = option;
-        }
+             toDom.options[i + nextOptionPosition ] = option;
+     }
 }
 
  function showProduct(node) {
@@ -90,43 +90,56 @@ function addSelectedOptions(array, toDom,selectedValue){
 	var entertainProduct = ${entertainProduct};
 	var entertainService = ${entertainService};
 	var culturalProduct = ${culturalProduct};
+	var miscellaneousProduct = ${miscellaneousProduct};
 	
 	var displayNode;
 	foodNode = document.getElementById("food_product");
 	entertainProductNode = document.getElementById("entertain_product");
 	entertainServiceNode = document.getElementById("entertain_service");
 	culturalProductNode = document.getElementById("cultural_product");
+	miscellaneousProductNode = document.getElementById("miscellaneous_product");
 	
 	if (node.value == foodProduct ) {
 		foodNode.style.display = 'block';
 		entertainProductNode.style.display = 'none';
 		entertainServiceNode.style.display = 'none';
 		culturalProductNode.style.display ='none';
+		miscellaneousProductNode.style.display = 'none';
 	}else if (node.value == entertainProduct ) {
 		foodNode.style.display = 'none';
 		entertainProductNode.style.display = 'block';
 		entertainServiceNode.style.display = 'none';
 		culturalProductNode.style.display ='none';
+		miscellaneousProductNode.style.display = 'none';
 	}else if (node.value == entertainService ) {
 		foodNode.style.display = 'none';
 		entertainProductNode.style.display = 'none';
 		entertainServiceNode.style.display = 'block';
 		culturalProductNode.style.display ='none';
+		miscellaneousProductNode.style.display = 'none';
 	}else if (node.value == culturalProduct ) {
 		foodNode.style.display = 'none';
 		entertainProductNode.style.display = 'none';
 		entertainServiceNode.style.display = 'none';
 		culturalProductNode.style.display ='block';
+		miscellaneousProductNode.style.display = 'none';
+	}else if (node.value == miscellaneousProduct ) {
+		foodNode.style.display = 'none';
+		entertainProductNode.style.display = 'none';
+		entertainServiceNode.style.display = 'none';
+		miscellaneousProductNode.style.display ='block';
 	}else if (node.value == null || node.value == '' ) {
 		foodNode.style.display = 'none';
 		entertainProductNode.style.display = 'none';
 		entertainServiceNode.style.display = 'none';
 		culturalProductNode.style.display ='none';
+		miscellaneousProductNode.style.display = 'none';
 	}else {
 		foodNode.style.display = 'none';
 		entertainProductNode.style.display = 'none';
 		entertainServiceNode.style.display = 'none';
 		culturalProductNode.style.display = 'none';
+		miscellaneousProductNode.style.display = 'none';
 		alert("unknow Catalog, Please ask Developer to add this product field for you ");
 	}
  }
@@ -159,6 +172,12 @@ Event.observe(window, 'load', function() {
 		display:none;
 	}
 	#entertain_service {
+		display:none;
+	}
+	#cultural_product {
+		display:none;
+	}
+	#miscellaneous_product {
 		display:none;
 	}
 
@@ -196,18 +215,13 @@ Event.observe(window, 'load', function() {
 		<a  name="anchor" id="anchor" onclick="fillChildren(mainCatalogy, catalogManager,'parent.id', catalogs)"><fmt:message key="refresh.list" /></a>
 		</p>
 		
-			
-		<appfuse:label key="product.catalog" styleClass="desc" />
 		
+		<appfuse:label key="product.catalog" styleClass="desc" />
 		<select name="mainCategory" id="mainCategory" onchange="fillChildren(this, catalogManager,'parent.id', c_children); showProduct(this)"
-			${product.id  == null ? "" :  'disabled="disabled"'}>
+			${product.id  == null ? "" : 'disabled="disabled"'}>
 			${pleaseSelect }
 			<c:forEach var="catalog" items="${catalogParents}">
-				<option value="${catalog.id }" 
-					<c:forEach var="c" items="${product.catalogs}">
-						${catalog.id == c.parent.parent.id ? 'selected' : '' }
-					</c:forEach>
-				>${catalog.name}</option>
+				<option value="${catalog.id }" ${catalog.id == parentCatalog.id ? 'selected' : '' } > ${catalog.name}</option>
 			</c:forEach>
 		</select>
 	</li>
@@ -217,7 +231,7 @@ Event.observe(window, 'load', function() {
 			${pleaseSelect }
 		</select>
 	</li>
-		<script>
+	<script>
 			//fillChildren(mainCategory, catalogManager,'parent.id', c_children, selectedValue);
 			<c:forEach var="p" items="${product.catalogs}">
 				var selectedValue =  ${p.parent.id};
