@@ -12,44 +12,65 @@
   
      <li>
      	<a href="<c:url value="/home.html"/>" class="${pageContext.request.requestURI == '/home.html' ? 'current' : '' }" >
-     		<fmt:message key="home.list" />
+     		<fmt:message key="home.menu" />
      	</a>
      </li>
      <li>
-     	<a href="<c:url value="/special.html"/>" class="${pageContext.request.requestURI == '/special.html' ? 'current' : '' }" >
-     		<fmt:message key="special.product" />
-     	</a>
+     	<a href="<c:url value="/about_us.jsp"/>" class=" ${pageContext.request.requestURI == '/about_us.jsp' ? 'current' : '' }" >
+    	<fmt:message key="about.us.menu" />
+   		</a>
      </li>
-     
-     <li>
-     	<a href="<c:url value="/catalogs.html"/>" class="${pageContext.request.requestURI == '/catalogs.html' ? 'current' : '' }" >
-     		<fmt:message key="main.catalog.list" />
-     	</a>
-     
-     </li>
+     <!--  product page -->
      <li>
      	<a href="<c:url value="/subcatalogs.html"/>" class="${pageContext.request.requestURI == '/subcatalogs.html' ? 'current' : '' }" >
-     		<fmt:message key="product.list" />
+     		<fmt:message key="product.menu" />
+     	</a>
+     </li>
+     <li>
+    	<a href="<c:url value="/catalogs.html"/>" class="${pageContext.request.requestURI == '/catalogs.html' ? 'current' : '' }" >
+     		<fmt:message key="catalog.menu" />
+     	</a>
+     
+     </li>
+     <!--  Not yet implemented yet, just started the basic interface -->    
+     <li>
+     	<a href="<c:url value="/special.html"/>" class="${pageContext.request.requestURI == '/special.html' ? 'current' : '' }" >
+     		<fmt:message key="special.menu" />
+     	</a>
+     </li>
+   	 <!--  Not yet implemented yet -->
+     <li>
+     	<a href="<c:url value="/event.jsp"/>" class="${pageContext.request.requestURI == '/event.jsp' ? 'current' : '' }" >
+     		<fmt:message key="event.menu" />
+     	</a>
+     </li>
+     <!--  Movie Page -->
+     <li>
+     	<a href="<c:url value="/movie.jsp"/>" class="${pageContext.request.requestURI == '/movie.jsp' ? 'current' : '' }" >
+     		<fmt:message key="movie.menu" />
+     	</a>
+     </li>
+     <li>
+     	<a href="<c:url value="/our_store.jsp"/>" class="${pageContext.request.requestURI == '/our_store.jsp' ? 'current' : '' }" >
+     		<fmt:message key="our.store.menu" />
      	</a>
      </li>
      <li>
      	<a href="<c:url value="/contact_us.jsp"/>" class="${pageContext.request.requestURI == '/contact_us.jsp' ? 'current' : '' }" >
-     		<fmt:message key="contact.list" />
+     		<fmt:message key="contact.us.menu" />
      	</a>
      </li>
-     <li>
-     	<a href="<c:url value="/links.jsp"/>" class="${pageContext.request.requestURI == '/links.jsp' ? 'current' : '' }" >
-     		<fmt:message key="link.list" />
-     	</a>
-     </li>
+     <!-- This will be gone by the offical first release -->
+  
     <li>
-    	<a href="<c:url value="/about_us.jsp"/>" class=" ${pageContext.request.requestURI == '/about_us.jsp' ? 'current' : '' }" >
-    	<fmt:message key="about.us" />
-    </a>
-    </li>
-         <li>
+    	<a href="<c:url value="/faq.html"/>" class="${pageContext.request.requestURI == '/faq.html' ? 'current' : '' }" >
+     		<fmt:message key="faq.menu" />
+     	</a>
+     </li>
+      
+    <li>
      	<a href="<c:url value="/search.html"/>" class="${pageContext.request.requestURI == '/search.html' ? 'current' : '' }" >
-     	    	<fmt:message key="search.page" />
+     	    	<fmt:message key="search.menu" />
      	</a>
      </li>
      <menu:displayMenu name="AdminMenu"/>

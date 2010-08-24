@@ -156,7 +156,8 @@ p, ul, ol {
             text-align: left;
             font-size: 10px;
 		    color: green;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
+            margin-top:5px;
         }
        
        div#sub .partners .cart{

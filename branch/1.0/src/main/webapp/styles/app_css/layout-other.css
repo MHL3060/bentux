@@ -33,9 +33,22 @@
 	h3 {
 		font-size: 1.6em;
 	}
+	h4{
+		font-size: 1.2em;
+		color: orange;
+		line-height: 140%;
+		margin-bottom: 5px;
+	}
 	h5{
 	    font-size: 1.1em;
 	 	color: black;  
+	}
+	h6{
+		color: black;
+		display:block;
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 1em;
+		margin-bottom:5px;
 	}
 	p {
 		margin: 5px 0px 15px 0;
@@ -43,19 +56,69 @@
 	}
 	
 	div#title {
-		width: 650px;
-		float: left;	
-		font-size: large;
+		width:606px;
+		font-size: 22px;
 		font-style: BOLD;
 		letter-spacing: 0.1em;
-		color: #787878;
-		border-bottom: 1px solid #E2E2E2;
+		border-bottom: 1px solid orange;
+		margin-top: 12px;
 	}
-
-
+	div#contact-us {
+		width:606px;
+		
+	
+	}
+	
+    div#our-store {
+    	float: left;
+    	margin-top:5px;
+    	padding-top:5px;
+		line-height: 140%;
+ 		width: 269px;
+		letter-spacing: 0.5px;
+    }
+    div#our-store .help{
+    	margin-top:20px;
+		margin-bottom: 5px;
+		margin-top: 15px;
+    }
+    div#our-store .content-divide{
+    	border-top: 1px solid orange;
+		margin-top: 30px;
+    }
+	div#our-store .info{
+	    margin-top:5px;
+	}
+	div#our-store .info .left{
+    	color: black;
+    	line-height: 120%;
+    	float:left;
+    	font-size:11px;
+    	margin-bottom: 5px;
+    	width:168px;
+    	border-right: 1px solid orange;
+    }
+    div#our-store .info .left .bottom{
+       	font-color: black;
+    	margin-top:15px;
+    }
+    div#our-store .info .right{
+    	float:right;
+    	text-align:left;
+		width: 90px;
+		margin-left: 5px;
+		font-size:10px;
+    	margin-bottom: 5px;
+    }
+    div#our-store .info .right .divide{
+		border-bottom: 1px solid orange;
+    }
+    div#our-store .info .right .bottom{
+		margin: 10px 0px 5px 5px;
+	}
 	div#photo {
-		border: 10px 5px 5px 10px;
-		margin: 10px 5px 5px 10px;
+		border: 10px 0px 5px 10px;
+		margin: 10px 0px 5px 10px;
 		float: right;
 	}
 	.post . {

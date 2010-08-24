@@ -19,27 +19,30 @@
 	         --%>			
 		     <%-- The following are for the static sidebar for phrase 3 will use a dynamic sidebar until the next phraes 7/8/2010 --%>
 			<div class="partners">
+					<a href="<c:url value="/our_store.jsp"/>">						
 				    <img src="<c:url value="/images/home_sub_mtr.png"/>" width="140"
-								height="76" alt="partners"></img>
+								height="76" alt="partners"></img></a>
 					<div class="subtitle">
-						<a href="<c:url value="/contact_us.jsp"/>">By MTR</a>						
+						<fmt:message key="sub.by.mtr"/>						
 					</div>
 			</div>
 		
 		
 			<div class="partners">
+					<a href="<c:url value="/our_store_bus.jsp"/>">						
 				    <img src="<c:url value="/images/home_sub_bus.png"/>" width="140"
-								height="76" alt="partners"></img>
+								height="76" alt="partners"></img></a>
 					<div class="subtitle">
-						<a href="<c:url value="/contact_us.jsp"/>">By Bus</a>						
+						<fmt:message key="sub.by.bus"/>						
 					</div>
 	       	 </div> 					
 			
 			 <div class="partners">
-					<img src="<c:url value="/images/home_sub_road.png"/>" width="140"
-							height="76" alt="partners"></img>
+			 		<a href="<c:url value="/our_store_taxi.jsp"/>">					
+			 		<img src="<c:url value="/images/home_sub_road.png"/>" width="140"
+							height="76" alt="partners"></img></a>
 					<div class="subtitle">
-						<a href="<c:url value="/contact_us.jsp"/>">By Road</a>						
+						<fmt:message key="sub.by.taxi"/>						
 					</div>
                </div> 	
 			
