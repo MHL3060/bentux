@@ -17,13 +17,6 @@ alter table shipping_address drop user_id;
 alter table entertain_product add (issn varchar(25));
 create table side_banner (id bigint not null, display_order integer, is_enable bit, url varchar(255), primary key (id))
 
-CREATE TABLE side_banner (
-  id bigint(20) NOT NULL,
-  display_order int(11) DEFAULT NULL,
-  is_enable bit(1) DEFAULT NULL,
-  url varchar(255) DEFAULT NULL,
-  PRIMARY KEY (id)
-);
 
 
 -- for dumb users
