@@ -11,7 +11,7 @@
 			<fmt:message key="company.url"/>	    
 		</span>
 	<span class="right">
-		<c:if test="${pageContext.request.remoteUser != null}">
+		<c:if test="${pageContext.request.remoteUser}">
 			<a href="userform.html">MY ACCOUNT</a>&nbsp;|&nbsp;
 		</c:if>
 		<a href="login.jsp">LOGIN</a>&nbsp;|&nbsp;<a href="signup.html">REGISTER</a>&nbsp;|&nbsp;<a href="disclaimer.jsp">DISCLAIMER</a>&nbsp;|&nbsp;<a href="subscriptionform.html">SUBSCRIBE</a>

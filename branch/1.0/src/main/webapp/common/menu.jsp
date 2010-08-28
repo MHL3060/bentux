@@ -22,16 +22,18 @@
      </li>
      <!--  product page -->
      <li>
-     	<a href="<c:url value="/subcatalogs.html"/>" class="${pageContext.request.requestURI == '/subcatalogs.html' ? 'current' : '' }" >
+     	<a href="<c:url value="/catalogs.html"/>" class="${pageContext.request.requestURI == '/subcatalogs.html' ? 'current' : '' }" >
      		<fmt:message key="product.menu" />
      	</a>
      </li>
+     <!-- 
      <li>
     	<a href="<c:url value="/catalogs.html"/>" class="${pageContext.request.requestURI == '/catalogs.html' ? 'current' : '' }" >
      		<fmt:message key="catalog.menu" />
      	</a>
      
      </li>
+      -->
      <!--  Not yet implemented yet, just started the basic interface -->    
      <li>
      	<a href="<c:url value="/special.html"/>" class="${pageContext.request.requestURI == '/special.html' ? 'current' : '' }" >

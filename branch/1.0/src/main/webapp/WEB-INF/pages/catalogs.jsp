@@ -31,10 +31,10 @@ $('product').observe('click', function(event) {
 div.section { clear: left; }
 div.catalog { 
     float: left; 
-	width: 60px; 
-	padding: 20px; 
-	margin: 1em;
-	height: 60px;
+	width: 90px; 
+	padding: 10px; 
+	margin: 5px;
+	height: 90px;
     background: #ccc; 
     color:#000; 
     text-align: center; 
@@ -72,22 +72,22 @@ div.new_line {
 <c:if test="${user != null }">
 	<%@ include file="/common/shoppingcart.jsp" %>
 </c:if>
-<h1><fmt:message key="catalog.title" /></h1>
+<h1><fmt:message key="product.title" /></h1>
 
 <div class="center">
 
-	<img src="<c:url value="/images/productPage.jsp" />" />
-	
+	<img src="<c:url value="/images/productPage.jsp" />" width="600" height="400" />
+	<c:forEach var="catalog" items="${tuxBaseObjectList.list}">
+	<div class="catalog">
+		<img alt="image holder" src="<c:url value="${catalog.image.thumbPath }" />" />
+		<a class="product" href="<c:url value="/subcatalogs.html?pid=${catalog.id}" />" > ${catalog.name}</a>
+	</div>
+	</c:forEach>
 </div>
  
 
 	
-<c:forEach var="catalog" items="${tuxBaseObjectList.list}">
-<div class="catalog">
-	<img alt="image holder" src="<c:url value="${catalog.image.thumbPath }" />" />
-	<a class="product" href="<c:url value="/subcatalogs.html?pid=${catalog.id}" />" > ${catalog.name}</a>
-</div>
-</c:forEach>
+
 	
 
 

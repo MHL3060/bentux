@@ -1,5 +1,5 @@
 --update on August 19th 2010
-insert into catalog (id, name) VALUES('-5', 'Miscellaneous Product');
+insert into catalog (id, name, description ) VALUES('-5', 'Miscellaneous Product', 'Miscellaneous Product');
 update  catalog (description) VALUES('Miscellaneous Product') where ='-5' ;
 
 
