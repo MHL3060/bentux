@@ -19,7 +19,7 @@
         <mapping class="local.tux.app.model.FoodProduct" />
         <mapping class="local.tux.app.model.EntertainmentProduct" />
         <mapping class="local.tux.app.model.EntertainmentService" />
-        <mapping class="local.tux.app.model.MiscellaneousProduct" />
+        <!-- mapping class="local.tux.app.model.MiscellaneousProduct" / -->
         <mapping class="local.tux.app.model.News" />
         <mapping class="local.tux.app.model.Comment" />
         <mapping class="local.tux.app.model.CulturalProduct" />

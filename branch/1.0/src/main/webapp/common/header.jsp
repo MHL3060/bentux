@@ -5,7 +5,6 @@
     <div id="switchLocale"><a href="<c:url value='/?locale=en'/>"><fmt:message key="webapp.name"/> in English</a></div>
 </c:if>
 --%>
-
 <div id="top">
 		<span class="left">
 			<fmt:message key="company.url"/>	    

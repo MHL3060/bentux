@@ -134,9 +134,7 @@ public class ProductFormController extends BaseFormController {
 			if (product.getCulturalProduct() == null){
 				product.setCulturalProduct(new CulturalProduct());
 			}
-			if (product.getMiscellaneousProduct() == null){
-				product.setMiscellaneousProduct(new MiscellaneousProduct());
-			}
+			
 			return product;
 		}
 		return new Product();
@@ -193,9 +191,8 @@ public class ProductFormController extends BaseFormController {
 		}else if (product.getCulturalProduct() != null && product.getCulturalProduct().isEmpty() == false){
 			product.getCulturalProduct().setProduct(product);
 			culturalProductManager.save(product.getCulturalProduct());
-		}else if (product.getMiscellaneousProduct() != null && product.getMiscellaneousProduct().isEmpty() == false){
-			product.getMiscellaneousProduct().setProduct(product);
-			miscellaneousProductManager.save(product.getMiscellaneousProduct());
+		}else{
+			productManager.save(product);
 		}
 	}
 
@@ -205,24 +202,23 @@ public class ProductFormController extends BaseFormController {
 			product.setFoodProduct(null);
 			product.setEntertainmentService(null);
 			product.setCulturalProduct(null);
-			product.setMiscellaneousProduct(null);
+			//product.setMiscellaneousProduct(null);
 		}else if (catalog.getId() == Constants.CATALOG_ENTERTAIN_SERIVCE){
 			product.setFoodProduct(null);
 			product.setEntertainmentProduct(null);
 			product.setCulturalProduct(null);
-			product.setMiscellaneousProduct(null);
+			//product.setMiscellaneousProduct(null);
 		}else if (catalog.getId() == Constants.CATALOG_FOOD_PRODUCT){
 			product.setEntertainmentProduct(null);
 			product.setEntertainmentService(null);
 			product.setCulturalProduct(null);
-			product.setMiscellaneousProduct(null);
+			//product.setMiscellaneousProduct(null);
 		}else if(catalog.getId() == Constants.CATALOG_CULTURAL_PRODUCT){
 			product.setEntertainmentService(null);
 			product.setEntertainmentProduct(null);
 			product.setFoodProduct(null);
-			product.setMiscellaneousProduct(null);
-		}
-		else if(catalog.getId() == Constants.CATALOG_MISCELLANEOUS_PRODUCT){
+		//	product.setMiscellaneousProduct(null);
+		}else if(catalog.getId() == Constants.CATALOG_MISCELLANEOUS_PRODUCT){
 			product.setEntertainmentService(null);
 			product.setEntertainmentProduct(null);
 			product.setFoodProduct(null);
