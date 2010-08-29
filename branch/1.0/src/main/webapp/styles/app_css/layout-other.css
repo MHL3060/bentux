@@ -2,7 +2,9 @@
 	Design by Matthew Lai
 	*/
 	@import url(nav-horizontal.css);	
-
+	@import url(layout.css);
+	@import url(layout.navtop-subright.css);
+	
 	body {
     	margin: 0;
     	padding:0px;
@@ -43,6 +45,8 @@
 	    font-size: 1.1em;
 	 	color: black;  
 	}
+		/* for ourstore.jsp */
+	
 	h6{
 		color: black;
 		display:block;
@@ -57,18 +61,56 @@
 	
 	div#title {
 		width:606px;
-		font-size: 22px;
-		font-style: BOLD;
-		letter-spacing: 0.1em;
-		border-bottom: 1px solid orange;
-		margin-top: 12px;
+		border-bottom: 1px dotted orange;
+		margin-top: 8px;
+		font-size: 26px;
+		font-weight: bold;
 	}
 	div#contact-us {
+		color:black;
 		width:606px;
-		
-	
+		font-size: 1.0em;
+		font-weight: lighter;
+		letter-spacing: 1px;
 	}
-	
+	div#contact-us .location
+	{
+		width:230px;
+		margin: 5px 0px 5px 0px;
+		color: orange;
+		letter-spacing: 0px;
+		font-size: 14px;
+	}	
+	div#contact-us .address
+	{
+		width:230px;
+		margin-bottom: 20px;
+	}
+	div#contact-us .detail
+	{	
+		font-size: 1.1em;
+		width:230px;
+		margin-bottom: 20px;
+	}
+	div#contact-us .feedback
+	{
+		color:orange;
+		margin-bottom: 10px;
+		display:block;	
+	}
+	div#contact-us .feedback .description{
+		margin-bottom:20px;
+		letter-spacing: 1px;
+		text-align: justify;
+		margin-top: 5px;
+		color:black;
+		font-size: 1em;
+		letter-spacing: 0.9px;
+		
+	}
+	div#contact-us .feedback .form{
+		margin-botton:15px;
+	}
     div#our-store {
     	float: left;
     	margin-top:5px;
@@ -84,7 +126,7 @@
     }
     div#our-store .content-divide{
     	border-top: 1px solid orange;
-		margin-top: 30px;
+		margin-top: 10px;
     }
 	div#our-store .info{
 	    margin-top:5px;
@@ -173,9 +215,13 @@
 	}
 	
 	div#about-us{
-	    margin-top:10px;
-	    width:606px;
-	    text-align:left;
+	    width:100%;
+	    text-align:justify;
+	}
+	div#about-us .detail{
+		margin-top:10px;
+		margin-left:5px;
+		
 	}
 
 	

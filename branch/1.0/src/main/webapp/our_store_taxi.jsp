@@ -1,6 +1,7 @@
 <%@ include file="/common/taglibs.jsp" %>
+<div id="main">
 <div id= "title">
-	<fmt:message key="our.store.taxi" />
+	<fmt:message key="our.store.road" />
 </div>
 <head>
 <meta name="menu" content="Our Store by TAXI" />
@@ -52,3 +53,4 @@
 		</iframe>
 
 	</div>
+</div>

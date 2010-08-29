@@ -1,9 +1,9 @@
 <%@ include file="/common/taglibs.jsp"%>
 
 <div class="heading">
-		Welcome to Trinity, Taste of India
+		Welcome to Trinity, Taste of India!
 </div>  
-	
+
 <menu:useMenuDisplayer name="Velocity" config="cssVerticalMenu.vm" permissions="rolesAdapter">
 <ul id="primary-nav" class="menuList">
      <%-- these are not the errors. stupid Eclipse doesn't know how to handle EL. --%>
@@ -34,12 +34,14 @@
      
      </li>
       -->
-     <!--  Not yet implemented yet, just started the basic interface -->    
+     <!--  Not yet implemented yet, just started the basic interface, will not included in the first phrase -->
+     <!--     
      <li>
      	<a href="<c:url value="/special.html"/>" class="${pageContext.request.requestURI == '/special.html' ? 'current' : '' }" >
      		<fmt:message key="special.menu" />
      	</a>
      </li>
+      -->
    	 <!--  Not yet implemented yet -->
      <li>
      	<a href="<c:url value="/event.jsp"/>" class="${pageContext.request.requestURI == '/event.jsp' ? 'current' : '' }" >
@@ -62,21 +64,23 @@
      		<fmt:message key="contact.us.menu" />
      	</a>
      </li>
-     <!-- This will be gone by the offical first release -->
-  
+ 
     <li>
     	<a href="<c:url value="/faq.html"/>" class="${pageContext.request.requestURI == '/faq.html' ? 'current' : '' }" >
      		<fmt:message key="faq.menu" />
      	</a>
      </li>
-      
+    
+    <!-- Not included in the first release -->  
+    <!--
     <li>
      	<a href="<c:url value="/search.html"/>" class="${pageContext.request.requestURI == '/search.html' ? 'current' : '' }" >
      	    	<fmt:message key="search.menu" />
      	</a>
      </li>
+     -->
      <menu:displayMenu name="AdminMenu"/>
-    
+     <!-- Not included 
      <li>
           <div class ="search">
           Site Search
@@ -85,13 +89,14 @@
 			   </form>
 		  </div>
 	 </li>
-	 
-	     <div class= "partners">
-	         <a href="http://www.facebook.com/group.php?gid=111666002279&ref=mf"><img src="<c:url value="/images/facebook_logo.png"/>" width="130" height="48" alt="facebook"></img></a>
+	 -->
+	     <div class ="partners">
+		 	<a href="http://www.facebook.com/group.php?gid=111666002279&ref=mf"><img src="<c:url value="/images/common/add_facebook.png"/>" width="27" height="27" align="absmiddle"  alt="add_facebook"></img></a>
+		 	<a href="http://www.twitter.com"><img src="<c:url value="/images/common/add_twitter.png"/>" width="27" height="26" align="absmiddle"  alt="add_twitter"></img></a>
+			<a href="http://www.twitter.com"><img src="<c:url value="/images/common/share_friends.png"/>" width="83" height="25" align="absmiddle"  alt="share"></img></a>
 	     </div>
-
-		 <div class="share">
-             <a href="http://www.facebook.com/group.php?gid=111666002279&ref=mf"><img src="<c:url value="/images/common/add_facebook.png"/>" width="20" height="20" align="absmiddle"  alt="add"></img></a>&nbsp;Share with Friends
+		 <div class="advertise">
+             <img src="<c:url value="/images/common/advertise.png"/>" width="145" height="70" alt="advertise"></img>
    	     </div>
     <!-- <menu:displayMenu name="Logout"/> -->
    </div>

@@ -21,7 +21,7 @@
 			<div class="partners">
 					<a href="<c:url value="/our_store.jsp"/>">						
 				    <img src="<c:url value="/images/home_sub_mtr.png"/>" width="140"
-								height="76" alt="partners"></img></a>
+								height="75" alt="partners"></img></a>
 					<div class="subtitle">
 						<fmt:message key="sub.by.mtr"/>						
 					</div>
@@ -31,7 +31,7 @@
 			<div class="partners">
 					<a href="<c:url value="/our_store_bus.jsp"/>">						
 				    <img src="<c:url value="/images/home_sub_bus.png"/>" width="140"
-								height="76" alt="partners"></img></a>
+								height="75" alt="partners"></img></a>
 					<div class="subtitle">
 						<fmt:message key="sub.by.bus"/>						
 					</div>
@@ -40,7 +40,7 @@
 			 <div class="partners">
 			 		<a href="<c:url value="/our_store_taxi.jsp"/>">					
 			 		<img src="<c:url value="/images/home_sub_road.png"/>" width="140"
-							height="76" alt="partners"></img></a>
+							height="75" alt="partners"></img></a>
 					<div class="subtitle">
 						<fmt:message key="sub.by.taxi"/>						
 					</div>

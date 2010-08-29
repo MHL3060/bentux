@@ -3,11 +3,12 @@
 
 /* NAV */
     div div.heading{
-		border-bottom: 1.3px solid #FF9400;
+		border-bottom: 1.3px dotted #FF9400;
 		color: purple;
-		font-size: 15px;
 		line-height: 130%;
 		width: 145px;
+		font-size: 16px;
+		font-weight: normal;
     }
     div#nav {
        font-size: 11px;
@@ -20,19 +21,16 @@
        color:green;
     }
    
-    div#nav div.partners{
+    div#nav .partners{
        margin-top:5px;
-       padding-bottom:5px;
        margin-bottom:5px;
-       border-bottom: 1.3px dotted #FF9400;
-    }
-    div#nav div.share{
+       float:left;
+       color:orange;
+     }
+     div#nav .advertise{
         
-        font-size:12px;
-        font-weight:bold;
-        color:orange;
-        border-bottom: 1.3px dotted #FF9400;
-        padding-bottom:5px;
+       width:100%;
+       float:left;
     }
     * html div#nav {
         /* hide ie/mac \*/
@@ -76,21 +74,21 @@
     }
     div#nav li a {
         display: block;
-        
-        font-weight: bold;
+        font-weight: normal;
         text-decoration: none;
-        
+        letter-spacing: 1px;
+        font-size: 12px;
         margin: 0;
         padding: 5px;
-        height: 20px;
+        height: 17px;
         
         color: green;
         background: #fff;
     }
     div#nav li a:hover, div#nav li a.current {   
-        color: fff;
-        background: #fff;
-        text-decoration: underline;
+        color: orange;
+        font-weight: bold;
+    	background: #fff;
         text-transform: uppercase;
     }
    

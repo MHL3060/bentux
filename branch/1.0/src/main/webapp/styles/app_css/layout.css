@@ -112,6 +112,7 @@ p, ul, ol {
         div#main {
             margin-left: 14px;
 			margin-right: 28px;
+			margin-bottom: 10px;
 			width: 606px;
 			float: left;
         }
@@ -123,10 +124,10 @@ p, ul, ol {
         
         /* SUB */
         div#sub .title{
-         	border-bottom: 1px solid #FF9400;
+         	border-bottom: 1px dotted #FF9400;
 			color: purple;
 			float: right;
-			font-size: 1.1em;
+			font-size: 16px;
 			line-height: 170%;
 			margin-bottom: 10px;
 			text-align: center;
