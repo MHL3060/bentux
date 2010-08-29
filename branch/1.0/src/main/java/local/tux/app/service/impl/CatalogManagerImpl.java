@@ -34,4 +34,9 @@ public class CatalogManagerImpl extends LookUpNameGenericManagerImpl<Catalog, Lo
 		return catalogDao.getAllChidlren();
 	}
 
+	public List<Catalog> getparents() {
+		return catalogDao.getParents();
+	}
+
+	
 }

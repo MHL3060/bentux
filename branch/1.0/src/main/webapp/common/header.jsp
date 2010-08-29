@@ -16,12 +16,20 @@
 		<a href="login.jsp">LOGIN</a>&nbsp;|&nbsp;<a href="signup.html">REGISTER</a>&nbsp;|&nbsp;<a href="disclaimer.jsp">DISCLAIMER</a>&nbsp;|&nbsp;<a href="subscriptionform.html">SUBSCRIBE</a>
 	</span>
 </div>
+<style>
+	
+	#branding img {
+		height: 110px;
+		padding: 0px;
+		float: left;
+	}
+</style>
 
 <div id="branding">
-
-    <img src="<c:url value="/images/common/header_logo.png"/>" width="173" height="110"  hspace="0" vspace="0" align="left" />
-   	<img src="<c:url value="/images/common/header_banner_2.jpg"/>" width="774" float="left" height="110" name="banner"  hspace="0" vspace="0" align="left"/>
-       
+   
+    	<img src="<c:url value="/images/common/header_logo.png"/>" width="173" />
+   		<img src="<c:url value="/images/common/header_banner_2.jpg"/>" />
+   
 </div>
 
 <div id="news">
@@ -46,9 +54,6 @@
 			<%@ include file="/common/shoppingcart.jsp" %>
 		</c:if>	
 	</div>
-</div>
-<div id="divider">
-
 </div>
 <hr />
 <%-- Put constants into request scope --%>

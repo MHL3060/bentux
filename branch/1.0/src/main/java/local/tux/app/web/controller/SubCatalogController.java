@@ -12,12 +12,18 @@ import org.springframework.web.servlet.ModelAndView;
 
 import local.tux.Constants;
 import local.tux.app.model.Catalog;
+import local.tux.app.service.CatalogManager;
 import local.tux.app.web.common.controller.TuxBaseObjectsController;
 import local.tux.app.web.table.pagination.ExtendedPaginatedList;
 
 public class SubCatalogController extends TuxBaseObjectsController {
 
 	
+	private CatalogManager catalogManager;
+
+	public void setCatalogManager(CatalogManager catalogManager){
+		this.catalogManager = catalogManager;
+	}
 	
 	public DetachedCriteria getCriteria(HttpServletRequest request){
 		DetachedCriteria criteria = super.getCriteria(request);
@@ -29,5 +35,12 @@ public class SubCatalogController extends TuxBaseObjectsController {
 		return criteria;
 	}
 	
-	
+	public  ModelAndView handleRequest(HttpServletRequest request,
+			HttpServletResponse response) throws Exception{
+		
+		ModelAndView mv = super.handleRequest(request, response);
+		
+		mv.addObject("catalogs", catalogManager.getparents());
+		return mv;
+	}
 }

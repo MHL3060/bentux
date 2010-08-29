@@ -72,7 +72,8 @@ p, ul, ol {
         width: 947px;
         margin-bottom: 10px;
 		height: 111px; 
-		background: #ffffff; 
+		background: #ffffff;
+		overflow: hidden;
      }
        
     div#news {

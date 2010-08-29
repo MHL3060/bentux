@@ -22,11 +22,14 @@
     }
    
     div#nav .partners{
+       width: 100%;
+       overflow: hidden;
        margin-top:5px;
        margin-bottom:5px;
        float:left;
        color:orange;
      }
+     
      div#nav .advertise{
         
        width:100%;

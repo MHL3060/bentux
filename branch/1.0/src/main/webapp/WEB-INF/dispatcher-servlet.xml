@@ -200,6 +200,7 @@
     </bean>
     
     <bean id="subCatalogController" class="local.tux.app.web.controller.SubCatalogController">
+    	<property name="catalogManager" ref="catalogManager" />
         <property name="paginatedListFactory" ref="paginatedListFactory" />
         <property name="userManager" ref="userManager" />
         <property name="pagingLookupManager" ref="pagingLookupManager" />

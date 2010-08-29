@@ -5,10 +5,11 @@
 </div>  
 
 <menu:useMenuDisplayer name="Velocity" config="cssVerticalMenu.vm" permissions="rolesAdapter">
+
 <ul id="primary-nav" class="menuList">
      <%-- these are not the errors. stupid Eclipse doesn't know how to handle EL. --%>
        	   
-	<div id="nav"> 
+	 
   
      <li>
      	<a href="<c:url value="/home.html"/>" class="${pageContext.request.requestURI == '/home.html' ? 'current' : '' }" >
@@ -80,25 +81,25 @@
      </li>
      -->
      <menu:displayMenu name="AdminMenu"/>
-     <!-- Not included 
-     <li>
-          <div class ="search">
-          Site Search
-	          <form method="get" action="#">
-				<input type="text" size="15" name="s" id="search-text" value="" />&nbsp;<input type="image" id="search-submit" src="/images/common/search_button.png" height="21" width="21" align="absmiddle" />
-			   </form>
-		  </div>
-	 </li>
-	 -->
-	     <div class ="partners">
-		 	<a href="http://www.facebook.com/group.php?gid=111666002279&ref=mf"><img src="<c:url value="/images/common/add_facebook.png"/>" width="27" height="27" align="absmiddle"  alt="add_facebook"></img></a>
-		 	<a href="http://www.twitter.com"><img src="<c:url value="/images/common/add_twitter.png"/>" width="27" height="26" align="absmiddle"  alt="add_twitter"></img></a>
-			<a href="http://www.twitter.com"><img src="<c:url value="/images/common/share_friends.png"/>" width="83" height="25" align="absmiddle"  alt="share"></img></a>
+    <li>
+	     <div style="height: 27px; width: 100%; overflow: hidden; padding: 0;" >
+		 	<a style="display: inline" href="http://www.facebook.com/group.php?gid=111666002279&ref=mf">
+		 		<img src="<c:url value="/images/common/add_facebook.png"/>" alt="add_facebook" />
+		 	</a>
+		 	<a  style="display: inline" href="http://www.twitter.com">
+		 		<img src="<c:url value="/images/common/add_twitter.png"/>" alt="add_twitter" />
+			</a>
+			<a  style="display: inline" href="http://www.twitter.com">
+				<!--  hack. this image is too big for this -->
+				<img src="<c:url value="/images/common/share_friends.png"/>" alt="share" style="width: 55px; padding: 0px; margin: 0px; height: 27px;" />
+			</a>
 	     </div>
 		 <div class="advertise">
              <img src="<c:url value="/images/common/advertise.png"/>" width="145" height="70" alt="advertise"></img>
    	     </div>
+   	</li>
     <!-- <menu:displayMenu name="Logout"/> -->
-   </div>
+  
 </ul>
+
 </menu:useMenuDisplayer>

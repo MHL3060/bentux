@@ -13,10 +13,8 @@
 div.subcatalog-center{
 	width: 100%;
 	float: left;
-	font-size: 18px;
 	color: grey;
 	letter-spacing: 2px;
-	font-weight: normal;
 	margin-top:10px;
 }
 
@@ -44,25 +42,41 @@ div.subcatalog-new_line {
    	border-top: 1px dotted orange;
 	width: 100%;
 }
-   
+
+.breadcomb {
+   font-size: 1.1em;
+   font-weight: bold;
+   margin: 0px;
+   padding : 0px;
+   white-space:nowrap;
+   list-style-type: none;   
+}
+
+.breadcomb li {
+   display: inline;
+}
+ 
+.breadcomb li.current {
+   color: #fd8719;
+
+}  
 </style>
 
-<div id="main">
+
 	<div class="subcatalog-center">
-		Food/Beverages . Cultrue . Entertainment . Miscellaneous
-		<div class="subcatalog-new_line"></div>
-		<%--	
-		<c:forEach var="i" begin="-1" end="-5" items="${catalog.id}">
-			<c:if test="${catalog.id != -3} ">
-				${catalog.name}
-				
+		<ul class="breadcomb">
+		<c:forEach var="catalog" items="${catalogs}">
+			<c:if test="${catalog.id != -3 }">
+				<li ${param.pid == catalog.id ? 'class="current"' : '' }>
+					<c:url var="url" value="/subcatalog.html">
+						<c:param name="pid" value="${catalog.id}"/>
+					</c:url>
+					>> <a href="${url }"> ${catalog.name }</a> 
+				</li>
 			</c:if>
 		</c:forEach>
-		<c:forEach var="catalog" items="${catalog.id}" varStatus="rowCounter">
-          <c:if test="${(rowCounter.count * -1) <= -1 }" && test="${(rowCounter.count * -1) >= -5}" && test="${rowCounter.count != -3}">
-          	${catalog.name}
-          </c:if>
-        </c:forEach>--%>
+		</ul>
+		<div class="subcatalog-new_line"></div>
 	</div>
 
 	<div id="whole" class="center">
@@ -81,7 +95,7 @@ div.subcatalog-new_line {
 			--%>
 			<div style="display: block; flow: left;">
 			${catalog.name }
-			<select name="sub" id="sub" onChange="showProduct(this,'products')">
+			<select name="sub" id="sub_${catalog.id}" onChange="showProduct(this,'products')">
 				${pleaseSelect }
 				<c:forEach var="grand" items="${catalog.children}">
 					<option value="${grand.id }"> ${grand.name }</option>
@@ -94,7 +108,7 @@ div.subcatalog-new_line {
 	</div>
 	
 	<div id="productlist" style="visibility:hidden;"> 
-		<div id="fade"></div> 
+		 
 		<div class="popup_product_block"> 
 			<div class="popup"> 
 				<a href="javascript:hide('productlist');window.location.reload()"><img src="<c:url value="/images/icon_close.png" />" class="cntrl" title="Close" /></a> 
@@ -116,7 +130,6 @@ div.subcatalog-new_line {
 			</div> 
 		</div> 
 	</div> 
-</div>
 
 <%@ include file="/common/cart.jsp" %>
 

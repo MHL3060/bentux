@@ -29,6 +29,11 @@ public class CatalogDaoHibernate extends TuxNameGenericDaoHibernate<Catalog, Lon
 		return getHibernateTemplate().find("from Catalog where parent is not null");
 	}
 
+	@SuppressWarnings("unchecked")
+	public List<Catalog> getParents() {
+		return getHibernateTemplate().find("from Catalog where parent is null order by id desc");
+	}
+
 
 	
 }
