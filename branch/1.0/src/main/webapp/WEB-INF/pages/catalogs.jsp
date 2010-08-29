@@ -31,10 +31,10 @@ $('product').observe('click', function(event) {
 div.section { clear: left; }
 div.catalog { 
     float: left; 
-	width: 109px; 
+	width: 90px; 
 	padding: 10px; 
-	margin: 15px 20px 20px 0px;
-	height: 62px;
+	margin: 5px;
+	height: 90px;
     background: #ccc; 
     color:#000; 
     text-align: center; 
@@ -43,10 +43,11 @@ div.catalog {
 div.center{
 	float: left;
 	width: 100%;
+	padding-left: 2em;
+
 }
 
-div.subcatalog {
-	margin-top: 5px; 
+div.subcatalog { 
     float: left; 
 	width: 6em; 
 	padding: 40px; 
@@ -58,8 +59,7 @@ div.subcatalog {
     font: verdana, arial, sans-serif;
 }
 div.new_line {
-   	margin-top: 15px;
-   	border-top: 1px solid orange;
+   
 	width: 100%;
 	background: #fff;
 	height: 1px;
@@ -69,22 +69,23 @@ div.new_line {
 }
 
 </style>
-<div id="main">
-	<div class="center">
-	
-		<img src="<c:url value="/images/product_content.jpg" />" width="606" height="297" />
-		<div class="new_line"></div>
-		<c:forEach var="catalog" items="${tuxBaseObjectList.list}">
-			<%-- to hide the Entertainment Catalog --%>
-			<c:if test="${catalog.id != -3}">
-			<div class="catalog">
-				<img alt="image holder" src="<c:url value="${catalog.image.thumbPath }" />" />
-				<a class="product" href="<c:url value="/subcatalogs.html?pid=${catalog.id}" />" > ${catalog.name}</a>
-			</div>
-			</c:if>
-		</c:forEach>
+<c:if test="${user != null }">
+	<%@ include file="/common/shoppingcart.jsp" %>
+</c:if>
+<h1><fmt:message key="product.title" /></h1>
+
+<div class="center">
+
+	<img src="<c:url value="/images/mainProduct.jpg" />" width="600" height="400" />
+	<c:forEach var="catalog" items="${tuxBaseObjectList.list}">
+	<div class="catalog">
+		<img alt="image holder" src="<c:url value="${catalog.image.thumbPath }" />" />
+		<a class="product" href="<c:url value="/subcatalogs.html?pid=${catalog.id}" />" > ${catalog.name}</a>
 	</div>
+	</c:forEach>
 </div>
+ 
+
 	
 
 	
