@@ -3,6 +3,8 @@
 @import url(nav-horizontal.css);
  
 /* NAV BAR AT THE TOP AND ONE COLUMN OF CONTENT */
+	
+    
     div#content {
         position: relative;
         width: 947px;

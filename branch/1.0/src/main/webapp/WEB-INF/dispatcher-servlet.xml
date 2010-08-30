@@ -272,7 +272,11 @@
     <bean id="captchaController" class="local.tux.app.web.common.controller.CaptchaController">
         <property name="captchaService" ref="captchaService" />
     </bean>
-   
+    <bean id="MovieController" class="local.tux.app.web.controller.MovieController">
+ 		<property name="productManager" ref="productManager" />
+ 		<property name="commonPageUtil" ref="commonPageUtil" />
+		<property name="userManager" ref="userManager" />
+	</bean>
     <bean id="orderController" class="local.tux.app.web.controller.OrderController">
     	<property name="paginatedListFactory" ref="paginatedListFactory" />
         <property name="pagingLookupManager" ref="pagingLookupManager" />
@@ -284,7 +288,6 @@
     	<property name="commandClass" value="local.tux.app.model.ShoppingCart" />
     	<property name="commandName" value="shoppingCart" />
     	<property name="userManager" ref="userManager" />
-    	<property name="successView" value="redirect:orders.html" />
-    
+    	<property name="successView" value="redirect:orders.html" /> 
     </bean>
 </beans>

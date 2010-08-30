@@ -5,7 +5,6 @@
 			<span class="left">
 				<a href="home.html">Home</a>&nbsp;
 				|&nbsp;&nbsp;<a href="disclaimer.jsp">Disclaimer</a>&nbsp;
-				|&nbsp;&nbsp;<a href="productlist.html">Product</a>&nbsp;
 				|&nbsp;&nbsp;<a href="archive.html">Archive</a>&nbsp;
 				|&nbsp;&nbsp;<a href="disclaimer.jsp">Help</a>&nbsp;
 				|&nbsp;&nbsp;<a href="privacyPolicy.html">Privacy Policy</a>&nbsp;

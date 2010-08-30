@@ -5,6 +5,11 @@
     <div id="switchLocale"><a href="<c:url value='/?locale=en'/>"><fmt:message key="webapp.name"/> in English</a></div>
 </c:if>
 --%>
+<style>
+
+
+
+</style>
 <div id="top">
 		<span class="left">
 			<fmt:message key="company.url"/>	    
@@ -13,7 +18,7 @@
 		<c:if test="${pageContext.request.remoteUser}">
 			<a href="userform.html">MY ACCOUNT</a>&nbsp;|&nbsp;
 		</c:if>
-		<a href="login.jsp">LOGIN</a>&nbsp;|&nbsp;<a href="signup.html">REGISTER</a>&nbsp;|&nbsp;<a href="disclaimer.jsp">DISCLAIMER</a>&nbsp;|&nbsp;<a href="subscriptionform.html">SUBSCRIBE</a>
+		<a href="login.jsp">LOGIN</a>&nbsp;|&nbsp;<a href="signup.html">REGISTER</a>&nbsp;|&nbsp;<a href="disclaimer.jsp">DISCLAIMER</a>&nbsp;|&nbsp;<a href="help.html">HELP</a>
 	</span>
 </div>
 <style>
@@ -35,18 +40,19 @@
 <div id="news">
 	<div class="left">
 
-	    Hi, 
-		<c:choose>
-					<c:when test="${pageContext.request.remoteUser == null}">
-						Please&nbsp;(<a href="<c:url value="/login.jsp"/>">sign in</a>) or not yet a member? (<a href="<c:url value="/signup.html"/>">register</a>) 	       		
-					</c:when>
-					<c:otherwise>
-						 	
+	    <%-- No order history for Phrase 1, 28/08/2010 
+						Hi, Please&nbsp;(<a href="<c:url value="/login.jsp"/>">sign in</a>) or not yet a member? (<a href="<c:url value="/signup.html"/>">register</a>) 	       		
+		--%>
+				<c:if test="${pageContext.request.remoteUser != null}">
+					
+					<div class="user">
 						 <fmt:message key="user.status"/> ${pageContext.request.remoteUser} 
+						 	<%-- No order history for Phrase 1, 28/08/2010 
 						 | <a href="<c:url value='/orders.html' />"><fmt:message key="order.history" /></a>
 						 | <a href="<c:url value="/logout.jsp"/>">sign out</a>
-				    </c:otherwise>
-				</c:choose>
+				    	--%>
+					</div>
+				</c:if>
 
 	</div>
 	<div class="right">
@@ -55,6 +61,7 @@
 		</c:if>	
 	</div>
 </div>
+<div id="divider"></div>
 <hr />
 <%-- Put constants into request scope --%>
 <appfuse:constants scope="request"/>

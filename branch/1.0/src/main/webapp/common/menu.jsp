@@ -51,7 +51,7 @@
      </li>
      <!--  Movie Page -->
      <li>
-     	<a href="<c:url value="/movie.jsp"/>" class="${pageContext.request.requestURI == '/movie.jsp' ? 'current' : '' }" >
+     	<a href="<c:url value="/movie.html"/>" class="${pageContext.request.requestURI == '/movie.html' ? 'current' : '' }" >
      		<fmt:message key="movie.menu" />
      	</a>
      </li>
@@ -82,7 +82,7 @@
      -->
      <menu:displayMenu name="AdminMenu"/>
     <li>
-	     <div style="height: 27px; width: 100%; overflow: hidden; padding: 0;" >
+	     <div style="margin-top: 8px; margin-bottom: 5px; height: 26px; width: 100%; overflow: hidden; padding: 0;" >
 		 	<a style="display: inline" href="http://www.facebook.com/group.php?gid=111666002279&ref=mf">
 		 		<img src="<c:url value="/images/common/add_facebook.png"/>" alt="add_facebook" />
 		 	</a>
@@ -91,7 +91,7 @@
 			</a>
 			<a  style="display: inline" href="http://www.twitter.com">
 				<!--  hack. this image is too big for this -->
-				<img src="<c:url value="/images/common/share_friends.png"/>" alt="share" style="width: 55px; padding: 0px; margin: 0px; height: 27px;" />
+				<img src="<c:url value="/images/common/share_friends.png"/>" alt="share" />
 			</a>
 	     </div>
 		 <div class="advertise">

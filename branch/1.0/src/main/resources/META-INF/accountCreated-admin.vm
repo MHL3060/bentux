@@ -9,7 +9,7 @@ Role: $user.getRoleList() <br />
 
 <h3> Detail </h3>
 
-Name: $user.getFirstname() $user.getLastname <br />	
+Name: $user.getFirstname() $user.getLastname <br />		
 email Address:$user.getEmail <br />
 Phone Number: $user.getPhoneNumber <br />
 WebSite: $user.getWebsite <br />

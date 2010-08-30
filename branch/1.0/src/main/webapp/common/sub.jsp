@@ -2,7 +2,7 @@
 
     <div id="sub">
             <div class="title">
-				 <fmt:message key="current.page.home"/>
+				 <fmt:message key="sub.title"/>
             </div>
 			<%--
 			<ul class="left">
@@ -46,11 +46,24 @@
 					</div>
                </div> 	
 			
+			
 			<div class="partners">
-					<c:if test="${user != null }">		
-						<div class="cart">
+				<c:if test="${user != null }">		
+						
+					<div class="cart-top">
+								<a href="<c:url value="/cart.html"/>">Shopping cart</a>
+					</div>
+					<div class="cart-middle">	
+						<div class="left">Items</div>							
+						<div class="right">${cart_item_count}</div>
 								
-						</div>
-					</c:if>
+						<div class="left">Total</div>
+						<div class="right">$ ${cart_sub_total}</div>
+					</div>
+					<div class="cart-bottom">
+						<a href="<c:url value="/addressform.html"/>">Checkout</a>
+					</div>
+				</c:if>
+						
 			</div>
-	</div>	
+</div>

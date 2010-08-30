@@ -18,6 +18,7 @@
 
 <div id="main">
 			<img src="<c:url value="/images/home_content_2.png"/>" width="606"
-									height="423" alt="partners"></img>
+									height="421" alt="partners"></img>
 </div>
+
 </body>

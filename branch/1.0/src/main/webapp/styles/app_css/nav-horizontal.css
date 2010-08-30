@@ -24,7 +24,7 @@
     div#nav .partners{
        width: 100%;
        overflow: hidden;
-       margin-top:5px;
+       margin-top:8px;
        margin-bottom:5px;
        float:left;
        color:orange;
@@ -41,7 +41,7 @@
         /* end hide */
     }
     div#nav div.wrapper {
-        width: 130px;
+        width: 145px;
         
         background: #fff;
     }

@@ -118,6 +118,7 @@
 		line-height: 140%;
  		width: 269px;
 		letter-spacing: 0.5px;
+		text-align: justify;
     }
     div#our-store .help{
     	margin-top:20px;
@@ -162,6 +163,29 @@
 		border: 10px 0px 5px 10px;
 		margin: 10px 0px 5px 10px;
 		float: right;
+	}
+	div#movie{
+		width: 100%;
+		text-align: left;
+	}
+	div#movie .left{
+		float: left;
+		width: 325px;
+		margin-right: 10px;
+	}
+	div#movie .left .movie-heading{
+		color: black;
+		font-size: 40x;
+		font-weight: bold;	
+	}
+	div#movie .left .movie-description{
+		font-size: 20px;
+		font-weight: bold;	
+		color: orange;
+	}
+	div#movie .right{
+		float: right;
+		width: 270px;
 	}
 	.post . {
 		height: 38px;

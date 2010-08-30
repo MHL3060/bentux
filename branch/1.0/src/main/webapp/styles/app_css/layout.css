@@ -87,6 +87,11 @@ p, ul, ol {
 		float: left;
 		text-align: left;
 	}
+	div#news .left .user{
+		font-size:13px;
+		color: white;
+		font-weight: bold;
+	}
 	div#news .right{
   		margin-top:-4px;
   		padding-right: 10px;
@@ -134,7 +139,11 @@ p, ul, ol {
 			text-align: center;
 			width: 140px;
 		}
-	
+		div#sub .link{
+			text-align: center;
+			font-weight: normal;
+				
+		}
 		div#sub .ul {
 			color:#555;
 			overflow:hidden;
@@ -162,11 +171,28 @@ p, ul, ol {
             margin-top:5px;
         }
        
-       div#sub .partners .cart{
-	     	        padding: 3px 0px 35px 0px;
-	        border-top: 25px solid #FF9400;
-			border-bottom: 25px solid #FF9400;
+         div#sub .partners .cart-top{
+         	background: orange; 
+        	padding: 4px 0px 4px 0px;
+	        text-align: center;
     	}
+    	div#sub .partners .cart-middle{
+    		background: white; 
+			padding: 0px 0px 40px;
+    	}
+    	div#sub .partners .cart-middle .left{
+			float:left;
+			margin: 2px 20px 2px 15px;
+    	}
+    	div#sub .partners .cart-middle .right{
+			float:right;
+			margin: 2px 20px;
+        }
+	    div#sub .partners .cart-bottom{
+	       	background: orange; 
+	      	padding: 4px 0px 4px 0px;
+			text-align: center;
+	    }	
         div#sub .advertise{
         	width:145px;
         	padding-top:8px;
@@ -201,12 +227,11 @@ p, ul, ol {
             div#footer div#divider {
                     margin: 0 0 4px 0;
 					background: #246e21; 
-                    border-top: 10px solid #246e21;
+                    border-top: 5px solid #246e21;
             }
 
             div#footer div#divider div {
                     margin: 30px 0 0 0;
-                    border-top: 6px solid #246e21; /*#ebf5fc; */
             }
 
             div#footer .left {
