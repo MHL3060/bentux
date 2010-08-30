@@ -68,7 +68,7 @@ div.subcatalog-new_line {
 		<c:forEach var="catalog" items="${catalogs}">
 			<c:if test="${catalog.id != -3 }">
 				<li ${param.pid == catalog.id ? 'class="current"' : '' }>
-					<c:url var="url" value="/subcatalog.html">
+					<c:url var="url" value="/subcatalogs.html">
 						<c:param name="pid" value="${catalog.id}"/>
 					</c:url>
 					>> <a href="${url }"> ${catalog.name }</a> 
