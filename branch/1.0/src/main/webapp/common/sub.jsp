@@ -45,10 +45,9 @@
 						<fmt:message key="sub.by.taxi"/>						
 					</div>
                </div> 	
-			
-			
-			<div class="partners">
-				<c:if test="${user != null }">		
+			<c:if test="${pageContext.request.remoteUser}">		
+					
+				<div class="partners">
 						
 					<div class="cart-top">
 								<a href="<c:url value="/cart.html"/>">Shopping cart</a>
@@ -62,8 +61,8 @@
 					</div>
 					<div class="cart-bottom">
 						<a href="<c:url value="/addressform.html"/>">Checkout</a>
-					</div>
-				</c:if>
-						
-			</div>
+					</div>			
+				</div>
+			</c:if>
+			
 </div>

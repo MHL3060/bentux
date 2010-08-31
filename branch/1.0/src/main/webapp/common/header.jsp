@@ -1,10 +1,12 @@
 <%@ include file="/common/taglibs.jsp"%>
-
+<c:if test="${!empty cookie.preferredLocale}">
+	<fmt:setLocale value="${cookie.preferredLocale.value}" />
+</c:if>
 <%--
-<c:if test="${pageContext.request.locale.language != 'en'}">
+<c:if test="${pageContext.request.locale.language == 'en'}">
     <div id="switchLocale"><a href="<c:url value='/?locale=en'/>"><fmt:message key="webapp.name"/> in English</a></div>
 </c:if>
---%>
+ --%>
 <style>
 
 
@@ -18,7 +20,13 @@
 		<c:if test="${pageContext.request.remoteUser}">
 			<a href="userform.html">MY ACCOUNT</a>&nbsp;|&nbsp;
 		</c:if>
-		<a href="login.jsp">LOGIN</a>&nbsp;|&nbsp;<a href="signup.html">REGISTER</a>&nbsp;|&nbsp;<a href="disclaimer.jsp">DISCLAIMER</a>&nbsp;|&nbsp;<a href="help.html">HELP</a>
+		<c:choose>
+      		<c:when test="${pageContext.request.remoteUser != null}"><a href="logout.jsp">SIGN OUT</a>
+      </c:when>
+	      <c:otherwise><a href="login.jsp">LOGIN</a>
+      </c:otherwise>
+    </c:choose>
+		&nbsp;|&nbsp;<a href="signup.html">REGISTER</a>&nbsp;|&nbsp;<a href="disclaimer.jsp">DISCLAIMER</a>&nbsp;|&nbsp;<a href="help.html">HELP</a>
 	</span>
 </div>
 <style>

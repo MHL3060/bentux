@@ -47,8 +47,8 @@ p, ul, ol {
 	  	float: center;
 	   /* height: 100px;*/ /* needed by IE 7 */
 	}
-    /* SWITCHLOCALE WILL NOT APPLIED IN THIS VERSION
-   	div#switchLocale {
+    /* SWITCHLOCALE WILL NOT APPLIED IN THIS VERSION*/
+   	/*div#switchLocale {
        position: absolute;
        right: 10px;
     }*/
