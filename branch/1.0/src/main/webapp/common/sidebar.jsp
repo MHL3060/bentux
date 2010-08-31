@@ -15,7 +15,7 @@
 						</li>
 			
 				<li>	
-					<img src="<c:url value="/images/sample_banner2.jpg"/>" width="140" height="100" alt="trinity group"></img>
+					<img src="<c:url value="/images/sample_banner2.jpg"/>" width="140" height="100" alt="trinity group" />
 				</li>
 			</ul>
 			</div>

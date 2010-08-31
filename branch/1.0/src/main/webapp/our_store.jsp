@@ -37,7 +37,7 @@
 						</div>
 						<div class="bottom">
 							<a href="http://maps.google.com/maps?f=d&amp;source=embed&amp;saddr=22.31218,114.226425&amp;daddr=Sunbeam+Centre,+27+Shing+Yip+St,+Kwun+Tong,+Hong+Kong&amp;geocode=%3BFZprVAEd1vjOBilJm7O1WgEENDGOsvCWKyeT4w&amp;hl=en&amp;mra=ls&amp;dirflg=w&amp;doflg=ptm&amp;sll=22.31126,114.22187&amp;sspn=0.009032,0.016512&amp;ie=UTF8&amp;ll=22.310716,114.226313&amp;spn=0.00397,0.004549&amp;z=17" style="color:#0000FF;text-align:left">
-							<img src="<c:url value="/images/google_map_logo.png"/>" width="70" height="69" alt="google_map_logo"></img>
+							<img src="<c:url value="/images/google_map_logo.png"/>" width="70" height="69" alt="google_map_logo"/>
 						</div>
 					</div>
 			</div>

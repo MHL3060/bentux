@@ -29,7 +29,7 @@
 			<fmt:message key="contact.us.feedback.description" />
 		</div>
 		<div class="form">
-			<img src="<c:url value="/images/contact_us_form.png"/>" width="607" height="306" alt="contact_us_form"></img>
+			<img src="<c:url value="/images/contact_us_form.png"/>" width="607" height="306" alt="contact_us_form"/>
 		</div>
 	
 	</div>
