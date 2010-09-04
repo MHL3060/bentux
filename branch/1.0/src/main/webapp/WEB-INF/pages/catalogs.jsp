@@ -31,15 +31,22 @@ $('product').observe('click', function(event) {
 div.section { clear: left; }
 div.catalog { 
     float: left; 
-	width: 109px; 
-	padding: 10px; 
+	width: 130px; 
+	padding: 1px; 
 	margin: 15px 20px 20px 0px;
-	height: 62px;
+	height: 130px;
     background: #ccc; 
     color:#000; 
     text-align: center; 
     font: verdana, arial, sans-serif;
 }
+
+div.catalog img {
+    width: 130px;
+
+}
+
+
 div.center{
 	float: left;
 	width: 100%;

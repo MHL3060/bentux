@@ -1,6 +1,6 @@
 <%@ include file="/common/taglibs.jsp" %>
 
-    <div id="sub">
+    <div id="sub2">
             <div class="title">
 				 <fmt:message key="sub.title"/>
             </div>
@@ -10,7 +10,7 @@
 				<li>
 					<div class="banner">
 						<img src="<c:url value="${sideBanner.thumbPath}"/>" width="130"
-									height="80" alt="${sideBanner.name}"/>
+									height="80" alt="${sideBanner.name}"></img>
 						<a href="<c:url value="${sideBanner.url }" />">${sideBanner.name}</a>
 					</div>
 				</li>
@@ -21,7 +21,7 @@
 			<div class="partners">
 					<a href="<c:url value="/our_store.jsp"/>">						
 				    <img src="<c:url value="/images/home_sub_mtr.png"/>" width="140"
-								height="75" alt="partners" /></a>
+								height="75" alt="partners"/></a>
 					<div class="subtitle">
 						<fmt:message key="sub.by.mtr"/>						
 					</div>
@@ -31,7 +31,7 @@
 			<div class="partners">
 					<a href="<c:url value="/our_store_bus.jsp"/>">						
 				    <img src="<c:url value="/images/home_sub_bus.png"/>" width="140"
-								height="75" alt="partners" /></a>
+								height="75" alt="partners"/></a>
 					<div class="subtitle">
 						<fmt:message key="sub.by.bus"/>						
 					</div>
@@ -40,14 +40,15 @@
 			 <div class="partners">
 			 		<a href="<c:url value="/our_store_taxi.jsp"/>">					
 			 		<img src="<c:url value="/images/home_sub_road.png"/>" width="140"
-							height="75" alt="partners" /></a>
+							height="75" alt="partners"/></a>
 					<div class="subtitle">
 						<fmt:message key="sub.by.taxi"/>						
 					</div>
                </div> 	
-			<c:if test="${pageContext.request.remoteUser}">		
-					
-				<div class="partners">
+			
+			
+			<div class="partners">
+				<c:if test="${pageContext.request.remoteUser}">
 						
 					<div class="cart-top">
 								<a href="<c:url value="/cart.html"/>">Shopping cart</a>
@@ -61,8 +62,8 @@
 					</div>
 					<div class="cart-bottom">
 						<a href="<c:url value="/addressform.html"/>">Checkout</a>
-					</div>			
-				</div>
-			</c:if>
-			
+					</div>
+				</c:if>
+						
+			</div>
 </div>

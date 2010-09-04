@@ -131,7 +131,7 @@
 <c:if test="${hasPermission }"><c:out value="${button}" escapeXml="false" /></c:if>
 
 <div id="cart" style="visibility:hidden;"> 
-	<div id="fade"></div> 
+	<div class="fade"></div> 
 	<div class="popup_block"> 
 		<div class="popup"> 
 			<a href="javascript:hide('cart')"><img src="<c:url value="/images/icon_close.png" />" class="cntrl" title="Close" /></a> 

@@ -114,7 +114,7 @@ div.subcatalog-new_line {
 	</div>
 	
 	<div id="productlist" style="visibility:hidden;"> 
-		 
+		<div class="fade"></div>		 
 		<div class="popup_product_block"> 
 			<div class="popup"> 
 				<a href="javascript:hide('productlist');window.location.reload()"><img src="<c:url value="/images/icon_close.png" />" class="cntrl" title="Close" /></a> 

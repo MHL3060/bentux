@@ -20,7 +20,7 @@
 		</div>
 		<div class="right">
 		 <%-- Movie poster goes to here --%>
-		    	<img src="<c:url value="/images/movie_coming_soon.jpg"/>" width="270" height="425" alt="coming-movie"></img></a>
+		    	<img src="<c:url value="/images/movie_coming_soon.jpg"/>" width="270" height="425" alt="coming-movie"></a>
 		</div>
 	</div>
 	

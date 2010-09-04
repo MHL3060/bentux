@@ -47,8 +47,8 @@ p, ul, ol {
 	  	float: center;
 	   /* height: 100px;*/ /* needed by IE 7 */
 	}
-    /* SWITCHLOCALE WILL NOT APPLIED IN THIS VERSION*/
-   	/*div#switchLocale {
+    /* SWITCHLOCALE WILL NOT APPLIED IN THIS VERSION
+   	div#switchLocale {
        position: absolute;
        right: 10px;
     }*/
@@ -101,7 +101,8 @@ p, ul, ol {
  
     div#divider{
          width: 947px;
-         margin-top:7px;
+        height: 40px; 
+	margin-top:7px;
 		 border-bottom: 1px dotted orange;
 	}
 
@@ -225,7 +226,7 @@ p, ul, ol {
 			background-color: transparent;
 		}
             div#footer div#divider {
-                    margin: 0 0 4px 0;
+                    margin: 20px 0 4px 0;
 					background: #246e21; 
                     border-top: 5px solid #246e21;
             }
@@ -236,7 +237,7 @@ p, ul, ol {
 
             div#footer .left {
                     float: left;
-					padding-left: 20%;
+    		padding-left: 20px;
             }
             
             div#footer .center {

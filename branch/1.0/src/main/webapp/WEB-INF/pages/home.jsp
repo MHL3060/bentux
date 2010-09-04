@@ -12,13 +12,9 @@
 	        		<c:url var="url" value="catalogform.html">
 	        			<c:param name="id" value="${list.id}" />
 	        		</c:url>
-	        		<a href="<c:url value="${url }" />" />${list.id }</a>
+	        		<a href="<c:url value="${url }" />" >${list.id }</a>
 	        	</c:otherwise>
 	        </c:choose>
 
-<div id="main">
-			<img src="<c:url value="/images/home_content_2.png"/>" width="606"
-									height="421" alt="partners"></img>
-</div>
+			<img src="<c:url value="/images/home_content_2.jpg"/>"  />
 
-</body>

@@ -8,7 +8,11 @@
 <script type="text/javascript" src="<c:url value="/scripts/autocomplete.js" />" ></script>
 <link rel="stylesheet" type="text/css" href="<c:url value='/styles/autocomplete.css'/>" />
 <script type="text/javascript">
-	
+	function submitForm() {
+	 handleAdd();
+	 document.getElementById('catalogForm').submit();
+
+	}
 	function updateList(autocompleter, token) {
          // AddressServiceFacade.findCompletePostalCodes(token, function(data) { autocompleter.setChoices(data) });
         <%--       
@@ -24,7 +28,9 @@
 	function handleAdd() {
 		var searchString = DWRUtil.getValue('imageName');
 		if (searchString != ''){
-			imageManager.getLookUpBaseObject(searchString, function(LookUpBaseObject){dwr.util.setValue('image',LookUpBaseObject.id)});
+			imageManager.getByName(searchString, function(LookUpBaseObject){
+					dwr.util.setValue('image',LookUpBaseObject.id)
+			});
 		}
 	}
 	
@@ -44,7 +50,7 @@
 	        		<c:url var="url" value="catalogform.html">
 	        			<c:param name="id" value="${list.id}" />
 	        		</c:url>
-	        		<a href="<c:url value="${url }" />" />${list.id }</a>
+	        		<a href="<c:url value="${url }" />" >${list.id }</a>
 	        	</c:otherwise>
 	        </c:choose>
         </display:column>
@@ -73,7 +79,7 @@
     </li>
 </c:set>
 
-<form:form commandName="catalog" method="post" action="catalogform.html" onsubmit="return onFormSubmit(this)" id="catalogForm">
+<form:form commandName="catalog" method="post" action="catalogform.html" name="catalogForm" id="catalogForm">
         <form:hidden path="id"/>
         <form:hidden path="image" />
         <ul>
@@ -94,11 +100,12 @@
                 <li>
                 	<appfuse:label key="catalog.image" styleClass="desc" />
                 	<form:errors path="image" cssClass="fieldError" />
-                	<input type="text" id="imageName" name="imageName" value="${image.product.name }" onblur="handleAdd()" />
+                	<input type="text" id="imageName" name="imageName" value="${image.product.name }"  />
 			    	<div id="imageList" class="auto_complete"></div>
 		           	<script type="text/javascript">
-		               	new Autocompleter.DWR('imageName', 'imageList', updateList,{ valueSelector: nameValueSelector, partialChars: 3 });
+		               		new Autocompleter.DWR('imageName', 'imageList', updateList,{ valueSelector: nameValueSelector, partialChars: 3 });
 		           	</script>
+			<input type="button" onclick="handleAdd()" value="Use this image"/>
                 
                 </li>
                 <li>
