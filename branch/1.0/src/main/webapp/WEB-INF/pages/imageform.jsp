@@ -81,7 +81,7 @@
 	        <fmt:message key="upload.message"/>
 	    </li>
 	    <li class="buttonBar bottom">
-	        <input type="submit" name="upload" class="button" onclick="bCancel=false"
+	        <input type="submit" name="save" class="button" onclick="bCancel=false"
 	            value="<fmt:message key="button.save"/>" />
 	        <input type="submit" name="cancel" class="button"
 	            value="<fmt:message key="button.cancel"/>" />
