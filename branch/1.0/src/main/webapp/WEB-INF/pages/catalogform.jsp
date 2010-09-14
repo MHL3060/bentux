@@ -64,6 +64,9 @@
 				<c:param name="displayOrder" value="true" />
 			</c:url>
 		</display:column>
+		<display:column titleKey="Image">
+			 <img src="<c:url value="${list.image.thumbPath }" />" />
+		</display:column>
 </display:table>
 
 <c:set var="id" value="${catalog.id}" />
