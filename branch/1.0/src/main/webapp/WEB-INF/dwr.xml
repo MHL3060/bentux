@@ -40,11 +40,12 @@
         </create>
         
         <create creator="spring" javascript="imageManager" >
-        	<param name="class" value="local.tux.app.service.LookUpNameGenericManager" />
+        	<param name="class" value="local.tux.app.service.ImageManager" />
         	<param name="beanName" value="imageManager" />
         	<include method="getLookUpBaseObject" />
         	<include method="getAll" />
         	<include method="search" />
+        	<include method="getByName" />
         </create>
         
         <create creator="spring" javascript="shoppingCartManager" >

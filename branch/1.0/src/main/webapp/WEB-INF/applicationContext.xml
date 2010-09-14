@@ -137,7 +137,7 @@
     <bean id="catalogManager" class="local.tux.app.service.impl.CatalogManagerImpl">
     	<constructor-arg ref="catalogDao"/>
     </bean>
-    <bean id="imageManager" class="local.tux.app.service.impl.LookUpNameGenericManagerImpl">
+    <bean id="imageManager" class="local.tux.app.service.impl.ImageManagerImpl">
     	<constructor-arg ref="imageDao" />
     </bean>
     <bean id="manufacturerManager" class="local.tux.app.service.impl.LookUpNameGenericManagerImpl">
