@@ -14,7 +14,7 @@
 </style>
 <div id="top">
 		<span class="left">
-			<fmt:message key="company.url"/>	    
+			<a href="home.html"><fmt:message key="company.url"/></a>	    
 		</span>
 	<span class="right">
 		<c:if test="${pageContext.request.remoteUser}">
@@ -40,8 +40,8 @@
 
 <div id="branding">
    
-    	<img src="<c:url value="/images/common/header_logo.png"/>" width="173" />
-   		<img src="<c:url value="/images/common/header_banner_2.jpg"/>" />
+    	<img src="<c:url value="/images/common/header_logo.png"/>" width="178" />
+   		<img src="<c:url value="/images/common/header_banner_2.jpg"/>"/>
    
 </div>
 
@@ -69,6 +69,7 @@
 		</c:if>	
 	</div>
 </div>
+<div id="top-divider"></div>
 <hr />
 <%-- Put constants into request scope --%>
 <appfuse:constants scope="request"/>

@@ -78,7 +78,7 @@ p, ul, ol {
        
     div#news {
         width: 947px;
-        background: #fd8719; 
+        background: #ff9523; 
         padding: 3px 0px 16px 0px;     
         text-align: left;
     }
@@ -103,9 +103,12 @@ p, ul, ol {
          width: 947px;
         height: 40px; 
 	margin-top:7px;
+	}
+ div#top-divider{
+         width: 947px;
+	margin-top:10px;
 		 border-bottom: 1px dotted orange;
 	}
-
 
 
     /* END HEADER */
@@ -132,7 +135,7 @@ p, ul, ol {
         /* SUB */
         div#sub .title{
          	border-bottom: 1px dotted #FF9400;
-			color: purple;
+			color: #d467a4;
 			float: right;
 			font-size: 16px;
 			line-height: 170%;
@@ -226,7 +229,7 @@ p, ul, ol {
 			background-color: transparent;
 		}
             div#footer div#divider {
-                    margin: 20px 0 4px 0;
+                    margin: 10px 0 4px 0;
 					background: #246e21; 
                     border-top: 5px solid #246e21;
             }
@@ -249,7 +252,7 @@ p, ul, ol {
 
             div#footer .right {
                     float: right;
-					padding-right: 80px;
+					padding-right: 20px;
             }
 	
     /* END FOOTER */

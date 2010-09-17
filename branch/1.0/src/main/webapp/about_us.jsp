@@ -8,7 +8,7 @@
 
 <div id="main">
 	<div id="about-us">
-		<img src="<c:url value="/images/about_us.png"/>" width="606" height="224" alt="about us" />			
+		<img src="<c:url value="/images/about_us.jpg"/>" width="601" height="224" alt="about us" />			
 		
 		<div class="detail">
 

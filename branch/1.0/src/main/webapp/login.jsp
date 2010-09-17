@@ -1,5 +1,12 @@
 <%@ include file="/common/taglibs.jsp"%>
 
+<script>
+
+function redirect(){
+location='/signup.html';
+}
+</script>
+
 <style>
     a {background-color:inherit; color:white; font-weight:700; text-decoration:none;}
 	a:hover {background-color:inherit; color:oragne;}
@@ -63,13 +70,10 @@
                 
            	   <div class="wording"><fmt:message key="login.register1"/> </div>
                <div class="wording"> <fmt:message key="login.register2"/> </div>
-               <div class="button2"><fmt:message key="button.register2">
-                						<fmt:param><c:url value="/signup.html"/></fmt:param>
-            						</fmt:message>
-         	  </div>
-         	</div>
+       			
+                  <input type="button" class="button2" name="register" onclick="redirect();" value="Register" />
         </div>
-
+</div>
         <%@ include file="/scripts/login.js"%>
 		
 </div>

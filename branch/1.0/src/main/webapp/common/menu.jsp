@@ -23,7 +23,7 @@
      </li>
      <!--  product page -->
      <li>
-     	<a href="<c:url value="/catalogs.html"/>" class="${pageContext.request.requestURI == '/subcatalogs.html' ? 'current' : '' }" >
+     	<a href="<c:url value="/catalogs.html"/>" class="${pageContext.request.requestURI == '/catalogs.html' ? 'current' : '' }" >
      		<fmt:message key="product.menu" />
      	</a>
      </li>
