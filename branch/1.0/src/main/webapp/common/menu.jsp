@@ -67,7 +67,7 @@
      </li>
  
     <li>
-    	<a href="<c:url value="/faq.html"/>" class="${pageContext.request.requestURI == '/faq.html' ? 'current' : '' }" >
+    	<a href="<c:url value="/faq.jsp"/>" class="${pageContext.request.requestURI == '/faq.jsp' ? 'current' : '' }" >
      		<fmt:message key="faq.menu" />
      	</a>
      </li>

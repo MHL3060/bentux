@@ -3,6 +3,7 @@
 <head>
 <meta name="menu" content="Home" />
 </head>
+<div id="main">
 
   	<c:choose>
 	        	<c:when test="${list.id < 0 }">
@@ -18,3 +19,4 @@
 
 			<img src="<c:url value="/images/home_content_2.jpg"/>"  />
 
+</div>
