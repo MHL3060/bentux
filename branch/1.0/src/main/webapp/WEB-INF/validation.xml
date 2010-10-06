@@ -156,6 +156,15 @@
       	<field property="name" depends="required">
       		<arg0 key="product.name" />
       	</field>
+      	<field property="description" depends="maxlength">
+      		<arg0 key="product.description" />
+      		<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+      		<var>
+      			<var-name>maxlength</var-name>
+      			<var-value>2000</var-value>
+      		</var>
+      	
+      	</field>
       </form> 
       <form name="subscription">
       	<field property="phoneNumber" depends="required">
