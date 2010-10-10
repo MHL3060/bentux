@@ -164,26 +164,61 @@
 		margin: 10px 0px 5px 10px;
 		float: right;
 	}
+
+		
+	div#movie-list{
+	    width: 100%;
+	    text-align: left;	    
+	}
+	
+	div#movie-list .top{
+		float: left;	
+		width: 607px;
+		height: 357px;
+		margin-bottom:10px;
+	}
+	
+	div#movie-list .bottom{
+		float:left;			
+	}
+	
+	div#movie-list .bottom .heading{
+	    width: 607px;
+	    border-bottom: 1px solid orange;
+	    font-weight: normal;
+	    font-size: 20px;
+	    color: black;
+	}
+	
+	div#movie-list .bottom .list{
+		float: left; 
+		font-size: 17px;
+		width: 35px; 
+		margin: 5px 25px 0px 0px;
+	    text-align: center; 
+	    text-transform:uppercase;
+	    
+	}
 	div#movie{
 		width: 100%;
 		text-align: left;
 	}
-	div#movie .left{
+
+	div#movie .movie-left{
 		float: left;
 		width: 325px;
 		margin-right: 10px;
 	}
-	div#movie .left .movie-heading{
+
+	div#movie .movie-left .movie-title{
 		color: black;
-		font-size: 40x;
-		font-weight: bold;	
+		font-size: 40px;
+		font-weight: bold;
 	}
-	div#movie .left .movie-description{
-		font-size: 20px;
-		font-weight: bold;	
-		color: orange;
+	div#movie .movie-left .movie-description{
+        padding-top: 10px;
 	}
-	div#movie .right{
+	div#movie .movie-right{
 		float: right;
 		width: 270px;
 	}

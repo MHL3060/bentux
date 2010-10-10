@@ -254,6 +254,13 @@ p, ul, ol {
                     float: right;
 					padding-right: 20px;
             }
+            div#bottom {
+            color:grey;
+            padding: 0px 400px 0px 400px;
+			font-family: 'Avenir LT Std 55 Roman';
+			font-size: 10px;
+			width: 947px;
+		 	}
 	
     /* END FOOTER */
 
