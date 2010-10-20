@@ -123,7 +123,13 @@
         <property name="commandName" value="image" />
         <property name="productManager" ref="productManager" />
         <property name="lookUpManager" ref="imageManager" />
+        <property name="imageStoragePath" value="${image.path}" />
         <property name="cancelView"     value="redirect:imageform.html" />
+    </bean>
+    
+    <bean id="fileController" class="local.tux.app.web.controller.FileController">
+    	<property name="imageManager" ref="imageManager" />
+    	<property name="imageStoragePath" value="${image.path}" />
     </bean>
     <bean id="brandNameFormController" class="local.tux.app.web.controller.BrandNameFormController">
         <property name="validator" ref="beanValidator"/>

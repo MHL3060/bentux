@@ -7,6 +7,7 @@ import org.apache.commons.lang.StringUtils;
 import org.appfuse.model.User;
 import org.displaytag.properties.SortOrderEnum;
 import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -32,6 +33,7 @@ public class SubCatalogController extends TuxBaseObjectsController {
 			parent.setId(new Long(request.getParameter("pid")));
 			criteria.add(Restrictions.eq("parent", parent));
 		}
+		criteria.addOrder(Order.asc("name"));
 		return criteria;
 	}
 	

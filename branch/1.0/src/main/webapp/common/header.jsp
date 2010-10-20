@@ -9,8 +9,6 @@
 --%>
 <style>
 
-
-
 </style>
 <div id="top">
 		<span class="left">

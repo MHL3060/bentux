@@ -36,6 +36,7 @@ import local.tux.app.web.common.controller.TuxBaseFormController;
 public class ImageFormController extends TuxBaseFormController {
 
 	private LookUpNameGenericManager productManager;
+	private String imageStoragePath = "";
 	//private LookUpNameGenericManager imageManager;
 	public ModelAndView processFormSubmission(HttpServletRequest request, HttpServletResponse response,
             Object command, BindException errors) throws Exception {
@@ -49,6 +50,9 @@ public class ImageFormController extends TuxBaseFormController {
 		this.productManager = productManager;
 	}
 	
+	public void setImageStoragePath(String imageStoragePath){
+		this.imageStoragePath = imageStoragePath;
+	}
 	@SuppressWarnings("unchecked")
 	protected Object formBackingObject(HttpServletRequest request) throws Exception {
 		Object object = super.formBackingObject(request);

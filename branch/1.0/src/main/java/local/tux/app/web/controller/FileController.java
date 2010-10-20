@@ -2,6 +2,7 @@ package local.tux.app.web.controller;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -26,8 +27,13 @@ public class FileController implements Controller {
 	 */
 	
 	private LookUpNameGenericManager<Image, Long> imageManager;
+	private String imageStoragePath = "" ;
 	public void setImageManager(LookUpNameGenericManager<Image, Long> imageManager){
 		this.imageManager = imageManager;
+	}
+	
+	public void setImageStoragePath(String imageStoragePath){
+		this.imageStoragePath  = imageStoragePath;
 	}
 	public ModelAndView handleRequest(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
@@ -45,6 +51,11 @@ public class FileController implements Controller {
 				out.flush();
 				out.close();
 			}
+		}else if (StringUtils.isBlank(request.getParameter("path")) == false){
+			String absolutePath = imageStoragePath + request.getParameter("path");
+			pipe(absolutePath, out);
+			out.flush();
+			out.close();
 		}
 		return null;
 		
