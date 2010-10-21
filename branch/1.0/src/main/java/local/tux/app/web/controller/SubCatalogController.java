@@ -34,6 +34,7 @@ public class SubCatalogController extends TuxBaseObjectsController {
 			criteria.add(Restrictions.eq("parent", parent));
 		}
 		criteria.addOrder(Order.asc("name"));
+		
 		return criteria;
 	}
 	

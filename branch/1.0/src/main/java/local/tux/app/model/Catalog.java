@@ -1,6 +1,10 @@
 package local.tux.app.model;
 
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -33,7 +37,7 @@ import local.tux.app.model.common.LookUpBaseObject;
 @Searchable(alias="catalog")
 @SearchableAllMetaData(enable = EnableAll.TRUE)
 @SearchableConstant(name = "type", values = { "catalog" })
-public class Catalog extends LookUpBaseObject {
+public class Catalog extends LookUpBaseObject implements Comparable<Catalog> {
 	
 	/**
 	 * 
@@ -72,7 +76,7 @@ public class Catalog extends LookUpBaseObject {
 	}
 	
 	@OneToMany(mappedBy="parent", fetch=FetchType.LAZY)
-	private Set<Catalog> children;
+	private List<Catalog> children;
 	
 	@Override
 	public void setName(String name) {
@@ -149,11 +153,15 @@ public class Catalog extends LookUpBaseObject {
 
 
 	
-	public Set<Catalog> getChildren() {
+	public List<Catalog> getChildren() {
+		if (children != null &&children.size() > 0){
+			Collections.sort(children);
+		}
 		return children;
 	}
+			
 
-	public void setChildren(Set<Catalog> children) {
+	public void setChildren(List<Catalog> children) {
 		this.children = children;
 	}
 
@@ -206,6 +214,10 @@ public class Catalog extends LookUpBaseObject {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
+	}
+
+	public int compareTo(Catalog o) {
+		return name.compareTo(o.getName());
 	}
 
 }
