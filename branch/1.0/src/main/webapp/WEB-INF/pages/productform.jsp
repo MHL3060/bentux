@@ -90,50 +90,50 @@ function addSelectedOptions(array, toDom,selectedValue){
 	var entertainProduct = ${entertainProduct};
 	var entertainService = ${entertainService};
 	var culturalProduct = ${culturalProduct};
-	var miscellaneousProduct = ${miscellaneousProduct};
+	//var miscellaneousProduct = ${miscellaneousProduct};
 	
 	var displayNode;
 	foodNode = document.getElementById("food_product");
 	entertainProductNode = document.getElementById("entertain_product");
 	entertainServiceNode = document.getElementById("entertain_service");
 	culturalProductNode = document.getElementById("cultural_product");
-	miscellaneousProductNode = document.getElementById("miscellaneous_product");
+	//miscellaneousProductNode = document.getElementById("miscellaneous_product");
 	
 	if (node.value == foodProduct ) {
 		foodNode.style.display = 'block';
 		entertainProductNode.style.display = 'none';
 		entertainServiceNode.style.display = 'none';
 		culturalProductNode.style.display ='none';
-		miscellaneousProductNode.style.display = 'none';
+		
 	}else if (node.value == entertainProduct ) {
 		foodNode.style.display = 'none';
 		entertainProductNode.style.display = 'block';
 		entertainServiceNode.style.display = 'none';
 		culturalProductNode.style.display ='none';
-		miscellaneousProductNode.style.display = 'none';
+		
 	}else if (node.value == entertainService ) {
 		foodNode.style.display = 'none';
 		entertainProductNode.style.display = 'none';
 		entertainServiceNode.style.display = 'block';
 		culturalProductNode.style.display ='none';
-		miscellaneousProductNode.style.display = 'none';
+		
 	}else if (node.value == culturalProduct ) {
 		foodNode.style.display = 'none';
 		entertainProductNode.style.display = 'none';
 		entertainServiceNode.style.display = 'none';
 		culturalProductNode.style.display ='block';
-		miscellaneousProductNode.style.display = 'none';
+		
 	}else if (node.value == miscellaneousProduct ) {
 		foodNode.style.display = 'none';
 		entertainProductNode.style.display = 'none';
 		entertainServiceNode.style.display = 'none';
-		miscellaneousProductNode.style.display ='block';
+		//
 	}else if (node.value == null || node.value == '' ) {
 		foodNode.style.display = 'none';
 		entertainProductNode.style.display = 'none';
 		entertainServiceNode.style.display = 'none';
 		culturalProductNode.style.display ='none';
-		miscellaneousProductNode.style.display = 'none';
+		
 	}else {
 		foodNode.style.display = 'none';
 		entertainProductNode.style.display = 'none';
