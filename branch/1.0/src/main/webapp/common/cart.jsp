@@ -122,17 +122,7 @@
 </script>
 <style>
 div.section { clear: left; }
-div.subcatalog { 
-    float: left; 
-	width: 6em; 
-	padding: 40px; 
-	margin: 1em;
-	height: 6em;
-    background: #ccc; 
-    color:#000; 
-    text-align: center; 
-    font: verdana, arial, sans-serif;
-}
+
 div.center{
 	float: left;
 	padding-left: 2em;

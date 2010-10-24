@@ -37,6 +37,19 @@ div#nav li a:hover, div#nav li a.current {
 	background: #fff;
 	text-transform: uppercase;
 }
+
+div.subcatalog {
+    float: left;
+
+    padding: 10px;
+    margin: 10px;
+    background: #ccc;
+    color:#000;
+    text-align: center;
+    font: verdana, arial, sans-serif;
+}
+
+
 div.subcatalog-new_line {
    	margin-top: 8px;
    	border-top: 1px dotted orange;
@@ -54,6 +67,10 @@ div.subcatalog-new_line {
 
 .breadcomb li {
    display: inline;
+}
+
+p.catalog_name {
+  margin: 0px;
 }
  
 .breadcomb li.current {
@@ -100,7 +117,7 @@ div.subcatalog-new_line {
 					href='<c:url value="/productlist.html?catalogId=${catalog.id}" />' > ${catalog.name}</a>
 			--%>
 			<div style="display: block; flow: left;">
-			${catalog.name }
+			<p class="catalog_name">${catalog.name }</p>
 			<select name="sub" id="sub_${catalog.id}" onChange="showProduct(this,'products')">
 				${pleaseSelect }
 				<c:forEach var="grand" items="${catalog.children}">
