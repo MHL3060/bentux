@@ -44,7 +44,10 @@
         <display:column property="product.name" titleKey="product.name" />
         <display:column property="name" titleKey="lookup.name"/>
         <display:column titleKey="image.thumbnail">
-                <img src="<c:url value="${list.thumbPath}" />" />
+        		<c:url var="url" value="/file.html" >
+        			<c:param name="path" value="${list.thumbPath}" />
+        		</c:url>
+                <img src="${url}" />
         </display:column>
 </display:table>
 

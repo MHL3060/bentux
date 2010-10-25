@@ -40,14 +40,16 @@ div#nav li a:hover, div#nav li a.current {
 
 div.subcatalog {
     float: left;
-
-    padding: 10px;
-    margin: 10px;
-    background: #ccc;
+    width: 125px;
+    overflow: none;
+        padding: 5px;
+        margin: 0px;
+/*    background: #ccc; */
     color:#000;
     text-align: center;
     font: verdana, arial, sans-serif;
 }
+
 
 
 div.subcatalog-new_line {
@@ -105,7 +107,10 @@ p.catalog_name {
 	<div id="whole" class="center">
 	<c:forEach var="catalog" items="${tuxBaseObjectList.list}">
 		<div class="subcatalog" id="subcatalog_${catalog.id}">
-			<img alt="image holder" src="<c:url value="${catalog.image.thumbPath }" />" 
+			<c:url var="url" value="/file.html">
+				<c:param name="path" value="${catalog.image.thumbPath}" />
+			</c:url>
+			<img alt="image holder" src="${url}" 
 				onclick="new Effect.Puff('subcatalog_${catalog.id}'); 
 					window.setTimeout('Effect.Appear(\'subcatalog_${catalog.id}\', {duration:.3})',4000); 
 					document.location='<c:url value="/productlist.html?catalogId=${catalog.id}" />'"

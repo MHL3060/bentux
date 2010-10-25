@@ -37,6 +37,8 @@ public class ImageFormController extends TuxBaseFormController {
 
 	private LookUpNameGenericManager productManager;
 	private String imageStoragePath = "";
+	
+	private String thumbPath = "/thumbs/";
 	//private LookUpNameGenericManager imageManager;
 	public ModelAndView processFormSubmission(HttpServletRequest request, HttpServletResponse response,
             Object command, BindException errors) throws Exception {
@@ -52,6 +54,16 @@ public class ImageFormController extends TuxBaseFormController {
 	
 	public void setImageStoragePath(String imageStoragePath){
 		this.imageStoragePath = imageStoragePath;
+		if (StringUtils.isBlank(this.imageStoragePath) == false){
+			File f = new File(this.imageStoragePath);
+			if (f.exists() == false ) {
+				f.mkdirs();
+			}
+			f = new File(this.imageStoragePath + thumbPath );
+			if (f.exists() == false){
+				f.mkdirs();
+			}
+		}
 	}
 	@SuppressWarnings("unchecked")
 	protected Object formBackingObject(HttpServletRequest request) throws Exception {
@@ -72,14 +84,14 @@ public class ImageFormController extends TuxBaseFormController {
 	public ModelAndView onSubmit(HttpServletRequest request,HttpServletResponse response, 
 			Object command, BindException errors) throws Exception {
 		
-		String docBase = request.getSession().getServletContext().getRealPath("/");
+		//String docBase = request.getSession().getServletContext().getRealPath("/");
 		Image image = (Image) command;
 		
 		boolean isNew = image.getId() == null;
 		if (StringUtils.isBlank(request.getParameter(Constants.CANCEL_ACTION)) == false ) {
 			return showForm(request, response, errors);
 		}else if (request.getParameter(Constants.DELETE_ACTION) != null){
-			if (deleteFile(docBase, image)){
+			if (deleteFile(imageStoragePath, image)){
 				saveMessage(request, getText("image.deleted", request.getLocale()));
 			}
 		}else if (!isNew) {
@@ -99,16 +111,16 @@ public class ImageFormController extends TuxBaseFormController {
 		}
 		fileName = fileName.replaceAll(" ", "");
 		String type = tokens[tokens.length -1];
-		image.setPath(Constants.IMAGE_PATH +"/"+ fileName);
-		FileOutputStream out = new FileOutputStream(docBase + image.getPath());
+		image.setPath("/"+ fileName);
+		FileOutputStream out = new FileOutputStream(imageStoragePath + image.getPath());
 		ImageInputStream in = new MemoryCacheImageInputStream(file.getInputStream());
 		BufferedImage originalImage = saveFile(in, type, out);
         out.close();
         ImageConverter converter = new ImageConverter();
 		BufferedImage thumbnail = converter.resize(originalImage, new Dimension(Constants.THUMBNAIL_WIDTH, Constants.THUMBNAIL_HEIGHT));
-		image.setThumbPath(Constants.IMAGE_PATH + "/thumbs/" + fileName);
+		image.setThumbPath(thumbPath + fileName);
 		
-		out = new FileOutputStream(docBase + image.getThumbPath());
+		out = new FileOutputStream(imageStoragePath + image.getThumbPath());
 		ImageIO.write(thumbnail, type, out);
 		out.close();
 			

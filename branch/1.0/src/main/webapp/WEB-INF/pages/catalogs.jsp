@@ -7,13 +7,14 @@
 
 
 <script type="text/javascript">
-
+/*
 Event.observe(window, 'load', function() {
 $$('div.catalog').each(function(el) {
         
     new Effect.Corner(el);
 	});
 });
+*/
 $('product').observe('click', function(event) {
 	  event.stop();
 	  
@@ -35,15 +36,15 @@ div.catalog {
 	padding: 1px; 
 	margin: 15px 20px 20px 0px;
 	height: 130px;
-    background: #ccc; 
+ 
     color:#000; 
     text-align: center; 
     font: verdana, arial, sans-serif;
 }
 
 div.catalog img {
-    width: 130px;
-
+    width: 116px;
+	height: 63px;
 }
 
 
@@ -85,36 +86,14 @@ div.new_line {
 			<%-- to hide the Entertainment Catalog --%>
 			<c:if test="${catalog.id != -3}">
 			<div class="catalog">
-				<img alt="image holder" src="<c:url value="${catalog.image.thumbPath }" />" />
+				<c:url var="url" value="/file.html">
+					<c:param name="path" value="${catalog.image.thumbPath }" />
+				</c:url>
+				<img alt="image holder" src="${url}" />
 				<a class="product" href="<c:url value="/subcatalogs.html?pid=${catalog.id}" />" > ${catalog.name}</a>
 			</div>
 			</c:if>
 		</c:forEach>
 	</div>
 </div>
-	
-
-	
-
-
-
-<%--
-<div class="new_line"></div>
-		<c:forEach var="subCatalog" items="${catalog.children}" >
-			<div class="subcatalog" id="subcatalog_${subCatalog.id}">
-				<img alt="image holder" src="<c:url value="${subCatalog.image.thumbPath }" />" 
-					onclick="new Effect.Puff('subcatalog_${subCatalog.id}'); 
-					window.setTimeout('Effect.Appear(\'subcatalog_${subCatalog.id}\', {duration:.3})',4000); 
-					document.location='<c:url value="/productlist.html?catalogId=${subCatalog.id}" />'"
-				/>
-				<a class="product" alt="click here to view all the products related to ${subCatalog.name }"
-				onclick="new Effect.Puff('subcatalog_${subCatalog.id}'); 
-				window.setTimeout('Effect.Appear(\'subcatalog_${subCatalog.id}\', {duration:.3})',4000); "
-				href='<c:url value="/productlist.html?catalogId=${subCatalog.id}" />' > ${subCatalog.name}</a>
-			</div>
-	
-		</c:forEach>
-		<div class="new_line"></div>
-
- --%>
 
