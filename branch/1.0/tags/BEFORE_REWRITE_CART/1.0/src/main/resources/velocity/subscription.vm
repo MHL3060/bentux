@@ -1,0 +1,33 @@
+<html>
+	<style>
+	
+	
+	</style>
+	<body>
+		<h1>$title</h1>
+	
+	Dear 
+		#if ($sub.getUser())
+			 $sub.getUser().getFirstName() $sub.getUser().getLastName() 
+		#else
+			Subscribe user,
+		#end
+	<br>		
+	$bodyContent
+	
+	<br>
+	<h2>Subscribe Information</h2>
+	
+	<div class="left">		
+		Your Phone Number: $sub.getPhoneNumber() <br />	
+	</div>
+	<br>
+	<br>
+	If you have any question, please feel free to contact us at support@shopattrinity.com
+	
+	From Trinity.
+		
+	</body>
+
+
+</html>

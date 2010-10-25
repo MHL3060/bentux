@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd"
+       default-lazy-init="true">
+
+	<!--  PagingLookupDao  -->
+	<bean id="pagingLookupDao" class="local.tux.app.web.table.pagination.PagingLookupDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="pagingLookupManager" class="local.tux.app.web.table.pagination.PagingLookupManagerImpl">
+		<property name="pagingDao"  ref="pagingLookupDao" />
+	</bean>
+	
+	<bean id="paginatedListFactory" class="local.tux.app.web.table.pagination.PaginateListFactory" />
+	<bean id="sendHtmlMailSender" class="local.tux.SendHtmlMailService">
+		<property name="mailQueue" ref="mailQueue" />
+		<property name="velocityEngine" ref="velocityEngine" />
+	</bean>
+	
+	<!--  compass -->
+	<bean id="compass" class="org.compass.spring.LocalCompassBean">
+		<property name="classMappings">
+			<list>
+				<value>local.tux.app.model.Catalog</value>
+				<value>local.tux.app.model.Image</value>
+				<value>local.tux.app.model.Manufacturer</value>
+				<value>local.tux.app.model.Product</value>
+				<value>local.tux.app.model.BrandName</value>
+				<value>local.tux.app.model.FoodProduct</value>
+				<value>local.tux.app.model.EntertainmentProduct</value>
+				<value>local.tux.app.model.EntertainmentService</value>
+				<value>local.tux.app.model.MiscellaneousProduct</value>
+				<value>local.tux.app.model.Ingredient</value>
+				<value>local.tux.app.model.Comment</value>
+				<value>local.tux.app.model.CulturalProduct</value>	
+			</list>
+		</property>
+		<property name="compassSettings">
+			<props>
+				
+                <prop key="compass.engine.connection">file://${user.home}/compass/</prop>
+                <prop key="compass.transaction.factory">org.compass.spring.transaction.SpringSyncTransactionFactory</prop>
+                <!-- snowball analyzer provides stemming (so 'monkey' gets 'monkeys', too) --> 
+                <prop key="compass.engine.analyzer.default.type">snowball</prop> 
+                <prop key="compass.engine.analyzer.default.name">English</prop> 
+                <prop key="compass.property.all.enabled">true</prop>	
+			</props>
+		</property>
+		 <property name="transactionManager" ref="transactionManager" />
+	</bean>
+	
+	
+	 <bean id="hibernateGpsDevice" class="org.compass.gps.device.hibernate.HibernateGpsDevice">
+      <property name="name"><value>hibernateDevice</value></property>
+      <property name="sessionFactory" ref="sessionFactory" />
+      <property name="nativeExtractor"><bean class="org.compass.spring.device.hibernate.SpringNativeHibernateExtractor" /></property>
+    </bean>
+     <bean id="compassGps" class="org.compass.gps.impl.SingleCompassGps" init-method="start" destroy-method="stop">
+       <property name="compass"><ref bean="compass" /></property>
+       <property name="gpsDevices">
+         <list>
+             <bean class="org.compass.spring.device.SpringSyncTransactionGpsDeviceWrapper">
+                 <property name="gpsDevice" ref="hibernateGpsDevice" />
+             </bean>
+         </list>
+       </property>
+     </bean>
+	
+    <!-- Add new DAOs here -->
+	<bean id="catalogDao" class="local.tux.app.dao.hibernate.CatalogDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="imageDao" class="local.tux.app.dao.hibernate.TuxNameGenericDaoHibernate">
+		<constructor-arg value="local.tux.app.model.Image" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="manufacturerDao" class="local.tux.app.dao.hibernate.TuxNameGenericDaoHibernate">
+		<constructor-arg value="local.tux.app.model.Manufacturer" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="ingredientDao" class="local.tux.app.dao.hibernate.TuxNameGenericDaoHibernate">
+		<constructor-arg value="local.tux.app.model.Ingredient" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="productDao" class="local.tux.app.dao.hibernate.ProductDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="brandNameDao" class="local.tux.app.dao.hibernate.TuxNameGenericDaoHibernate">
+		<constructor-arg value="local.tux.app.model.BrandName" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="foodProductDao" class="local.tux.app.dao.hibernate.TuxNameGenericDaoHibernate">
+		<constructor-arg value="local.tux.app.model.FoodProduct" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="culturalProductDao" class="local.tux.app.dao.hibernate.TuxNameGenericDaoHibernate">
+		<constructor-arg value="local.tux.app.model.CulturalProduct" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="miscellaneousProductDao" class="local.tux.app.dao.hibernate.TuxNameGenericDaoHibernate">
+		<constructor-arg value="local.tux.app.model.MiscellaneousProduct" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="newsDao" class="local.tux.app.dao.hibernate.TuxNameGenericDaoHibernate">
+		<constructor-arg value="local.tux.app.model.News" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="commentDao" class="local.tux.app.dao.hibernate.TuxNameGenericDaoHibernate">
+		<constructor-arg value="local.tux.app.model.Comment" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="shoppingItemDao" class="local.tux.app.dao.hibernate.ShoppingItemDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="shoppingCartDao" class="local.tux.app.dao.hibernate.ShoppingCartDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	
+	</bean>
+	
+	<bean id="customerAddressDao" class="local.tux.app.dao.hibernate.TuxNameGenericDaoHibernate">
+		<constructor-arg value="local.tux.app.model.ShippingAddress" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="subscriptionDao" class="org.appfuse.dao.hibernate.GenericDaoHibernate">
+		<constructor-arg value="local.tux.app.model.Subscription" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="sideBannerDao" class="local.tux.app.dao.hibernate.TuxNameGenericDaoHibernate">
+		<constructor-arg value="local.tux.app.model.SideBanner" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+    <!-- Add new Managers here --> 
+    <bean id="catalogManager" class="local.tux.app.service.impl.CatalogManagerImpl">
+    	<constructor-arg ref="catalogDao"/>
+    </bean>
+    <bean id="imageManager" class="local.tux.app.service.impl.ImageManagerImpl">
+    	<constructor-arg ref="imageDao" />
+    </bean>
+    <bean id="manufacturerManager" class="local.tux.app.service.impl.LookUpNameGenericManagerImpl">
+    	<constructor-arg ref="manufacturerDao" />
+    </bean>
+    <bean id="ingredientManager" class="local.tux.app.service.impl.LookUpNameGenericManagerImpl">
+    	<constructor-arg ref="ingredientDao" />
+    </bean>   
+    <bean id="productManager" class="local.tux.app.service.impl.ProductManagerImpl">
+    	<constructor-arg ref="productDao" />
+    </bean>
+    <bean id="brandNameManager" class="local.tux.app.service.impl.LookUpNameGenericManagerImpl">
+    	<constructor-arg ref="brandNameDao" />
+    </bean>
+    <bean id="foodProductManager" class="local.tux.app.service.impl.LookUpNameGenericManagerImpl">
+   		<constructor-arg ref="foodProductDao" />
+   </bean>
+    <bean id="entertainmentProductManager" class="local.tux.app.service.impl.LookUpNameGenericManagerImpl">
+    	<constructor-arg ref="foodProductDao" />
+   </bean>
+   <bean id="entertainmentServiceManager" class="local.tux.app.service.impl.LookUpNameGenericManagerImpl">
+    	<constructor-arg ref="foodProductDao" />
+   </bean>
+   <bean id="newsManager" class="local.tux.app.service.impl.LookUpNameGenericManagerImpl">
+    	<constructor-arg ref="newsDao" />
+   </bean>
+   <bean id="CommentManager" class="local.tux.app.service.impl.LookUpNameGenericManagerImpl">
+    	<constructor-arg ref="commentDao" />
+   </bean>
+   <bean id="culturalProductManager" class="local.tux.app.service.impl.LookUpNameGenericManagerImpl">
+   		<constructor-arg ref="foodProductDao" />
+   </bean>
+    <bean id="miscellaneousProductManager" class="local.tux.app.service.impl.LookUpNameGenericManagerImpl">
+    	<constructor-arg ref="foodProductDao" />
+   </bean>
+   <bean id="sideBannerManager" class="local.tux.app.service.impl.LookUpNameGenericManagerImpl">
+   		<constructor-arg ref="sideBannerDao" />
+   </bean>
+   <bean id="shoppingCartManager" class="local.tux.app.service.impl.ShoppingCartManagerImpl">
+   		<constructor-arg ref="shoppingCartDao" />
+   		<property name="userManager" ref="userManager" />
+   		<property name="productManager" ref="productManager" />
+   </bean>
+   <bean id="shoppingItemManager" class="local.tux.app.service.impl.ShoppingItemManagerImpl">
+   		<constructor-arg ref="shoppingItemDao" />
+   		<property name="productManager" ref="productManager" />
+   </bean>
+   
+   <bean id="customerAddressManager" class="local.tux.app.service.impl.LookUpNameGenericManagerImpl">
+   		<constructor-arg ref="customerAddressDao" />
+   </bean>
+   
+   <bean id ="subscriptionManager" class="org.appfuse.service.impl.GenericManagerImpl">
+   		<constructor-arg ref="subscriptionDao" />
+   </bean>
+  
+   <bean id="nonVersionUserManager" class="local.tux.app.service.impl.LookUpNameGenericManagerImpl">
+   		<constructor-arg>
+   			<bean class="local.tux.app.dao.hibernate.TuxNameGenericDaoHibernate">
+   				<constructor-arg value="org.appfuse.model.User" />
+				<property name="sessionFactory" ref="sessionFactory" />
+   			</bean>
+   		</constructor-arg>
+   </bean>
+   
+   <bean id="commonPageUtil" class="local.tux.app.util.CommonPageUtil">
+   		<property name="shoppingCartManager" ref="shoppingCartManager" />
+   		<property name="sideBannerManager" ref="sideBannerManager" />
+   </bean>
+</beans>

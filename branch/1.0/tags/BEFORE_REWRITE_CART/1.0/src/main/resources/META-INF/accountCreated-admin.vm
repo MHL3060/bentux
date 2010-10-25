@@ -1,0 +1,24 @@
+${message}
+
+To Admin:
+
+New registered account has been created: 
+
+<h3> Account Type </h3>
+Role: $user.getRoleList() <br />
+
+<h3> Detail </h3>
+
+Name: $user.getFirstname() $user.getLastname <br />		
+email Address:$user.getEmail <br />
+Phone Number: $user.getPhoneNumber <br />
+WebSite: $user.getWebsite <br />
+
+<h3> Address </h3>
+Address: $user.getAddress().getAddress() <br />
+City: $user.getAddress().getCity() <br />
+Province: $user.getAddress.getProvince() <br />
+Postal Code: $user.getAddress().getPostalCode() <br />
+Country: $user.gerAddress().getCountry() <br />
+
+To approve, click here.

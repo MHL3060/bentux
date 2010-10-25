@@ -1,0 +1,123 @@
+/* A CSS Framework template by Mattias Fjellstrm, zelphus@gmail.com */
+/* Based on "A CSS Framework by Mike Stenhouse of Content with Style" */
+
+/* NAV */
+    div div.heading{
+		border-bottom: 1.3px dotted #FF9400;
+		color: #d467a4;
+		line-height: 130%;
+		width: 145px;
+		font-size: 16px;
+		font-weight: normal;
+    }
+    div#nav {
+       font-size: 11px;
+    }
+    div#nav div.search{
+       font-weight:bold;
+       margin-top:5px;
+       margin-bottom:7px;
+       margin-left:5px;
+       color:green;
+    }
+   
+    div#nav .partners{
+       width: 100%;
+       overflow: hidden;
+       margin-top:8px;
+       margin-bottom:5px;
+       float:left;
+       color:orange;
+     }
+     
+     div#nav .advertise{
+        
+       width:100%;
+       float:left;
+    }
+    * html div#nav {
+        /* hide ie/mac \*/
+        height: 1%;
+        /* end hide */
+    }
+    div#nav div.wrapper {
+        width: 145px;
+        
+        background: #fff;
+    }
+    div#nav ul {
+        width: auto; 
+                
+        margin: 0;
+        padding: 0;
+        
+        line-height: 1em;
+        list-style: none;
+    }
+    div#nav li {
+        display: block;
+   
+        list-style: none;
+        
+        margin: 0;
+        padding: 0;
+        
+        line-height: 20px;
+
+        border-bottom: 1.3px dotted #FF9400;
+        padding:  auto;
+    }
+    * html div#nav li {
+        /* hide ie/mac \*/
+        height: 1%;
+        /* end hide */
+    }
+    div#nav li.last {
+        
+    }
+    div#nav li a {
+        display: block;
+        font-weight: normal;
+        text-decoration: none;
+        letter-spacing: 1px;
+        font-size: 12px;
+        margin: 0;
+        padding: 5px;
+        height: 17px;
+        
+        color: #699850;
+        background: #fff;
+    }
+    div#nav li a:hover, div#nav li a.current, div#nav li a:active {   
+        color: #ff9523;
+        font-weight: bold;
+    	background: #fff;
+        text-transform: uppercase;
+    }
+
+   
+    div#nav li ul {
+        margin: 0;
+        padding: 0;
+        
+        font-size: 0.9em;
+        list-style: none;
+    }
+
+    div#nav li ul li {
+        padding: 0;
+        margin: 2px 0 0 20px;
+        list-style: none;
+        border: none;
+    }
+
+    div#nav li ul a {
+        color: #5d5d5d;
+        background: #fff;
+    }
+
+    div#nav li ul li a:hover {
+        color: #cc0000;
+        text-transform: none;
+    }
+/* END NAV */
