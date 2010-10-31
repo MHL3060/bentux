@@ -56,10 +56,10 @@ div.center{
 div.subcatalog {
 	margin-top: 5px; 
     float: left; 
-	width: 3em; 
-	padding: 30px; 
+	width: 6em; 
+	padding: 40px; 
 	margin: 1em;
-	height: 2em;
+	height: 6em;
     background: #ccc; 
     color:#000; 
     text-align: center; 

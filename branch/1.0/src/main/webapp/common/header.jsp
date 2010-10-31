@@ -1,158 +1,73 @@
-<script type="text/javascript">
-	var catalogNode;
-	
- 	function addItem(pidNodeId, quantityNodeId){
-
-		product = document.getElementById(pidNodeId).value;
-		quantity = document.getElementById(quantityNodeId).value;
- 	 	if (quantity < 1) {
-			alert("Error: The quantity must be greater than 0" );
- 	 	}else {
-			shoppingCartManager.addItem(${empty user ? -1 : user.id },'${user.username}', product, quantity, 
-					function(result) {
-						if (result == true ) {
-							hide('cart');
-							showProduct(catalogNode, 'products');
-						}else {
-	
-						}
-						
-					}																
-				); 
- 	 	}
- 	}
-	function popup(pid, toNodeId) {
-		toNode = document.getElementById(toNodeId);
-		productManager.getById(pid, function(product) {
-			var ul = toNode.createNode('ul');
-			var li = ul.createElement('li');
-			li.innerText = product.name;
-			li = ul.createElement('li');
-			li.innerText = product.availibility;
-			
-		});
-		myLightWindow.createWindow(toNodeId);
-	}
-	function hide(nodeId) { 
-		if (document.getElementById) { // DOM3 = IE5, NS6 
-			
-			document.getElementById(nodeId).style.visibility = 'hidden';
-			 
-		}
-	}
-	 
-	function show(nodeId, pid) {
-		g_pid = pid; 
-		if (document.getElementById) { // DOM3 = IE5, NS6
-			productManager.getById(pid, function(product) {
-				price = product.price;
-				if (product.special) {
-					price = product.discountPrice;
-				}
-				titleNode = document.getElementById("product_title");
-				titleNode.innerHTML = product.name;
-                cell = document.getElementById("available");
-                cellText = document.createTextNode(product.availability);
-                cell.innerHTML = product.availability;
-
-                cell = document.getElementById("price");
-                cellText = document.createTextNode(price);
-                cell.innerHTML = price;
-                inputNode = document.createElement("input");
-                inputNode.name = 'pid';
-                inputNode.id = 'pid';
-                inputNode.type = 'hidden';
-                inputNode.value = product.id;
-                node = document.getElementById(nodeId);
-                node.appendChild(inputNode);
-			}); 
-			document.getElementById(nodeId).style.visibility = 'visible'; 
-		}
-	}
-	var cellFuncs = [
-		function (product) {
-			<c:choose>
-			<c:when test="${hasPermission}">
-					<c:url var="url" value="/productform.html" />
-				return '<a href="${url}?id='+product.id+'">'+product.id+'</a>';
-			</c:when>
-			<c:otherwise>
-				
-				return product.id;
-			</c:otherwise>
-			</c:choose>
-			},
-		function (product) {return product.name},
-		function (product) {return product.brandName.name},
-		function (product) {return product.description},
-		function (product) {return product.availability},
-		
-		<c:choose>
-			<c:when test="${not empty user}">
-				function (product) {return product.price},
-				function (product) {
-					if (product.availability > 0){
-						return '<a href="javascript:show(\'cart\','+product.id+');">Add to Cart</a>'; 
-					}else {
-						return 'Out of Stock';
-					}
-				}
-			</c:when>
-			<c:otherwise>
-				function(product) {return "<fmt:message key="member.only" />";},
-				function(product) {
-					return "<fmt:message key="member.only" />";
-				}
-			</c:otherwise>
-		</c:choose>
-	];
-	function showProduct(node, toNodeName) {
-		try {
-			catalogNode = node;
-			dwr.util.removeAllRows(toNodeName);
-			catalogId = node.value;
-			productManager.getProductByCatalogId(catalogId, function(arrayObjs){
-				dwr.util.addRows(toNodeName,arrayObjs, cellFuncs,{escapeHtml:false}); 
-			});
-			document.getElementById("productlist").style.visibility = 'visible'; 
-		}catch (exception ) {
-			window.location.reload();
-		};
-	} 
-</script>
+<%@ include file="/common/taglibs.jsp"%>
+<c:if test="${!empty cookie.preferredLocale}">
+<fmt:setLocale value="${cookie.preferredLocale.value}" />
+</c:if>
+<%--
+<c:if test="${pageContext.request.locale.language != 'en'}">
+    <div id="switchLocale"><a href="<c:url value='/?locale=en'/>"><fmt:message key="webapp.name"/> in English</a></div>
+</c:if>
+--%>
 <style>
-div.section { clear: left; }
 
-div.center{
-	float: left;
-	padding-left: 2em;
-
-}
+</style>
+<div id="top">
+		<span class="left">
+			<a href="home.html"><fmt:message key="company.url"/></a>	    
+		</span>
+	<span class="right">
+		<c:if test="${pageContext.request.remoteUser}">
+			<a href="userform.html">MY ACCOUNT</a>&nbsp;|&nbsp;
+		</c:if>
+		<c:choose>
+      		<c:when test="${pageContext.request.remoteUser != null}"><a href="logout.jsp">SIGN OUT</a>
+      </c:when>
+	      <c:otherwise><a href="login.jsp">LOGIN</a>
+      </c:otherwise>
+    </c:choose>
+		&nbsp;|&nbsp;<a href="signup.html">REGISTER</a>&nbsp;|&nbsp;<a href="disclaimer.jsp">DISCLAIMER</a>&nbsp;|&nbsp;<a href="help.html">HELP</a>
+	</span>
+</div>
+<style>
+	
+	#branding img {
+		height: 110px;
+		padding: 0px;
+		float: left;
+	}
 </style>
 
-<div id="cart" style="visibility:hidden;"> 
-	<div class="fade"></div> 
-	<div class="popup_block"> 
-		<div class="popup"> 
-			<a href="javascript:hide('cart')"><img src="<c:url value="/images/icon_close.png" />" class="cntrl" title="Close" /></a> 
-			<h3 id="product_title"></h3>
-			<table id="product_data">
-				<tr>
-					<td class="strong">Available :</td>
-					<td id="available"></td>
-				</tr>
-				<tr>
-					<td class="strong">Price :</td>
-					<td id="price"></td>
-				</tr>
-				<tr>
-					<td colspan="2"> Add <input id="quantity" name="quantity" value="1" type="text" size="3" maxlength="3" />  to my cart  </td>
-				</tr>
-				<tr>
-					<td colspan="2"><input type="button" name="add" value="Add" onclick="addItem('pid', 'quantity')"/></td>
-				</tr>
-			</table>
-			 
-		</div> 
-	</div> 
-</div> 
+<div id="branding">
+   
+    	<img src="<c:url value="http://lh4.ggpht.com/_WwislJULCHw/TM02Mj9Y-KI/AAAAAAAAB5g/82nLCVIY8yw/header_logo.png"/>" width="178" />
+   		<img src="<c:url value="http://lh6.ggpht.com/_WwislJULCHw/TM02MVvz8DI/AAAAAAAAB5c/EyZdVl54Kj4/header_banner_2.jpg"/>"/>
+   
+</div>
+
+<div id="news">
+	<div class="left">
+
+	    <%-- No order history for Phrase 1, 28/08/2010 
+						Hi, Please&nbsp;(<a href="<c:url value="/login.jsp"/>">sign in</a>) or not yet a member? (<a href="<c:url value="/signup.html"/>">register</a>) 	       		
+		--%>
+				<c:if test="${pageContext.request.remoteUser != null}">
+					
+					<div class="user">
+						 <fmt:message key="user.status"/> ${pageContext.request.remoteUser} 
+						 	<%-- No order history for Phrase 1, 28/08/2010 
+						 | <a href="<c:url value='/orders.html' />"><fmt:message key="order.history" /></a>
+						 | <a href="<c:url value="/logout.jsp"/>">sign out</a>
+				    	--%>
+					</div>
+				</c:if>
+
+	</div>
+	<div class="right">
+		<c:if test="${pageContext.request.remoteUser != null}">
+			<%@ include file="/common/shoppingcart.jsp" %>
+		</c:if>	
+	</div>
+</div>
+<div id="top-divider"></div>
+<hr />
+<%-- Put constants into request scope --%>
+<appfuse:constants scope="request"/>
