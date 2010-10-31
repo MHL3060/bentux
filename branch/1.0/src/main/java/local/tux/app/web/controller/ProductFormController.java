@@ -112,7 +112,9 @@ public class ProductFormController extends BaseFormController {
 		if (command != null ){
 			Product p = (Product) command;
 			if (p.getCatalogs() != null && p.getCatalogs().size() > 0){
-				models.put("parentCatalog", p.getCatalogs().iterator().next().getParent());
+				Catalog pc = p.getCatalogs().iterator().next().getParent();
+				models.put("parentCatalog", pc);
+				models.put("grandParentCatalog", pc.getParent());
 			}
 		}
 		return models;

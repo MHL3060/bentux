@@ -122,12 +122,14 @@ function addSelectedOptions(array, toDom,selectedValue){
 		entertainProductNode.style.display = 'none';
 		entertainServiceNode.style.display = 'none';
 		culturalProductNode.style.display ='block';
-		
-	}else if (node.value == miscellaneousProduct ) {
+/*		
+	}
+
+	else if (node.value == miscellaneousProduct ) {
 		foodNode.style.display = 'none';
 		entertainProductNode.style.display = 'none';
 		entertainServiceNode.style.display = 'none';
-		//
+		*/
 	}else if (node.value == null || node.value == '' ) {
 		foodNode.style.display = 'none';
 		entertainProductNode.style.display = 'none';
@@ -139,7 +141,7 @@ function addSelectedOptions(array, toDom,selectedValue){
 		entertainProductNode.style.display = 'none';
 		entertainServiceNode.style.display = 'none';
 		culturalProductNode.style.display = 'none';
-		miscellaneousProductNode.style.display = 'none';
+		//miscellaneousProductNode.style.display = 'none';
 		alert("unknow Catalog, Please ask Developer to add this product field for you ");
 	}
  }
@@ -221,7 +223,8 @@ Event.observe(window, 'load', function() {
 			${product.id  == null ? "" : 'disabled="disabled"'}>
 			${pleaseSelect }
 			<c:forEach var="catalog" items="${catalogParents}">
-				<option value="${catalog.id }" ${catalog.id == parentCatalog.id ? 'selected' : '' } > ${catalog.name}</option>
+				<option value="${catalog.id }" 
+					${catalog.id == grandParentCatalog.id ? 'selected' : '' } > ${catalog.name}</option>
 			</c:forEach>
 		</select>
 	</li>
