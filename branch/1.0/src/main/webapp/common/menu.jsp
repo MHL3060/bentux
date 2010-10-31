@@ -95,7 +95,7 @@
 			</a>
 	     </div>
 		 <div class="advertise">
-             <img src="<c:url value="/images/common/advertise.png"/>" width="145" height="70" alt="advertise" />
+             <img src="<c:url value="http://lh4.ggpht.com/_WwislJULCHw/TM01uDBiq0I/AAAAAAAAB5I/RtsRRmezmpk/advertise.png"/>" width="145" height="70" alt="advertise" />
    	     </div>
    	</li>
     <!-- <menu:displayMenu name="Logout"/> -->

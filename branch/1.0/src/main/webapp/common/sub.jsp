@@ -20,7 +20,7 @@
 		     <%-- The following are for the static sidebar for phrase 3 will use a dynamic sidebar until the next phraes 7/8/2010 --%>
 			<div class="partners">
 					<a href="<c:url value="/our_store.jsp"/>">						
-				    <img src="<c:url value="/images/home_sub_mtr.png"/>" width="140"
+				    <img src="<c:url value="http://lh4.ggpht.com/_WwislJULCHw/TM02M1NDlSI/AAAAAAAAB5s/P0QNbi0YMy4/home_sub_mtr.png"/>" width="140"
 								height="75" alt="partners"/></a>
 					<div class="subtitle">
 						<fmt:message key="sub.by.mtr"/>						
@@ -30,7 +30,7 @@
 		
 			<div class="partners">
 					<a href="<c:url value="/our_store_bus.jsp"/>">						
-				    <img src="<c:url value="/images/home_sub_bus.png"/>" width="140"
+				    <img src="<c:url value="http://lh3.ggpht.com/_WwislJULCHw/TM02MyReK7I/AAAAAAAAB5o/4pNTnUXV-TM/home_sub_bus.jpg"/>" width="140"
 								height="75" alt="partners"/></a>
 					<div class="subtitle">
 						<fmt:message key="sub.by.bus"/>						
@@ -39,7 +39,7 @@
 			
 			 <div class="partners">
 			 		<a href="<c:url value="/our_store_taxi.jsp"/>">					
-			 		<img src="<c:url value="/images/home_sub_road.png"/>" width="140"
+			 		<img src="<c:url value="http://lh5.ggpht.com/_WwislJULCHw/TM1ERBjjJoI/AAAAAAAAB58/AxiU1Fp4wTg/home_sub_road.png"/>" width="140"
 							height="75" alt="partners"/></a>
 					<div class="subtitle">
 						<fmt:message key="sub.by.taxi"/>						

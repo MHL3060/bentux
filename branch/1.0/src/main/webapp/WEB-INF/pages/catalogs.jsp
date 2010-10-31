@@ -34,7 +34,7 @@ div.catalog {
     float: left; 
 	width: 130px; 
 	padding: 1px; 
-	margin: 15px 20px 20px 0px;
+	margin: 15px 18px 20px 0px;
 	height: 130px;
  
     color:#000; 
@@ -56,10 +56,10 @@ div.center{
 div.subcatalog {
 	margin-top: 5px; 
     float: left; 
-	width: 6em; 
-	padding: 40px; 
+	width: 3em; 
+	padding: 30px; 
 	margin: 1em;
-	height: 6em;
+	height: 2em;
     background: #ccc; 
     color:#000; 
     text-align: center; 
@@ -77,10 +77,11 @@ div.new_line {
 }
 
 </style>
+
 <div id="main">
 	<div class="center">
 	
-		<img src="<c:url value="/images/product_content.jpg" />" width="606" height="297" />
+		<img src="<c:url value="http://lh3.ggpht.com/_WwislJULCHw/TM03juLTGKI/AAAAAAAAB50/Xz3ygubHlyA/product_content.png" />" width="606" height="297" />
 		<div class="new_line"></div>
 		<c:forEach var="catalog" items="${tuxBaseObjectList.list}">
 			<%-- to hide the Entertainment Catalog --%>
