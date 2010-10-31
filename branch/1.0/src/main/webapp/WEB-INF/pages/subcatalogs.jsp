@@ -110,11 +110,7 @@ p.catalog_name {
 			<c:url var="url" value="/file.html">
 				<c:param name="path" value="${catalog.image.thumbPath}" />
 			</c:url>
-			<img alt="image holder" src="${url}" 
-				onclick="new Effect.Puff('subcatalog_${catalog.id}'); 
-					window.setTimeout('Effect.Appear(\'subcatalog_${catalog.id}\', {duration:.3})',4000); 
-					document.location='<c:url value="/productlist.html?catalogId=${catalog.id}" />'"
-			/>
+			<img alt="image holder" src="${url}" />
 			<%--
 			<a class="product" alt="click here to view all the products related to ${catalog.name }"
 					onclick="new Effect.Puff('subcatalog_${catalog.id}'); 
