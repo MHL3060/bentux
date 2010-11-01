@@ -16,6 +16,8 @@
             <Item name="Ingredient" title="mainMenu.ingredient" page="/ingredientform.html" />
             <Item name="Image" title="mainMenu.image" page="/imageform.html" />
             <Item name="Reindex" title="mainMenu.reindex" page="/reindex.html" />
+            <Item name="Search" title="search.page" page="/search.html "/> 
+            
         </Menu>
  		<Menu name="HomeMenu" title="home.menu" page="/home.jsp" roles="ROLE_ADMIN,ROLE_USER,ROLE_ANONYMOUS" />
         <Menu name="CatalogMenu" title="catalog.menu" page="/catalogs.html" roles="ROLE_ADMIN,ROLE_USER,ROLE_ANONYMOUS" />

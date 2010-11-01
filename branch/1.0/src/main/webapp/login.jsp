@@ -7,11 +7,7 @@ location='/signup.html';
 }
 </script>
 
-<style>
-    a {background-color:inherit; color:white; font-weight:700; text-decoration:none;}
-	a:hover {background-color:inherit; color:oragne;}
 
-</style>
 <head>
     <title><fmt:message key="login.title"/></title>
         <meta name="menu" content="Login"/>
