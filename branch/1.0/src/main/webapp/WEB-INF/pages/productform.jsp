@@ -122,14 +122,14 @@ function addSelectedOptions(array, toDom,selectedValue){
 		entertainProductNode.style.display = 'none';
 		entertainServiceNode.style.display = 'none';
 		culturalProductNode.style.display ='block';
-/*		
+		
 	}
 
 	else if (node.value == miscellaneousProduct ) {
 		foodNode.style.display = 'none';
 		entertainProductNode.style.display = 'none';
 		entertainServiceNode.style.display = 'none';
-		*/
+		
 	}else if (node.value == null || node.value == '' ) {
 		foodNode.style.display = 'none';
 		entertainProductNode.style.display = 'none';
