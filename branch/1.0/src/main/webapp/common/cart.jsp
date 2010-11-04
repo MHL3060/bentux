@@ -83,7 +83,13 @@
 			</c:choose>
 			},
 		function (product) {return product.name},
-		function (product) {return product.brandName.name},
+		function (product) {
+			if (product.brandName) {
+				return product.brandName.name;
+			}else {
+				return "";
+			}
+		},
 		function (product) {return product.description},
 		function (product) {return product.availability},
 		
