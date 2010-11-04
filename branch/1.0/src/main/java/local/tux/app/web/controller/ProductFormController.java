@@ -199,28 +199,30 @@ public class ProductFormController extends BaseFormController {
 	}
 
 	private void removeUslessProduct(Product product) {
-		Catalog catalog = product.getCatalogs().iterator().next().getParent();
-		if (catalog.getId() == Constants.CATALOG_ENTERTAIN_PRODUCT){
+		Catalog child = product.getCatalogs().iterator().next();
+		Catalog grandParent = child.getParent().getParent();
+		//Catalog catalog = product.getCatalogs().iterator().next().getParent();
+		if (grandParent.getId() == Constants.CATALOG_ENTERTAIN_PRODUCT){
 			product.setFoodProduct(null);
 			product.setEntertainmentService(null);
 			product.setCulturalProduct(null);
 			//product.setMiscellaneousProduct(null);
-		}else if (catalog.getId() == Constants.CATALOG_ENTERTAIN_SERIVCE){
+		}else if (grandParent.getId() == Constants.CATALOG_ENTERTAIN_SERIVCE){
 			product.setFoodProduct(null);
 			product.setEntertainmentProduct(null);
 			product.setCulturalProduct(null);
 			//product.setMiscellaneousProduct(null);
-		}else if (catalog.getId() == Constants.CATALOG_FOOD_PRODUCT){
+		}else if (grandParent.getId() == Constants.CATALOG_FOOD_PRODUCT){
 			product.setEntertainmentProduct(null);
 			product.setEntertainmentService(null);
 			product.setCulturalProduct(null);
 			//product.setMiscellaneousProduct(null);
-		}else if(catalog.getId() == Constants.CATALOG_CULTURAL_PRODUCT){
+		}else if(grandParent.getId() == Constants.CATALOG_CULTURAL_PRODUCT){
 			product.setEntertainmentService(null);
 			product.setEntertainmentProduct(null);
 			product.setFoodProduct(null);
 		//	product.setMiscellaneousProduct(null);
-		}else if(catalog.getId() == Constants.CATALOG_MISCELLANEOUS_PRODUCT){
+		}else if(grandParent.getId() == Constants.CATALOG_MISCELLANEOUS_PRODUCT){
 			product.setEntertainmentService(null);
 			product.setEntertainmentProduct(null);
 			product.setFoodProduct(null);
