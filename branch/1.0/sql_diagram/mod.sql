@@ -1,6 +1,10 @@
+--update on Nov 5th 2010
+ALTER TABLE entertain_service ADD movie_poster_link VARCHAR(255);
+
+
 --update on August 19th 2010
 insert into catalog (id, name, description ) VALUES('-5', 'Miscellaneous Product', 'Miscellaneous Product');
-update  catalog (description) VALUES('Miscellaneous Product') where ='-5' ;
+update  catalog description VALUES ('Miscellaneous Product') where id ='-5' ;
 
 
 alter table product add (multiple_special_count int(11));

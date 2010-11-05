@@ -17,9 +17,10 @@
 				${product.description}
 			</div>	
 		</div>
-		<div class="movie-right">
-		 <%-- Movie poster goes to here --%>
-		 		<img alt="image holder" src="<c:url value="${product.firstImage.thumbPath}" />" width="270" height="425" alt="coming-movie">		
+		<div class="movie-right">	
+			<img src="<c:url value="${product.entertainmentService.moviePosterLink}"/>" width="290" height="470"  />
+			
+			
 		 </div>
 	</div>
 </div>

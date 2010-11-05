@@ -1,6 +1,6 @@
 package local.tux.app.model;
 
-import java.sql.Date;
+import java.util.Date;
 
 
 import javax.persistence.Column;
@@ -47,6 +47,9 @@ public class EntertainmentService extends TuxBaseObject implements SubProduct{
 	@Column(name="show_to")
 	private Date showTo;
 	
+	@Column(name="movie_poster_link")
+	private String moviePosterLink;
+	
 	@Column(name="address")
 	private String address;
 	
@@ -83,7 +86,14 @@ public class EntertainmentService extends TuxBaseObject implements SubProduct{
 	public void setShowTo(Date showTo) {
 		this.showTo = showTo;
 	}
-
+	
+	public String getMoviePosterLink(){
+		return moviePosterLink;
+	}
+	
+	public void setMoviePosterLink(String moviePosterLink){
+		this.moviePosterLink = moviePosterLink;
+	}
 	public String getAddress() {
 		return address;
 	}
@@ -99,8 +109,6 @@ public class EntertainmentService extends TuxBaseObject implements SubProduct{
 	public void setShowTime(String showTime) {
 		this.showTime = showTime;
 	}
-
-	
 	
 	public Product getProduct() {
 		return product;
@@ -160,6 +168,11 @@ public class EntertainmentService extends TuxBaseObject implements SubProduct{
 		if (showTime == null) {
 			if (other.showTime != null)
 				return false;
+		} else if (!moviePosterLink.equals(other.moviePosterLink))
+			return false;
+		if (moviePosterLink == null){
+			if (other.moviePosterLink != null)
+				return false;
 		} else if (!showTime.equals(other.showTime))
 			return false;
 		if (showTo == null) {
@@ -177,7 +190,7 @@ public class EntertainmentService extends TuxBaseObject implements SubProduct{
 	}
 	@Transient
 	public boolean isEmpty() {
-		if (address == null && showDuration == null &&
+		if (moviePosterLink == null && address == null && showDuration == null &&
 				showTime == null && showTo == null && showFrom == null){
 			return true;
 		}

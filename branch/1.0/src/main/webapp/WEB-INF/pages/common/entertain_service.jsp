@@ -9,7 +9,12 @@
 	<div>
 		<appfuse:label key="product.entertainmentService.showTo" styleClass="desc" />
 		<form:errors path="entertainmentService.showTo" cssStyle="fieldErrors" />
-		<form:input path="entertainmentService.showTo" cssStyle="text medium" />
+		<form:input path="entertainmentService.showTo" cssStyle="text large" />
+	</div>
+		<div>
+		<appfuse:label key="product.entertainmentService.moviePosterLink" styleClass="desc" />
+		<form:errors path="entertainmentService.moviePosterLink" cssStyle="fieldErrors" />
+		<form:input path="entertainmentService.moviePosterLink" cssStyle="text medium" />
 	</div>
 	<div>
 		<appfuse:label key="product.entertainmentService.address" styleClass="desc" />
