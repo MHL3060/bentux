@@ -10,6 +10,7 @@
 <style>
 
 </style>
+<script type="text/javascript" src="<c:url value="/scripts/dojo/dojo.js"/>"></script>
 <div id="top">
 		<span class="left">
 			<a href="home.html"><fmt:message key="company.url"/></a>	    
@@ -63,6 +64,7 @@
 	</div>
 	<div class="right">
 		<c:if test="${pageContext.request.remoteUser != null}">
+			
 			<%@ include file="/common/shoppingcart.jsp" %>
 		</c:if>	
 	</div>
