@@ -1,3 +1,7 @@
+--update on Nov 16th 2010
+update catalog SET name=('Miscellaneous') where id='-5';
+
+
 --update on Nov 5th 2010
 ALTER TABLE entertain_service ADD movie_poster_link VARCHAR(255);
 

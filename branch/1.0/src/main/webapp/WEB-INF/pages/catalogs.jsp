@@ -32,11 +32,10 @@ $('product').observe('click', function(event) {
 div.section { clear: left; }
 div.catalog { 
     float: left; 
-	width: 130px; 
+	width: 116px; 
 	padding: 1px; 
-	margin: 15px 18px 20px 0px;
-	height: 130px;
- 
+	margin: 14px 40px 0px 0px;
+	height: 115px;
     color:#000; 
     text-align: center; 
     font: verdana, arial, sans-serif;

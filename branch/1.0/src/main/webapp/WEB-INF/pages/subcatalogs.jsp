@@ -103,33 +103,35 @@ p.catalog_name {
 		</ul>
 		<div class="subcatalog-new_line"></div>
 	</div>
+ 	
+ 	<div id="whole" class="center">
+        <c:forEach var="catalog" items="${tuxBaseObjectList.list}">
+                <div class="subcatalog" id="subcatalog_${catalog.id}">
+                        <c:url var="url" value="/file.html">
+                                <c:param name="path" value="${catalog.image.thumbPath}" />
+                        </c:url>
+                        <img alt="image holder" src="${url}" />
+                        <%--
+                        <a class="product" alt="click here to view all the products related to ${catalog.name }"
+                                        onclick="new Effect.Puff('subcatalog_${catalog.id}');
+                                        window.setTimeout('Effect.Appear(\'subcatalog_${catalog.id}\', {duration:.3})',4000); "
+                                        href='<c:url value="/productlist.html?catalogId=${catalog.id}" />' > ${catalog.name}</a>
+                        --%>
+                        <div style="display: block; flow: left;">
+                        <select name="sub" id="sub_${catalog.id}" onChange="showProduct(this,'products')">
+                                <p class="catalog_name">
+                                        <option value="${grand.id }"> ${catalog.name }</option>
+                                </p>
+                                <c:forEach var="grand" items="${catalog.children}">
+                                        <option value="${grand.id }"> ${grand.name }</option>
+                                </c:forEach>
+                        </select>
+                        </div>
+                </div>
 
-	<div id="whole" class="center">
-	<c:forEach var="catalog" items="${tuxBaseObjectList.list}">
-		<div class="subcatalog" id="subcatalog_${catalog.id}">
-			<c:url var="url" value="/file.html">
-				<c:param name="path" value="${catalog.image.thumbPath}" />
-			</c:url>
-			<img alt="image holder" src="${url}" />
-			<%--
-			<a class="product" alt="click here to view all the products related to ${catalog.name }"
-					onclick="new Effect.Puff('subcatalog_${catalog.id}'); 
-					window.setTimeout('Effect.Appear(\'subcatalog_${catalog.id}\', {duration:.3})',4000); "
-					href='<c:url value="/productlist.html?catalogId=${catalog.id}" />' > ${catalog.name}</a>
-			--%>
-			<div style="display: block; flow: left;">
-			<p class="catalog_name">${catalog.name }</p>
-			<select name="sub" id="sub_${catalog.id}" onChange="showProduct(this,'products')">
-				${pleaseSelect }
-				<c:forEach var="grand" items="${catalog.children}">
-					<option value="${grand.id }"> ${grand.name }</option>
-				</c:forEach>
-			</select>
-			</div>
-		</div>
-	
-	</c:forEach>
-	</div>
+        </c:forEach>
+   	</div>
+
 	
 	<div id="productlist" style="visibility:hidden;"> 
 		<div class="fade"></div>		 
