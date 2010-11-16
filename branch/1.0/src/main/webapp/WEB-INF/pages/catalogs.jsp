@@ -35,7 +35,6 @@ div.catalog {
 	width: 116px; 
 	padding: 1px; 
 	margin: 14px 40px 0px 0px;
-	height: 115px;
     color:#000; 
     text-align: center; 
     font: verdana, arial, sans-serif;
@@ -89,8 +88,10 @@ div.new_line {
 				<c:url var="url" value="/file.html">
 					<c:param name="path" value="${catalog.image.thumbPath }" />
 				</c:url>
-				<img alt="image holder" src="${url}" />
-				<a class="product" href="<c:url value="/subcatalogs.html?pid=${catalog.id}" />" > ${catalog.name}</a>
+				<a class="product" href="<c:url value="/subcatalogs.html?pid=${catalog.id}" />" > 			
+					<img alt="image holder" src="${url}" />
+					${catalog.name}
+				</a>
 			</div>
 			</c:if>
 		</c:forEach>
