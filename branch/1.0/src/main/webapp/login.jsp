@@ -3,7 +3,7 @@
 <script>
 
 function redirect(){
-location='/signup.html';
+location='signup.html';
 }
 </script>
 
