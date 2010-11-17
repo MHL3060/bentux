@@ -82,18 +82,29 @@
      -->
      <menu:displayMenu name="AdminMenu"/>
     <li>
-	     <div style="margin-top: 8px; margin-bottom: 5px; height: 26px; width: 100%; overflow: hidden; padding: 0;" >
-		 	<a style="display: inline" href="http://www.facebook.com/group.php?gid=111666002279&ref=mf">
+    			    	 
+	     <div style="margin: 8px 0px 5px 6px; height: 20px; width: 100%; overflow: hidden; padding: 0;" >
+	     
+	     	<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.facebook.com%2Fpages%2FKwun-Tong%2FTRINITY-Taste-of-India%2F130347051158&amp;
+    						layout=button_count&amp;show_faces=true&amp;width=550&amp;
+    						action=recommend&amp;font=verdana&amp;
+    						height=21" scrolling="no" frameborder="0" 
+    						style="border:none; overflow:hidden; width:450px; height:21px;" allowTransparency="true">
+    		</iframe>	
+    	</div>
+    	<div style="margin-top: 8px; margin-bottom: 5px; height: 26px; width: 100%; overflow: hidden; padding: 0;" >
+    	
+		 	<a style="display: inline" target="_new" href="http://www.facebook.com/group.php?gid=111666002279&ref=mf">
 		 		<img src="<c:url value="/images/common/add_facebook.png"/>" alt="add_facebook" />
 		 	</a>
-		 	<a  style="display: inline" href="http://www.twitter.com">
+		 	<a  style="display: inline" target="_new" href="http://www.twitter.com">
 		 		<img src="<c:url value="/images/common/add_twitter.png"/>" alt="add_twitter" />
 			</a>
-			<a  style="display: inline" href="http://www.twitter.com">
+			<a style="display: inline" href="http://www.twitter.com">
 				<!--  hack. this image is too big for this -->
 				<img src="<c:url value="/images/common/share_friends.png"/>" alt="share" />
 			</a>
-	     </div>
+		</div>
 		 <div class="advertise">
              <img src="<c:url value="http://lh4.ggpht.com/_WwislJULCHw/TM01uDBiq0I/AAAAAAAAB5I/RtsRRmezmpk/advertise.png"/>" width="145" height="70" alt="advertise" />
    	     </div>

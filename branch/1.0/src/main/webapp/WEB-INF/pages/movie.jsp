@@ -49,20 +49,19 @@ year = year + 1900;
 		<div class="bottom">
 			<div class="heading">
 			
-				Movie in
 				<SCRIPT LANGUAGE="JavaScript1.2">
 				
 				document.write(lmonth + " ");
 				document.write(year);
 				</SCRIPT>
-				
+				Movies	
 			</div>
 					
 				<c:forEach var="catalog" items="${tuxBaseObjectList.list}">
-								<div class="list">
 				
-						<a "href="<c:url value="/moviedetail.html?id=${catalog.id}" />" > ${catalog.name}</a>
-										</div>
+						<a class="list" href="<c:url value="/moviedetail.html?id=${catalog.id}" />" > ${catalog.name}</a>
+										
+										
 					
 				</c:forEach>
 
