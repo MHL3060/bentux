@@ -34,7 +34,7 @@ div.catalog {
     float: left; 
 	width: 116px; 
 	padding: 1px; 
-	margin: 14px 40px 0px 0px;
+	margin: 13px 33px 0px 0px;
     color:#000; 
     text-align: center; 
     font: verdana, arial, sans-serif;
@@ -43,6 +43,7 @@ div.catalog {
 div.catalog img {
     width: 116px;
 	height: 63px;
+	margin-top: 3px;
 }
 
 

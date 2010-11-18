@@ -14,8 +14,9 @@ div.subcatalog-center{
 	width: 100%;
 	float: left;
 	color: grey;
-	letter-spacing: 2px;
-	margin-top:10px;
+	  letter-spacing: 1px;
+        margin-top:7px;
+
 }
 
 div.heading li a {
@@ -40,27 +41,26 @@ div#nav li a:hover, div#nav li a.current {
 
 div.subcatalog {
     float: left;
-    width: 125px;
+    width: 120px;
     overflow: none;
-        padding: 5px;
-        margin: 0px;
+    padding-top: 15px;
 /*    background: #ccc; */
     color:#000;
-    text-align: center;
+    text-align: left;
     font: verdana, arial, sans-serif;
 }
+
 
 
 
 div.subcatalog-new_line {
    	margin-top: 8px;
    	border-top: 1px dotted orange;
-	width: 100%;
+	width: 96%;
 }
 
 .breadcomb {
    font-size: 1.1em;
-   font-weight: bold;
    margin: 0px;
    padding : 0px;
    white-space:nowrap;
@@ -69,6 +69,7 @@ div.subcatalog-new_line {
 
 .breadcomb li {
    display: inline;
+   margin-right: 30px; 
 }
 
 p.catalog_name {
@@ -77,14 +78,35 @@ p.catalog_name {
  
 .breadcomb li.current {
    color: #fd8719;
-
 }  
+
 </style>
 
-
+<div id="main">
 	<div class="subcatalog-center">
 		<ul class="breadcomb">
+		
 		<c:forEach var="catalog" items="${catalogs}">
+        	<c:if test="${catalog.id != -3 }">
+                <c:choose>
+	                <c:when test="${catalog.id ==param.pid}">
+	                       <li class="current">
+	                                ${catalog.name }
+	                        </li>
+	                </c:when>
+	                <c:otherwise>
+	                        <c:url var="url" value="/subcatalogs.html">
+	                        <c:param name="pid" value="${catalog.id}"/>
+	                        </c:url>                                       
+	                        <a href="${url }"> ${catalog.name } </a>
+	                </c:otherwise>
+                </c:choose>
+        	</c:if> 
+        </c:forEach>    
+
+		
+		
+		<%--<c:forEach var="catalog" items="${catalogs}">
 			<c:if test="${catalog.id != -3 }">
 				<li ${param.pid == catalog.id ? 'class="current"' : '' }>
 					<c:url var="url" value="/subcatalogs.html">
@@ -100,11 +122,13 @@ p.catalog_name {
 				</li>
 			</c:if>
 		</c:forEach>
+		
+		--%>
 		</ul>
 		<div class="subcatalog-new_line"></div>
 	</div>
  	
- 	<div id="whole" class="center">
+ 	<div id="whole">
         <c:forEach var="catalog" items="${tuxBaseObjectList.list}">
                 <div class="subcatalog" id="subcatalog_${catalog.id}">
                         <c:url var="url" value="/file.html">
@@ -118,7 +142,7 @@ p.catalog_name {
                                         href='<c:url value="/productlist.html?catalogId=${catalog.id}" />' > ${catalog.name}</a>
                         --%>
                         <div style="display: block; flow: left;">
-                        <select name="sub" id="sub_${catalog.id}" onChange="showProduct(this,'products')">
+                        <select name="sub" id="sub_${catalog.id}" style="width: 100px;" onChange="showProduct(this,'products')">
                                 <p class="catalog_name">
                                         <option value="${grand.id }"> ${catalog.name }</option>
                                 </p>
@@ -156,7 +180,7 @@ p.catalog_name {
 			</div> 
 		</div> 
 	</div> 
-
+</div>
 <%@ include file="/common/cart.jsp" %>
 
 
