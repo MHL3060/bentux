@@ -191,14 +191,12 @@
 	}
 	
 	div#movie-list .bottom .list{
-		float: left; 
-		font-size: 17px;
-		width: 35px; 
-		margin: 5px 100px 0px 0px;
-	    text-align: center; 
-	    text-transform:uppercase;
-	    
-	}
+		float: left;
+		font-size: 13px;
+		margin: 6px 35px 0px 0px;
+		text-transform:uppercase;
+    }
+	
 	div#movie{
 		width: 100%;
 		text-align: left;

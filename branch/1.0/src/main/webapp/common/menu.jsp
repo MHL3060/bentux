@@ -100,9 +100,9 @@
 		 	<a  style="display: inline" target="_new" href="http://www.twitter.com">
 		 		<img src="<c:url value="/images/common/add_twitter.png"/>" alt="add_twitter" />
 			</a>
-			<a style="display: inline" href="http://www.twitter.com">
+			<a style="display: inline" href="/signup.html">
 				<!--  hack. this image is too big for this -->
-				<img src="<c:url value="/images/common/share_friends.png"/>" alt="share" />
+				<img src="<c:url value="/images/common/share_friends.png"/>" alt="become our member" />
 			</a>
 		</div>
 		 <div class="advertise">

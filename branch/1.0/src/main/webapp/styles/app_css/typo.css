@@ -34,15 +34,18 @@
             a:active {
             color: #41c63a;
             text-decoration: none;
+            font-weight: bold;   
         }
 
         a:visited {
             color: #41c63a;
+            font-weight: bold;   
             background-color: transparent;
         }
 
         a:hover {
-            color: #cc0000;
+            color: #FF9523;
+            font-weight: bold;   
             text-decoration: none;
         }
     /* END LINKS */
