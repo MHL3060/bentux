@@ -7,10 +7,11 @@
 	</head>
 	<div id="movie">
 		<div class="movie-left">
+			<div class="movie-heading">	
+				<fmt:message key="movie.showing"/>					
+			</div>
 			<div class="movie-title">
-					<fmt:message key="movie.showing"/>					
-			
-					${product.name}
+				${product.name}
 			</div>
 			<div class="movie-description">
 			<%-- Movie description goes to here --%>
@@ -18,7 +19,7 @@
 			</div>	
 		</div>
 		<div class="movie-right">	
-			<img src="<c:url value="${product.entertainmentService.moviePosterLink}"/>" width="290" height="470"  />
+			<img src="<c:url value="${product.entertainmentService.moviePosterLink}"/>" width="295" height="380"  />
 			
 			
 		 </div>

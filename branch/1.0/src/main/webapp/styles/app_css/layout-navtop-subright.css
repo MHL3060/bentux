@@ -5,21 +5,24 @@
 
 /* NAV BAR ON THE LEFT AND TWO COLUMNS OF CONTENT */
     div#content {
-        position: relative;
+	position: relative;
         width: 947px;
         text-align: left;
-        margin-bottom: auto;
-        margin-top: 5px;
+	margin-bottom: auto;
+	margin-top: 5px;
         border-bottom: green 1px dotted;
-    }
+   }
    div#nav {
-       	float: left;
-		width: 145px;
-		margin-bottom: 10px;
-    }
+       	*margin-top:-5px!important;
+	float: left;
+	width: 145px;
+	margin-bottom: 10px;
+    	*margin-bottom: -10px!important;
+   }
   
   	div#sub {
-		    float: right;
-	        width: 140px;
-	        display: inline;
+       	*margin-top:-5px!important;
+	float: right;
+	width: 140px;
+	display: inline;
 	}

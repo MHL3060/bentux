@@ -43,6 +43,7 @@ div.catalog {
 div.catalog img {
     width: 116px;
 	height: 63px;
+	margin-bottom: 5px;
 }
 
 
