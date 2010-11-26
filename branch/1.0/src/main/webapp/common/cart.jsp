@@ -52,11 +52,11 @@
 				titleNode = document.getElementById("product_title");
 				titleNode.innerHTML = product.name;
                 cell = document.getElementById("available");
-                cellText = document.createTextNode(product.availability);
+                //cellText = document.createTextNode(product.availability);
                 cell.innerHTML = product.availability;
 
                 cell = document.getElementById("price");
-                cellText = document.createTextNode(price);
+                //cellText = document.createTextNode(price);
                 cell.innerHTML = price;
                 inputNode = document.createElement("input");
                 inputNode.name = 'pid';
