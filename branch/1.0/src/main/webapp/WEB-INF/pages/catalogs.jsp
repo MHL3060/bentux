@@ -7,9 +7,10 @@ div.section { clear: left; }
 div.catalog { 
     float: left; 
 	width: 116px; 
-	padding: 1px; 
-	margin: 13px 33px 0px 0px;
-    color:#000; 
+	 
+	margin: 0px 33px 0px 0px;
+    color:#000;
+    padding: 12px; 
     text-align: center; 
     font: verdana, arial, sans-serif;
 }

@@ -71,6 +71,7 @@
 		*padding-left:40px!important;
      }
      div#login .left-bar{
+     			 width: 200px;
                 float:left; 
                 border-right: 1px solid green;
                 margin-right:70px;
