@@ -42,19 +42,26 @@
 	}
 	 
 	function show(nodeId, pid) {
-		g_pid = pid; 
+		g_pid = pid;
+		var price = 0;
 		if (document.getElementById) { // DOM3 = IE5, NS6
+			
 			productManager.getById(pid, function(product) {
-				price = product.price;
+				
+				
+				price = "" + product.price;
+				
 				if (product.special) {
 					price = product.discountPrice;
 				}
+				
 				titleNode = document.getElementById("product_title");
-				titleNode.innerHTML = product.name;
+				
+				titleNode.value = product.name;
                 cell = document.getElementById("available");
                 //cellText = document.createTextNode(product.availability);
                 cell.innerHTML = product.availability;
-
+				
                 cell = document.getElementById("price");
                 //cellText = document.createTextNode(price);
                 cell.innerHTML = price;
@@ -143,6 +150,13 @@ div.center{
 			<a href="javascript:hide('cart')"><img src="<c:url value="/images/icon_close.png" />" class="cntrl" title="Close" /></a> 
 			<h3 id="product_title"></h3>
 			<table id="product_data">
+				<thead>
+					<tr>
+						<th>Field</th>
+						<th>Value</th>
+					</tr>
+				</thead>
+				<tbody>
 				<tr>
 					<td class="strong">Available :</td>
 					<td id="available"></td>
@@ -157,6 +171,7 @@ div.center{
 				<tr>
 					<td colspan="2"><input type="button" name="add" value="Add" onclick="addItem('pid', 'quantity')"/></td>
 				</tr>
+				</tbody>
 			</table>
 			 
 		</div> 
