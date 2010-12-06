@@ -76,7 +76,13 @@ p.catalog_name {
  
 .breadcomb li.current {
    color: #fd8719;
-}  
+}
+/** hack for IE7 */
+.table {
+	border-collapse: separate;
+	
+}
+
 </style>
 
 <div id="main">
@@ -120,7 +126,7 @@ p.catalog_name {
                                         href='<c:url value="/productlist.html?catalogId=${catalog.id}" />' > ${catalog.name}</a>
                         --%>
                         <div style="display: block; flow: left; margin-top:5px;">
-                        <select name="sub" id="sub_${catalog.id}" style="width: 100px;" onChange="showProduct(this,'products')">
+                        <select name="sub" id="sub_${catalog.id}" style="width: 100px;" onChange="showProduct(this,'products'); document.getElementById('product_table').style.borderCollapse='collapse'">
                                 <p class="catalog_name">
                                         <option value="${grand.id }"> ${catalog.name }</option>
                                 </p>
@@ -135,22 +141,22 @@ p.catalog_name {
    	</div>
 
 	
-	<div id="productlist" style="visibility:hidden;"> 
+	<div id="productlist" style="visibility: hidden;"> 
 		<div class="fade"></div>		 
 		<div class="popup_product_block"> 
 			<div class="popup"> 
 				<a href="javascript:hide('productlist');window.location.reload()"><img src="<c:url value="/images/icon_close.png" />" class="cntrl" title="Close" /></a> 
-				<table class="table">
+				<table class="table" id="product_table">
 					<thead>
-					<tr>
-						<th><fmt:message key="product.id" /></th>
-						<th><fmt:message key="product.name" /></th>
-						<th><fmt:message key="product.brandName"/></th>
-						<th><fmt:message key="product.description" /></th>
-						<th><fmt:message key="product.availability" /></th>
-						<th><fmt:message key="product.price" /></th>
-						<th><fmt:message key="Add To Cart" /></th>
-					</tr>
+						<tr>
+							<th><fmt:message key="product.id" /></th>
+							<th><fmt:message key="product.name" /></th>
+							<th><fmt:message key="product.brandName"/></th>
+							<th><fmt:message key="product.description" /></th>
+							<th><fmt:message key="product.availability" /></th>
+							<th><fmt:message key="product.price" /></th>
+							<th><fmt:message key="Add To Cart" /></th>
+						</tr>
 					</thead>
 					<tbody id="products"></tbody>
 				</table>
@@ -160,6 +166,11 @@ p.catalog_name {
 	</div> 
 </div>
 <%@ include file="/common/cart.jsp" %>
+
+<div style="visibility: hidden;">
+	
+
+</div>
 
 
 
