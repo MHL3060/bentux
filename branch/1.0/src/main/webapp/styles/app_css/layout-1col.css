@@ -52,66 +52,113 @@
     }
 
     div#login .h1{
-                font-size: 30px;
-                padding-right:200px;
+    	padding-right:200px;
+        font-size: 35px;
+	letter-spacing: -1px;
+	*letter-spacing: -2px!important;
+	margin-bottom: 20px;
+	*margin-top: 6px!important;
     }
     div#login .h3{
-                font-size: 1.0em;
-                color: grey;
-                font-weight:lighter;
-                padding-right:300px;
+        color: black;
+	font-size: 17px;
+        padding-right:300px;
+        margin-bottom: 45px;      
     }
     div#login .h4{
                 font-size:1.2em;
                 color:black;
                 font-weight:bold;
-                padding-bottom:10px;
-     		*margin-bottom:0px!important; 
+                letter-spacing:-1px;
+                margin-bottom: 10px;
+     		*margin-bottom:10px!important; 
 	        padding-right:50px;
 		*padding-left:40px!important;
      }
      div#login .left-bar{
-     			 width: 200px;
-                float:left; 
-                border-right: 1px solid green;
-                margin-right:70px;
+     		float:left; 
+		border-right: 1px dotted orange;
+		margin-right:60px;
+		*padding-right: 45px!important;
 	 	*margin-left: -40px!important;
-		padding-right:80px;
+		/*padding-right:80px;*/
+		width:255px;
                 display: inline;
      }
      div#login .right-bar{
                 display: inline;
      }
      div#login .login-form{
-                *margin-top:-20px!important;
+  		*margin-top:-10px!important;
+                margin-top: 23px;
 		padding-left:0px;
                 text-align:left;
-
+     }
+     label.desc { 
+		/* name field for login form*/
+     		font-family: Avenir LT Std;
+    		border: 0;
+    		color: black;
+    		font-size: 1em;
+    		line-height: 1.3em;
+    		display: block;
+    		margin: 11px 0px 3px;
+    		*margin: 3px 0px 2px!important;
+    }
+    label.choice {
+		color: black;
+		display: block;
+		font-size: 1.05em;
+		line-height: 1.4em;
+		margin: -19px 0px 0px 25px;
+		padding: 4px 0px 5px;
+		width: 80%; 
      }
      div#login .register-form{
                 text-align:left;
-                margin-right:100px;
-     		*margin-bottom: -50px!important;	
+                margin-right:139px;
+		*margin-right: 120px;!important;
+		*margin-bottom: -70px;!important;
      }
  
      div#login .register-form .wording{
                 line-height:155%;
+		font-size: 14px;
                 margin:10px 10px 10px 40px 30px;
                 padding:10px 0 7px 0;
      }
-     div#login .button1{
-          	margin-top:23px;
-		color:White;
-		font: bold 120%'trebuchet ms',helvetica,sans-serif; 
-		background-color: #ff9523; 
-	 	text-align:center;
-    }
-    div#login .button2{
-   		background-color:#246e21;   	    
-          	margin-top:15px;
-		*margin-top:31px!important;
-   		color:#FFFFFF;
-		font: bold 120%'trebuchet ms',helvetica,sans-serif; 
-          	text-align:center;
-    }
+    div#login .button1 {
+	color: white;
+	background: orange;
+	width:100px;
+	font-weight: bold;
+	border: 0px solid #900;
+        margin-top:14px;
+	margin-bottom: 10px;
+	height:25px;
+        font-size: 14px;
+   }
+   div#login .button2 {
+        margin-top:18px;
+	color: white;
+        background: #246e21;
+        width:100px;
+	height:25px;
+	font-size: 14px;
+        font-weight: bold;
+        border: 0px solid #900;
+     }
+    div#login .button1:hover{
+	color: #FFF;
+	background: grey;
+     }
+    div#login .button2:hover {
+        color: #FFF;
+        background: grey;
+     }   
+    div#login .password_hint{
+	font-size: 11px;
+	*margin-bottom: 25px!important;
+    } 
+ 
 /* END CONTENT */

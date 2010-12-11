@@ -21,8 +21,10 @@
    }
   
   	div#sub {
-       	*margin-top:-5px!important;
-	float: right;
+       	*margin-top:-2px!important;
+	padding: 35 0 0 20;
+	margin-left: 15px;
+	float: left;
 	width: 140px;
 	display: inline;
 	}

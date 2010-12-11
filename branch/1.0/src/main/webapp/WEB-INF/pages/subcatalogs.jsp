@@ -1,4 +1,10 @@
 <%@ include file="/common/taglibs.jsp" %>
+<head>
+<meta name="menu" content="Home" />
+
+<link rel="shortcut icon" href="images/favicon2.ico" />
+<link rel="icon" href="images/favicon2.png" type="image/png" />
+</head>
 
 
  <script type='text/javascript' src='<c:url value="/dwr/interface/shoppingCartManager.js" />'></script>
@@ -28,7 +34,7 @@ div.heading li a {
     padding: 5px;
     height: 17px;
     color: green;
-	background: #fff;
+    background: #fff;
 }
 
 div#nav li a:hover, div#nav li a:active, div#nav li a.current {   
@@ -38,7 +44,7 @@ div#nav li a:hover, div#nav li a:active, div#nav li a.current {
 	text-transform: uppercase;
 }
 
-div.subcatalog {
+/* div.subcatalog {
     float: left;
     width: 120px;
     overflow: none;
@@ -47,42 +53,82 @@ div.subcatalog {
     color:#000;
     text-align: left;
     font: verdana, arial, sans-serif;
+}*/
+
+.subcatalog {
+    color:#000;
+    font: verdana, arial, sans-serif;
+    overflow:hidden; 
+}
+
+.subcatalog ul{
+	margin:0;
+	padding:0;
+	margin-left:-3em; 
+	*float:left!important;
+	*margin-left:-3em!important;
+	list-style:none;
+}
+.subcatalog ul li{
+	padding-top: 15px;
+	*padding-top: 0px!important;
+	padding-bottom: 15px;
+	*padding-bottom: 25px!important;
+	width:89px; 
+	margin-left:3em;
+	*margin-left:3em!important;
+	*display:inline;
+	float:left;
+}
+.subcatalog img{
+	width: 90px;
+	border: 0px;
 }
 
 
 
 div.subcatalog-new_line {
-   	margin-top: 8px;
+	margin-top: 8px;
    	border-top: 1px dotted orange;
-	width: 96%;
+	width: 99.5%;
 }
 
 .breadcomb {
-   font-size: 1.1em;
-   margin: 0px;
-   padding : 0px;
-   white-space:nowrap;
-   list-style-type: none;   
+   	font-size: 21px;
+   	margin: 0px;
+	line-height:25px;
+	*line-height:22px!important;
+	padding : 0px;
+	white-space:nowrap;
+	list-style-type: none;   
 }
 
 .breadcomb li {
-   display: inline;
-   margin-right: 30px;
+   	display: inline;
+   	margin-right: 16px;
+   *margin-right: 20px!important;
 }
 
 p.catalog_name {
   margin: 0px;
+  letter-spacing: -1px;
 }
  
+.breadcomb a{
+   color:gray;
+   font-weight: normal;
+}
 .breadcomb li.current {
-   color: #fd8719;
+   color:black;
 }
-/** hack for IE7 */
-.table {
-	border-collapse: separate;
-	
+** hack for IE7 */
+ .table {
+    border-collapse: separate;
 }
-
+.breadcomb a:hover{
+   color: #bebebe;
+   font-weight: normal;
+}
 </style>
 
 <div id="main">
@@ -98,10 +144,10 @@ p.catalog_name {
 					</li>
 				</c:when>
 				<c:otherwise>
-	                       		<c:url var="url" value="/subcatalogs.html">
+					<c:url var="url" value="/subcatalogs.html">
 						<c:param name="pid" value="${catalog.id}"/>
-					</c:url>   
-					<li class="noncurrent">
+					</c:url>  
+                                         <li class="noncurrent">
 						<a href="${url }"> ${catalog.name }</a>
 					</li> 
 				</c:otherwise>
@@ -113,8 +159,13 @@ p.catalog_name {
 	</div>
  	
  	<div id="whole">
-        <c:forEach var="catalog" items="${tuxBaseObjectList.list}">
-                <div class="subcatalog" id="subcatalog_${catalog.id}">
+	<div class="subcatalog">
+	<ul>
+	<c:forEach var="catalog" items="${tuxBaseObjectList.list}">
+
+ 	       <li>
+
+		<%--<li id="subcatalog_${catalog.id}">--%>
                         <c:url var="url" value="/file.html">
                                 <c:param name="path" value="${catalog.image.thumbPath}" />
                         </c:url>
@@ -126,7 +177,7 @@ p.catalog_name {
                                         href='<c:url value="/productlist.html?catalogId=${catalog.id}" />' > ${catalog.name}</a>
                         --%>
                         <div style="display: block; flow: left; margin-top:5px;">
-                        <select name="sub" id="sub_${catalog.id}" style="width: 100px;" onChange="showProduct(this,'products'); document.getElementById('product_table').style.borderCollapse='collapse'">
+                        <select name="sub" id="sub_${catalog.id}" style="width: 90px;font-size:11px;important;letter-spacing:-1px;text-align:left;" onChange="showProduct(this,'products'); document.getElementById('product_table').style.borderCollapse='collapse'">
                                 <p class="catalog_name">
                                         <option value="${grand.id }"> ${catalog.name }</option>
                                 </p>
@@ -135,10 +186,12 @@ p.catalog_name {
                                 </c:forEach>
                         </select>
                         </div>
-                </div>
+                </li>
 
         </c:forEach>
+	</ul>
    	</div>
+	</div>
 
 	
 	<div id="productlist" style="visibility: hidden;"> 
@@ -148,15 +201,15 @@ p.catalog_name {
 				<a href="javascript:hide('productlist');window.location.reload()"><img src="<c:url value="/images/icon_close.png" />" class="cntrl" title="Close" /></a> 
 				<table class="table" id="product_table">
 					<thead>
-						<tr>
-							<th><fmt:message key="product.id" /></th>
-							<th><fmt:message key="product.name" /></th>
-							<th><fmt:message key="product.brandName"/></th>
-							<th><fmt:message key="product.description" /></th>
-							<th><fmt:message key="product.availability" /></th>
-							<th><fmt:message key="product.price" /></th>
-							<th><fmt:message key="Add To Cart" /></th>
-						</tr>
+					<tr>
+						<th><fmt:message key="product.id" /></th>
+						<th><fmt:message key="product.name" /></th>
+						<th><fmt:message key="product.brandName"/></th>
+						<th><fmt:message key="product.description" /></th>
+						<th><fmt:message key="product.availability" /></th>
+						<th><fmt:message key="product.price" /></th>
+						<th><fmt:message key="Add To Cart" /></th>
+					</tr>
 					</thead>
 					<tbody id="products"></tbody>
 				</table>
@@ -168,10 +221,8 @@ p.catalog_name {
 <%@ include file="/common/cart.jsp" %>
 
 <div style="visibility: hidden;">
-	
 
 </div>
-
 
 
 

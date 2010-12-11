@@ -83,7 +83,7 @@
      <menu:displayMenu name="AdminMenu"/>
     <li>
     			    	 
-	     <div style="margin: 8px 0px 5px 6px; height: 20px; width: 100%; overflow: hidden; padding: 0;" >
+	     <div style="margin: 8px 0px 8px 6px; height: 20px; width: 100%; overflow: hidden; padding: 0;" >
 	     
 	     	<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.facebook.com%2Fpages%2FKwun-Tong%2FTRINITY-Taste-of-India%2F130347051158&amp;
     						layout=button_count&amp;show_faces=true&amp;width=550&amp;
@@ -92,21 +92,25 @@
     						style="border:none; overflow:hidden; width:450px; height:21px;" allowTransparency="true">
     		</iframe>	
     	</div>
-    	<div style="margin-top: 8px; margin-bottom: 5px; height: 26px; width: 100%; overflow: hidden; padding: 0;" >
+    	<div style="margin-top: 9px; margin-bottom: 10px; height: 26px; width: 100%; overflow: hidden; padding: 0;" >
     	
-		 	<a style="display: inline" target="_new" href="http://www.facebook.com/group.php?gid=111666002279&ref=mf">
+		 	<a style="width:27px;display: inline" target="_new" href="http://www.facebook.com/group.php?gid=111666002279&ref=mf">
 		 		<img src="<c:url value="/images/common/add_facebook.png"/>" alt="add_facebook" />
 		 	</a>
-		 	<a  style="display: inline" target="_new" href="http://www.twitter.com">
+		 	<a  style="width:27px;margin-left:-10px;display: inline" target="_new" href="http://www.twitter.com">
 		 		<img src="<c:url value="/images/common/add_twitter.png"/>" alt="add_twitter" />
 			</a>
-			<a style="display: inline" href="/signup.html">
+			<a style="width:27px;margin-left:-8px;display: inline" href="/app/signup.html">
 				<!--  hack. this image is too big for this -->
 				<img src="<c:url value="/images/common/share_friends.png"/>" alt="become our member" />
 			</a>
+                        <a style="margin-left:-10px;display: inline" href="/app/signup.html">
+
+				<img src="<c:url value="http://lh5.ggpht.com/_WwislJULCHw/TPuOyfIgsFI/AAAAAAAAB78/injARUxUUgQ/Picture%205.png"/>" height="22" width="47" alt="feedback" />
+			</a>
 		</div>
 		 <div class="advertise">
-             <img src="<c:url value="http://lh4.ggpht.com/_WwislJULCHw/TM01uDBiq0I/AAAAAAAAB5I/RtsRRmezmpk/advertise.png"/>" width="145" height="70" alt="advertise" />
+             <img src="<c:url value="http://lh4.ggpht.com/_WwislJULCHw/TM01uDBiq0I/AAAAAAAAB5I/RtsRRmezmpk/advertise.png"/>" width="148" height="70" alt="advertise" />
    	     </div>
    	</li>
     <!-- <menu:displayMenu name="Logout"/> -->
@@ -114,3 +118,4 @@
 </ul>
 
 </menu:useMenuDisplayer>
+

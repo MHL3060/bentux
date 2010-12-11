@@ -29,7 +29,8 @@
 			<fmt:message key="contact.us.feedback.description" />
 		</div>
 		<div class="form">
-			<img src="<c:url value="http://lh3.ggpht.com/_WwislJULCHw/TM01uf7cWUI/AAAAAAAAB5Q/cwFTA_9dsDg/contact_us_form.png"/>" width="607" height="306" alt="contact_us_form"/>
+		<%--	<img src="<c:url value="http://lh3.ggpht.com/_WwislJULCHw/TM01uf7cWUI/AAAAAAAAB5Q/cwFTA_9dsDg/contact_us_form.png"/>" width="607" height="306" alt="contact_us_form"/>
+		--%>
 		</div>
 	
 	</div>

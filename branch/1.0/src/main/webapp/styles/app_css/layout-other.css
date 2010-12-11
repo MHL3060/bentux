@@ -9,7 +9,7 @@
     	margin: 0;
     	padding:0px;
 		background: #FFFFFF;
-		font-family: Arial, Helvetica, sans-serif;
+		font-family: 'Avenir LT Std';
 		font-size: 13px;
 		color: #333333;
 	}
@@ -18,14 +18,15 @@
 	h1, h2, h3 {
 		margin: 0;
 		padding: 0;
-		font-family: Georgia, "Times New Roman", Times, serif;
+		font-family: 'Avenir LT Std';
 		font-weight: normal;
 		color: #333333;
 		
 	}
 	
 	h1 {
-		font-size: 2.2em;
+		font-size: 2.4:em;
+		*font-size: 2.2em!important;
 	}
 	
 	h2 {
@@ -36,13 +37,13 @@
 		font-size: 1.6em;
 	}
 	h4{
-		font-size: 1.2em;
+		font-size: 1.1em;
 		color: orange;
 		line-height: 140%;
-		margin-bottom: 5px;
+		margin-bottom: 4px;
 	}
 	h5{
-	    font-size: 1.1em;
+	    font-size: 1.0em;
 	 	color: black;  
 	}
 		/* for ourstore.jsp */
@@ -50,9 +51,9 @@
 	h6{
 		color: black;
 		display:block;
-		font-family: Arial, Helvetica, sans-serif;
+		font-family: 'Avenir LT Std', 'Trebuchet MS';
 		font-size: 1em;
-		margin-bottom:5px;
+		margin-bottom:3px;
 	}
 	p {
 		margin: 5px 0px 15px 0;
@@ -60,14 +61,20 @@
 	}
 	
 	div#title {
-		width:606px;
+		font-size: 31px;
+		*font-size: 27px!important;
+		letter-spacing: -1px;
+		*letter-spacing: 0px;
+		padding-top:11px !important;
+		*padding-top:5px !important;
+		padding-bottom:14px !important;
+		*padding-bottom:17px !important;
+		width: 606px;	
 		border-bottom: 1px dotted orange;
-		margin-top: 8px;
-		font-size: 26px;
-		font-weight: bold;
-		*margin-top:6px !important;
 	}
 	div#contact-us {
+		margin-top:12px;
+		*margin-top:3px;
 		color:black;
 		width:606px;
 		*height: 400px !important;
@@ -87,10 +94,11 @@
 	{
 		width:230px;
 		margin-bottom: 20px;
+	  	line-height: 140%;
 	}
 	div#contact-us .detail
 	{	
-		font-size: 1.1em;
+		font-size: 1.0em;
 		width:230px;
 		margin-bottom: 20px;
 	}
@@ -108,7 +116,7 @@
 		color:black;
 		font-size: 1em;
 		letter-spacing: 0.9px;
-		
+		line-height: 140%;	
 	}
 	div#contact-us .feedback .form{
 		margin-botton:15px;
@@ -117,31 +125,40 @@
     	float: left;
     	margin-top:5px;
     	padding-top:5px;
-		line-height: 140%;
- 		width: 269px;
-		letter-spacing: 0.5px;
-		text-align: justify;
+	line-height: 140%;
+ 	width: 269px;
+	letter-spacing: 0.5px;
+	text-align: justify;
+    	height: 380px;
+	*font-size: 12px!Important; 
     }
-    div#our-store .help{
-    	margin-top:20px;
-		margin-bottom: 5px;
-		margin-top: 15px;
+    div#our-store .top{
+	height: 230px;
+    }
+    div#our-store .top .first{
+        height: auto;
+        margin-bottom:15px;
+    }
+    div#our-store .top .second{
     }
     div#our-store .content-divide{
-    	border-top: 1px solid orange;
+    	border-top: 1px dotted orange;
 		margin-top: 10px;
     }
-	div#our-store .info{
-	    margin-top:5px;
-	}
-	div#our-store .info .left{
+    div#our-store .info{
+	margin-top:5px;
+	height: 140px;
+    }
+    div#our-store .info .left{
     	color: black;
-    	line-height: 120%;
+	height: 119px;
+    	line-height: 140%;
     	float:left;
-    	font-size:11px;
-    	margin-bottom: 5px;
-    	width:168px;
-    	border-right: 1px solid orange;
+    	font-size:10px;
+    	margin: 2px 5px 5px 0px;
+	padding-right: 10px;
+    	width:165px;
+    	border-right: 1px dotted orange;
     }
     div#our-store .info .left .bottom{
        	font-color: black;
@@ -150,17 +167,18 @@
     div#our-store .info .right{
     	float:right;
     	text-align:left;
-		width: 90px;
-		margin-left: 5px;
-		font-size:10px;
+	margin-top: 2px;
+	width: 83px;
+	margin-left: 5px;
+	font-size:10px;
     	margin-bottom: 5px;
     }
     div#our-store .info .right .divide{
-		border-bottom: 1px solid orange;
+		border-bottom: 1px dotted orange;
     }
     div#our-store .info .right .bottom{
-		margin: 10px 0px 5px 5px;
-	}
+		margin: 5px 0px 0px 8px;
+    }
 	div#photo {
 		border: 10px 0px 5px 10px;
 		margin: 10px 0px 5px 10px;
@@ -186,16 +204,17 @@
 	
 	div#movie-list .bottom .heading{
 	    width: 607px;
-	    border-bottom: 1px solid orange;
+	    border-bottom: 1px dotted orange;
 	    font-weight: normal;
 	    font-size: 20px;
 	    color: black;
+	    height: 18px;
 	}
 	
 	div#movie-list .bottom .list{
 		float: left; 
 		font-size: 13px;
-		margin: 6px 35px 0px 0px;
+		margin: 4px 35px 0px 5px;
 	    text-transform:uppercase;
 	    
 	}
@@ -287,7 +306,7 @@
 	div#about-us .detail{
 		margin-top:10px;
 		margin-left:5px;
-		
+		*margin-top:-2px;	
 	}
 
 	

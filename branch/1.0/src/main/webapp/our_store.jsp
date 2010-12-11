@@ -11,11 +11,14 @@
 	</head>
 	   
 	   	<div id="our-store">
-	   		<fmt:message key="our.store.mtr.description" />
-		   	<div class="help">	
-	   			<fmt:message key="our.store.help" />
-	   		</div>
-			
+			<div class="top">
+				<div class="first">
+	   				<fmt:message key="our.store.mtr.description" />
+		   		</div>
+				<div class="second">	
+	   				<fmt:message key="our.store.help" />
+	   			</div>
+			</div>
 			<div class="content-divide">
 			
 			</div>
@@ -45,7 +48,7 @@
 		</div>
 		
 		<div id="photo">
-			<iframe width="320" height="386" 
+			<iframe width="320" height="368" 
 								frameborder="0" 
 								scrolling="no" 
 								marginheight="0" 

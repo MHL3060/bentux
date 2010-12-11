@@ -11,10 +11,14 @@
 	</head>
 	   
 	   	<div id="our-store">
-	   		<fmt:message key="our.store.bus.description" />
-		   	<div class="help">	
-	   			<fmt:message key="our.store.help.bus" />
-	   		</div>
+	   		<div class="top">
+				<div class="first">
+					<fmt:message key="our.store.bus.description" />
+		   		</div>
+				<div class="second">	
+	   				<fmt:message key="our.store.help.bus" />
+	   			</div>
+			</div>
 			
 			<div class="content-divide">
 			
@@ -26,9 +30,9 @@
 						
 						<fmt:message key="our.store.contact.address" />
 						<div class="bottom">
-							<h6><fmt:message key="our.store.contact.tel" /></h6>
-							<h6><fmt:message key="our.store.contact.fax" /></h6>
-							<h6><fmt:message key="our.store.contact.email" /></h6>
+						<h6>	<fmt:message key="our.store.contact.tel" /></h6>
+						<h6>	<fmt:message key="our.store.contact.fax" /></h6>
+						<h6>	<fmt:message key="our.store.contact.email" /></h6>
 						</div>
 					</div>
 					<div class="right">
@@ -46,7 +50,7 @@
 		</div>
 		
 		<div id="photo">
-			<iframe width="320" height="340" 
+			<iframe width="320" height="368" 
 								frameborder="0" 
 								scrolling="no" 
 								marginheight="0" 

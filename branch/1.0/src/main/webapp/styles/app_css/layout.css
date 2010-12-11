@@ -1,8 +1,9 @@
+
 /* A CSS Framework by Mike Stenhouse of Content with Style */
 h1, h2, h3, h4, h5, h6 {
 	margin: 0;
 	padding: 0;
-	font-family: "Avenir LT Std 55 Roman";
+	font-family: "Avenir LT Std";
 	color: green;
 }
 
@@ -26,9 +27,9 @@ p, ul, ol {
 /* SITE SPECIFIC LAYOUT */
     body {
     	height: 100%;
-		font: normal 12px Verdana, Arial, Helvetica, sans-serif;
-		background: #555;
-		position: relative;
+	font-family: "Avenir LT Std","Trebuchet MS";
+	background: #555;
+	position: relative;
 	
         margin: 0;
         padding: 0;
@@ -54,27 +55,33 @@ p, ul, ol {
     }*/
     div#top {
 		color: green;
-		font-family: 'Avenir LT Std 55 Roman';
+		font-family: 'Avenir LT Std';
 		font-size: 11px;
 		height: 15px;
 		width: 947px;
 	 }
      div#top .left {
-        float: left;
+        	font-size: 10px;
+		letter-spacing: 1px;
+		float: left;
  		text-align: left;
+		margin-left: 6px;
 	   	padding-bottom: 4px;              
 	 }
      div#top .right{
-        float: right;
-		margin: 0px 10px 4px 390px;
+        	float: right;
+		font-size:10px;
+		letter-spacing: 1.5px;
+		margin: 0px 0px 4px 390px;
      }	
      div#branding {
         width: 947px;
         margin-bottom: 10px;
-		height: 111px; 
-		background: #ffffff;
-		overflow: hidden;
-     }
+	height: 111px; 
+	background: #ffffff;
+	overflow: hidden;
+    	*margin-top:3px!important;
+    }
        
     div#news {
         width: 947px;
@@ -84,6 +91,7 @@ p, ul, ol {
 	text-align: left;
     }
     div#news .left {
+		*padding-top:3px!important;
 		margin-left:4px;
 		float: left;
 		text-align: left;
@@ -124,7 +132,7 @@ p, ul, ol {
         /* MAIN */  	
         div#main {
             		margin-left: 16px;
-			margin-right: 28px;
+			margin-right: 25px;
 			margin-bottom: 5px;
 			width: 606px;
 			float: left;
@@ -138,21 +146,23 @@ p, ul, ol {
         
         /* SUB */
         div#sub .title{
-         	border-bottom: 1px dotted #FF9400;
+         		border-bottom: 1px dotted #FF9400;
 			color: #d467a4;
 			float: right;
-			font-size: 16px;
-			line-height: 130%;
+			font-size: 15px;
+			line-height: 115%;
 			margin-bottom: 10px;
 			text-align: center;
 			width: 140px;
+			height: 22px;
+			*margin-bottom:13px!important;
 		}
-		div#sub .link{
+	div#sub .link{
 			text-align: center;
 			font-weight: normal;
 				
 		}
-		div#sub .ul {
+	div#sub .ul {
 			color:#555;
 			overflow:hidden;
 			margin:0;
@@ -167,40 +177,43 @@ p, ul, ol {
 			float:right;
 			width:140px;
 		}
-		div#sub .partners {
+	div#sub .partners {
 	        width:140px;
 	        float:right
 		}
         div#sub .partners .subtitle {
-            text-align: left;
-            font-size: 10px;
-		    color: green;
-            margin-bottom: 8px;
-            margin-top:5px;
-        }
-       
-         div#sub .partners .cart-top{
-         	background: orange; 
-        	padding: 4px 0px 4px 0px;
-	        text-align: center;
-    	}
-    	div#sub .partners .cart-middle{
+            	text-align: left;
+            	font-size: 10px;
+		color: green;
+            	margin-bottom: 8px;
+            	margin-top:5px;
+        	*margin-top:0px!important;
+	}
+      	 div#sub .partners .cart{
+          	border: 5px solid orange ;
+         	background: orange;
+		text-align: center;
+	}
+ 
+	div#sub .partners .cart-middle{
     		background: white; 
-			padding: 0px 0px 40px;
+         	border: 1px solid white ;
     	}
-    	div#sub .partners .cart-middle .left{
-			float:left;
-			margin: 2px 20px 2px 15px;
-    	}
-    	div#sub .partners .cart-middle .right{
-			float:right;
-			margin: 2px 20px;
-        }
-	    div#sub .partners .cart-bottom{
+	div#sub .partners .cart-middle ul{
+		list-style-type: none;
+		height: 31px;
+		*padding-left:40px!important;
+		*height: 45px!important;
+	}
+	div#sub .partners .cart-middle li{
+		text-align: white;
+	}
+	div#sub .partners .cart-bottom{
 	       	background: orange; 
-	      	padding: 4px 0px 4px 0px;
-			text-align: center;
-	    }	
+		text-align: center;
+	        border: 10px solid orange ;
+    
+	}	
         div#sub .advertise{
         	width:145px;
         	padding-top:8px;
@@ -277,4 +290,5 @@ p, ul, ol {
 			padding-right: 10px;
 	   }
 /* END LAYOUT */
+
 

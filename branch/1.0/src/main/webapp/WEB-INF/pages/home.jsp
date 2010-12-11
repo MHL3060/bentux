@@ -2,6 +2,9 @@
 
 <head>
 <meta name="menu" content="Home" />
+
+<link rel="shortcut icon" href="images/favicon2.ico" />
+<link rel="icon" href="images/favicon2.png" type="image/png" />
 </head>
 <div id="main">
 
@@ -17,6 +20,6 @@
 	        	</c:otherwise>
 	        </c:choose>
 
-			<img src="<c:url value="http://lh5.ggpht.com/_WwislJULCHw/TM02MuoRCTI/AAAAAAAAB5k/m35uwxbTu3I/home_content_2.jpg"/>"  />
+			<img src="<c:url value="http://lh5.ggpht.com/_WwislJULCHw/TNQ5AfR_lMI/AAAAAAAAB6o/OxPpWfV1LQs/Picture%204.png"/>" height=425px />
 
 </div>

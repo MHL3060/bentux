@@ -122,10 +122,24 @@
 </script>
 <style>
 div.section { clear: left; }
+<<<<<<< .mine
+div.subcatalog { 
+    float: left; 
+	width: 4em; 
+	padding: 33px; 
+	margin: 1em;
+	height: 4em;
+    background: #ccc; 
+    color:#000; 
+    text-align: center; 
+    font: verdana, arial, sans-serif;
+}
+=======
 
+>>>>>>> .r358
 div.center{
 	float: left;
-	padding-left: 2em;
+	/*padding-left: 2em;*/
 
 }
 </style>

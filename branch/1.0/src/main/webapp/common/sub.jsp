@@ -48,9 +48,22 @@
 			
 			
 			<div class="partners">
-				<c:if test="${pageContext.request.remoteUser}">
-						
+					
+					<div class="cart">
+						shopping cart
+					</div>
+					<div class="cart-middle">
+					<ul>
+						<li>Item(s): ${cart_item_count}</li>
+						<li>Total: ${cart_sub_total}</li>
+					</div>
+					<div class="cart-bottom">
+                                        </div>
+
+
+				<%--	
 					<div class="cart-top">
+
 								<a href="<c:url value="/cart.html"/>">Shopping cart</a>
 					</div>
 					<div class="cart-middle">	
@@ -63,7 +76,7 @@
 					<div class="cart-bottom">
 						<a href="<c:url value="/addressform.html"/>">Checkout</a>
 					</div>
-				</c:if>
+				--%>
 						
 			</div>
 </div>

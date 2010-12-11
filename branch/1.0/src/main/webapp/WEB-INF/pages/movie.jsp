@@ -1,4 +1,10 @@
 <%@ include file="/common/taglibs.jsp"%>
+<head>
+<meta name="menu" content="Home" />
+
+<link rel="shortcut icon" href="images/favicon2.ico" />
+<link rel="icon" href="images/favicon2.png" type="image/png" />
+</head>
 
 <!-- ONE STEP TO INSTALL CURRENT DATE:
 
@@ -48,13 +54,12 @@ year = year + 1900;
 		</div>
 		<div class="bottom">
 			<div class="heading">
-			
+				Movies in	
 				<SCRIPT LANGUAGE="JavaScript1.2">
 				
 				document.write(lmonth + " ");
 				document.write(year);
 				</SCRIPT>
-				Movies	
 			</div>
 					
 				<c:forEach var="catalog" items="${tuxBaseObjectList.list}">
@@ -70,6 +75,7 @@ year = year + 1900;
 		
 	</div>
 </div>
+
 
 
 
