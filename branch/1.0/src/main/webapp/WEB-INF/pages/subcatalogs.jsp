@@ -1,10 +1,4 @@
 <%@ include file="/common/taglibs.jsp" %>
-<head>
-<meta name="menu" content="Home" />
-
-<link rel="shortcut icon" href="images/favicon2.ico" />
-<link rel="icon" href="images/favicon2.png" type="image/png" />
-</head>
 
 
  <script type='text/javascript' src='<c:url value="/dwr/interface/shoppingCartManager.js" />'></script>
@@ -34,7 +28,7 @@ div.heading li a {
     padding: 5px;
     height: 17px;
     color: green;
-    background: #fff;
+	background: #fff;
 }
 
 div#nav li a:hover, div#nav li a:active, div#nav li a.current {   
@@ -44,23 +38,9 @@ div#nav li a:hover, div#nav li a:active, div#nav li a.current {
 	text-transform: uppercase;
 }
 
-/* div.subcatalog {
-    float: left;
-    width: 120px;
-    overflow: none;
-    padding-top: 15px;
-/*    background: #ccc; */
-    color:#000;
-    text-align: left;
-    font: verdana, arial, sans-serif;
-}*/
-
-.subcatalog {
-    color:#000;
-    font: verdana, arial, sans-serif;
-    overflow:hidden; 
+div.subcatalog {
+   
 }
-
 .subcatalog ul{
 	margin:0;
 	padding:0;
@@ -85,13 +65,12 @@ div#nav li a:hover, div#nav li a:active, div#nav li a.current {
 	border: 0px;
 }
 
-
-
 div.subcatalog-new_line {
 	margin-top: 8px;
    	border-top: 1px dotted orange;
 	width: 99.5%;
 }
+
 
 .breadcomb {
    	font-size: 21px;
@@ -121,9 +100,10 @@ p.catalog_name {
 .breadcomb li.current {
    color:black;
 }
-** hack for IE7 */
- .table {
-    border-collapse: separate;
+/** hack for IE7 */
+.table {
+	border-collapse: separate;
+	
 }
 .breadcomb a:hover{
    color: #bebebe;
@@ -144,10 +124,10 @@ p.catalog_name {
 					</li>
 				</c:when>
 				<c:otherwise>
-					<c:url var="url" value="/subcatalogs.html">
+	                       		<c:url var="url" value="/subcatalogs.html">
 						<c:param name="pid" value="${catalog.id}"/>
-					</c:url>  
-                                         <li class="noncurrent">
+					</c:url>   
+					<li class="noncurrent">
 						<a href="${url }"> ${catalog.name }</a>
 					</li> 
 				</c:otherwise>
@@ -158,7 +138,7 @@ p.catalog_name {
 		<div class="subcatalog-new_line"></div>
 	</div>
  	
- 	<div id="whole">
+	<div id="whole">
 	<div class="subcatalog">
 	<ul>
 	<c:forEach var="catalog" items="${tuxBaseObjectList.list}">
@@ -192,7 +172,6 @@ p.catalog_name {
 	</ul>
    	</div>
 	</div>
-
 	
 	<div id="productlist" style="visibility: hidden;"> 
 		<div class="fade"></div>		 
@@ -201,15 +180,15 @@ p.catalog_name {
 				<a href="javascript:hide('productlist');window.location.reload()"><img src="<c:url value="/images/icon_close.png" />" class="cntrl" title="Close" /></a> 
 				<table class="table" id="product_table">
 					<thead>
-					<tr>
-						<th><fmt:message key="product.id" /></th>
-						<th><fmt:message key="product.name" /></th>
-						<th><fmt:message key="product.brandName"/></th>
-						<th><fmt:message key="product.description" /></th>
-						<th><fmt:message key="product.availability" /></th>
-						<th><fmt:message key="product.price" /></th>
-						<th><fmt:message key="Add To Cart" /></th>
-					</tr>
+						<tr>
+							<th><fmt:message key="product.id" /></th>
+							<th><fmt:message key="product.name" /></th>
+							<th><fmt:message key="product.brandName"/></th>
+							<th><fmt:message key="product.description" /></th>
+							<th><fmt:message key="product.availability" /></th>
+							<th><fmt:message key="product.price" /></th>
+							<th><fmt:message key="Add To Cart" /></th>
+						</tr>
 					</thead>
 					<tbody id="products"></tbody>
 				</table>
@@ -221,8 +200,6 @@ p.catalog_name {
 <%@ include file="/common/cart.jsp" %>
 
 <div style="visibility: hidden;">
+	
 
 </div>
-
-
-

@@ -15,8 +15,8 @@
 /* TYPOGRAPHY */
     body {
         text-align: left;
-        font-family: verdana, arial, helvetica, sans-serif;
-        font-size: 76%;
+        font-family: Avenir LT Std;
+	font-size: 76%;
         line-height: 1em;
         color: #444;
     }
@@ -30,7 +30,7 @@
     }
 
     /* LINKS */
-        a,a:link
+      a,a:link
             a:active {
             color: #41c63a;
             text-decoration: none;
@@ -52,8 +52,8 @@
 
     /* HEADINGS */
         h1, h2, h3, h4, h5, h6 {
-            font-family: tahoma, arial, helvetica, sans-serif;
-            font-weight: normal;
+                font-family: Avenir LT Std;
+		font-weight: normal;
         }
 
         h1 {
@@ -133,9 +133,9 @@
             margin-left: 10px;
         }
 
-        pre {
-            font-family: monospace;
-            font-size: 12px;
+        pre {    
+            font-family: Avenir LT Std;
+	    font-size: 12px;
         }
 
         strong,b {
@@ -147,8 +147,8 @@
         }
 
         code {
-            font-family: "courier new", courier, monospace;
-            font-size: 12px;
+            font-family: Avenir LT Std;
+	    font-size: 12px;
             white-space: pre;
         }
     /* END TEXT */
