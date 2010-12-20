@@ -3,8 +3,8 @@
 	
  	function addItem(pidNodeId, quantityNodeId){
 
-		product = document.getElementById(pidNodeId).value;
-		quantity = document.getElementById(quantityNodeId).value;
+		var product = document.getElementById(pidNodeId).value;
+		var quantity = document.getElementById(quantityNodeId).value;
  	 	if (quantity < 1) {
 			alert("Error: The quantity must be greater than 0" );
  	 	}else {
