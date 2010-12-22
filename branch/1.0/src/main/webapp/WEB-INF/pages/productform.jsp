@@ -145,6 +145,43 @@ function addSelectedOptions(array, toDom,selectedValue){
 		alert("unknow Catalog, Please ask Developer to add this product field for you ");
 	}
  }
+ 
+ function addSelect(parentNode){
+	 var parentId = parentNode.value;
+	 
+	 
+	 var select = document.createElement("select");
+	 select.name = 'catalogs';
+	
+	 catalogManager.getRelativeObjects("parent.id", parentId, function(children) {
+		 if (children.length > 0){
+			 var li = document.createElement("li");
+			 parentNode.id = 'catalog_'+ parentId;
+			 parentNode.name = 'catalog_'+ parentId;
+			 
+			 select.onchange = function() {addSelect(this); checkMySelect(this);};
+			 var label = document.createElement("label");
+			 label.className = "desc";
+			 label.innerHTML = "Catalog";
+		 	 li.appendChild(label);
+			 li.appendChild(select);
+			 document.getElementById("c").appendChild(li);
+		 }
+		 addOptions(children, select)
+	 }); 
+ }
+ function checkMySelect(node){
+	 var id = node.name;
+	 if (id != 'catalogs'){
+		 var nextSibling = node.parentNode.nextSibling;
+		 var parent = node.parentNode;
+		 while (nextSibling){
+			 parent.parentNode.removeChild(nextSibling);
+			 nextSibling = node.parentNode.nextSibling;
+		 }
+	 }
+	 node.name = 'catalogs';
+ }
 /*
  * based on the parent catalog, display a proper field for this catalog.
  *
@@ -209,17 +246,21 @@ Event.observe(window, 'load', function() {
 
 <form:form commandName="product" action="productform.html" method="post">
 	<form:hidden path="id"/>
-<ul>
+<ul id="c">
 
 	<li>
 		<a href="<c:url value="catalogform.html" />"  target="catalog" ><fmt:message key="catalog.add.item" /></a>
 		<p>
 		<a  name="anchor" id="anchor" onclick="fillChildren(mainCatalogy, catalogManager,'parent.id', catalogs)"><fmt:message key="refresh.list" /></a>
 		</p>
-		
+	
+	
 		
 		<appfuse:label key="product.catalog" styleClass="desc" />
-		<select name="mainCategory" id="mainCategory" onchange="fillChildren(this, catalogManager,'parent.id', c_children); showProduct(this)"
+		<select name="mainCategory" id="mainCategory" onchange="addSelect(this)" 
+			<%-- 
+			onchange="fillChildren(this, catalogManager,'parent.id', c_children); showProduct(this)"
+			--%>
 			${product.id  == null ? "" : 'disabled="disabled"'}>
 			${pleaseSelect }
 			<c:forEach var="catalog" items="${catalogParents}">
@@ -227,43 +268,15 @@ Event.observe(window, 'load', function() {
 					${catalog.id == grandParentCatalog.id ? 'selected' : '' } > ${catalog.name}</option>
 			</c:forEach>
 		</select>
-	</li>
-	<li>
-		<appfuse:label key="product.catalog.children" styleClass="desc" />
-		<select name="c_children" id="c_children" onchange="fillChildren(this, catalogManager,'parent.id',catalogs); showProduct(this)">
-			${pleaseSelect }
-		</select>
-	</li>
-	<script>
-			//fillChildren(mainCategory, catalogManager,'parent.id', c_children, selectedValue);
-			<c:forEach var="p" items="${product.catalogs}">
-				var selectedValue =  ${p.parent.id};
-			</c:forEach>
-			
-			setParent(mainCategory, catalogManager,'parent.id', c_children, selectedValue);
-
-			
-			//var grandParent = document.getElementById('mainCategory').value;
-			//fillChildren(c_children,catalogManager,'parent.id',catalogs);
-		</script>
-	<li>
 		
-		<appfuse:label key="product.catalogs" styleClass="desc" />
-		<form:errors path="catalogs" cssStyle="fieldErrors" />
-		<spring:bind path="catalogs">
-			<select name="catalogs" id="catalogs" multiple="multiple" size="5" onchange="fillChildren(this,brandNameManager,'manufacturer.id', brandName)" >
-				<c:forEach var="catalog" items="${catalogs}">
-					<option value="${catalog.id}"
-						<c:forEach var="entered" items="${product.catalogs}">
-							${catalog.id == entered.id ? "selected" : " "}
-						</c:forEach>
-					>${catalog.name}
-					</option>
-				</c:forEach>
-			</select>
-		</spring:bind>
-
+		<c:if test="${not empty product.id }">
+			<appfuse:catalog product="${product}" />
+		</c:if>
+		
 	</li>
+</ul>
+<ul>
+	
 	<li>
 		<a href="<c:url value="manufacturerform.html" />" target="manufacturer"><fmt:message key="add.manufacturer" /></a>
 		<p>
@@ -276,6 +289,7 @@ Event.observe(window, 'load', function() {
 				<option value="${manufacturer.id }" ${manufacturer.id == product.brandName.manufacturer.id ? 'selected' : "" }> ${manufacturer.name }</option>
 			</c:forEach>
 		</select>
+		
 	</li>
 	<li>
 		<a href="<c:url value="brandnameform.html" />" target="brandName"><fmt:message key="add.brandName" /></a>
@@ -408,3 +422,13 @@ Event.observe(window, 'load', function() {
 <p>
 <fmt:message key="reminder.to.add.image" />
 </p>
+
+<div style="visibility: hidden">
+
+	<li>
+		<label class="desc" ></label>
+		<select>
+			
+		</select>
+	</li>
+</div>

@@ -312,4 +312,10 @@
     	<property name="userManager" ref="userManager" />
     	<property name="successView" value="redirect:orders.html" /> 
     </bean>
+    
+    <!-- ajax controller -->
+    <bean id="cartBannerController" class="local.tux.app.web.controller.CartBannerController">
+    	<property name="userManager" ref="userManager" />
+    	<property name="shoppingCartManager" ref="shoppingCartManager"/>
+    </bean>
 </beans>

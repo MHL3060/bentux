@@ -69,4 +69,32 @@
             <rtexprvalue>true</rtexprvalue>
         </attribute>
     </tag>
+    <tag>
+    	<name>catalog</name>
+    	<tag-class>local.tux.app.webapp.tag.CatalogTag</tag-class>
+    	<attribute>
+    		<name>product</name>
+    		<required>true</required>
+    		<rtexprvalue>true</rtexprvalue>
+    	</attribute>
+    </tag>
+    <tag>
+    	<name>multiple</name>
+    	<tag-class>local.tux.app.webapp.tag.CatalogMultipleMenuTag</tag-class>
+    	<attribute>
+    		<name>catalog</name>
+    		<required>true</required>
+    		<rtexprvalue>true</rtexprvalue>
+    	</attribute>
+    	<attribute>
+    		<name>onClickEvent</name>
+    		<required>false</required>
+    		<rtexprvalue>true</rtexprvalue>
+    	</attribute>
+    	<attribute>
+    		<name>mouseOverEvent</name>
+    		<required>false</required>
+    		<rtexprvalue>true</rtexprvalue>
+    	</attribute>
+    </tag>
 </taglib>

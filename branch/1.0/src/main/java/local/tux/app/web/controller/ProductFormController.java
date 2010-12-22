@@ -1,10 +1,14 @@
 package local.tux.app.web.controller;
 
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
+import java.util.Stack;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -95,9 +99,28 @@ public class ProductFormController extends BaseFormController {
 		for (int i = 0; i < multipleCount.length; i++){
 			multipleCount[i] = i;
 		}
+		Stack<Map<Object,Collection<Catalog>>> catalogLevels = new Stack<Map<Object,Collection<Catalog>>>();
+		Product p = (Product) command;
+		/*
+		if (p != null && p.getCatalogs() != null ){
+			//Collection<Catalog> bottomUp = p.getCatalogs();
+			
+			Catalog selectedValue =  p.getCatalogs().iterator().next();
+			Catalog parent = selectedValue.getParent();
+			do {
+				Map valuePair = new HashMap();
+				valuePair.put(selectedValue, parent.getChildren());
+				catalogLevels.push(valuePair);
+				selectedValue = parent.getParent();
+				
+			}while(parent != null);
+		}
+		*/
+		//catalogLevels.push(catalogManager.getparents());
+		models.put("catalogs", catalogLevels);
 		models.put("multipleCount", multipleCount);
 		models.put("catalogParents", catalogManager.getMostTopLevel());
-		models.put("catalogs", catalogManager.getAllChildren());
+		//models.put("catalogs", catalogManager.getAllChildren());
 		models.put("manufacturers", manufacturerManager.getAll());
 		models.put("units", Constants.WEIGHT_UNIT);
 		models.put("brandNames", brandNameManager.getAll());
@@ -109,8 +132,9 @@ public class ProductFormController extends BaseFormController {
 		models.put("ingredients", ingredientManager.getAll());
 
 		
-		if (command != null ){
-			Product p = (Product) command;
+		
+		if (p != null ){
+			
 			if (p.getCatalogs() != null && p.getCatalogs().size() > 0){
 				Catalog pc = p.getCatalogs().iterator().next().getParent();
 				models.put("parentCatalog", pc);

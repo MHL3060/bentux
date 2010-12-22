@@ -21,10 +21,10 @@ public class CartBannerController implements  Controller{
 
 	private ShoppingCartManager cartManager;
 	private UserManager userManager;
-	private void setCartManager(ShoppingCartManager cartManager){
+	public void setShoppingCartManager(ShoppingCartManager cartManager){
 		this.cartManager = cartManager;
 	}
-	private void setUserManager (UserManager userManager){
+	public void setUserManager(UserManager userManager){
 		this.userManager = userManager;
 	}
 	public ModelAndView handleRequest(HttpServletRequest request,
@@ -36,7 +36,8 @@ public class CartBannerController implements  Controller{
 			
 			Integer count = cartManager.getItemCount(user.getId(), CART_STATUS.OPEN);
 			//Double total = cartManager.get
-			
+			mav.addObject("cart_item_count", count);
+			mav.addObject("cart_sub_total", cartManager.getSubTotal(cartManager.getOpenCart(user)));
 		}
 		return mav;
 		

@@ -157,6 +157,8 @@ p.catalog_name {
                                         href='<c:url value="/productlist.html?catalogId=${catalog.id}" />' > ${catalog.name}</a>
                         --%>
                         <div style="display: block; flow: left; margin-top:5px;">
+                        <appfuse:multiple catalog="${catalog }" />
+                        <%--
                         <select name="sub" id="sub_${catalog.id}" style="width: 90px;font-size:11px;important;letter-spacing:-1px;text-align:left;" onChange="showProduct(this,'products'); document.getElementById('product_table').style.borderCollapse='collapse'">
                                 <p class="catalog_name">
                                         <option value="${grand.id }"> ${catalog.name }</option>
@@ -165,6 +167,7 @@ p.catalog_name {
                                         <option value="${grand.id }"> ${grand.name }</option>
                                 </c:forEach>
                         </select>
+                         --%>
                         </div>
                 </li>
 
