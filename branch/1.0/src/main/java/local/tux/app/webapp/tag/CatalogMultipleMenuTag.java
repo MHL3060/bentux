@@ -33,7 +33,7 @@ public class CatalogMultipleMenuTag extends TagSupport {
 		
 		
 		try {
-			pageContext.getOut().write(generateList(catalog));
+			pageContext.getOut().write(generateList(catalog, true));
 		} catch (IOException e) {
 			
 			
@@ -46,14 +46,18 @@ public class CatalogMultipleMenuTag extends TagSupport {
 	}
 	
 	
-	private String generateList(Catalog catalog){
+	private String generateList(Catalog catalog, boolean first){
 		List<Catalog> catalogs = catalog.getChildren();
 		StringBuffer sb = new StringBuffer();
 		if (catalogs.isEmpty() == false){
-			sb.append("<ul class='nice_menu' ")
-			  .append(" id='")
-			  .append(catalog.getId())
-			  .append("'>");
+			if (first){
+				sb.append("<ul class='flexdropdownmenu' ")
+				  .append(" id='ul_")
+				  .append(catalog.getId())
+				  .append("'>");
+			}else {
+				sb.append("<ul>");
+			}
 		}
 		for (Catalog c : catalogs){
 			sb.append("<li><a href='#'");
@@ -68,7 +72,7 @@ public class CatalogMultipleMenuTag extends TagSupport {
 				sb.append(" +");
 			}
 			  sb.append("</a>");
-			sb.append(generateList(c));
+			sb.append(generateList(c, false));
 			sb.append("</li>");
 		}
 		if(catalogs.isEmpty() ==false){

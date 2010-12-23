@@ -9,6 +9,7 @@
  <script type="text/javascript" src="<c:url value='/scripts/lightwindow.js'/>"></script>
  --%>
  <script type="text/javascript" src="<c:url value='/scripts/effects.js'/>"></script>
+
 <style>
 div.subcatalog-center{
 	width: 100%;
@@ -60,10 +61,12 @@ div.subcatalog {
 	*display:inline;
 	float:left;
 }
+/*
 .subcatalog img{
 	width: 90px;
 	border: 0px;
 }
+*/
 
 div.subcatalog-new_line {
 	margin-top: 8px;
@@ -110,7 +113,10 @@ p.catalog_name {
    font-weight: normal;
 }
 </style>
-
+<link rel="stylesheet" type="text/css" href="<c:url value='/styles/flexdropdown.css' />" />
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script type="text/javascript" src="<c:url value='/scripts/flexdropdown.js' />">
+</script>
 <div id="main">
 	<div class="subcatalog-center">
 		<ul class="breadcomb">
@@ -140,41 +146,29 @@ p.catalog_name {
  	
 	<div id="whole">
 	<div class="subcatalog">
+	<div class="jquerycssmenu" id="myjquerymenu">
 	<ul>
 	<c:forEach var="catalog" items="${tuxBaseObjectList.list}">
-
- 	       <li>
-
-		<%--<li id="subcatalog_${catalog.id}">--%>
-                        <c:url var="url" value="/file.html">
-                                <c:param name="path" value="${catalog.image.thumbPath}" />
-                        </c:url>
-                        <img alt="image holder" src="${url}" />
-                        <%--
-                        <a class="product" alt="click here to view all the products related to ${catalog.name }"
-                                        onclick="new Effect.Puff('subcatalog_${catalog.id}');
-                                        window.setTimeout('Effect.Appear(\'subcatalog_${catalog.id}\', {duration:.3})',4000); "
-                                        href='<c:url value="/productlist.html?catalogId=${catalog.id}" />' > ${catalog.name}</a>
-                        --%>
-                        <div style="display: block; flow: left; margin-top:5px;">
-                        <appfuse:multiple catalog="${catalog }" />
-                        <%--
-                        <select name="sub" id="sub_${catalog.id}" style="width: 90px;font-size:11px;important;letter-spacing:-1px;text-align:left;" onChange="showProduct(this,'products'); document.getElementById('product_table').style.borderCollapse='collapse'">
-                                <p class="catalog_name">
-                                        <option value="${grand.id }"> ${catalog.name }</option>
-                                </p>
-                                <c:forEach var="grand" items="${catalog.children}">
-                                        <option value="${grand.id }"> ${grand.name }</option>
-                                </c:forEach>
-                        </select>
-                         --%>
-                        </div>
-                </li>
-
+		<li>
+                   <c:url var="url" value="/file.html">
+                           <c:param name="path" value="${catalog.image.thumbPath}" />
+                   </c:url>
+                   <img src="${url }" />
+        			<a href="" data-flexmenu="ul_${catalog.id}">${catalog.name }</a>
+        			
+                   <appfuse:multiple catalog="${catalog }" />
+         </li>         
+                   
+         
         </c:forEach>
 	</ul>
+	</div>
    	</div>
 	</div>
+	
+	
+	
+	
 	
 	<div id="productlist" style="visibility: hidden;"> 
 		<div class="fade"></div>		 
@@ -206,3 +200,7 @@ p.catalog_name {
 	
 
 </div>
+<script type="text/javascript">
+	var menu=new menu.dd("ul_1");
+	menu.init("ul_1","menuhover");
+</script>
