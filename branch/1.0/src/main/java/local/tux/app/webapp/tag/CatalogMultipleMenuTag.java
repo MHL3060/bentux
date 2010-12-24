@@ -61,17 +61,12 @@ public class CatalogMultipleMenuTag extends TagSupport {
 		}
 		for (Catalog c : catalogs){
 			sb.append("<li><a href='#'");
-			if (StringUtils.isBlank(onClickEvent) == false){
-				sb.append("onclick='")
-				  .append(onClickEvent)
-				  .append("'");
-			}
+			sb.append(" onclick=\"showProduct('")
+			  .append(c.getId())
+			  .append("','products'); document.getElementById('product_table').style.borderCollapse='collapse'\" ");
 			sb.append(" >");
 			sb.append(c.getName());
-			if (c.getChildren().isEmpty() == false){
-				sb.append(" +");
-			}
-			  sb.append("</a>");
+			sb.append("</a>");
 			sb.append(generateList(c, false));
 			sb.append("</li>");
 		}

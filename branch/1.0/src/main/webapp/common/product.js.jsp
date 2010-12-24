@@ -1,6 +1,6 @@
-<%--
+<%@ include file="/common/taglibs.jsp" %>
 <script type="text/javascript">
-	var catalogNode;
+var catalog;
 	
  	function addItem(pidNodeId, quantityNodeId){
 
@@ -13,7 +13,7 @@
 					function(result) {
 						if (result == true ) {
 							hide('cart');
-							showProduct(catalogNode, 'products');
+							showProduct(catalog, 'products');
 						}else {
 	
 						}
@@ -120,11 +120,11 @@
 			</c:otherwise>
 		</c:choose>
 	];
-	function showProduct(node, toNodeName) {
+	function showProduct(catalogId, toNodeName) {
 		try {
-			catalogNode = node;
+			catalog = catalogId;
 			dwr.util.removeAllRows(toNodeName);
-			catalogId = node.value;
+		
 			productManager.getProductByCatalogId(catalogId, function(arrayObjs){
 				dwr.util.addRows(toNodeName,arrayObjs, cellFuncs,{escapeHtml:false}); 
 			});
@@ -133,49 +133,5 @@
 			window.location.reload();
 		};
 	} 
+
 </script>
- --%>
-<style>
-div.section { clear: left; }
-
-div.center{
-	float: left;
-	padding-left: 2em;
-
-}
-</style>
-
-<div id="cart" style="visibility:hidden;"> 
-	<div class="fade"></div> 
-	<div class="popup_block"> 
-		<div class="popup"> 
-			<a href="javascript:hide('cart')"><img src="<c:url value="/images/icon_close.png" />" class="cntrl" title="Close" /></a> 
-			<h3 id="product_title"></h3>
-			<table id="product_data">
-				<thead>
-					<tr>
-						<th>Field</th>
-						<th>Value</th>
-					</tr>
-				</thead>
-				<tbody>
-				<tr>
-					<td class="strong">Available :</td>
-					<td id="available"></td>
-				</tr>
-				<tr>
-					<td class="strong">Price :</td>
-					<td id="price"></td>
-				</tr>
-				<tr>
-					<td colspan="2"> Add <input id="quantity" name="quantity" value="1" type="text" size="3" maxlength="3" />  to my cart  </td>
-				</tr>
-				<tr>
-					<td colspan="2"><input type="button" name="add" value="Add" onclick="addItem('pid', 'quantity')"/></td>
-				</tr>
-				</tbody>
-			</table>
-			 
-		</div> 
-	</div> 
-</div> 

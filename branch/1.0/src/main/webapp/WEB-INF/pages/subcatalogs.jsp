@@ -5,11 +5,8 @@
  <script type='text/javascript' src='<c:url value="/dwr/interface/productManager.js" />'></script>
  <script type='text/javascript' src="<c:url value='/dwr/engine.js' />"></script>
  <script type='text/javascript' src="<c:url value='/dwr/util.js' />"></script>
- <%--  
- <script type="text/javascript" src="<c:url value='/scripts/lightwindow.js'/>"></script>
- --%>
  <script type="text/javascript" src="<c:url value='/scripts/effects.js'/>"></script>
-
+ <script type="text/javascript" src="<c:url value='/scripts/flexdropdown.js' />"></script>
 <style>
 div.subcatalog-center{
 	width: 100%;
@@ -103,6 +100,11 @@ p.catalog_name {
 .breadcomb li.current {
    color:black;
 }
+.h {
+
+	padding-left: 5px;
+	overflow: hidden;
+}
 /** hack for IE7 */
 .table {
 	border-collapse: separate;
@@ -114,9 +116,7 @@ p.catalog_name {
 }
 </style>
 <link rel="stylesheet" type="text/css" href="<c:url value='/styles/flexdropdown.css' />" />
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
-<script type="text/javascript" src="<c:url value='/scripts/flexdropdown.js' />">
-</script>
+<%@include file="/common/product.js.jsp" %>
 <div id="main">
 	<div class="subcatalog-center">
 		<ul class="breadcomb">
@@ -154,9 +154,9 @@ p.catalog_name {
                            <c:param name="path" value="${catalog.image.thumbPath}" />
                    </c:url>
                    <img src="${url }" />
-        			<a href="" data-flexmenu="ul_${catalog.id}">${catalog.name }</a>
+        			<a class="h" href="" data-flexmenu="ul_${catalog.id}">${catalog.name }</a>
         			
-                   <appfuse:multiple catalog="${catalog }" />
+                   <appfuse:multiple catalog="${catalog }"  />
          </li>         
                    
          
@@ -200,7 +200,3 @@ p.catalog_name {
 	
 
 </div>
-<script type="text/javascript">
-	var menu=new menu.dd("ul_1");
-	menu.init("ul_1","menuhover");
-</script>

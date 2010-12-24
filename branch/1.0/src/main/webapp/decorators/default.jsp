@@ -16,7 +16,7 @@
         <script type="text/javascript" src="<c:url value='/scripts/prototype.js'/>"></script>
         
         <script type="text/javascript" src="<c:url value='/scripts/scriptaculous.js'/>"></script>
-        
+        <script type="text/javascript" src="<c:url value='/scripts/jquery.min.js' />"></script>
         <script type="text/javascript" src="<c:url value='/scripts/global.js'/>"></script>
         <script type="text/javascript"  src="<c:url value="/scripts/ruzee.js" />" ></script>
 		<script type="text/javascript" src="<c:url value="/ckeditor/ckeditor_basic.js" />" ></script>
