@@ -121,6 +121,7 @@ var catalog;
 		</c:choose>
 	];
 	function showProduct(catalogId, toNodeName) {
+		generateBrandNameList(catalogId);
 		try {
 			catalog = catalogId;
 			dwr.util.removeAllRows(toNodeName);
@@ -133,5 +134,13 @@ var catalog;
 			window.location.reload();
 		};
 	} 
-
+	function generateBrandNameList(catalogId) {
+		
+		catalogManager.getDistinctBrandName(catalogId, brandNames){
+			dwr.util.removeAllRows("filterBrandName");
+			dwr.util
+		});
+	}
+	
+	
 </script>

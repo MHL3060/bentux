@@ -2,6 +2,7 @@ package local.tux.app.dao;
 
 import java.util.List;
 
+import local.tux.app.model.BrandName;
 import local.tux.app.model.Catalog;
 import local.tux.app.model.common.LookUpBaseObject;
 
@@ -21,5 +22,7 @@ public interface CatalogDao extends GenericDao<Catalog, Long> {
 	public List<Catalog> getAllChidlren();
 
 	public List<Catalog> getParents();
+
+	public List<BrandName> getDistinctBrandName(Long catalogId);
 	
 }

@@ -175,6 +175,9 @@ p.catalog_name {
 		<div class="popup_product_block"> 
 			<div class="popup"> 
 				<a href="javascript:hide('productlist');window.location.reload()"><img src="<c:url value="/images/icon_close.png" />" class="cntrl" title="Close" /></a> 
+				<select id="filterBrandName" name="filterBrandName" onChange="getByBrandName(this)">
+				
+				</select>
 				<table class="table" id="product_table">
 					<thead>
 						<tr>

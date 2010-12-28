@@ -5,6 +5,7 @@ import java.util.List;
 import org.appfuse.service.GenericManager;
 
 import local.tux.app.dao.TuxNameGenericDao;
+import local.tux.app.model.BrandName;
 import local.tux.app.model.Catalog;
 
 public interface CatalogManager extends LookUpNameGenericManager<Catalog, Long> {
@@ -15,4 +16,5 @@ public interface CatalogManager extends LookUpNameGenericManager<Catalog, Long> 
 	public Object getAllChildren();
 	
 	public List<Catalog> getparents();
+	public List<BrandName> getDistinctBrandName(Long catalogId);
 }

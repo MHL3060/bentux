@@ -5,6 +5,7 @@ import java.util.List;
 
 
 import local.tux.app.dao.CatalogDao;
+import local.tux.app.model.BrandName;
 import local.tux.app.model.Catalog;
 import local.tux.app.service.CatalogManager;
 
@@ -38,5 +39,8 @@ public class CatalogManagerImpl extends LookUpNameGenericManagerImpl<Catalog, Lo
 		return catalogDao.getParents();
 	}
 
+	public List<BrandName> getDistinctBrandName(Long catalogId) {
+		return catalogDao.getDistinctBrandName(catalogId);
+	}
 	
 }

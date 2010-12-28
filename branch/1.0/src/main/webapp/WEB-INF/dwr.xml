@@ -14,6 +14,7 @@
         	<include method="getRelativeObjects" />
         	<include method="getParents" />
         	<include method="getAll" />
+        	<include method="getDistinctBrandName" />
         </create>
         <create creator="spring" javascript="brandNameManager">
         	<param name="class" value="local.tux.app.service.LookUpNameGenericManager" />
