@@ -257,7 +257,7 @@ Event.observe(window, 'load', function() {
 	
 		
 		<appfuse:label key="product.catalog" styleClass="desc" />
-		<select name="mainCategory" id="mainCategory" onchange="addSelect(this)" 
+		<select name="mainCategory" id="mainCategory" onchange="addSelect(this); showProduct(this)" 
 			<%-- 
 			onchange="fillChildren(this, catalogManager,'parent.id', c_children); showProduct(this)"
 			--%>
