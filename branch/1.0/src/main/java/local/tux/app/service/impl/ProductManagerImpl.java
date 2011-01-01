@@ -17,6 +17,11 @@ public class ProductManagerImpl extends LookUpNameGenericManagerImpl<Product, Lo
 	public List<Product> getProductByCatalogId(Long catalogId) {
 		return productDao.getProudctByCatalogId(catalogId);
 	}
+	public List<Product> getProductByCatalogIdAndBrandName(Long catalogId,
+			Long brandNameId) {
+		return productDao.getProductByCatalogIdAndBrandName(catalogId,brandNameId);
+		
+	}
 	
 	
 

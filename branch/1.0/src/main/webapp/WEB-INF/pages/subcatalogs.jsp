@@ -1,12 +1,7 @@
 <%@ include file="/common/taglibs.jsp" %>
 
 
- <script type='text/javascript' src='<c:url value="/dwr/interface/shoppingCartManager.js" />'></script>
- <script type='text/javascript' src='<c:url value="/dwr/interface/productManager.js" />'></script>
- <script type='text/javascript' src="<c:url value='/dwr/engine.js' />"></script>
- <script type='text/javascript' src="<c:url value='/dwr/util.js' />"></script>
- <script type="text/javascript" src="<c:url value='/scripts/effects.js'/>"></script>
- <script type="text/javascript" src="<c:url value='/scripts/flexdropdown.js' />"></script>
+
 <style>
 div.subcatalog-center{
 	width: 100%;
@@ -154,6 +149,7 @@ p.catalog_name {
                            <c:param name="path" value="${catalog.image.thumbPath}" />
                    </c:url>
                    <img src="${url }" />
+        			
         			<a class="h" href="" data-flexmenu="ul_${catalog.id}">${catalog.name }</a>
         			
                    <appfuse:multiple catalog="${catalog }"  />
@@ -175,9 +171,12 @@ p.catalog_name {
 		<div class="popup_product_block"> 
 			<div class="popup"> 
 				<a href="javascript:hide('productlist');window.location.reload()"><img src="<c:url value="/images/icon_close.png" />" class="cntrl" title="Close" /></a> 
-				<select id="filterBrandName" name="filterBrandName" onChange="getByBrandName(this)">
+				<div>
+				<label class="desc">Filter By Brand Name</label>
+				<select id="filterBrandName" name="filterBrandName" onChange="displayProductByBrandName(this, 'products')">
 				
 				</select>
+				</div>
 				<table class="table" id="product_table">
 					<thead>
 						<tr>

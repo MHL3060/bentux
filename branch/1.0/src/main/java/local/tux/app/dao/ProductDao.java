@@ -8,4 +8,7 @@ public interface ProductDao extends TuxNameGenericDao<Product, Long>{
 
 	public List<Product> getProudctByCatalogId(Long catalogId);
 
+	public List<Product> getProductByCatalogIdAndBrandName(Long catalogId,
+			Long brandNameId);
+
 }

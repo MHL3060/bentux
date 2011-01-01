@@ -1,4 +1,16 @@
 <%@ include file="/common/taglibs.jsp" %>
+
+ <script type='text/javascript' src='<c:url value="/dwr/interface/shoppingCartManager.js" />'></script>
+ <script type='text/javascript' src='<c:url value="/dwr/interface/productManager.js" />'></script>
+ <script type='text/javascript' src='<c:url value="dwr/interface/catalogManager.js" />'></script>
+ <script type='text/javascript' src="<c:url value='/dwr/engine.js' />"></script>
+ <script type='text/javascript' src="<c:url value='/dwr/util.js' />"></script>
+ <%--
+ <script type="text/javascript" src="<c:url value='/scripts/effects.js'/>"></script>
+  --%>
+ <script type="text/javascript" src="<c:url value='/scripts/flexdropdown.js' />"></script>
+
+
 <script type="text/javascript">
 var catalog;
 	
@@ -134,12 +146,39 @@ var catalog;
 			window.location.reload();
 		};
 	} 
-	function generateBrandNameList(catalogId) {
+	
+	function displayProductByBrandName(brandNameNode, toNodeName){
+		var brandNameId = brandNameNode.value;
 		
-		catalogManager.getDistinctBrandName(catalogId, brandNames){
-			dwr.util.removeAllRows("filterBrandName");
-			dwr.util
+		try {
+			catalogId = catalog; 
+			if (brandNameId == ""){
+				showProduct(catalogId, toNodeName);	
+			}
+			dwr.util.removeAllRows(toNodeName);
+		
+			productManager.getProductByCatalogIdAndBrandName(catalogId, brandNameId, function(arrayObjs){
+				dwr.util.addRows(toNodeName,arrayObjs, cellFuncs,{escapeHtml:false}); 
+			});
+			document.getElementById("productlist").style.visibility = 'visible'; 
+		}catch (exception ) {
+			window.location.reload();
+		};
+	}
+	
+	function generateBrandNameList(catalogId) {
+			
+		catalogManager.getDistinctBrandName(catalogId, function(brandNames){
+			dwr.util.removeAllOptions("filterBrandName");
+			var option = document.createElement("option");
+			option.value = "";
+			option.label = "Please Select";
+			document.getElementById("filterBrandName").appendChild(option);
+			
+			dwr.util.addOptions("filterBrandName", brandNames, "id", "name");
+			
 		});
+		
 	}
 	
 	

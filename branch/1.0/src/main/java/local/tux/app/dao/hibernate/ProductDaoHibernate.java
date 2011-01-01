@@ -22,5 +22,16 @@ public class ProductDaoHibernate extends TuxNameGenericDaoHibernate<Product, Lon
 		return getHibernateTemplate().findByCriteria(criteria);
 	}
 
+	public List<Product> getProductByCatalogIdAndBrandName(Long catalogId,
+			Long brandNameId) {
+		
+		DetachedCriteria criteria = DetachedCriteria.forClass(Product.class);
+		criteria.createAlias("catalogs", "catalog");
+		criteria.createAlias("brandName", "brandName");
+		criteria.add(Restrictions.eq("catalog.id", catalogId));
+		criteria.add(Restrictions.eq("brandName.id", brandNameId));
+		return getHibernateTemplate().findByCriteria(criteria);
+	}
+
 
 }
