@@ -1,0 +1,34 @@
+<html>
+	<style>
+	
+	
+	</style>
+	<body>
+		<h1>$title</h1>
+	
+	Dear 
+		#if ($sub.getFriendName())
+			 $sub.getFriendName() 
+		#else
+			Sir/Madam
+		#end
+		,
+	<br>		
+	$bodyContent
+	
+	<br>
+	<br>
+	$sub.getName() wants you to check out Trinity-Taste of India at http://shopattrinity.com/app
+	
+	<br>
+		#if ($sub.getSuggestion())
+			$sub.getSuggestion()
+		#end
+	<br>
+	Thanks, 
+	$sub.getName()		
+	
+	</body>
+
+
+</html>

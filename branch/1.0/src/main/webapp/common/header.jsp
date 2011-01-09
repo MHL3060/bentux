@@ -25,7 +25,7 @@
 	      <c:otherwise><a href="login.jsp">LOGIN</a>
       </c:otherwise>
     </c:choose>
-		&nbsp;|&nbsp;<a href="signup.html">REGISTER</a>&nbsp;|&nbsp;<a href="disclaimer.jsp">DISCLAIMER</a>&nbsp;|&nbsp;<a href="help.html">HELP</a>
+		&nbsp;|&nbsp;<a href="signup.html">REGISTER</a>&nbsp;|&nbsp;<a href="faq.jsp">DISCLAIMER</a>&nbsp;|&nbsp;<a href="contact_us.jsp">HELP</a>
 	</span>
 </div>
 <style>

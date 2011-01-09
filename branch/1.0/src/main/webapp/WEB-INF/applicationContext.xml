@@ -32,7 +32,8 @@
 				<value>local.tux.app.model.MiscellaneousProduct</value>
 				<value>local.tux.app.model.Ingredient</value>
 				<value>local.tux.app.model.Comment</value>
-				<value>local.tux.app.model.CulturalProduct</value>	
+				<value>local.tux.app.model.CulturalProduct</value>
+									
 			</list>
 		</property>
 		<property name="compassSettings">
@@ -127,6 +128,10 @@
 		<constructor-arg value="local.tux.app.model.Subscription" />
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+	<bean id="shareFriendDao" class="org.appfuse.dao.hibernate.GenericDaoHibernate">
+		<constructor-arg value="local.tux.app.model.ShareFriend" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
 	
 	<bean id="sideBannerDao" class="local.tux.app.dao.hibernate.TuxNameGenericDaoHibernate">
 		<constructor-arg value="local.tux.app.model.SideBanner" />
@@ -192,6 +197,10 @@
    
    <bean id ="subscriptionManager" class="org.appfuse.service.impl.GenericManagerImpl">
    		<constructor-arg ref="subscriptionDao" />
+   </bean>
+      
+   <bean id ="shareFriendManager" class="org.appfuse.service.impl.GenericManagerImpl">
+   		<constructor-arg ref="shareFriendDao" />
    </bean>
   
    <bean id="nonVersionUserManager" class="local.tux.app.service.impl.LookUpNameGenericManagerImpl">

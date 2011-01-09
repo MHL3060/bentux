@@ -47,18 +47,48 @@ public class EntertainmentService extends TuxBaseObject implements SubProduct{
 	@Column(name="show_to")
 	private Date showTo;
 	
+	/* MoviePosterLink */
+	@Column(name="front_movie_poster_link")
+	private String frontMoviePosterLink;
+	
 	@Column(name="movie_poster_link")
 	private String moviePosterLink;
 	
+	/*Obsolete*/
 	@Column(name="address")
 	private String address;
 	
 	@Column(name="show_time")
 	private String showTime;
 	
+	/*Obsolete*/
 	@Column(name="show_duration")
 	private Double showDuration;
-		
+	
+	@Column(name="show_short_description")
+	private String showShortDescription;
+	
+	@Column(name="show_starring")
+	private String showStarring;
+	
+	@Column(name="show_plot")
+	private String showPlot;
+	
+	@Column(name="show_venue")
+	private String showVenue;
+	
+	@Column(name="show_date")
+	private String showDate;
+	
+	@Column(name="show_ticket")
+	private String showTicket;
+	
+	@Column(name="show_booking")
+	private String showBooking;
+
+	@Column(name="show_movie_detail_link")
+	private String showMovieDetailLink;
+
 	@OneToOne
 	@JoinColumn(name="product_id")
 	private Product product;
@@ -87,6 +117,13 @@ public class EntertainmentService extends TuxBaseObject implements SubProduct{
 		this.showTo = showTo;
 	}
 	
+	public String getFrontMoviePosterLink(){
+		return frontMoviePosterLink;
+	}
+	
+	public void setFrontMoviePosterLink(String frontMoviePosterLink){
+		this.frontMoviePosterLink = frontMoviePosterLink;
+	}
 	public String getMoviePosterLink(){
 		return moviePosterLink;
 	}
@@ -117,8 +154,62 @@ public class EntertainmentService extends TuxBaseObject implements SubProduct{
 	public void setProduct(Product product) {
 		this.product = product;
 	}
-
 	
+	public void setShowShortDescription(String showShortDescription){
+		this.showShortDescription = showShortDescription;
+	}
+	public String getShowShortDescription(){
+		return showShortDescription;
+	}
+
+
+	public void setShowStarring(String showStarring){
+		this.showStarring = showStarring;
+	}
+	
+	public String getShowStarring(){
+		return showStarring;
+	}
+	
+	public void setShowPlot(String showPlot){
+		this.showPlot = showPlot;
+	}
+	
+	public String getShowPlot(){
+		return showPlot;
+	}
+	
+	public void setShowDate(String showDate){
+		this.showDate = showDate;
+	}
+	
+	public String getShowDate(){
+		return showDate;
+	}
+	
+	public void setShowVenue(String showVenue){
+		this.showVenue = showVenue;
+	}
+	
+	public String getShowVenue(){
+		return showVenue;
+	}
+	
+	public void setShowTicket(String showTicket){
+		this.showTicket = showTicket;
+	}
+	
+	public String getShowTicket(){
+		return showTicket;
+	}
+
+	public void setShowBooking(String showBooking){
+		this.showBooking = showBooking;
+	}
+	
+	public String getShowBooking(){
+		return showBooking;
+	}
 	public Double getShowDuration() {
 		return showDuration;
 	}
@@ -126,7 +217,15 @@ public class EntertainmentService extends TuxBaseObject implements SubProduct{
 	public void setShowDuration(Double showDuration) {
 		this.showDuration = showDuration;
 	}
-
+	
+	public String getShowMovieDetailLink(){
+		return showMovieDetailLink;
+	}
+	
+	public void setShowMovieDetailLink(String showMovieDetailLink){
+		this.showMovieDetailLink = showMovieDetailLink;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -168,6 +267,11 @@ public class EntertainmentService extends TuxBaseObject implements SubProduct{
 		if (showTime == null) {
 			if (other.showTime != null)
 				return false;
+		} else if (!frontMoviePosterLink.equals(other.frontMoviePosterLink))
+			return false;
+		if (frontMoviePosterLink == null){
+			if (other.frontMoviePosterLink != null)
+				return false;	
 		} else if (!moviePosterLink.equals(other.moviePosterLink))
 			return false;
 		if (moviePosterLink == null){
@@ -180,10 +284,54 @@ public class EntertainmentService extends TuxBaseObject implements SubProduct{
 				return false;
 		} else if (!showTo.equals(other.showTo))
 			return false;
-		
-		return true;
+		if (showPlot == null) {
+			if (other.showPlot != null)
+				return false;
+		} else if (!showPlot.equals(other.showPlot))
+			return false;
+		if (showShortDescription == null) {
+			if (other.showShortDescription != null)
+				return false;
+		} else if (!showShortDescription.equals(other.showShortDescription))
+			return false;
+		if (showStarring == null) {
+			if (other.showStarring != null)
+				return false;
+		} else if (!showStarring.equals(other.showStarring))
+			return false;
+		if (showPlot == null) {
+			if (other.showPlot != null)
+				return false;
+		} else if (!showPlot.equals(other.showPlot))
+			return false;
+		if (showDate == null) {
+			if (other.showDate != null)
+				return false;
+		} else if (!showDate.equals(other.showDate))
+			return false;
+		if (showVenue == null) {
+			if (other.showVenue != null)
+				return false;
+		} else if (!showVenue.equals(other.showVenue))
+			return false;
+		if (showTicket == null) {
+			if (other.showTicket != null)
+				return false;
+		} else if (!showTicket.equals(other.showTicket))
+			return false;
+		if (showBooking == null) {
+			if (other.showBooking != null)
+				return false;
+		} else if (!showBooking.equals(other.showBooking))
+			return false;
+		if (showMovieDetailLink == null) {
+			if (other.showMovieDetailLink != null)
+				return false;
+		} else if (!showMovieDetailLink.equals(other.showMovieDetailLink))
+			return false;
+		return true;	
 	}
-
+	
 	@Override
 	public String toString() {
 		return "id = " + id;

@@ -225,28 +225,83 @@
 
 	div#movie .movie-left{
 		float: left;
-		width: 310px;
+		width: 323px;
+		color: black;
+		font-size: 10px;
 	}
 
 	div#movie .movie-left .movie-heading{
 		color: black;
-		font-size: 44px;
+		font-size: 49px;
 		font-weight: bold;
-		letter-spacing: -3px;
-		margin-top: -6px;	
+		letter-spacing: -6px;
+		margin-top: 19px;	
 	}
 	div#movie .movie-left .movie-title{
 		color: orange;
-		font-size: 20px;
+		font-size: 36px;
 		font-weight: bold;
-		letter-spaceing: -3px;
+		letter-spacing: -4px;
+		margin-bottom: 10px;
+		margin-top: 15px;
 	}
+	/* follows the same line */
+	div#movie .movie-left .heading1{
+		color:orange;
+		text-transform: uppercase;
+		float: left;
+	}
+	/* new line after heading */
+	div#movie .movie-left .heading2{
+		color:orange;
+		text-transform: uppercase;
+		margin-top: 5px;
+		/*white-space: pre-wrap; /* css-3 */
+		word-wrap: break-word; /* Internet Explorer 5.5+ */
+		
+	}
+	div#movie .movie-left .movie-short-description{
+		margin-bottom: 5px;
+	}
+	
+	div#movie .movie-left .movie-starring {
+		margin-bottom: 5px;
+		
+	}
+	
+	div#movie .movie-left .movie-plot {
+		height: 100px;
+		margin-bottom: 5px;
+	}
+	
+	div#movie .movie-left .movie-date{
+		height: 34px;
+		margin-bottom: 14px;
+	}
+	
+	div#movie .movie-left .movie-venue {
+		margin-bottom: 14px;
+	}
+	
+	div#movie .movie-left .movie-ticket {
+		margin-bottom: 5px;
+	
+	}
+	
+	div#movie .movie-left .movie-booking {
+		height: 52px;
+		margin-bottom: 10px;
+		
+	}
+	
 	div#movie .movie-left .movie-description{
 		margin-top: 10px;	
 	}
+	div#movie .movie-left .movie-link{
+	}
 	div#movie .movie-right{
 		float: right;
-		width: 295px;
+		width: 270px;
 	}
 	.post . {
 		height: 38px;
@@ -306,7 +361,7 @@
 	div#about-us .detail{
 		margin-top:10px;
 		margin-left:5px;
-		*margin-top:-2px;	
+		margin-top:-2px;	
 	}
 
 	

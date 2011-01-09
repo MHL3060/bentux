@@ -1,3 +1,17 @@
+create table share_friend (id bigint not null auto_increment, name varchar(255), email varchar(255), friend_name varchar(255), friend_email varchar(255), suggestion varchar(255), primary key (id));
+
+--update on Dec 28th 2010
+alter table entertain_service add (show_short_description varchar(255));
+alter table entertain_service add (show_starring varchar(255));
+alter table entertain_service add (show_plot varchar(750));
+alter table entertain_service add (show_venue varchar(255));
+alter table entertain_service add (show_date varchar(255));
+alter table entertain_service add (show_ticket varchar(255));
+alter table entertain_service add (show_booking varchar(255));
+ALTER TABLE entertain_service ADD (front_movie_poster_link VARCHAR(255));
+ALTER TABLE entertain_service ADD (show_movie_detail_link VARCHAR(255));
+
+
 --update on Nov 16th 2010
 update catalog SET name=('Miscellaneous') where id='-5';
 

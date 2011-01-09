@@ -57,7 +57,7 @@
         <property name="userManager" ref="userManager"/>
     </bean>
 
-    <bean id="userFormController" class="org.appfuse.webapp.controller.UserFormController">
+    <bean id="userFormController" class="local.tux.app.web.controller.UserFormController">
         <property name="validator" ref="beanValidator"/>
         <property name="formView" value="userForm"/>
         <property name="successView" value="redirect:users.html"/>
@@ -268,6 +268,17 @@
         <property name="message" ref="mailMessage"/>
         <property name="htmlMailService" ref="sendHtmlMailSender" />
         <property name="templateName" value="velocity/subscription.vm"/>
+        
+    </bean>
+     
+    <bean id="shareFriendController" class="local.tux.app.web.controller.ShareFriendController">
+        <property name="commandClass" value="local.tux.app.model.ShareFriend" />
+        <property name="commandName" value="shareFriend" />
+        <property name="lookUpManager" ref="shareFriendManager" />
+        <property name="captchaService" ref="captchaService" />
+        <property name="message" ref="mailMessage"/>
+        <property name="htmlMailService" ref="sendHtmlMailSender" />
+        <property name="templateName" value="velocity/shareFriend.vm"/>
         
     </bean>
     <bean id="confirmController" class="local.tux.app.web.controller.ConfirmController">

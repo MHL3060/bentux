@@ -29,5 +29,6 @@
         <mapping class="local.tux.app.model.ShippingAddress" />
         <mapping class="local.tux.app.model.Subscription" />
         <mapping class="local.tux.app.model.SideBanner" />
+        <mapping class="local.tux.app.model.ShareFriend" />
     </session-factory>
 </hibernate-configuration>
